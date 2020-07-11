@@ -200,8 +200,8 @@ module.exports = {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
-                user: global.gConfig.nodemailer.user,
-                pass: global.gConfig.nodemailer.pass
+                user: "pramodsmsit@gmail.com",
+                pass: "promogmail"
             },
             // secure: true,
             // port: 465,
@@ -210,7 +210,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
 
             transporter.sendMail(mailBody, function (error, info) {
-                // console.log("rejectt---->", error, info)
+                console.log("rejectt---->", error, info.response)
                 if (error) {
                     return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
                 } else {

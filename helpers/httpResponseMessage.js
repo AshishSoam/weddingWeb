@@ -27,5 +27,12 @@ module.exports = {
     ADMIN_ID_INCORRECT:'Admin id is incorrect.',
     OLD_PASSWORD_INCORRECT:'Old password is incorrect.',
     NEW_CONFIRM_INCORRECT:'New and confirm password are not similar.',
-    PASSWORD_UPDATE_SUCCESS:"Your password updated successfully."
+    PASSWORD_UPDATE_SUCCESS:"Your password updated successfully.",
+    INVALID_CRED: "Invalid credentials.",
+    BLOCK_USER:"You are blocked by Admin.",
+    DELETE_USER:"Your account has been deactivated by Admin.",
+    UNDER_VERIFICATION:"Unable to login ,Please verify your account first.",
+    LOGIN_SUCCESS:"Login successfully.",
+    VERIFIED_OTP: "OTP verified successfully.",
+    INVALID_OTP:"OTP does not matched.",
  };

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
-const bcrypt = require('bcrypt-node')
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
 const userSchema = schema({
     email: {
         type: String
@@ -29,15 +30,21 @@ const userSchema = schema({
         type: String
     },
     otpTime: {
-        type: String
+        type: Number
     },
-    emailVerified: {
-        type: String
+    // emailVerified: {
+    //     type: Boolean,
+    //     default:false
+    // },
+    accountVerification: {
+        type: Boolean,
+        default:false
     },
-    mobileVerified: {
-        type: String
-    },
-
+status:{
+    type:String,
+    enum:["ACTIVE","BLOCK","DELETE"],
+    default:"ACTIVE"
+},
     familyData: [{
         familyType: {
             type: String
@@ -202,9 +209,10 @@ mongoose.model("users", userSchema).find({ userType: "ADMIN" }, (err, result) =>
             profilePic: "https://res.cloudinary.com/dkoznoze6/image/upload/v1563943105/n7zdoyvpxxqhexqybvkx.jpg",
             verifyOtp: true,
             countryCode: "+91",
-            mobileNumber: "8299547036",
-            email: "pramodsmsit@gmail.com",
-            password: bcrypt.hashSync("admin1234"),
+            mobileNumber: "8447510661",
+            accountVerification:true,
+            email: "pramodm@siliconasiaworks.com",
+            password: bcrypt.hashSync("admin1234",salt),
         };
         mongoose.model("users", userSchema).create(obj, (err1, result1) => {
             if (err1) {

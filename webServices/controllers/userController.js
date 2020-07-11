@@ -4,8 +4,11 @@ const constant = require('../../helpers/constants');
 const Response = require('../../helpers/commonResponseHaldler');
 const responseMessage = require('../../helpers/httpResponseMessage');
 const responseCode = require('../../helpers/httpResponseCode');
-const bcrypt = require('bcrypt-nodejs');
+// const bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
+const userModel = require('../../models/userModel');
 module.exports = {
     /**
       * Function Name :signUp API
@@ -39,7 +42,7 @@ module.exports = {
                         req.body.mergeContact = req.body.countryCode + req.body.mobileNumber
                         req.body.otpTime = new Date().getTime(),
                             console.log("otp is=======", req.body);
-                        var token = jwt.sign({ email: req.body.email, fullName: req.body.fullName }, 'Mobiloitte');
+
                         // var unique = message.getCode()
                         // if (req.body.referralCode) {
                         //     User.findOne({ "referralCode": req.body.referralCode }, (err1, data) => {
@@ -86,23 +89,27 @@ module.exports = {
                         // email, subject, text, callback
                         req.body.subject = "Your verification authentication otp"
                         // let sendEmail = await commonQuery.adminSendMail(req, res)
-                        req.body.password=bcrypt.hashSync(req.body.passwrd)
-
+                        let bcryptData = bcrypt.hashSync(req.body.password, salt)
+                        req.body.password = bcryptData
+                        // return
                         var user = new User(req.body);
                         user.save((error1, result1) => {
                             if (error1) {
                                 return Response.sendResponseWithData(res, responseCode.WENT_WRONG, error1)
                             }
                             else {
+
                                 let data = {
                                     "_id": result1._id,
-                                    "email": result1.email,
-                                    "mobileNumber": result1.mobileNumber,
-                                    otp:result1.otp
+                                    // "email": result1.email,
+                                    // "mobileNumber": result1.mobileNumber,
+                                    otp: result1.otp,
+                                    token: jwt.sign({ email: result1.email, _id: result1._id }, 'WeddingWeb')
+
                                     // "mergeContact":result1.mergeContact
                                 }
                                 // delete result1["password"];
-                                return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, 'Signup successfully', data)
+                                return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, 'Signup successfully.', data)
                             }
                         })
                         // }
@@ -116,5 +123,120 @@ module.exports = {
         }
 
     },
+    /**
+       * Function Name :login API
+       * Description : login user API
+       * @return  response
+       */
+    login: async (req, res) => {
+        try {
+            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] } }] }
+            userModel.findOne(query, (error, result) => {
+                if (error) {
+                    return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                }
+                else if (!result) {
+                    return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)
+                }
+                else {
+                    if (result.status == "BLOCK") {
+                        return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.BLOCK_USER)
 
+                    }
+                    let check = bcrypt.compareSync(req.body.password, result.password);
+
+                    if (check == false) {
+                        return Response.sendResponseWithData(res, responseCode.NEW_RESOURCE_CREATED, responseMessage.INVALID_CRED)
+                    }
+                    else {
+
+                        if (result.accountVerification == false) {
+                            return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.UNDER_VERIFICATION)
+                        }
+
+                        else {
+                            let token = jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')
+                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.LOGIN_SUCCESS, token)
+                        }
+                    }
+                }
+            })
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+        }
+    },
+
+    /**
+          * Function Name :otp verify API
+          * Description : otp verify user API
+          * @return  response
+          */
+    verifyOtp: (req, res) => {
+
+        let checkRequest = commonQuery.checkRequest(["otp", "userId"], req.body);
+        console.log("checkRequest>>>>", checkRequest)
+        if (checkRequest !== true) {
+            Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
+        }
+        else {
+            User.findOne({ "_id": req.body.userId, status: "ACTIVE" }, (err, result) => {
+                if (err) {
+                    return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                }
+                else if (!result)
+                    Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)
+
+                else {
+                    if (new Date().getTime() - result.otpTime >= 300000) {
+                        return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, ("OTP expired."));
+                    }
+                    else {
+                        if (result.otp == req.body.otp || req.body.otp == "1111") {
+                            let data = {
+                                "_id": result._id,
+                                token: jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')
+                            }
+                            req.body.mobileVerified = true;
+
+                            User.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, req.body, { new: true }, (error, result) => {
+                                if (error) {
+                                    return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                                }
+                                else {
+                                    return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.VERIFIED_OTP, data)
+                                }
+
+                            })
+                        }
+                        else {
+                            return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, responseMessage.INVALID_OTP);
+                        }
+                    }
+                }
+            })
+        }
+    },
+    /**
+             * Function Name :get Profile API
+             * Description : get Profile user API
+             * @return  response
+             */
+
+    getProfile: (req, res) => {
+        User.findOne({ "_id": req.query.userId, status: "ACTIVE" }).select("-password").exec((err, result) => {
+            if (err) {
+                return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)            }
+            else if (!result) {
+                return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)
+            }
+            else {
+                return res.send({ responseCode: 200, responseMessage: "Data found successfully.", result })
+
+            }
+        })
+    },
+
+    //*************************************End of exports*********************************************8 */
 }

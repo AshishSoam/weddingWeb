@@ -200,7 +200,11 @@ module.exports = {
 
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
-            auth: {
+            // auth: {
+            //     user: "pramodsmsit@gmail.com",
+            //     pass: "promogmail"
+            // },
+               auth: {
                 user: "pramodsmsit@gmail.com",
                 pass: "promogmail"
             },

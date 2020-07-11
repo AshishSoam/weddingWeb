@@ -1,0 +1,385 @@
+{
+    "Terms_&_Use": {
+        "hi": "अन्यथा जब तक साइट पर प्रस्तुत सभी सामग्री में कॉपीराइट और सभी बौद्धिक संपदा अधिकार नहीं हैं (पाठ, ऑडियो, वीडियो या ग्राफिकल छवियों तक सीमित नहीं है), इस साइट पर प्रदर्शित ट्रेडमार्क और लोगो जेपीएल की संपत्ति हैं, इसके माता-पिता, सहयोगी और सहयोगी और लागू भारतीय कानूनों के तहत संरक्षित हैं। आप किसी भी ट्रेडमार्क या लोगो या जेपीएल की अन्य स्वामित्व वाली जानकारी को संलग्न करने के लिए किसी भी फ़्रेमिंग तकनीकों का उपयोग न करने के लिए सहमत हैं",
+        "en": "If you talk about something in particular terms, or in terms of a particular thing, you are specifying which aspect of it you are discussing.",
+        "es": "Términos y uso del idioma español.",
+        "ch": "中国语言的术语和用法",
+        "ru": "Условия и использование для русского языка"
+    },
+    "Privacy_policy": {
+        "hi": "अन्यथा जब तक साइट पर प्रस्तुत सभी सामग्री में कॉपीराइट और सभी बौद्धिक संपदा अधिकार नहीं हैं (पाठ, ऑडियो, वीडियो या ग्राफिकल छवियों तक सीमित नहीं है), इस साइट पर प्रदर्शित ट्रेडमार्क और लोगो जेपीएल की संपत्ति हैं, इसके माता-पिता, सहयोगी और सहयोगी और लागू भारतीय कानूनों के तहत संरक्षित हैं। आप किसी भी ट्रेडमार्क या लोगो या जेपीएल की अन्य स्वामित्व वाली जानकारी को संलग्न करने के लिए किसी भी फ़्रेमिंग तकनीकों का उपयोग न करने के लिए सहमत हैं",
+        "en": "If you talk about something in particular terms, or in terms of a particular thing, you are specifying which aspect of it you are discussing.",
+        "es": "Términos y uso del idioma español.",
+        "ch": "中国语言的术语和用法",
+        "ru": "Условия и использование для русского языка"
+    },
+    "About_Us": {
+        "hi": "अन्यथा जब तक साइट पर प्रस्तुत सभी सामग्री में कॉपीराइट और सभी बौद्धिक संपदा अधिकार नहीं हैं (पाठ, ऑडियो, वीडियो या ग्राफिकल छवियों तक सीमित नहीं है), इस साइट पर प्रदर्शित ट्रेडमार्क और लोगो जेपीएल की संपत्ति हैं, इसके माता-पिता, सहयोगी और सहयोगी और लागू भारतीय कानूनों के तहत संरक्षित हैं। आप किसी भी ट्रेडमार्क या लोगो या जेपीएल की अन्य स्वामित्व वाली जानकारी को संलग्न करने के लिए किसी भी फ़्रेमिंग तकनीकों का उपयोग न करने के लिए सहमत हैं",
+        "en": "If you talk about something in particular terms, or in terms of a particular thing, you are specifying which aspect of it you are discussing.",
+        "es": "Términos y uso del idioma español.",
+        "ch": "中国语言的术语和用法",
+        "ru": "Условия и использование для русского языка"
+    },
+    "Signup successfully": {
+        "pageNumber":"6",
+        "hi": "सफलतापूर्वक साइनअप करें",
+        "en": "Signup successfully",
+        "es": "Registrarse con éxito",
+        "ch": "注册成功",
+        "ru": "Регистрация успешно"
+    },
+    "Login successfully": {
+        "pageNumber":"4",
+        "hi": "सफलतापूर्वक लॉगिन करें",
+        "en": "Login successfully",
+        "es": "Iniciar sesión con éxito",
+        "ch": "登录成功",
+        "ru": "Войти успешно"
+    },
+    "OTP sent successfully": {
+        "pageNumber":"6",
+        "hi": "ओटीपी सफलतापूर्वक भेजा गया",
+        "en": "OTP sent successfully",
+        "es": "OTP enviado con éxito",
+        "ch": "OTP发送成功",
+        "ru": "OTP отправлен успешно"
+    },
+    "Password reset successfully": {
+        "pageNumber":"11",
+        "hi": "पासवर्ड सफलतापूर्वक रीसेट",
+        "en": "Password reset successfully",  
+        "es": "Contraseña restablecida con éxito",
+        "ch": "密码重置成功",
+        "ru": "Сброс пароля"
+    },
+    "Invalid OTP":{
+        "pageNumber":"8",
+        "hi": "अवैध ओटीपी",
+        "en": "Invalid OTP",
+        "es": "OTP inválida",
+        "ch": "无效的OTP",
+        "ru": "Недопустимый OTP"
+    },
+    "Password changed successfully":{
+        "pageNumber":"28",
+        "hi": "पासवर्ड सफलतापूर्वक बदला गया",
+        "en": "Password changed successfully",
+        "es": "Contraseña cambiada con éxito",
+        "ch": "密码更换成功",
+        "ru": "Пароль успешно изменен"
+    },
+    "Document added successfully":{
+        "pageNumber":"20",
+        "hi": "दस्तावेज़ सफलतापूर्वक जोड़ा गया",
+        "en": "Document added successfully",
+        "es": "Documento agregado exitosamente",
+        "ch": "文档已成功添加",
+        "ru": "Документ успешно добавлен"
+    },
+    "OTP verified successfully":{
+        "pageNumber":"10",
+        "hi": "ओटीपी सफलतापूर्वक सत्यापित किया गया",
+        "en": "OTP verified successfully",
+        "es": "OTP verificado con éxito",
+        "ch": "OTP验证成功",
+        "ru": "OTP подтвержден"
+    },
+    "Record saved successfully":{
+        "pageNumber":"23",
+        "hi": "रिकॉर्ड सफलतापूर्वक सहेजा गया",
+        "en": "Record saved successfully",
+        "es": "Registro guardado exitosamente",
+        "ch": "记录保存成功",
+        "ru": "Запись сохранена успешно"
+    },
+    "Profile saved successfully":{
+        "pageNumber":"27",
+        "hi": "प्रोफाइल सफलतापूर्वक सहेजा गया",
+        "en": "Profile saved successfully",
+        "es": "Perfil guardado con éxito",
+        "ch": "档案已成功保存",
+        "ru": "Профиль успешно сохранен"
+    },
+    "Document deleted successfully":{
+        "pageNumber":"25",
+        "hi": "दस्तावेज़ सफलतापूर्वक हटा दिया गया",
+        "en": "Document deleted successfully",
+        "es": "Documento eliminado correctamente",
+        "ch": "文档已成功删除",
+        "ru": "Документ удален успешно"
+    },
+    "Language selected successfully":{
+        "pageNumber":"31",
+        "hi": "भाषा सफलतापूर्वक चुना गया",
+        "en": "Language selected successfully",
+        "es": "Idioma seleccionado exitosamente",
+        "ch": "语言选择成功",
+        "ru": "Язык выбран успешно"
+    },
+    "Helpline list found successfully":{
+        "pageNumber":"33",
+        "hi": "हेल्पलाइन सूची सफलतापूर्वक मिली",
+        "en": "Helpline list found successfully",
+        "es": "Lista de ayuda encontrada exitosamente",
+        "ch": "已成功找到帮助热线列表",
+        "ru": "Список горячей линии найден успешно"
+    },
+    "Service center location found successfully":{
+        "pageNumber":"34",
+        "hi": "सेवा केंद्र स्थान सफलतापूर्वक मिला",
+        "en": "Service center location found successfully",
+        "es": "La ubicación del centro de servicio se encontró con éxito",
+        "ch": "服务中心位置找到成功",
+        "ru": "Месторасположение центра обслуживания найдено успешно"
+    },
+    "Insufficient balance":{
+        "hi": "अपर्याप्त राशि",
+        "en": "Insufficient balance",
+        "es": "Saldo insuficiente",
+        "ch": "余额不足",
+        "ru": "Недостаточный баланс"
+    },
+    "Wallet history found successfully":{
+        "pageNumber":"37",
+        "hi": "वॉलेट इतिहास सफलतापूर्वक मिला",
+        "en": "Wallet history found successfully",
+        "es": "Historial de billetera encontrado exitosamente",
+        "ch": "钱包历史成功找到",
+        "ru": "История кошелька найдена успешно"
+    },
+    "Feedback submitted successfully":{
+        "pageNumber":"42",
+        "hi": "प्रतिक्रिया सफलतापूर्वक सबमिट की गई",
+        "en": "Feedback submitted successfully",
+        "es": "Comentarios enviados con éxito",
+        "ch": "反馈已成功提交",
+        "ru": "Обратная связь была успешно отправлена"
+    },
+    "FAQs list found successfully":{
+        "pageNumber":"49",
+        "hi": "अक्सर पूछे जाने वाले प्रश्न सूची मिली",
+        "en": "FAQs list found successfully",
+        "es": "Lista de preguntas frecuentes encontrada exitosamente",
+        "ch": "常见问题列表找到成功",
+        "ru": "Список часто задаваемых вопросов найден успешно"
+    },
+    "Image uploaded successfully":{
+        "pageNumber":"42",
+        "hi": "छवि सफलतापूर्वक अपलोड की गई",
+        "en": "Image uploaded successfully",
+        "es": "Imagen cargada exitosamente",
+        "ch": "图片已成功上传",
+        "ru": "Изображение загружено успешно"
+    },
+    "Feedback sent successfully":{
+        "pageNumber":"51",
+        "hi": "प्रतिक्रिया सफलतापूर्वक भेजी गई",
+        "en": "Feedback submitted successfully",
+        "es": "Comentarios enviados con éxito",
+        "ch": "反馈发送成功",
+        "ru": "Обратная связь успешно отправлена"
+    },
+    "Logout successfully":{
+        "pageNumber":"52",
+        "hi": "लॉगआउट सफलतापूर्वक",
+        "en": "Logout successfully",
+        "es": "Cerrar sesión con éxito",
+        "ch": "注销成功",
+        "ru": "Выход из системы"
+    },
+    "Payment successfully":{
+        "pageNumber":"38",
+        "hi": "भुगतान सफलतापूर्वक",
+        "en": "Payment successfully",
+        "es": "Pago exitoso",
+        "ch": "付款成功",
+        "ru": "Оплата успешно"
+    },
+    "Payment failed":{
+        "pageNumber":"38",
+        "hi": "भुगतान असफल हुआ",
+        "en": "Payment failed",
+        "es": "Pago fallido",
+        "ch": "支付失败",
+        "ru": "Платеж не прошел"
+    },
+    "Details found successfully":{
+        "pageNumber":"19",
+        "hi": "विवरण सफलतापूर्वक मिला",
+        "en": "Details found successfully",
+        "es": "Detalles encontrados exitosamente",
+        "ch": "细节发现成功",
+        "ru": "Детали успешно найдены"
+    },
+    "Categories found successfully":{
+        "pageNumber":"19",
+        "hi": "श्रेणियां सफलतापूर्वक मिलीं",
+        "en": "Categories found successfully",
+        "es": "Categorías encontradas con éxito",
+        "ch": "分类发现成功",
+        "ru": "Категории найдены успешно"
+    },
+    "Items found successfully":{
+        "pageNumber":"19",
+        "hi": "आइटम सफलतापूर्वक मिले",
+        "en": "Items found successfully",
+        "es": "Artículos encontrados exitosamente",
+        "ch": "找到的项目成功",
+        "ru": "Товары найдены успешно"
+    },
+    "Reminders list found successfully":{
+        "pageNumber":"15",
+        "hi": "अनुस्मारक सूची सफलतापूर्वक मिली",
+        "en": "Reminders list found successfully",
+        "es": "Lista de recordatorios encontrada exitosamente",
+        "ch": "提醒列表成功找到",
+        "ru": "Список напоминаний найден успешно"
+    },
+    "OTP re-sent successfully":{
+        "pageNumber":"10",
+        "hi": "ओटीपी सफलतापूर्वक फिर से भेजा गया",
+        "en": "OTP re-sent successfully",
+        "es": "OTP reenviado con éxito",
+        "ch": "OTP重新发送成功",
+        "ru": "OTP повторно отправлен успешно"
+    },
+    "Documents list found successfully":{
+        "pageNumber":"18",
+        "hi": "दस्तावेज़ सूची सफलतापूर्वक मिली",
+        "en": "Documents list found successfully",
+        "es": "Lista de documentos encontrada exitosamente",
+        "ch": "文档列表找到成功",
+        "ru": "Список документов успешно найден"
+    },
+    "Invalid promo code":{
+        "pageNumber":"38",
+        "hi": "अमान्य प्रोमो कोड",
+        "en": "Invalid promo code",
+        "es": "Código de promoción no válido",
+        "ch": "促销代码无效",
+        "ru": "Недействительный промо-код"
+    },
+    "No data found":{
+        "code":404,
+        "pageNumber":"",
+        "hi": "कोई डेटा नहीं मिला",
+        "en": "No data found",
+        "es": "Datos no encontrados",
+        "ch": "没有找到数据",
+        "ru": "Данные не найдены"
+    },
+    "Internal server error":{
+        "code":500,
+        "pageNumber":"",
+        "hi": "आंतरिक सर्वर त्रुटि",
+        "en": "Internal server error",
+        "es": "Error de servidor interno",
+        "ch": "内部服务器错误",
+        "ru": "Внутренняя ошибка сервера"
+    },
+    "Bad request":{
+        "code":400,
+        "pageNumber":"",
+        "hi": "खराब अनुरोध",
+        "en": "Bad request",
+        "es": "Solicitud incorrecta",
+        "ch": "错误的请求",
+        "ru": "Плохой запрос"
+    },
+    "Parameter missing":{
+        "pageNumber":"",
+        "hi": "पैरामीटर गायब है",
+        "en": "Parameter missing",
+        "es": "Falta el parámetro",
+        "ch": "参数丢失",
+        "ru": "Отсутствует параметр"
+    },
+    "Something went wrong":{
+        "code":500,
+        "pageNumber":"",
+        "hi": "कुछ गलत हो गया",
+        "en": "Something went wrong",
+        "es": "Algo salió mal",
+        "ch": "有些不对劲",
+        "ru": "Что-то пошло не так"
+    },
+    "Everything is ok":{
+        "code":200,
+        "pageNumber":"",
+        "hi": "सब कुछ ठीक है",
+        "en": "Everything is ok",
+        "es": "Todo está bien",
+        "ch": "一切都好",
+        "ru": "Все отлично"
+    },
+    "New resource created":{
+        "code":201,
+        "pageNumber":"",
+        "hi": "नया संसाधन बनाया गया",
+        "en": "New resource created",
+        "es": "Nuevo recurso creado",
+        "ch": "创建了新资源",
+        "ru": "Создан новый ресурс"
+    },
+    "Resource deleted":{
+        "code":204,
+        "pageNumber":"",
+        "hi": "संसाधन हटा दिया गया",
+        "en": "Resource deleted",
+        "es": "Recurso eliminado",
+        "ch": "资源已删除",
+        "ru": "Ресурс удален"
+    },
+    "Not modified":{
+        "code": 304,
+        "pageNumber":"",
+        "hi": "बदला हुआ नहीं",
+        "en": "Not modified",
+        "es": "No modificado",
+        "ch": "没有修改",
+        "ru": "Не изменен"
+    },
+    "Unauthorized":{
+        "code":401,
+        "pageNumber":"",
+        "hi": "अनधिकृत",
+        "en": "Unauthorized",
+        "es": "No autorizado",
+        "ch": "擅自",
+        "ru": "неразрешенный"
+    },
+    "Forbidden":{
+        "code":403,
+        "pageNumber":"",
+        "hi": "मना किया हुआ",
+        "en": "Forbidden",
+        "es": "Prohibido",
+        "ch": "被禁止",
+        "ru": "запрещено"
+    },
+    "Not found":{
+        "code":404,
+        "pageNumber":"",
+        "hi": "नहीं मिला",
+        "en": "Not found",
+        "es": "Extraviado",
+        "ch": "未找到",
+        "ru": "Не найдено"
+    },
+    "Already exist":{
+        "code":409,
+        "pageNumber":"",
+        "hi": "पहले से ही मौजूद",
+        "en": "Already exist",
+        "es": "Ya existe",
+        "ch": "已经存在",
+        "ru": "Уже существует"
+    }
+   
+
+
+
+
+
+
+}

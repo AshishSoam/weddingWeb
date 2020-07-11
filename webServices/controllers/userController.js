@@ -85,13 +85,12 @@ module.exports = {
                         // else {
                         // email, subject, text, callback
                         req.body.subject = "Your verification authentication otp"
-                        let sendEmail = await commonQuery.adminSendMail(req, res)
+                        // let sendEmail = await commonQuery.adminSendMail(req, res)
                         req.body.password=bcrypt.hashSync(req.body.passwrd)
 
                         var user = new User(req.body);
                         user.save((error1, result1) => {
                             if (error1) {
-                                console.log("hello1>>");
                                 return Response.sendResponseWithData(res, responseCode.WENT_WRONG, error1)
                             }
                             else {
@@ -99,6 +98,7 @@ module.exports = {
                                     "_id": result1._id,
                                     "email": result1.email,
                                     "mobileNumber": result1.mobileNumber,
+                                    otp:result1.otp
                                     // "mergeContact":result1.mergeContact
                                 }
                                 // delete result1["password"];

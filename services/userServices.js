@@ -203,9 +203,9 @@ module.exports = {
                 user: global.gConfig.nodemailer.user,
                 pass: global.gConfig.nodemailer.pass
             },
-            secure: true,
-            port: 465,
-            host: 'smtp.gmail.com'
+            // secure: true,
+            // port: 465,
+            // host: 'smtp.gmail.com'
         });
         return new Promise((resolve, reject) => {
 

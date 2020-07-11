@@ -198,7 +198,7 @@ module.exports = {
                                 "_id": result._id,
                                 token: jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')
                             }
-                            req.body.mobileVerified = true;
+                            req.body.accountVerification = true;
 
                             User.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, req.body, { new: true }, (error, result) => {
                                 if (error) {

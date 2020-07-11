@@ -191,7 +191,8 @@ module.exports = {
   </html>
   `
         const mailBody = {
-            from: "<do_not_reply@gmail.com>",
+            // from: "<do_not_reply@gmail.com>",
+            from:"pramodsmsit@gmail.com",
             to: email,
             subject: subject,
             html: html

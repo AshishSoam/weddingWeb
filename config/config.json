@@ -15,21 +15,19 @@
             "name": "wedding_web"
         },
         "twilio": {
-            "sid": "AC8f7f6b3bd4af3a281b6dc8af405f2f70",
-            "auth_token": "c33369652b40f1efe0768049fa9bab68",
-            "number": "+18043768654"
+            "sid": "AC8f09a0ed2a1d747c4bd41151498d9b3e",
+            "auth_token": "8fabed837d0a81bb306b1c16624147c4",
+            "number": "+12013457921"
         },
-        "speakeasy": {
-            "secret_key": "invoicegit@123"
-        },
+      
         "nodemailer": {
             "pass": "weddingproject@786",
             "user": "wowzn.net@gmail.com"
         },
         "cloudinary": {
-            "CLOUD_NAME": "dmrqgrqlg",
-            "API_KEY": "258925726825731",
-            "API_SECRET": "696taZoLL1Z6VXKoTUL-xcXab_0"
+            "CLOUD_NAME": "appsums",
+            "API_KEY": "786731639261656",
+            "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
         }
     },
     "staging":{
@@ -47,10 +45,11 @@
             "name": "wedding_web"
         },
         "twilio": {
-            "sid": "AC8f7f6b3bd4af3a281b6dc8af405f2f70",
-            "auth_token": "c33369652b40f1efe0768049fa9bab68",
-            "number": "+18043768654"
+            "sid": "AC8f09a0ed2a1d747c4bd41151498d9b3e",
+            "auth_token": "8fabed837d0a81bb306b1c16624147c4",
+            "number": "+12013457921"
         },
+      
         "speakeasy": {
             "secret_key": "invoicegit@123"
         },
@@ -59,9 +58,9 @@
             "user": "pramodgiri54@gmail.com"
         },
         "cloudinary": {
-            "CLOUD_NAME": "dmrqgrqlg",
-            "API_KEY": "258925726825731",
-            "API_SECRET": "696taZoLL1Z6VXKoTUL-xcXab_0"
+            "CLOUD_NAME": "appsums",
+            "API_KEY": "786731639261656",
+            "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
         }
     },
     "production": {
@@ -91,9 +90,9 @@
             "user": "pramodgiri54@gmail.com"
         },
         "cloudinary": {
-            "CLOUD_NAME": "dmrqgrqlg",
-            "API_KEY": "258925726825731",
-            "API_SECRET": "696taZoLL1Z6VXKoTUL-xcXab_0"
+            "CLOUD_NAME": "appsums",
+            "API_KEY": "786731639261656",
+            "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
         },
         "swaggerURL": "http://192.168.56.1:5000/api-docs/"
 

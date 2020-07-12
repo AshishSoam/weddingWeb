@@ -4,6 +4,15 @@ const constant = require('../helpers/constants');
 const Response = require('../helpers/commonResponseHaldler');
 const responseMessage = require('../helpers/httpResponseMessage');
 const responseCode = require('../helpers/httpResponseCode');
+const { reject } = require('lodash');
+const cloudinary = require('cloudinary').v2;
+const twilio = require('twilio')
+cloudinary.config({
+    cloud_name: global.gConfig.cloudinary.CLOUD_NAME,
+    api_key: global.gConfig.cloudinary.API_KEY,
+    api_secret: global.gConfig.cloudinary.API_SECRET
+});
+
 module.exports = {
     /**
 * Function Name :Function to check weather proper request is coming or not
@@ -237,8 +246,8 @@ module.exports = {
 * @return  response
 */
 
-    sendMail: (req,res) => {
-        const {email, subject, text}=req.body
+    sendMail: (req, res) => {
+        const { email, subject, text } = req.body
         return new Promise((resolve, reject) => {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -286,8 +295,57 @@ module.exports = {
         }
         return id;
     },
+    /**
+ * Function Name :upload image on cloudinary
+ * Description :upload image on cloudinary
+ * @return  response
+ */
+    imageUploadToCloudinary: (imageB64, callback) => {
+        // console.log(imageB64)
+        cloudinary.uploader.upload(imageB64, (err, result) => {
+            //  console.log("fddfdfgfg", result);
+            console.log("cloudinary ********>", err, result)
+            if (err) {
+                callback(err, null)
+            }
+            else {
+                callback(null, result.secure_url);
+            }
+        })
+    },
+    /**
+* Function Name :sendSMS using twilio.
+* Description :sendSMS using twilio.
+* @return  response
+*/
+    sendSMS: (req, res) => {
+        const { message, mergeContact } = req.body
+        return new Promise((resolve, reject) => {
+            try {
 
+                let client = new twilio(global.gConfig.twilio.sid, global.gConfig.twilio.auth_token);
+                // let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
 
+                // let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
+                client.messages.create({
+                    body: message,
+                    to: mergeContact,
+                    from: global.gConfig.twilio.number
+                }, (err, result) => {
 
+                    console.log("i sms testing >>>>>>>", err, result)
+                    if (err) {
+                        return res.status(404).send({ responseCode: 404, responseMessage: "Bad request.", error: err.message || err })
+                    }
+                    else {
+                        resolve()
+                    }
+                })
+            }
+            catch (e) {
+                return res.status(404).send({ responseCode: 404, responseMessage: "Bad request.", error: err.message || err })
+            }
+        })
+    },
     //*********************************end of exports********************* */
 }

@@ -9,6 +9,7 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 const userModel = require('../../models/userModel');
+const twilio = require("twilio");
 module.exports = {
     /**
       * Function Name :signUp API
@@ -87,6 +88,8 @@ module.exports = {
                         // }
                         // else {
                         // email, subject, text, callback
+                        req.body.message=`Hello ${req.body.fullName} , Your authentication otp for wedding APP is :- ${ req.body.otp}`
+                        let sendSMS=await commonQuery.sendSMS(req,res)
                         req.body.subject = "Your verification authentication otp"
                         let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
@@ -337,5 +340,38 @@ module.exports = {
 
         }
     },
+
+ /**
+     * Function Name :upload data on cloudinary API
+     * Description : upload data on cloudinary user API
+     * @return  response
+     */
+    "uploadImages": (req, res) => {
+        commonQuery.imageUploadToCloudinary(req.body.documentImage, (err, result) => {
+
+            if (err || !result) {
+
+               return res.send({ responseCode: 500, responseMessage: "Image size too large.", err })
+            }
+            else {
+               return res.send({ responseCode: 200, responseMessage: "Image uploaded successfully.", result })
+            }
+        })
+    },
+SMS:(req,res)=>{
+    let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
+    client.messages.create({
+        body: "Hello pramod",
+        to: req.body.number,
+        from: "+12013457921"
+    }, (err, result) => {
+
+        console.log("i sms testing >>>>>>>", err, result)
+     return   res.status(200).send(err.message || err)
+        
+      
+    })
+
+}
     //*************************************End of exports*********************************************8 */
 }

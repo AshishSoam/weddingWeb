@@ -171,5 +171,50 @@ router.post('/forgotPassword',userController.forgotPassword)
  *         description: Internal server error.
  */
 router.post('/editProfile',auth.verifyToken,userController.editProfile);
-
+/**
+ * @swagger
+ * /api/v1/user/uploadImages:
+ *   post:
+ *     tags:
+ *       - user 
+ *     description: uploadImages API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: documentImage
+ *         description: documentImage is required in body as in form of base 64..
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Profile updated successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/uploadImages',userController.uploadImages);
+/**
+ * @swagger
+ * /api/v1/user/SMS:
+ *   post:
+ *     tags:
+ *       - user 
+ *     description: SMS API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: number
+ *         description: number is required .
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Profile updated successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/SMS',userController.SMS);
 module.exports = router

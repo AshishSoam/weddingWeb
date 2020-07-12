@@ -6,10 +6,10 @@ module.exports = {
         return responseObj.send({ 'responseCode': responseCode, 'responseMessage': responseMessage, result: data, token: tokn });
     },
     sendResponseWithoutData: (responseObj, responseCode, responseMessage) => {
-        return responseObj.send({ 'responseCode': responseCode, 'responseMessage': responseMessage });
+        return responseObj.status(responseCode).send({ 'responseCode': responseCode, 'responseMessage': responseMessage });
     },
     sendResponsewithError: (responseObj, responseCode, responseMessage, Err) => {
-        return responseObj.send({ responseCode: responseCode, responseMessage: responseMessage, Err: Err })
+        return responseObj.status(responseCode).send({ responseCode: responseCode, responseMessage: responseMessage, Err: Err })
     },
     sendResponseWithToken: (responseObj, responseCode, responseMessage, tokn) => {
         return responseObj.send({ 'responseCode': responseCode, 'responseMessage': responseMessage, token: tokn });

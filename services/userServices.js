@@ -323,6 +323,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             try {
 
+                
                 let client = new twilio(global.gConfig.twilio.sid, global.gConfig.twilio.auth_token);
                 // let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
 

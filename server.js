@@ -16,7 +16,8 @@ require('dotenv').config();
 app.use(helmet());
 
 app.use(cors());
-app.use(morgan('combined', { stream: winston.stream }));
+app.use(morgan('tiny'))
+// app.use(morgan('combined', { stream: winston.stream }));
 // console.log(require('./keys/test'));
 config
   .configuration()
@@ -30,7 +31,30 @@ config
       }
       next();
     });
+
+  //   app.use((req, res, next) => {
+  //     console.log(`method--->${req.method},, url----> ${req.originalUrl}`)
+  //     next()
+  // })
+//   app.use((req, res, next) => {
+//     console.log(`${req.method} ${req.originalUrl} [STARTED]`)
+
+//     res.on('finish', () => {            
+//         console.log(`${req.method} ${req.originalUrl} [FINISHED]`)
+//     })
+
+//     res.on('close', () => {
+//         console.log(`${req.method} ${req.originalUrl} [CLOSED]`)
+//     })
+
+//     next()
+// })
+
+
+
+
     app.use('/api/v1/user', require('./routes/userRouter'));
+    app.use('/api/v1/admin', require('./routes/adminRouter'));
     app.use('/api/v1/static', require('./routes/staticRouter'));
 
 

@@ -32,7 +32,11 @@ module.exports = {
 
     },
 
-
+    /**
+* Function Name :Nodemailer Signup Function 
+* Description :Nodemailer Signup Function 
+* @return  response
+*/
     adminSendMail: (req, res) => {
 
 
@@ -191,8 +195,8 @@ module.exports = {
   </html>
   `
         const mailBody = {
-            // from: "<do_not_reply@gmail.com>",
-            from:"pramodsmsit@gmail.com",
+            from: "<do_not_reply@gmail.com>",
+            // from: "pramodsmsit@gmail.com",
             to: email,
             subject: subject,
             html: html
@@ -204,9 +208,9 @@ module.exports = {
             //     user: "pramodsmsit@gmail.com",
             //     pass: "promogmail"
             // },
-               auth: {
-                user: "pramodsmsit@gmail.com",
-                pass: "promogmail"
+            auth: {
+                user: global.gConfig.nodemailer.user,
+                pass: global.gConfig.nodemailer.pass
             },
             // secure: true,
             // port: 465,
@@ -225,5 +229,65 @@ module.exports = {
 
         })
     },
+
+
+    /**
+* Function Name :Forgot Password Function 
+* Description :Forgot Password Function 
+* @return  response
+*/
+
+    sendMail: (req,res) => {
+        const {email, subject, text}=req.body
+        return new Promise((resolve, reject) => {
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: global.gConfig.nodemailer.user,
+                    pass: global.gConfig.nodemailer.pass
+
+                },
+                port: 587,
+                host: 'smtp.gmail.com'
+            });
+
+            var mailOptions = {
+                from: global.gConfig.nodemailer.user,
+                to: email,
+                subject: subject,
+                text: text
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                } else {
+                    resolve()
+                }
+            });
+        })
+
+    },
+
+    /**
+* Function Name :Generate randon 8 digit string
+* Description :Generate randon 8 digit string
+* @return  response
+*/
+    getCode: () => {
+        var idLength = 8;
+        var chars = "A,S,D,F,G,H,J,K,L,Q,W,E,R,T,Y,U,I,O,P,Z,X,C,V,B,N,M,8,7,4,5,6,0,1,3,2,9";
+        chars = chars.split(",");
+        var min = 0;
+        var max = chars.length - 1;
+        var id = "";
+        for (var i = 0; i < idLength; i++) {
+            id += chars[Math.floor(Math.random() * (max - min + 1) + min)];
+        }
+        return id;
+    },
+
+
+
     //*********************************end of exports********************* */
 }

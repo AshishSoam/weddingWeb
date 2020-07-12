@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const userController = require('../webServices/controllers/userController')
-
+const auth=require('../middlewares/auth_handler')
 /**
  * @swagger
  * /api/v1/user/signup:
@@ -108,9 +108,9 @@ router.post('/verifyOtp',userController.verifyOtp);
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: userId
- *         description: userId is required.
- *         in: query
+ *       - name: token
+ *         description: token is required.
+ *         in: header
  *         required: true
  *     responses:
  *       200:
@@ -120,6 +120,56 @@ router.post('/verifyOtp',userController.verifyOtp);
  *       500:
  *         description: Internal server error.
  */
-router.get('/getProfile',userController.getProfile);
+router.get('/getProfile',auth.verifyToken,userController.getProfile);
+/**
+ * @swagger
+ * /api/v1/user/forgotPassword:
+ *   post:
+ *     tags:
+ *       - user 
+ *     description: forgotPassword API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         description: email is required.
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Data found successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/forgotPassword',userController.forgotPassword)
+/**
+ * @swagger
+ * /api/v1/user/editProfile:
+ *   post:
+ *     tags:
+ *       - user 
+ *     description: editProfile API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         description: token is required.
+ *         in: header
+ *         required: true
+ *       - name: json
+ *         description: json is required in body.
+ *         in: body
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Profile updated successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/editProfile',auth.verifyToken,userController.editProfile);
 
 module.exports = router

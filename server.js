@@ -93,7 +93,7 @@ config
 
 const swaggerDefinition = {
   info: {
-    title: "Wedding_Web (Merry's)",
+    title: "Wedding_Web.",
     version: '1.0.0',
     description: 'Swagger API Docs',
   },

@@ -88,7 +88,7 @@ module.exports = {
                         // else {
                         // email, subject, text, callback
                         req.body.subject = "Your verification authentication otp"
-                        // let sendEmail = await commonQuery.adminSendMail(req, res)
+                        let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
                         req.body.password = bcryptData
                         // return

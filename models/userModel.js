@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
+const mongoosePaginate = require('mongoose-paginate');
+
 const userSchema = schema({
     email: {
         type: String
@@ -193,6 +195,7 @@ status:{
     
 
 }, { timestamps: true })
+userSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model("users", userSchema)
 

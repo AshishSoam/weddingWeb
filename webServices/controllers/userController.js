@@ -88,8 +88,8 @@ module.exports = {
                         // }
                         // else {
                         // email, subject, text, callback
-                        req.body.message=`Hello ${req.body.fullName} , Your authentication otp for wedding APP is :- ${ req.body.otp}`
-                        let sendSMS=await commonQuery.sendSMS(req,res)
+                        req.body.message = `Hello ${req.body.fullName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
+                        let sendSMS = await commonQuery.sendSMS(req, res)
                         req.body.subject = "Your verification authentication otp"
                         let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
@@ -271,7 +271,7 @@ module.exports = {
 
     forgotPassword: (req, res) => {
         var currentTime = new Date().getTime();
-        // otp1 = message.getOTP();
+        var otp1 = commonQuery.getOTP();
         var uniqueString = commonQuery.getCode()
         console.log("unique String---->", uniqueString, req.body)
         try {
@@ -285,7 +285,8 @@ module.exports = {
                 }
                 else if (!result) {
                     console.log("this is 1");
-                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, "User email or mobile number not found.")
+                    let message=req.body.admin ? "User email not found.":"User email or mobile number not found."
+                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND,message)
                 }
                 else {
                     req.body.text = `Dear ${result.fullName},
@@ -293,16 +294,16 @@ module.exports = {
                     req.body.subject = "Regarding forgot password"
                     let sendMail = await commonQuery.sendMail(req, res)
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
-                    let bcryptData = bcrypt.hashSync(uniqueString, salt)
-                    req.body.password = bcryptData
-                    userModel.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { password: req.body.password, otpTime: currentTime, accountVerification: true } }, { new: true }, (err, result) => {
+                    // let bcryptData = bcrypt.hashSync(uniqueString, salt)
+                    // req.body.password = bcryptData
+                    userModel.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
                         if (err)
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                         else if (!result) {
                             return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
                         }
                         else if (result) {
-                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password send to your registered email and Mobile number successfully.", result._id)
+                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password otp sent to your registered email and Mobile number successfully.", result._id)
                         }
                     })
                 }
@@ -324,7 +325,7 @@ module.exports = {
         try {
             let userId = req.query.userId ? req.query.userId : req.userDetails.id
             req.body = req.body.json ? req.body.json : req.body;
-            userModel.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" },req.body, { new: true }, (err, result) => {
+            userModel.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {
                 if (err)
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                 else if (!result) {
@@ -333,7 +334,7 @@ module.exports = {
                 else if (result) {
                     return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Profile updated successfully.", result)
                 }
-            }) 
+            })
         }
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
@@ -341,37 +342,37 @@ module.exports = {
         }
     },
 
- /**
-     * Function Name :upload data on cloudinary API
-     * Description : upload data on cloudinary user API
-     * @return  response
-     */
+    /**
+        * Function Name :upload data on cloudinary API
+        * Description : upload data on cloudinary user API
+        * @return  response
+        */
     "uploadImages": (req, res) => {
         commonQuery.imageUploadToCloudinary(req.body.documentImage, (err, result) => {
 
             if (err || !result) {
 
-               return res.send({ responseCode: 500, responseMessage: "Image size too large.", err })
+                return res.send({ responseCode: 500, responseMessage: "Image size too large.", err })
             }
             else {
-               return res.send({ responseCode: 200, responseMessage: "Image uploaded successfully.", result })
+                return res.send({ responseCode: 200, responseMessage: "Image uploaded successfully.", result })
             }
         })
     },
-SMS:(req,res)=>{
-    let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
-    client.messages.create({
-        body: "Hello pramod",
-        to: req.body.number,
-        from: "+12013457921"
-    }, (err, result) => {
+    SMS: (req, res) => {
+        let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
+        client.messages.create({
+            body: "Hello pramod",
+            to: req.body.number,
+            from: "+12013457921"
+        }, (err, result) => {
 
-        console.log("i sms testing >>>>>>>", err, result)
-     return   res.status(200).send(err.message || err)
-        
-      
-    })
+            console.log("i sms testing >>>>>>>", err, result)
+            return res.status(200).send(err.message || err)
 
-}
+
+        })
+
+    }
     //*************************************End of exports*********************************************8 */
 }

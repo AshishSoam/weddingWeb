@@ -35,4 +35,5 @@ module.exports = {
     LOGIN_SUCCESS:"Login successfully.",
     VERIFIED_OTP: "OTP verified successfully.",
     INVALID_OTP:"OTP does not matched.",
+    RESENT_OTP:"OTP send successfully.",
  };

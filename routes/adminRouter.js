@@ -61,7 +61,7 @@ router.post('/userList',adminController.userList);
  * /api/v1/admin/forgotPassword:
  *   post:
  *     tags:
- *       - user 
+ *       -  ADMIN Managemment  
  *     description: forgotPassword API
  *     produces:
  *       - application/json

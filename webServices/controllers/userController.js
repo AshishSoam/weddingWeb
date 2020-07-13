@@ -285,8 +285,8 @@ module.exports = {
                 }
                 else if (!result) {
                     console.log("this is 1");
-                    let message=req.body.admin ? "User email not found.":"User email or mobile number not found."
-                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND,message)
+                    let message = req.body.admin ? "User email not found." : "User email or mobile number not found."
+                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
                 }
                 else {
                     req.body.text = `Dear ${result.fullName},
@@ -359,20 +359,88 @@ module.exports = {
             }
         })
     },
-    SMS: (req, res) => {
-        let client = new twilio("AC8f09a0ed2a1d747c4bd41151498d9b3e", "8fabed837d0a81bb306b1c16624147c4");
-        client.messages.create({
-            body: "Hello pramod",
-            to: req.body.number,
-            from: "+12013457921"
-        }, (err, result) => {
+    /**
+       * Function Name :resendOtp API
+       * Description : resendOtp user API
+       * @return  response
+       */
+    resendOtp: (req, res) => {
 
-            console.log("i sms testing >>>>>>>", err, result)
-            return res.status(200).send(err.message || err)
+        try {
+            console.log(req.body)
+            userModel.findById({ _id: req.body.userId, status: "ACTIVE" }, async(err, result) => {
+                console.log(err,result)
+                if (err) {
+                    return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                }
+                else if (!result) {
+                    return Response.sendResponsewithError(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                }
+                else {
+                    req.body.otp = commonQuery.getOTP()
+                    req.body.otpTime = Date.now()
+                    req.body.mergeContact = result.mergeContact
+                    req.body.email=result.email
+                    req.body.message = `Hello ${result.fullName} , Your reset authentication otp for wedding APP is :- ${req.body.otp}`
+                    req.body.text = "Your reset verification authentication otp:- "+req.body.otp
+                    req.body.subject = 'Regarding reset otp verification.'
+                    let sendSMS = await commonQuery.sendSMS(req, res)
+                    let sendEmail = await commonQuery.sendMail(req, res)
+                    userModel.findByIdAndUpdate({ _id: req.body.userId }, req.body, { new: true }, (err, result) => {
+                        console.log("---/***************8->",err,result)
+                        if (err) {
+                            return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                        }
+                        else {
+                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.RESENT_OTP,result.id)
+                        }
+
+                    })
+                }
+            })
+
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+        }
+
+    },
 
 
+
+ /**
+       * Function Name :changePassword API
+       * Description : changePassword user API
+       * @return  response
+       */
+    changePassword:(req,res)=>{
+        try{
+        var password = bcrypt.hashSync(req.body.password,salt)
+        userModel.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, { $set: { password: password } }, { new: true }, (err, success) => {
+            if (err) {
+                return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+            }
+            else if (!success) {
+                return Response.sendResponsewithError(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+            }
+        else {
+                return res.send({
+                    responseCode: 200,
+                    responseMessage: "You have successfully changed your password.", result: success._id
+                });
+            }
+            
         })
+    }
+
+    catch (e) {
+        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
     }
+
+},
+
+
     //*************************************End of exports*********************************************8 */
 }

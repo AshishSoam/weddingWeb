@@ -6,7 +6,7 @@ const auth=require('../middlewares/auth_handler')
  * /api/v1/user/signup:
  *   put:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: Signup API
  *     produces:
  *       - application/json
@@ -49,7 +49,7 @@ router.put('/signup', userController.signUp)
  * /api/v1/user/login:
  *   post:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: login API
  *     produces:
  *       - application/json
@@ -76,7 +76,7 @@ router.post('/login',userController.login)
  * /api/v1/user/verifyOtp:
  *   post:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: verifyOtp API
  *     produces:
  *       - application/json
@@ -103,7 +103,7 @@ router.post('/verifyOtp',userController.verifyOtp);
  * /api/v1/user/getProfile:
  *   get:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: getProfile API
  *     produces:
  *       - application/json
@@ -126,7 +126,7 @@ router.get('/getProfile',auth.verifyToken,userController.getProfile);
  * /api/v1/user/forgotPassword:
  *   post:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: forgotPassword API
  *     produces:
  *       - application/json
@@ -149,7 +149,7 @@ router.post('/forgotPassword',userController.forgotPassword)
  * /api/v1/user/editProfile:
  *   post:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: editProfile API
  *     produces:
  *       - application/json
@@ -176,7 +176,7 @@ router.post('/editProfile',auth.verifyToken,userController.editProfile);
  * /api/v1/user/uploadImages:
  *   post:
  *     tags:
- *       - user 
+ *       - USER WEB APP
  *     description: uploadImages API
  *     produces:
  *       - application/json
@@ -196,25 +196,53 @@ router.post('/editProfile',auth.verifyToken,userController.editProfile);
 router.post('/uploadImages',userController.uploadImages);
 /**
  * @swagger
- * /api/v1/user/SMS:
+ * /api/v1/user/resendOtp:
  *   post:
  *     tags:
- *       - user 
- *     description: SMS API
+ *       - USER WEB APP
+ *     description: resendOtp API
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: number
- *         description: number is required .
+ *       - name: userId
+ *         description: userId is required .
  *         in: formData
  *         required: true
  *     responses:
  *       200:
- *         description: Profile updated successfully.
+ *         description: resend Otp successfully.
  *       404:
  *         description: Data not found.
  *       500:
  *         description: Internal server error.
  */
-router.post('/SMS',userController.SMS);
+router.post('/resendOtp',userController.resendOtp);
+/**
+ * @swagger
+ * /api/v1/user/changePassword:
+ *   post:
+ *     tags:
+ *       - USER WEB APP
+ *     description: changePassword API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: userId
+ *         description: userId is required .
+ *         in: formData
+ *         required: true
+ *       - name: password
+ *         description: password is required .
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Password change successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/changePassword',userController.changePassword);
+
 module.exports = router

@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
 const bcrypt = require('bcryptjs');
@@ -5,6 +6,11 @@ const salt = bcrypt.genSaltSync(10);
 const mongoosePaginate = require('mongoose-paginate');
 
 const userSchema = schema({
+   parentId:{
+    type: Schema.Types.ObjectId,
+    ref:"user"
+   },
+   
     email: {
         type: String
     },
@@ -47,12 +53,7 @@ const userSchema = schema({
         enum: ["ACTIVE", "BLOCK", "DELETE"],
         default: "ACTIVE"
     },
-    mergeContact:{
-        type: String
-    },
-    countryCode:{
-        type: String
-    },
+
     familyType: {
         type: String
     },
@@ -220,42 +221,14 @@ const userSchema = schema({
         type: Boolean,
         default: false
     },
-    joinMember: [{
-        type: String,
-        ref: "joinSubMembers"
-    }],
+    // joinMember: [{
+    //     type: String,
+    //     ref: "joinSubMembers"
+    // }],
 }, { timestamps: true })
 userSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("users", userSchema)
+module.exports = mongoose.model("joinSubMembers", userSchema,"joinSubMembers")
 
-mongoose.model("users", userSchema).find({ userType: "ADMIN" }, (err, result) => {
-    if (err) {
-        console.log("DEFAULT ADMIN ERROR", err);
-    } else if (result.length != 0) {
-        console.log("Default Admin.");
-    } else {
-        let obj = {
-            userType: "ADMIN",
-            fullName: "Pramod",
-            country: "INDIA",
-            profilePic: "https://res.cloudinary.com/dkoznoze6/image/upload/v1563943105/n7zdoyvpxxqhexqybvkx.jpg",
-            verifyOtp: true,
-            countryCode: "+91",
-            mobileNumber: "8447510661",
-            mergeContact:"+918447510661",
-            accountVerification: true,
-            email: "pramodm@siliconasiaworks.com",
-            password: bcrypt.hashSync("admin1234", salt),
-        };
-        mongoose.model("users", userSchema).create(obj, (err1, result1) => {
-            if (err1) {
-                console.log("DEFAULT ADMIN  creation ERROR", err1);
-            } else {
-                console.log("DEFAULT ADMIN Created", result1);
-            }
-        });
-    }
-});
 
 

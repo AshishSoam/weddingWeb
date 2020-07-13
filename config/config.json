@@ -16,7 +16,7 @@
         },
         "twilio": {
             "sid": "AC8f09a0ed2a1d747c4bd41151498d9b3e",
-            "auth_token": "8fabed837d0a81bb306b1c16624147c4",
+            "auth_token": "05741367781d3d62bf3af47ec794a9b1",
             "number": "+12013457921"
         },
       
@@ -29,72 +29,5 @@
             "API_KEY": "786731639261656",
             "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
         }
-    },
-    "staging":{
-        "project_name": "INVOICE_REMINDER",
-        "version": "v1",
-        "base_url": "http://192.168.56.1:5000",
-        "secret_key": "secre@tke@y",
-        "token_expiry_time": "10h",
-        "database": "wedding_web",
-        "node_port": 8000,
-        "db": {
-            "host": "localhost",
-            "user": "mobiloitte",
-            "pass": "mobiloitte123",
-            "name": "wedding_web"
-        },
-        "twilio": {
-            "sid": "AC8f09a0ed2a1d747c4bd41151498d9b3e",
-            "auth_token": "8fabed837d0a81bb306b1c16624147c4",
-            "number": "+12013457921"
-        },
-      
-        "speakeasy": {
-            "secret_key": "invoicegit@123"
-        },
-        "nodemailer": {
-            "pass": "pramod@1996",
-            "user": "pramodgiri54@gmail.com"
-        },
-        "cloudinary": {
-            "CLOUD_NAME": "appsums",
-            "API_KEY": "786731639261656",
-            "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
-        }
-    },
-    "production": {
-        "project_name": "INVOICE_REMINDER",
-        "version": "v1",
-        "base_url": "http://192.168.56.1:5000",
-        "secret_key": "secre@tke@y",
-        "token_expiry_time": "10h",
-        "database": "wedding_web",
-        "node_port": 8000,
-        "db": {
-            "host": "localhost",
-            "user": "mobiloitte",
-            "pass": "mobiloitte123",
-            "name": "wedding_web"
-        },
-        "twilio": {
-            "sid": "AC8f7f6b3bd4af3a281b6dc8af405f2f70",
-            "auth_token": "c33369652b40f1efe0768049fa9bab68",
-            "number": "+18043768654"
-        },
-        "speakeasy": {
-            "secret_key": "invoicegit@123"
-        },
-        "nodemailer": {
-            "pass": "pramod@1996",
-            "user": "pramodgiri54@gmail.com"
-        },
-        "cloudinary": {
-            "CLOUD_NAME": "appsums",
-            "API_KEY": "786731639261656",
-            "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
-        },
-        "swaggerURL": "http://192.168.56.1:5000/api-docs/"
-
     }
 }

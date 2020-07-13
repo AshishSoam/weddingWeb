@@ -11,7 +11,7 @@ module.exports = {
     const environment = process.env.NODE_ENV || 'dev';
         const environmentConfig = config[environment];
 
-    const defaultConfig = config.staging;
+    const defaultConfig = config.dev;
      const finalConfig = _.merge(defaultConfig, environmentConfig);
 
     console.log(environment);

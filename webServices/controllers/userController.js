@@ -194,9 +194,13 @@ module.exports = {
                 Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
             }
             else {
+
+                {
+                    $and:[{},{},{}]
+                }
                 User.findOne({ "_id": req.body.userId, status: "ACTIVE" }, (err, result) => {
                     if (err) {
-                        return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                         Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                     }
                     else if (!result)
                         Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)

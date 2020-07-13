@@ -79,4 +79,31 @@ router.post('/userList',adminController.userList);
  *         description: Internal server error.
  */
 router.post('/forgotPassword',adminController.forgotPassword)
+/**
+ * @swagger
+ * /api/v1/admin/actionPerform:
+ *   post:
+ *     tags:
+ *       -  ADMIN Managemment  
+ *     description: actionPerform API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: userId
+ *         description: userId is required.
+ *         in: formData
+ *         required: true
+ *       - name: status
+ *         description: status is required (ACTIVE/BLOCK/DELETE).
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Data found successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/actionPerform',adminController.actionPerform)
 module.exports=router

@@ -109,7 +109,7 @@ module.exports = {
         try {
 
 
-            userModel.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+            User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
                 console.log("otp1====>", err, result);
 
                 if (err) {
@@ -128,7 +128,7 @@ module.exports = {
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
                     let bcryptData = bcrypt.hashSync(uniqueString, salt)
                     req.body.password = bcryptData
-                    userModel.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { password: req.body.password, otpTime: currentTime, accountVerification: true } }, { new: true }, (err, result) => {
+                    User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { password: req.body.password, otpTime: currentTime, accountVerification: true } }, { new: true }, (err, result) => {
                         if (err)
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                         else if (!result) {
@@ -146,6 +146,37 @@ module.exports = {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
         }
+    },
+    /**
+     * Function Name :actionPerform API
+     * Description : actionPerform user API
+     * @return  response
+     */
+    actionPerform: (req, res) => {
+
+try{
+    if(["ACTIVE","BLOCK","DELETE"].includes(req.body.status)==false){
+      return  res.send({ responseCode: 404, responseMessage: "Bad request.", errror: "Invalid Parameters."})
+  
+    }
+    User.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
+        if (err) {
+          return  res.send({ responseCode: 500, responseMessage: "Internal server error", err })
+        }
+        else if (!result) {
+         return   res.send({ responseCode: 404, responseMessage: "Data not found", result: [] })
+
+        }
+        else {
+            req.body.status=req.body.status=="ACTIVE" ? "activat":req.body.status
+          return  res.send({ responseCode: 200, responseMessage: `User account ${req.body.status.toLowerCase()}ed successfully.`, result })
+        }
+    })
+}
+     catch(e){
+        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+     }
     },
 
 }

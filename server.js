@@ -25,6 +25,7 @@ res.sendFile(__dirname + '/dist/index.html')
 });
 // app.use(morgan('combined', { stream: winston.stream }));
 // console.log(require('./keys/test'));
+
 config
   .configuration()
   .then((configurations) => {

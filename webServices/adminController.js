@@ -241,6 +241,57 @@ module.exports = {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
         }
-    }
+    },
+// /**
+//      * Function Name :forgot Password API
+//      * Description : forgot Password user API
+//      * @return  response
+//      */
 
+//     forgotPassword: (req, res) => {
+//         var currentTime = new Date().getTime();
+//         var otp1 = commonQuery.getOTP();
+//         var uniqueString = commonQuery.getCode()
+//         console.log("unique String---->", uniqueString, req.body)
+//         try {
+
+
+//             User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+//                 console.log("otp1====>", err, result);
+
+//                 if (err) {
+//                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+//                 }
+//                 else if (!result) {
+//                     console.log("this is 1");
+//                     let message = req.body.admin ? "User email not found." : "Amin emailmobile number not found."
+//                     return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
+//                 }
+//                 else {
+//                     req.body.text = `Dear ${result.fullName},
+//                     Your reset otp for Wedding App is : ${otp1}`;
+//                     req.body.subject = "Regarding forgot password"
+//                     let sendMail = await commonQuery.sendMail(req, res)
+//                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
+//                     // let bcryptData = bcrypt.hashSync(uniqueString, salt)
+//                     // req.body.password = bcryptData
+//                     User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
+//                         if (err)
+//                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+//                         else if (!result) {
+//                             return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
+//                         }
+//                         else if (result) {
+//                             return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password otp sent to your registered email and Mobile number successfully.", result._id)
+//                         }
+//                     })
+//                 }
+//             })
+
+//         }
+//         catch (e) {
+//             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+//         }
+//     },
 }

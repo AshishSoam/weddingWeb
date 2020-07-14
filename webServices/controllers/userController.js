@@ -307,7 +307,7 @@ module.exports = {
                             return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
                         }
                         else if (result) {
-                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password otp sent to your registered email and Mobile number successfully.", result._id)
+                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password sent to your registered email and Mobile number successfully.", result._id)
                         }
                     })
                 }

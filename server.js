@@ -11,12 +11,18 @@ const config = require('./config/config');
 const winston = require('./config/winston');
 const db=require('./dbConnectivity/dbConnection')
 const userModel=require('./models/userModel')
+const path = require('path');
+
 require('dotenv').config();
 
 app.use(helmet());
 
 app.use(cors());
 app.use(morgan('tiny'))
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('/', (req, res) => {
+res.sendFile(__dirname + '/dist/index.html')
+});
 // app.use(morgan('combined', { stream: winston.stream }));
 // console.log(require('./keys/test'));
 config
@@ -51,7 +57,9 @@ config
 // })
 
 
-
+app.get('/test', (req, res) => {
+  return res.send("Connecting to wedding API Server")
+})
 
     app.use('/api/v1/user', require('./routes/userRouter'));
     app.use('/api/v1/admin', require('./routes/adminRouter'));

@@ -153,4 +153,9 @@ router.post('/actionPerform',adminController.actionPerform)
  *         description: Internal server error.
  */
 router.post('/editAdminProfile',auth.verifyToken,adminController.editAdminProfile)
+
+
+
+
+
 module.exports=router

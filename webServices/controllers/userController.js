@@ -294,7 +294,7 @@ module.exports = {
                 }
                 else {
                     req.body.text = `Dear ${result.fullName},
-                    Your reset password for Wedding App is : ${uniqueString}`;
+                    Your reset otp for Wedding App is : ${otp1}`;
                     req.body.subject = "Regarding forgot password"
                     let sendMail = await commonQuery.sendMail(req, res)
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)

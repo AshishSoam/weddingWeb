@@ -327,7 +327,7 @@ module.exports = {
      */
     editProfile: (req, res) => {
         try {
-            let userId = req.query.userId ? req.query.userId : req.userDetails.id
+            let userId = req.query.userId ? req.query.userId : req.userDetails._id
             req.body = req.body.json ? req.body.json : req.body;
             userModel.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {
                 if (err)

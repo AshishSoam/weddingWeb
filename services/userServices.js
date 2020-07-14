@@ -314,6 +314,28 @@ module.exports = {
         })
     },
     /**
+ * Function Name :upload image on cloudinary
+ * Description :upload image on cloudinary
+ * @return  response
+ */
+imageUploadToCloudinaryPromise: (imageB64) => {
+return new Promise((resolve,reject)=>{
+    cloudinary.uploader.upload(imageB64, (err, result) => {
+        //  console.log("fddfdfgfg", result);
+        console.log("cloudinary ********>", err, result)
+        if (err) {
+            resolve({status:false,err:err})
+        }
+        else {
+            resolve({status:true,result: result.secure_url})
+
+        }
+    })
+})
+   
+},
+
+    /**
 * Function Name :sendSMS using twilio.
 * Description :sendSMS using twilio.
 * @return  response

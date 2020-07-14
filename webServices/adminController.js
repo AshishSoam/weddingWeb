@@ -5,12 +5,14 @@ const constant = require('../helpers/constants');
 const Response = require('../helpers/commonResponseHaldler');
 const responseMessage = require('../helpers/httpResponseMessage');
 const responseCode = require('../helpers/httpResponseCode');
-
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
+const jwt = require('jsonwebtoken');
 module.exports = {
 
     //.................................UserList..............// 
     "userList": async (req, res) => {
-        var query = { status: { $ne: "DELETE" }, "userType": {$ne:"ADMIN"}}, options
+        var query = { status: { $ne: "DELETE" }, "userType": { $ne: "ADMIN" } }, options
 
         if (req.body.userType) {
             query.userType = req.body.userType
@@ -20,7 +22,7 @@ module.exports = {
         if (req.body.status) {
             query.status = req.body.status
         }
-      
+
         if (req.body.userId) {
             query._id = req.body.userId
 
@@ -117,8 +119,8 @@ module.exports = {
                 }
                 else if (!result) {
                     console.log("this is 1");
-                    let message=req.body.admin ? "User email not found.":"User email or mobile number not found."
-                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND,message)
+                    let message = req.body.admin ? "User email not found." : "User email or mobile number not found."
+                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
                 }
                 else {
                     req.body.text = `Dear ${result.fullName},
@@ -154,29 +156,91 @@ module.exports = {
      */
     actionPerform: (req, res) => {
 
-try{
-    if(["ACTIVE","BLOCK","DELETE"].includes(req.body.status)==false){
-      return  res.send({ responseCode: 404, responseMessage: "Bad request.", errror: "Invalid Parameters."})
-  
-    }
-    User.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
-        if (err) {
-          return  res.send({ responseCode: 500, responseMessage: "Internal server error", err })
-        }
-        else if (!result) {
-         return   res.send({ responseCode: 404, responseMessage: "Data not found", result: [] })
+        try {
+            if (["ACTIVE", "BLOCK", "DELETE"].includes(req.body.status) == false) {
+                return res.send({ responseCode: 404, responseMessage: "Bad request.", errror: "Invalid Parameters." })
 
-        }
-        else {
-            req.body.status=req.body.status=="ACTIVE" ? "activat":req.body.status
-          return  res.send({ responseCode: 200, responseMessage: `User account ${req.body.status.toLowerCase()}ed successfully.`, result })
-        }
-    })
-}
-     catch(e){
-        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+            }
+            User.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
+                if (err) {
+                    return res.send({ responseCode: 500, responseMessage: "Internal server error", err })
+                }
+                else if (!result) {
+                    return res.send({ responseCode: 404, responseMessage: "Data not found", result: [] })
 
-     }
+                }
+                else {
+                    req.body.status = req.body.status == "ACTIVE" ? "activat" : req.body.status
+                    return res.send({ responseCode: 200, responseMessage: `User account ${req.body.status.toLowerCase()}ed successfully.`, result })
+                }
+            })
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+        }
     },
+    /**
+        * Function Name :editAdminProfile API
+        * Description : editAdminProfile user API
+        * @return  response
+        */
+    editAdminProfile: async (req, res) => {
+        try {
+            let fixedArray=["email", "phoneNumber", "fullName"]
+            if(req.body.oldPassword){
+                fixedArray.push("password")
+            }
+            let checkRequest = commonQuery.checkRequest(fixedArray, req.body);
+            console.log("checkRequest>>>>", checkRequest),req.body
+            if (checkRequest !== true) {
+                Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing.`, {})
+            }
+            else {
+
+                req.body.mobileNumber = req.body.phoneNumber
+                let userId = req.query.userId ? req.query.userId : req.userDetails._id
+                req.body = req.body.json ? req.body.json : req.body;
+                if (req.body.oldPassword) {
+                    let check = bcrypt.compareSync(req.body.oldPassword, req.userDetails.password)
+                    req.body.password = bcrypt.hashSync(req.body.password, salt)
+                    console.log("old password--->", check)
+                    if (!check) {
+                        return res.send({ responseCode: 404, responseMessage: "Password is incorrect." })
+                    }
+                }
+                if (req.body.image) {
+                    let secureImage = await commonQuery.imageUploadToCloudinaryPromise(req.body.image)
+                    if (secureImage.status == false) {
+
+                        return res.send({ responseCode: 500, responseMessage: "Image size too large.", err })
+                    }
+                    else {
+                        delete req.body.image
+                        req.body.profilePic = secureImage.result
+                    }
+                }
+
+                console.log("finally------>", req.body)
+                
+                User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {
+                    if (err)
+                        return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                    else if (!result) {
+                        return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
+                    }
+                    else if (result) {
+                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Profile updated successfully.", result)
+                    }
+                })
+            }
+
+
+
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+        }
+    }
 
 }

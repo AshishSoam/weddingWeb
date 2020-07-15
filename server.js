@@ -19,7 +19,11 @@ app.use(helmet());
 
 app.use(cors());
 app.use(morgan('tiny'))
-
+//************ */
+app.get('/test', (req, res) => {
+  return res.send("Connecting to wedding API Server")
+})
+//******************88 */
 // app.use(morgan('combined', { stream: winston.stream }));
 // console.log(require('./keys/test'));
 
@@ -36,33 +40,41 @@ config
       next();
     });
 
-  //   app.use((req, res, next) => {
-  //     console.log(`method--->${req.method},, url----> ${req.originalUrl}`)
-  //     next()
-  // })
-//   app.use((req, res, next) => {
-//     console.log(`${req.method} ${req.originalUrl} [STARTED]`)
+    const swaggerDefinition = {
+      info: {
+        title: "Wedding_Web.",
+        version: '1.0.0',
+        description: 'Swagger API Docs',
+      },
+      // host:`${global.gConfig.swaggerURL}`, // Host (optional)
+      //  host:`localhost:7000`, // Host (optional)
+      basePath: '/', // Base path (optional)
+    };
+    
+    const options = {
+      swaggerDefinition,
+      apis: ['./routes/*.js'], // <-- not in the definition, but in the options
+    };
+    
+    const swaggerSpec = swaggerJSDoc(options);
+    
+    app.get('/swagger.json', (req, res) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(swaggerSpec);
+    });
 
-//     res.on('finish', () => {            
-//         console.log(`${req.method} ${req.originalUrl} [FINISHED]`)
-//     })
-
-//     res.on('close', () => {
-//         console.log(`${req.method} ${req.originalUrl} [CLOSED]`)
-//     })
-
-//     next()
-// })
-
-
-app.get('/test', (req, res) => {
-  return res.send("Connecting to wedding API Server")
-})
+    
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
     app.use('/api/v1/user', require('./routes/userRouter'));
     app.use('/api/v1/admin', require('./routes/adminRouter'));
     app.use('/api/v1/static', require('./routes/staticRouter'));
+   
+    app.use(express.static(path.join(__dirname, 'dist')));
 
+    app.get('*', (req, res) => {
+      res.sendFile(__dirname + '/dist/index.html')
+      });
 
     //* ******************************* function to set first default configuration *************************/
 
@@ -97,30 +109,4 @@ app.get('/test', (req, res) => {
 
 //* *****************************************swgger setup********************************* */
 
-const swaggerDefinition = {
-  info: {
-    title: "Wedding_Web.",
-    version: '1.0.0',
-    description: 'Swagger API Docs',
-  },
-  // host:`${global.gConfig.swaggerURL}`, // Host (optional)
-  //  host:`localhost:7000`, // Host (optional)
-  basePath: '/', // Base path (optional)
-};
 
-const options = {
-  swaggerDefinition,
-  apis: ['./routes/*.js'], // <-- not in the definition, but in the options
-};
-
-const swaggerSpec = swaggerJSDoc(options);
-
-app.get('/swagger.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
-});
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('*', (req, res) => {
-res.sendFile(__dirname + '/dist/index.html')
-});

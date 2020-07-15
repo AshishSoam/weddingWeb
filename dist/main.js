@@ -1107,7 +1107,7 @@ class LoginComponent {
             "password": data.password
         };
         // this.router.navigate(['/dashboard']);
-        this.service.postApi('user/login', tempLogin, 0).subscribe(response => {
+        this.service.postApi('admin/login', tempLogin, 0).subscribe(response => {
             console.log("in API >>>>>>>>>>", response["responseCode"]);
             if (response && response["responseCode"] == 200) {
                 this.service.showSuccess(response["responseMessage"]);
@@ -2174,7 +2174,7 @@ class UserManagementComponent {
         this.router = router;
         this.service = service;
         this.spinnerService = spinnerService;
-        this.limit = 1;
+        this.limit = 10;
         this.pageNo = 1;
         this.users = [];
         this.dublicateUsers = [];
@@ -2191,15 +2191,18 @@ class UserManagementComponent {
         let params = {
             limit: this.limit,
             pageNumber: page || 1,
-            search: this.searchkey ? this.searchkey.toLowerCase() : ''
+            search: this.searchkey || ''
         };
         this.service.postApi('admin/userList', params, 1).subscribe(response => {
-            console.log("params===>", params, response['result']);
+            console.log("params===>", response['result']);
             if (response && response['responseCode'] == 200) {
-                this.dublicateUsers = this.users = response['result'];
+                this.users = response['result'];
                 this.paginationData = response['paginationData'];
                 this.srNo = (this.paginationData.page - 1) * this.paginationData.limit;
                 console.log("pagination===>>>>> ", this.paginationData, this.srNo);
+            }
+            else {
+                this.users = [];
             }
             this.spinnerService.hide();
             // console.log("JSON Stringify>>>>>>>", this.users)
@@ -2258,20 +2261,20 @@ class UserManagementComponent {
     }
     //**************************************search functionality */
     search() {
-        if (this.searchkey.length > 0) {
-            this.getAllUser(1);
-            // this.srNo=0
-            //     this.users = this.dublicateUsers.filter(res => {
-            //       return res.fullName.toLowerCase().match(this.searchkey.toLowerCase()) ||
-            //       res.status.toLowerCase().match(this.searchkey.toLowerCase()) ||
-            //       res.email.toLowerCase().match(this.searchkey.toLowerCase()) ||
-            //       res.mobileNumber.match(this.searchkey.toLowerCase()) 
-            //     });
-        }
-        else {
-            this.getAllUser(1);
-            // this.users = this.dublicateUsers;
-        }
+        this.getAllUser(1);
+        //   if (this.searchkey.length > 0) {
+        //     this.getAllUser(1)
+        // // this.srNo=0
+        // //     this.users = this.dublicateUsers.filter(res => {
+        // //       return res.fullName.toLowerCase().match(this.searchkey.toLowerCase()) ||
+        // //       res.status.toLowerCase().match(this.searchkey.toLowerCase()) ||
+        // //       res.email.toLowerCase().match(this.searchkey.toLowerCase()) ||
+        // //       res.mobileNumber.match(this.searchkey.toLowerCase()) 
+        // //     });
+        //   } else {
+        //     this.getAllUser(1)
+        //     // this.users = this.dublicateUsers;
+        //   }
     }
     //***************************************block modal********************** */
     blockModal(item, type) {

@@ -2,6 +2,36 @@ const router = require("express").Router()
 const userController = require('../webServices/controllers/userController')
 const auth=require('../middlewares/auth_handler')
 const adminController=require('../webServices/adminController')
+
+/**
+ * @swagger
+ * /api/v1/admin/login:
+ *   post:
+ *     tags:
+ *       - ADMIN Managemment 
+ *     description: login API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         description: email is required.
+ *         in: formData
+ *         required: true
+ *       - name: password
+ *         description: password is required.
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Login successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/login',adminController.login)
+
+
 /**
  * @swagger
  * /api/v1/admin/getProfile:

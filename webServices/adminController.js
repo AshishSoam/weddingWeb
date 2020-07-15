@@ -1,5 +1,5 @@
 
-const User = require('../models/userModel')
+const userModel = require('../models/userModel')
 const commonQuery = require('../services/userServices')
 const constant = require('../helpers/constants');
 const Response = require('../helpers/commonResponseHaldler');
@@ -9,7 +9,60 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 module.exports = {
+  /**
+       * Function Name :login API
+       * Description : login user API
+       * @return  response
+       */
+      login: async (req, res) => {
+        try {
 
+            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] },userType:'ADMIN' }] }
+
+            let checkRequest = commonQuery.checkRequest(["email", "password"], req.body);
+            console.log("checkRequest>>>>", checkRequest)
+            if (checkRequest !== true) {
+                Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
+            }
+            else {
+
+                userModel.findOne(query, (error, result) => {
+                    if (error) {
+                        return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                    }
+                    else if (!result) {
+                        return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_MATCH)
+                    }
+                    else {
+                        if (result.status == "BLOCK") {
+                            return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.BLOCK_USER)
+
+                        }
+                        let check = bcrypt.compareSync(req.body.password, result.password);
+
+                        if (check == false) {
+                            return Response.sendResponseWithData(res, responseCode.NEW_RESOURCE_CREATED, responseMessage.INVALID_CRED)
+                        }
+                        else {
+
+                            if (result.accountVerification == false) {
+                                return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.UNDER_VERIFICATION)
+                            }
+
+                            else {
+                                let token = jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')
+                                return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.LOGIN_SUCCESS, token)
+                            }
+                        }
+                    }
+                })
+            }
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+        }
+    },
     //.................................UserList..............// 
     "userList": async (req, res) => {
         var query = { status: { $ne: "DELETE" }, "userType": { $ne: "ADMIN" } }, options
@@ -75,7 +128,7 @@ module.exports = {
             sort: { createdAt: -1 }
         }
 
-        User.paginate(query, options, (err, result) => {
+        userModel.paginate(query, options, (err, result) => {
             if (err) {
                 Response.sendResponseWithData(res, responseCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR)
 
@@ -111,7 +164,7 @@ module.exports = {
         try {
 
 
-            User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+            userModel.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
                 console.log("otp1====>", err, result);
 
                 if (err) {
@@ -130,7 +183,7 @@ module.exports = {
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
                     let bcryptData = bcrypt.hashSync(uniqueString, salt)
                     req.body.password = bcryptData
-                    User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { password: req.body.password, otpTime: currentTime, accountVerification: true } }, { new: true }, (err, result) => {
+                    userModel.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { password: req.body.password, otpTime: currentTime, accountVerification: true } }, { new: true }, (err, result) => {
                         if (err)
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                         else if (!result) {
@@ -161,7 +214,7 @@ module.exports = {
                 return res.send({ responseCode: 404, responseMessage: "Bad request.", errror: "Invalid Parameters." })
 
             }
-            User.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
+            userModel.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
                 if (err) {
                     return res.send({ responseCode: 500, responseMessage: "Internal server error", err })
                 }
@@ -200,12 +253,14 @@ module.exports = {
                 req.body.mobileNumber = req.body.phoneNumber
                 let userId = req.query.userId ? req.query.userId : req.userDetails._id
                 req.body = req.body.json ? req.body.json : req.body;
-                if (req.body.oldPassword) {
+                if (req.body.oldPassword ) {
                     let check = bcrypt.compareSync(req.body.oldPassword, req.userDetails.password)
-                    req.body.password = bcrypt.hashSync(req.body.password, salt)
                     console.log("old password--->", check)
-                    if (!check) {
+                    if (!check || check==false) {
                         return res.send({ responseCode: 404, responseMessage: "Password is incorrect." })
+                    }
+                    else{
+                        req.body.password = bcrypt.hashSync(req.body.password, salt)
                     }
                 }
                 if (req.body.image) {
@@ -220,9 +275,10 @@ module.exports = {
                     }
                 }
 
+               if(!req.body.oldPassword ||req.body.oldPassword ==undefined){ delete req.body.password}
                 console.log("finally------>", req.body)
-                
-                User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {
+
+                userModel.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {
                     if (err)
                         return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                     else if (!result) {
@@ -256,7 +312,7 @@ module.exports = {
 //         try {
 
 
-//             User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+//             userModel.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
 //                 console.log("otp1====>", err, result);
 
 //                 if (err) {
@@ -275,7 +331,7 @@ module.exports = {
 //                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
 //                     // let bcryptData = bcrypt.hashSync(uniqueString, salt)
 //                     // req.body.password = bcryptData
-//                     User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
+//                     userModel.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
 //                         if (err)
 //                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
 //                         else if (!result) {

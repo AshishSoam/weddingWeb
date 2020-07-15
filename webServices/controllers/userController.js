@@ -134,7 +134,7 @@ module.exports = {
     login: async (req, res) => {
         try {
 
-            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] } }] }
+            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] },userType:{$ne:'ADMIN'} }] }
 
             let checkRequest = commonQuery.checkRequest(["email", "password"], req.body);
             console.log("checkRequest>>>>", checkRequest)
@@ -148,7 +148,7 @@ module.exports = {
                         return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
                     }
                     else if (!result) {
-                        return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)
+                        return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_MATCH)
                     }
                     else {
                         if (result.status == "BLOCK") {

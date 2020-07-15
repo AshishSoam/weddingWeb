@@ -19,10 +19,7 @@ app.use(helmet());
 
 app.use(cors());
 app.use(morgan('tiny'))
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('/', (req, res) => {
-res.sendFile(__dirname + '/dist/index.html')
-});
+
 // app.use(morgan('combined', { stream: winston.stream }));
 // console.log(require('./keys/test'));
 
@@ -123,3 +120,7 @@ app.get('/swagger.json', (req, res) => {
   res.send(swaggerSpec);
 });
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+res.sendFile(__dirname + '/dist/index.html')
+});

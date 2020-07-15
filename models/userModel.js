@@ -245,7 +245,7 @@ mongoose.model("users", userSchema).find({ userType: "ADMIN" }, (err, result) =>
             mobileNumber: "8447510661",
             mergeContact:"+918447510661",
             accountVerification: true,
-            email: "pramodm@siliconasiaworks.com",
+            email: "wowzn.net@gmail.com",
             password: bcrypt.hashSync("admin1234", salt),
         };
         mongoose.model("users", userSchema).create(obj, (err1, result1) => {

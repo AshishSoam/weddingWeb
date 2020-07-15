@@ -5699,9 +5699,16 @@ footer.before-login p {
     box-shadow: none
 }
 
-.header-right-part {
+/* .header-right-part {
     display: inline-flex;
     max-width: 80%;
+    width: 100%;
+} */
+.header-right-part {
+    max-width: 75%;
+    min-width: 70%;
+    display: inline-flex;
+    /* max-width: 960px!important; */
     width: 100%;
 }
 

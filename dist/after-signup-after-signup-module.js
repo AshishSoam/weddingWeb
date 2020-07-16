@@ -135,6 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 class FavouriteListComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 FavouriteListComponent.ɵfac = function FavouriteListComponent_Factory(t) { return new (t || FavouriteListComponent)(); };
@@ -421,6 +422,7 @@ __webpack_require__.r(__webpack_exports__);
 class InterestedListComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 InterestedListComponent.ɵfac = function InterestedListComponent_Factory(t) { return new (t || InterestedListComponent)(); };
@@ -715,6 +717,7 @@ __webpack_require__.r(__webpack_exports__);
 class MatchDetailsComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 MatchDetailsComponent.ɵfac = function MatchDetailsComponent_Factory(t) { return new (t || MatchDetailsComponent)(); };
@@ -751,6 +754,7 @@ __webpack_require__.r(__webpack_exports__);
 class MatchListComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 MatchListComponent.ɵfac = function MatchListComponent_Factory(t) { return new (t || MatchListComponent)(); };
@@ -3071,6 +3075,7 @@ __webpack_require__.r(__webpack_exports__);
 class MySubscriptionsComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 MySubscriptionsComponent.ɵfac = function MySubscriptionsComponent_Factory(t) { return new (t || MySubscriptionsComponent)(); };
@@ -3318,6 +3323,7 @@ __webpack_require__.r(__webpack_exports__);
 class NotificationsComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 NotificationsComponent.ɵfac = function NotificationsComponent_Factory(t) { return new (t || NotificationsComponent)(); };
@@ -3474,6 +3480,7 @@ __webpack_require__.r(__webpack_exports__);
 class PictureBoxesComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 PictureBoxesComponent.ɵfac = function PictureBoxesComponent_Factory(t) { return new (t || PictureBoxesComponent)(); };
@@ -3792,6 +3799,7 @@ __webpack_require__.r(__webpack_exports__);
 class ProposalListComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 ProposalListComponent.ɵfac = function ProposalListComponent_Factory(t) { return new (t || ProposalListComponent)(); };
@@ -4010,6 +4018,7 @@ __webpack_require__.r(__webpack_exports__);
 class RejectionListComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 RejectionListComponent.ɵfac = function RejectionListComponent_Factory(t) { return new (t || RejectionListComponent)(); };

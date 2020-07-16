@@ -16,6 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 class CartComponent {
     constructor() { }
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 }
 CartComponent.ɵfac = function CartComponent_Factory(t) { return new (t || CartComponent)(); };

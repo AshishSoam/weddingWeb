@@ -14,7 +14,7 @@ const StaticController = require('../webServices/controllers/staticController');
  *       - name: Type
  *         description: Type is required.(ABOUT_US/PRIVACY/CONTACT_US/FAQ/TERMS)
  *         in: query
- *         required: true
+ *         required: false
  *     responses:
  *       200:
  *         description: Data found successfully.

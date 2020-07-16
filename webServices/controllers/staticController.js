@@ -11,6 +11,9 @@ const getStaticContent = (req, res) => {
     if (req.query.staticId) {
         query._id = req.query.staticId
     }
+    if(req.query.mode){
+        query.Type ={$in:["PRIVACY","TERMS","ABOUT_US"]}
+    }
     if (req.query.Type) {
         query.Type = { $in: req.query.Type }
     }
@@ -20,7 +23,6 @@ const getStaticContent = (req, res) => {
     if (req.query.cityName) {
         query.cityName = req.query.cityName
     }
-
 
     staticModel.find(query).exec((err, succ) => {
         if (err)

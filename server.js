@@ -19,11 +19,9 @@ app.use(helmet());
 
 app.use(cors());
 app.use(morgan('tiny'))
-//************ */
 app.get('/test', (req, res) => {
   return res.send("Connecting to wedding API Server")
 })
-//******************88 */
 // app.use(morgan('combined', { stream: winston.stream }));
 // console.log(require('./keys/test'));
 
@@ -65,13 +63,11 @@ config
 
     
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
     app.use('/api/v1/user', require('./routes/userRouter'));
     app.use('/api/v1/admin', require('./routes/adminRouter'));
     app.use('/api/v1/static', require('./routes/staticRouter'));
    
     app.use(express.static(path.join(__dirname, 'dist')));
-
     app.get('*', (req, res) => {
       res.sendFile(__dirname + '/dist/index.html')
       });

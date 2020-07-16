@@ -224,6 +224,81 @@ const userSchema = schema({
         type: String,
         ref: "joinSubMembers"
     }],
+
+    ///step 4
+    partnerAge: {
+        type: String
+    },
+    partnerHeight :{
+        type: String
+    },
+
+partnerHeightUnit:{
+    type: String
+},
+partnerMaritalStatus :{
+    type: String
+},
+partnerCountry:{
+        type: String
+    },
+partnerCity:{
+        type: String
+    },
+partnerReligion:{
+        type: String
+    },
+partnerMotherTounge :{
+        type: String
+    },
+partnerEducation:{
+        type: String
+    },
+partnerOccupation:{
+        type: String
+    },
+partnerIncome :{
+        type: String
+    },
+partnerDietaryHabits :{
+        type: String
+    },
+partnerDrinkingHabits :{
+        type: String
+    },
+
+partnerSmokingHabits:{
+        type: String
+    },
+partnerComplexion :{
+        type: String
+    },
+partnerBodyType :{
+    type: String
+},
+partnerChallenged :{
+        type: String
+    },
+aboutDesiredPartner :{
+        type: String
+    },
+partnerTribe:{
+        type: String
+    },
+partnerSocialStatus :{
+        type: String
+    },
+partnerHairColor:{
+        type: String
+    },
+partnerLadyHairLength:{
+        type: String
+    },
+partnerManHairStyle:{
+    type: String
+}
+
+
 }, { timestamps: true })
 userSchema.plugin(mongoosePaginate);
 

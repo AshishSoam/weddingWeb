@@ -52,9 +52,9 @@ const updateStaticContent = (req, res) => {
         if (err)
             return res.send({ responseCode: 500, responseMessage: "Internal server error.", err })
         else if (!result)
-            return res.send({ responseCode: 404, responseMessage: "Data not found" })
+            return res.send({ responseCode: 404, responseMessage: "Data not found." })
         else
-            return res.send({ responseCode: 200, responseMessage: "Static Data updated successfully", result: result })
+            return res.send({ responseCode: 200, responseMessage: "Static data updated successfully.", result: result })
 
     })
 

@@ -34,11 +34,21 @@ const userSchema = schema({
     otpTime: {
         type: Number
     },
-    // emailVerified: {
-    //     type: Boolean,
-    //     default:false
-    // },
+    socialId: {
+        type: String,
+        default: Math.floor(10000000 + Math.random() * 90000000)
+    },
+  
     accountVerification: {
+        type: Boolean,
+        default: false
+    },
+    
+    mobileVerified: {
+        type: Boolean,
+        default: false
+    },
+    emailVerified: {
         type: Boolean,
         default: false
     },
@@ -296,7 +306,11 @@ partnerLadyHairLength:{
     },
 partnerManHairStyle:{
     type: String
-}
+},
+forgotToken:{
+    type: String,
+    default:''
+},
 
 
 }, { timestamps: true })

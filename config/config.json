@@ -3,6 +3,7 @@
         "project_name": "INVOICE_REMINDER",
         "version": "v1",
         "base_url": "http://192.168.56.1:5000",
+        "website_url":"http://15.206.231.81:5001",
         "secret_key": "secre@tke@y",
         "token_expiry_time": "10h",
         "database": "wedding_web",

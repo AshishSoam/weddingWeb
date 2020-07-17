@@ -12,6 +12,8 @@ const winston = require('./config/winston');
 const db=require('./dbConnectivity/dbConnection')
 const userModel=require('./models/userModel')
 const path = require('path');
+var os = require("os");
+
 
 require('dotenv').config();
 
@@ -19,11 +21,18 @@ app.use(helmet());
 
 app.use(cors());
 app.use(morgan('tiny'))
-app.get('/test', (req, res) => {
-  return res.send("Connecting to wedding API Server")
-})
-// app.use(morgan('combined', { stream: winston.stream }));
-// console.log(require('./keys/test'));
+// app.get('/aaaa', (req, res) => {
+// console.log(req.headers['host'])
+// req.headers['host']=req.headers['host'].split(':')[0]+':5001'
+// // console.log("***************************************",req.headers['host'][0]+":5001")
+// console.log("***************************************")
+
+//  res.writeHead(307, { "Location": "http://" + req.headers['host']  });
+// return res.send();
+
+//   // return res.send("Connecting to wedding API Server")
+// })
+app.use(morgan('combined', { stream: winston.stream }));
 
 config
   .configuration()
@@ -32,6 +41,7 @@ config
     app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
     app.use(bodyParser.json());
     app.use((error, req, res, next) => {
+      console.log("sdas---->",error)
       if (error instanceof SyntaxError) {
         return res.status(400).send({ status: 400, success: false, message: 'Bad request.' });
       }

@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const userController = require('../webServices/controllers/userController')
-const auth=require('../middlewares/auth_handler')
+const auth = require('../middlewares/auth_handler')
 /**
  * @swagger
  * /api/v1/user/signup:
@@ -70,7 +70,7 @@ router.put('/signup', userController.signUp)
  *       500:
  *         description: Internal server error.
  */
-router.post('/login',userController.login)
+router.post('/login', userController.login)
 /**
  * @swagger
  * /api/v1/user/verifyOtp:
@@ -97,7 +97,7 @@ router.post('/login',userController.login)
  *       500:
  *         description: Internal server error.
  */
-router.post('/verifyOtp',userController.verifyOtp);
+router.post('/verifyOtp', userController.verifyOtp);
 /**
  * @swagger
  * /api/v1/user/getProfile:
@@ -120,7 +120,7 @@ router.post('/verifyOtp',userController.verifyOtp);
  *       500:
  *         description: Internal server error.
  */
-router.get('/getProfile',auth.verifyToken,userController.getProfile);
+router.get('/getProfile', auth.verifyToken, userController.getProfile);
 /**
  * @swagger
  * /api/v1/user/forgotPassword:
@@ -143,7 +143,7 @@ router.get('/getProfile',auth.verifyToken,userController.getProfile);
  *       500:
  *         description: Internal server error.
  */
-router.post('/forgotPassword',userController.forgotPassword)
+router.post('/forgotPassword', userController.forgotPassword)
 /**
  * @swagger
  * /api/v1/user/editProfile:
@@ -170,7 +170,7 @@ router.post('/forgotPassword',userController.forgotPassword)
  *       500:
  *         description: Internal server error.
  */
-router.post('/editProfile',auth.verifyToken,userController.editProfile);
+router.post('/editProfile', auth.verifyToken, userController.editProfile);
 /**
  * @swagger
  * /api/v1/user/uploadImages:
@@ -193,7 +193,7 @@ router.post('/editProfile',auth.verifyToken,userController.editProfile);
  *       500:
  *         description: Internal server error.
  */
-router.post('/uploadImages',userController.uploadImages);
+router.post('/uploadImages', userController.uploadImages);
 /**
  * @swagger
  * /api/v1/user/resendOtp:
@@ -216,7 +216,7 @@ router.post('/uploadImages',userController.uploadImages);
  *       500:
  *         description: Internal server error.
  */
-router.post('/resendOtp',userController.resendOtp);
+router.post('/resendOtp', userController.resendOtp);
 /**
  * @swagger
  * /api/v1/user/changePassword:
@@ -243,6 +243,34 @@ router.post('/resendOtp',userController.resendOtp);
  *       500:
  *         description: Internal server error.
  */
-router.post('/changePassword',userController.changePassword);
+router.post('/changePassword', userController.changePassword);
+
+/**
+ * @swagger
+ * /api/v1/user/email_verification:
+ *   get:
+ *     tags:
+ *       - USER WEB APP
+ *     description: email_verification API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: user
+ *         description: user is required .
+ *         in: query
+ *         required: true
+ *       - name: key
+ *         description: key is required .
+ *         in: query
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Email verified successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.get('/email_verification', userController.email_verification);
 
 module.exports = router

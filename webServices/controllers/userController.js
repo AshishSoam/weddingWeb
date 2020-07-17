@@ -12,14 +12,15 @@ const userModel = require('../../models/userModel');
 const twilio = require("twilio");
 module.exports = {
     /**
-      * Function Name :signUp API
-      * Description : signUp user API
-      * @return  response
-      */
+     * Function Name :signUp API
+     * Description : signUp user API
+     * @return  response
+     */
     signUp: async (req, res) => {
 
         try {
             req.body.otp = commonQuery.getOTP();
+            // req.body.socialId=commonQuery.get_social_Id()
             let checkRequest = commonQuery.checkRequest(["email", "countryCode", "password", "createFor", "fullName", "mobileNumber"], req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
@@ -88,9 +89,16 @@ module.exports = {
                         // }
                         // else {
                         // email, subject, text, callback
+
+
+                        req.body.forgotToken = jwt.sign({ email: req.body.email, fullName: req.body.fullName }, 'WeddingWeb')
                         req.body.message = `Hello ${req.body.fullName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
                         let sendSMS = await commonQuery.sendSMS(req, res)
-                        req.body.subject = "Your verification authentication otp"
+                        req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
+
+                        // let link = `${config.base_url}/v1/user/email_verification?user=${req.body.email}&key=${token}`
+                        req.body.link = `${global.gConfig.website_url}?user=${req.body.email}&key=${req.body.forgotToken}`
+                        // console.log("link************>", req.body.link)
                         let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
                         req.body.password = bcryptData
@@ -115,11 +123,11 @@ module.exports = {
                                 return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, 'Signup successfully.', data)
                             }
                         })
-                        // }
-                        // })
                     }
                 })
             }
+
+
         }
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
@@ -127,14 +135,14 @@ module.exports = {
 
     },
     /**
-       * Function Name :login API
-       * Description : login user API
-       * @return  response
-       */
+    * Function Name :login API
+    * Description : login user API
+    * @return  response
+    */
     login: async (req, res) => {
         try {
 
-            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] },userType:{$ne:'ADMIN'} }] }
+            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] }, userType: { $ne: 'ADMIN' } }] }
 
             let checkRequest = commonQuery.checkRequest(["email", "password"], req.body);
             console.log("checkRequest>>>>", checkRequest)
@@ -182,10 +190,10 @@ module.exports = {
     },
 
     /**
-     * Function Name :otp verify API
-     * Description : otp verify user API
-     * @return  response
-     */
+    * Function Name :otp verify API
+    * Description : otp verify user API
+    * @return  response
+    */
     verifyOtp: (req, res) => {
         try {
             let checkRequest = commonQuery.checkRequest(["otp", "userId"], req.body);
@@ -195,12 +203,10 @@ module.exports = {
             }
             else {
 
-                {
-                    $and:[{},{},{}]
-                }
+
                 User.findOne({ "_id": req.body.userId, status: "ACTIVE" }, (err, result) => {
                     if (err) {
-                         Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                        Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                     }
                     else if (!result)
                         Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)
@@ -216,7 +222,7 @@ module.exports = {
                                     token: jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')
                                 }
                                 req.body.accountVerification = true;
-
+                                req.body.mobileVerified = true
                                 User.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, req.body, { new: true }, (error, result) => {
                                     if (error) {
                                         return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
@@ -241,10 +247,10 @@ module.exports = {
 
     },
     /**
-     * Function Name :get Profile API
-     * Description : get Profile user API
-     * @return  response
-     */
+    * Function Name :get Profile API
+    * Description : get Profile user API
+    * @return  response
+    */
     getProfile: (req, res) => {
         let userId = req.query.userId ? req.query.userId : req.userDetails.id
         try {
@@ -268,10 +274,10 @@ module.exports = {
     },
 
     /**
-     * Function Name :forgot Password API
-     * Description : forgot Password user API
-     * @return  response
-     */
+    * Function Name :forgot Password API
+    * Description : forgot Password user API
+    * @return  response
+    */
 
     forgotPassword: (req, res) => {
         var currentTime = new Date().getTime();
@@ -294,7 +300,7 @@ module.exports = {
                 }
                 else {
                     req.body.text = `Dear ${result.fullName},
-                    Your reset otp for Wedding App is : ${otp1}`;
+    Your reset otp for Wedding App is : ${otp1}`;
                     req.body.subject = "Regarding forgot password"
                     let sendMail = await commonQuery.sendMail(req, res)
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
@@ -313,7 +319,7 @@ module.exports = {
                 }
             })
 
-            
+
         }
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
@@ -322,10 +328,10 @@ module.exports = {
     },
 
     /**
-     * Function Name :editProfile API
-     * Description : editProfile user API
-     * @return  response
-     */
+    * Function Name :editProfile API
+    * Description : editProfile user API
+    * @return  response
+    */
     editProfile: (req, res) => {
         try {
             let userId = req.query.userId ? req.query.userId : req.userDetails._id
@@ -348,10 +354,10 @@ module.exports = {
     },
 
     /**
-        * Function Name :upload data on cloudinary API
-        * Description : upload data on cloudinary user API
-        * @return  response
-        */
+    * Function Name :upload data on cloudinary API
+    * Description : upload data on cloudinary user API
+    * @return  response
+    */
     "uploadImages": (req, res) => {
         commonQuery.imageUploadToCloudinary(req.body.documentImage, (err, result) => {
 
@@ -365,16 +371,16 @@ module.exports = {
         })
     },
     /**
-       * Function Name :resendOtp API
-       * Description : resendOtp user API
-       * @return  response
-       */
+    * Function Name :resendOtp API
+    * Description : resendOtp user API
+    * @return  response
+    */
     resendOtp: (req, res) => {
 
         try {
             console.log(req.body)
-            userModel.findById({ _id: req.body.userId, status: "ACTIVE" }, async(err, result) => {
-                console.log(err,result)
+            userModel.findById({ _id: req.body.userId, status: "ACTIVE" }, async (err, result) => {
+                console.log(err, result)
                 if (err) {
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                 }
@@ -385,19 +391,19 @@ module.exports = {
                     req.body.otp = commonQuery.getOTP()
                     req.body.otpTime = Date.now()
                     req.body.mergeContact = result.mergeContact
-                    req.body.email=result.email
+                    req.body.email = result.email
                     req.body.message = `Hello ${result.fullName} , Your reset authentication otp for wedding APP is :- ${req.body.otp}`
-                    req.body.text = "Your reset verification authentication otp:- "+req.body.otp
+                    req.body.text = "Your reset verification authentication otp:- " + req.body.otp
                     req.body.subject = 'Regarding reset otp verification.'
                     let sendSMS = await commonQuery.sendSMS(req, res)
                     let sendEmail = await commonQuery.sendMail(req, res)
                     userModel.findByIdAndUpdate({ _id: req.body.userId }, req.body, { new: true }, (err, result) => {
-                        console.log("---/***************8->",err,result)
+                        console.log("---/***************8->", err, result)
                         if (err) {
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                         }
                         else {
-                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.RESENT_OTP,result.id)
+                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.RESENT_OTP, result.id)
                         }
 
                     })
@@ -414,38 +420,106 @@ module.exports = {
 
 
 
- /**
-       * Function Name :changePassword API
-       * Description : changePassword user API
-       * @return  response
-       */
-    changePassword:(req,res)=>{
-        try{
-        var password = bcrypt.hashSync(req.body.password,salt)
-        userModel.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, { $set: { password: password } }, { new: true }, (err, success) => {
-            if (err) {
-                return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+    /**
+    * Function Name :changePassword API
+    * Description : changePassword user API
+    * @return  response
+    */
+    changePassword: (req, res) => {
+        try {
+            var password = bcrypt.hashSync(req.body.password, salt)
+            userModel.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, { $set: { password: password } }, { new: true }, (err, success) => {
+                if (err) {
+                    return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                }
+                else if (!success) {
+                    return Response.sendResponsewithError(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                }
+                else {
+                    return res.send({
+                        responseCode: 200,
+                        responseMessage: "You have successfully changed your password.", result: success._id
+                    });
+                }
+
+            })
+        }
+
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+        }
+
+    },
+
+    /**
+    * Function Name :email_verification API
+    * Description : email_verification user API
+    * @return  response
+    */
+    email_verification: (req, res) => {
+        try {
+            var checkDate = Date.now()
+            var diff;
+            if (!req.query.user && !req.query.key) {
+                res.json({
+                    responseCode: 404,
+                    responseMessage: "Bad request.Please provide required parameter."
+                })
             }
-            else if (!success) {
-                return Response.sendResponsewithError(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+
+            else {
+                var query =
+                {
+                    $and: [{ email: req.query.user }, { $or: [{ token: req.query.key }, { forgotToken: req.query.key }] }, { status: "ACTIVE" }]
+                }
+                userModel.findOne(query, (err, success) => {
+                    console.log("user verify at forgot Password>>>>", err, success)
+                    if (err) {
+                        return res.send({ responseCode: 404, responseMessage: "Please provide valid token.", err })
+                    }
+                    else if (!success) {
+                        return res.send({ responseCode: 404, responseMessage: "Please provide valid token." })
+
+                    }
+
+                    else {
+                        diff = checkDate - success.otpTime;
+                        if (success.emailVerified == true) {
+                            return res.send({ responseCode: 404, responseMessage: responseMessage.EMAIL_ALREADY_VERIFIED })
+
+                        }
+                        else if (diff >= 300000) {
+                            return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, ("Token expired."));
+                        }
+
+
+                        else {
+
+                            userModel.findByIdAndUpdate({ "_id": success._id, status: "ACTIVE" }, { $set: { emailVerified: true, emailVerifiedDate: new Date().getTime(), forgotToken: "" } }, { new: true }, (err1, result2) => {
+                                if (err1) {
+                                    return res.send({ responseCode: 404, responseMessage: "Please provide valid token.", err1 })
+                                }
+                                else {
+                                    return res.send({
+                                        responseCode: 200,
+                                        responseMessage: "Email verified successfully.",
+                                        result: result2.emailVerified
+                                    })
+                                }
+                            })
+                        }
+
+
+                    }
+                })
             }
-        else {
-                return res.send({
-                    responseCode: 200,
-                    responseMessage: "You have successfully changed your password.", result: success._id
-                });
-            }
-            
-        })
-    }
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
-    catch (e) {
-        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
-
-    }
-
-},
-
+        }
+    },
 
     //*************************************End of exports*********************************************8 */
 }

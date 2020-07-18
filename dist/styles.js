@@ -432,7 +432,7 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ 2:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./src/styles.css ***!
   \******************************/
@@ -444,5 +444,5 @@ module.exports = __webpack_require__(/*! C:\Users\Dell\Desktop\weddingAdmin\fron
 
 /***/ })
 
-},[[2,"runtime"]]]);
+},[[5,"runtime"]]]);
 //# sourceMappingURL=styles.js.map

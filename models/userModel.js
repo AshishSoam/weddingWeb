@@ -5,6 +5,7 @@ const salt = bcrypt.genSaltSync(10);
 const mongoosePaginate = require('mongoose-paginate');
 
 const userSchema = schema({
+    //default key required
     email: {
         type: String
     },
@@ -27,23 +28,27 @@ const userSchema = schema({
     },
     createFor: {
         type: String
-    },//step 1
+    },
     otp: {
         type: String
     },
     otpTime: {
         type: Number
     },
+    emailVerificationTime: {
+        type: Number,
+        default:Date.now()
+    },
     socialId: {
         type: String,
         default: Math.floor(10000000 + Math.random() * 90000000)
     },
-  
+
     accountVerification: {
         type: Boolean,
         default: false
     },
-    
+
     mobileVerified: {
         type: Boolean,
         default: false
@@ -57,260 +62,340 @@ const userSchema = schema({
         enum: ["ACTIVE", "BLOCK", "DELETE"],
         default: "ACTIVE"
     },
-    mergeContact:{
+    mergeContact: {
         type: String
     },
-    countryCode:{
+    countryCode: {
         type: String
-    },
-    familyType: {
-        type: String
-    },
-    fatherOccupation: {
-        type: String
-    },
-    motherOccupation: {
-        type: String
-    },
-    brother: {
-        type: String
-    },
-    sister: {
-        type: String
-    },
-    family_living_in: {
-        type: String
-    },
-    nativeCity: {
-        type: String
-    },
-    familyDes_city_living_in: {
-        type: String
-    },
-    familyDes_pincode: {
-        type: String
-    },
-    contactNumber: {
-        type: String
-    },
-    cast: {
-        type: String
-    },
-    country_living_in: {
-        type: String
-    },
-    dropdown_city_living_in: {
-        type: String
-    },
-    socialStatus: {
-        type: String
-    },
-    familyDes_occupation: {
-        type: String
-    },
-    education: {
-        type: String
-    },
-    bodyType: {
-        type: String
-    },
-    family_Des_heigth: {
-        type: String
-    },
-    skinTone: {
-        type: String
-    },
-
-    ladyhairlength: {
-        type: String
-    },
-    man_hairStyle: {
-        type: String
-    },
-    man_hairColor: {
-        type: String
-    },
-    religion: {
-        type: String
-    },
-    culture: {
-        type: String
-    },
-    hijab: {
-        type: String
-    },
-    smoking: {
-        type: String
-    },
-    health: {
-        type: String
-    },
-    contactAddress: {
-        type: String
-    },
-    workLetter: {
-        type: String
-    },
-    family_bio: {
-        type: String
-    },
-
-    //step2
-
-
-    nickName: {
-        type: String
-    },
-    fullName: {
-        type: String
-    },
-    dob: {
-        type: String
-    },
-    MaritalStatus: {
-        type: String
-    },
-    heigth: {
-        type: String
-    },
-    country: {
-        type: String
-    },
-    state: {
-        type: String
-    },
-    city_living_in: {
-        type: String
-    },
-    pincode: {
-        type: String
-    },
-    highest_degree: {
-        type: String
-    },
-    employed_in: {
-        type: String
-    },
-    occupation: {
-        type: String
-    },
-    annualIncome: {
-        type: String
-    },
-    emailId: {
-        type: String
-    },
-    self_bio: {
-        type: String
-    },
-    Desired_Partner_bio: {
-        type: String
-    },
-    age_Filter: {
-        type: Boolean,
-        default: false
-    },
-    maritial_Status_Filter: {
-        type: Boolean,
-        default: false
-    },
-    country_Filter: {
-        type: Boolean,
-        default: false
-    },
-    religion_Filter: {
-        type: Boolean,
-        default: false
-    },
-    mother_Tongue_Filter: {
-        type: Boolean,
-        default: false
-    },
-    income_Filter: {
-        type: Boolean,
-        default: false
     },
     joinMember: [{
         type: String,
         ref: "joinSubMembers"
     }],
 
-    ///step 4
-    partnerAge: {
-        type: String
+    forgotToken: {
+        type: String,
+        default: ''
     },
-    partnerHeight :{
+    //step 1
+
+    creatorName: {
         type: String
     },
 
-partnerHeightUnit:{
-    type: String
-},
-partnerMaritalStatus :{
-    type: String
-},
-partnerCountry:{
-        type: String
-    },
-partnerCity:{
-        type: String
-    },
-partnerReligion:{
-        type: String
-    },
-partnerMotherTounge :{
-        type: String
-    },
-partnerEducation:{
-        type: String
-    },
-partnerOccupation:{
-        type: String
-    },
-partnerIncome :{
-        type: String
-    },
-partnerDietaryHabits :{
-        type: String
-    },
-partnerDrinkingHabits :{
+    userFullName: {
         type: String
     },
 
-partnerSmokingHabits:{
+    //step 2
+    userNickname : {
         type: String
     },
-partnerComplexion :{
+    userFirstName  : {
         type: String
     },
-partnerBodyType :{
+
+    userFamilyName: {
+        type: String
+    },
+
+    userMaritalstatus: {
+        type: String
+    },
+    userNationality: {
+        type: String
+    },
+
+    userSocialID: {
+        type: String
+    },
+    userRegion: {
+        type: String
+    },
+    userCountryCode: {
+        type: String
+    },
+    userMobile: {
+        type: String
+    },
+    userEmail: {
+        type: String
+    },
+    userProfileType: {
+        type: String
+    },
+
+    userPassword: {
+        type: String
+    },
+    userOath: {
+        type: String
+    },
+    userTermsConditions: {
+        type: String
+    },
+    userDiscountCode: {
+        type: String
+    },
+    userGender: {
+        type: String
+    },
+    userGuardianFName: {
+        type: String
+    },
+    userGuardianLName: {
+        type: String
+    },
+    userGuardianRelation: {
+        type: String
+    },
+    attachment1: {
+        type: String
+    },
+    attachment2: {
+        type: String
+    },
+    attachment3: {
+        type: String
+    },
+    attachment4: {
+        type: String
+    },
+    userPackageType: {
+        type: String
+    },
+//******************* STEP 3 /  4 
+
+userAge: {
     type: String
 },
-partnerChallenged :{
-        type: String
-    },
-aboutDesiredPartner :{
-        type: String
-    },
-partnerTribe:{
-        type: String
-    },
-partnerSocialStatus :{
-        type: String
-    },
-partnerHairColor:{
-        type: String
-    },
-partnerLadyHairLength:{
-        type: String
-    },
-partnerManHairStyle:{
+
+partnerAge: {
     type: String
 },
-forgotToken:{
-    type: String,
-    default:''
+userMathab: {
+    type: String
 },
+partnerMathab: {
+    type: String
+},
+userReligion: {
+    type: String
+},
+partnerReligion: {
+    type: String
+},
+userLanguage: {
+    type: String
+},
+partnerLanguage: {
+    type: String
+},
+userTribe : {
+    type: String
+},
+partnerTribe  : {
+    type: String
+},
+userTribeName  : {
+    type: String
+},
+partnerTribeName : {
+    type: String
+},
+userCountry : {
+    type: String
+},
+partnerCountry : {
+    type: String
+},
+userCity : {
+    type: String
+},
+partnerCity : {
+    type: String
+},
+
+userMaritalstatus  : {
+    type: String
+},
+partnerMaritalStatus : {
+    type: String
+},
+userEducation : {
+    type: String
+},
+partnerEducation : {
+    type: String
+},
+userEmployedIn : {
+    type: String
+},
+partnerEmployedIn : {
+    type: String
+},
+userOccupation : {
+    type: String
+},
+partnerOccupation : {
+    type: String
+},
+userBodyType : {
+    type: String
+},
+partnerBodyType : {
+    type: String
+},
+userComplexion : {
+    type: String
+},
+partnerComplexion : {
+    type: String
+},
+userPhysicalStatus : {
+    type: String
+},
+partnerPhysicalStatus : {
+    type: String
+},
+userHeight : {
+    type: String
+},
+partnerHeight : {
+    type: String
+},
+userWeight : {
+    type: String
+},
+partnerWeight : {
+    type: String
+},
+userCulture : {
+    type: String
+},
+userCulture : {
+    type: String
+},
+userFamilyGatherings : {
+    type: String
+},
+partnerFamilyGatherings : {
+    type: String
+},
+userHijab : {
+    type: String
+},
+partnerHijab : {
+    type: String
+},
+userAbaya : {
+    type: String
+},
+partnerAbaya : {
+    type: String
+},
+userHairType : {
+    type: String
+},
+partnerHairType : {
+    type: String
+},
+userHairColor : {
+    type: String
+},
+partnerHairColor : {
+    type: String
+},
+userSmokingHabits : {
+    type: String
+},
+partnerSmokingHabits : {
+    type: String
+},
+userHubblyBubbly : {
+    type: String
+},
+partnerHubblyBubbly : {
+    type: String
+},
+userEatingHabits : {
+    type: String
+},
+partnerEatingHabits : {
+    type: String
+},
+userProfilePhoto : {
+    type: String
+},
+partnerProfilePhoto : {
+    type: String
+},
+userIncome : {
+    type: String
+},
+partnerIncome : {
+    type: String
+},
+userFamilyStatus : {
+    type: String
+},
+partnerFamilyStatus : {
+    type: String
+},
+userLifestyle : {
+    type: String
+},
+partnerLifestyle : {
+    type: String
+},
+userDrinkingHabits : {
+    type: String
+},
+partnerDrinkingHabits : {
+    type: String
+},
+userMatchingPictures : {
+    type: String
+},
+partnerMatchingPictures : {
+    type: String
+},
+userBio  : {
+    type: String
+},
+PartnerBio : {
+    type: String
+},
+familyBio : {
+    type: String
+},
+    // ******** default filter keys*************
+
+    age_Filter: {
+        type: Boolean,
+        default: false
+    },
+    maritialStatusFilter: {
+        type: Boolean,
+        default: false
+    },
+    countryFilter: {
+        type: Boolean,
+        default: false
+    },
+    religionFilter: {
+        type: Boolean,
+        default: false
+    },
+    tongueFilter: {
+        type: Boolean,
+        default: false
+    },
+    incomeFilter: {
+        type: Boolean,
+        default: false
+    }
+   
 
 
 }, { timestamps: true })
@@ -327,12 +412,13 @@ mongoose.model("users", userSchema).find({ userType: "ADMIN" }, (err, result) =>
         let obj = {
             userType: "ADMIN",
             fullName: "Pramod",
+            "creatorName":"",
             country: "INDIA",
             profilePic: "https://res.cloudinary.com/dkoznoze6/image/upload/v1563943105/n7zdoyvpxxqhexqybvkx.jpg",
             verifyOtp: true,
             countryCode: "+91",
             mobileNumber: "8447510661",
-            mergeContact:"+918447510661",
+            mergeContact: "+918447510661",
             accountVerification: true,
             email: "wowzn.net@gmail.com",
             password: bcrypt.hashSync("admin1234", salt),

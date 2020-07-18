@@ -20,19 +20,19 @@ const auth = require('../middlewares/auth_handler')
  *         in: formData
  *         required: true
  *       - name: countryCode
- *         description: countryCode is required.
+ *         description: countryCode is required.(example +91).
  *         in: formData
  *         required: true
  *       - name: mobileNumber
  *         description: mobileNumber is required.
  *         in: formData
  *         required: true
- *       - name: fullName
- *         description: fullName is required.
+ *       - name: creatorName
+ *         description: creatorName is required.
  *         in: formData
  *         required: true
- *       - name: createFor
- *         description: createFor is required.
+ *       - name: userFullName
+ *         description: userFullName is required.
  *         in: formData
  *         required: true
  *     responses:

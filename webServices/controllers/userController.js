@@ -21,7 +21,7 @@ module.exports = {
         try {
             req.body.otp = commonQuery.getOTP();
             // req.body.socialId=commonQuery.get_social_Id()
-            let checkRequest = commonQuery.checkRequest(["email", "countryCode", "password", "createFor", "fullName", "mobileNumber"], req.body);
+            let checkRequest = commonQuery.checkRequest(["email", "countryCode", "password", "creatorName", "userFullName", "mobileNumber"], req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
                 Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
@@ -34,10 +34,10 @@ module.exports = {
                     }
                     else if (result) {
                         if (result.email == req.body.email) {
-                            return Response.sendResponseWithData(res, 409, `Official email address already exists with ${result.userType.toLowerCase()} account`)
+                            return Response.sendResponseWithData(res, 409, `Official email address already exists with ${result.userType.toLowerCase()} account.`)
                         }
                         else {
-                            return Response.sendResponseWithData(res, 409, `Mobile number already exists with ${result.userType.toLowerCase()} account`)
+                            return Response.sendResponseWithData(res, 409, `Mobile number already exists with ${result.userType.toLowerCase()} account.`)
                         }
                     }
                     else if (!result) {
@@ -78,7 +78,7 @@ module.exports = {
                         // email, subject,password, link, name,
                         // if (req.body.AdminAdd != "1") {
                         //     // email, subject, text, callback
-                        //     commonQuery.sendMail(req.body.email, "Please Click here to Verify", link, req.body.fullName, (err2, sentData) => {
+                        //     commonQuery.sendMail(req.body.email, "Please Click here to Verify", link, req.body.creatorName, (err2, sentData) => {
                         //         if (err2) {
                         //             console.log("error in sent email>>>>>>", err2)
                         //         }
@@ -91,8 +91,8 @@ module.exports = {
                         // email, subject, text, callback
 
 
-                        req.body.forgotToken = jwt.sign({ email: req.body.email, fullName: req.body.fullName }, 'WeddingWeb')
-                        req.body.message = `Hello ${req.body.fullName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
+                        req.body.forgotToken = jwt.sign({ email: req.body.email, creatorName: req.body.creatorName }, 'WeddingWeb')
+                        req.body.message = `Hello ${req.body.creatorName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
                         let sendSMS = await commonQuery.sendSMS(req, res)
                         req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
 
@@ -299,7 +299,7 @@ module.exports = {
                     return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
                 }
                 else {
-                    req.body.text = `Dear ${result.fullName},
+                    req.body.text = `Dear ${result.creatorName},
     Your reset otp for Wedding App is : ${otp1}`;
                     req.body.subject = "Regarding forgot password"
                     let sendMail = await commonQuery.sendMail(req, res)
@@ -392,7 +392,7 @@ module.exports = {
                     req.body.otpTime = Date.now()
                     req.body.mergeContact = result.mergeContact
                     req.body.email = result.email
-                    req.body.message = `Hello ${result.fullName} , Your reset authentication otp for wedding APP is :- ${req.body.otp}`
+                    req.body.message = `Hello ${result.creatorName} , Your reset authentication otp for wedding APP is :- ${req.body.otp}`
                     req.body.text = "Your reset verification authentication otp:- " + req.body.otp
                     req.body.subject = 'Regarding reset otp verification.'
                     let sendSMS = await commonQuery.sendSMS(req, res)
@@ -484,12 +484,13 @@ module.exports = {
                     }
 
                     else {
-                        diff = checkDate - success.otpTime;
+                        diff = checkDate - success.emailVerificationTime;
                         if (success.emailVerified == true) {
                             return res.send({ responseCode: 404, responseMessage: responseMessage.EMAIL_ALREADY_VERIFIED })
 
                         }
-                        else if (diff >= 300000) {
+                        // 24*60*60*1000
+                        else if (diff >= 24*60*60*1000) {
                             return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, ("Token expired."));
                         }
 

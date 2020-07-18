@@ -47,7 +47,7 @@ module.exports = {
 * @return  response
 */
     adminSendMail: (req, res) => {
-        const { email, subject, password, otp, fullName, link } = req.body
+        const { email, subject, password, otp, creatorName, link } = req.body
         // console.log("common func>>>>>>>>>>>>>>>", link)
         var html = `
         <!DOCTYPE html>
@@ -208,7 +208,7 @@ module.exports = {
                                             <td bgcolor="#ffffff" style="text-align:center;background:#ffffff">
                                                 <p
                                                     style="margin:0;font-family:'Open Sans',Open Sans,Verdana,sans-serif;font-size:26px;line-height:26px;color:#272c73!important;font-weight:600;margin-bottom:20px">
-                                                    Welcome ${fullName}</p>
+                                                    Welcome ${creatorName}</p>
                                             </td>
                                         </tr>
                                         <tr style="margin:0;padding:0">

@@ -38,14 +38,24 @@ config
   .configuration()
   .then((configurations) => {
     global.gConfig = configurations;
-    app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-    app.use(bodyParser.json());
+    app.use(express.json({limit: '100mb'}));
+app.use(express.urlencoded({extended: true,limit: '100mb'}));
+    // app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+    // app.use(bodyParser.json({ }));
+
+
+
+
+
     app.use((error, req, res, next) => {
-      console.log("sdas---->",error)
+      console.log("server error---->",error.message,JSON.stringify(error))
       if (error instanceof SyntaxError) {
-        return res.status(400).send({ status: 400, success: false, message: 'Bad request.' });
+        return res.send({ responseCode: 400, success: false, responseMessage: error.message ||"Something went wrong." });
       }
-      next();
+      else{
+        next();
+
+      }
     });
 
     const swaggerDefinition = {
@@ -72,16 +82,16 @@ config
     });
 
     
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-    app.use('/api/v1/user', require('./routes/userRouter'));
-    app.use('/api/v1/admin', require('./routes/adminRouter'));
-    app.use('/api/v1/static', require('./routes/staticRouter'));
+  
    
-    app.use(express.static(path.join(__dirname, 'dist')));
+      app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+      app.use('/api/v1/user', require('./routes/userRouter'));
+      app.use('/api/v1/admin', require('./routes/adminRouter'));
+      app.use('/api/v1/static', require('./routes/staticRouter'));
+      app.use(express.static(path.join(__dirname, 'dist')));
     app.get('*', (req, res) => {
       res.sendFile(__dirname + '/dist/index.html')
       });
-
     //* ******************************* function to set first default configuration *************************/
 
     try {
@@ -103,11 +113,11 @@ config
       );
 
       // render the error page
-      res.status(err.status || 500);
+      // res.status(err.status || 500);
       return res.send({
-        statusCode: err.status || 500,
+        responseCode: err.status || 500,
         success: 'false',
-        message: err.message,
+        responseMessage: err.message,
       });
     });
   })

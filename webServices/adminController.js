@@ -239,16 +239,19 @@ module.exports = {
         */
     editAdminProfile: async (req, res) => {
         try {
+            console.log("API------------>",req.body.email)
+
             let fixedArray=["email", "phoneNumber", "fullName"]
             if(req.body.oldPassword){
                 fixedArray.push("password")
             }
             let checkRequest = commonQuery.checkRequest(fixedArray, req.body);
-            console.log("checkRequest>>>>", checkRequest),req.body
+            console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
-                Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing.`, {})
+              return  Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing.`, {})
             }
             else {
+console.log("else condititon------------>",req.body.email)
 
                 req.body.mobileNumber = req.body.phoneNumber
                 let userId = req.query.userId ? req.query.userId : req.userDetails._id

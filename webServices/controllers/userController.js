@@ -111,9 +111,10 @@ module.exports = {
                             else {
 
                                 let data = {
+                                    
                                     "_id": result1._id,
-                                    // "email": result1.email,
-                                    // "mobileNumber": result1.mobileNumber,
+                                    "email": result1.email,
+                                    "mobileNumber": result1.mobileNumber,
                                     otp: result1.otp,
                                     token: jwt.sign({ email: result1.email, _id: result1._id }, 'WeddingWeb')
 

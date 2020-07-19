@@ -25,10 +25,11 @@
             "pass": "weddingproject@786",
             "user": "wowzn.net@gmail.com"
         },
+     
         "cloudinary": {
-            "CLOUD_NAME": "appsums",
-            "API_KEY": "786731639261656",
-            "API_SECRET": "vy2ru1-Ba52m-y_A7QlMUawUaPI"
+            "CLOUD_NAME": "smsit",
+            "API_KEY": "359377722525269",
+            "API_SECRET": "OIUzbbSYowTrLVySFFVh02oN-uo"
         }
     }
 }

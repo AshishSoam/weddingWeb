@@ -43,10 +43,6 @@ app.use(express.urlencoded({extended: true,limit: '100mb'}));
     // app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
     // app.use(bodyParser.json({ }));
 
-
-
-
-
     app.use((error, req, res, next) => {
       console.log("server error---->",error.message,JSON.stringify(error))
       if (error instanceof SyntaxError) {

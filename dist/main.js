@@ -1206,6 +1206,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/__ivy_ngcc__/fesm2015/ngx-spinner.js");
+
 
 
 
@@ -1213,8 +1215,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class CommonService {
-    constructor(router) {
+    constructor(router, spinner) {
         this.router = router;
+        this.spinner = spinner;
         /*********************************** BEHAVIOUR SUBJECT *****************************************/
         this.loginSub = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.loginObs = this.loginSub.asObservable();
@@ -1268,6 +1271,14 @@ class CommonService {
             timer: 2000
         });
     }
+    /*********************************** SHOW LOADER *****************************************/
+    showLoader() {
+        this.spinner.show();
+    }
+    /*********************************** HIDE LOADER *****************************************/
+    hideLoader() {
+        this.spinner.hide();
+    }
     /************************************** RELOAD COMPONENT **************************************/
     reload() {
         if (window.localStorage) {
@@ -1291,14 +1302,14 @@ class CommonService {
         this.loginSub1.next(msg);
     }
 }
-CommonService.ɵfac = function CommonService_Factory(t) { return new (t || CommonService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
+CommonService.ɵfac = function CommonService_Factory(t) { return new (t || CommonService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"])); };
 CommonService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: CommonService, factory: CommonService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CommonService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }]; }, null); })();
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"] }]; }, null); })();
 
 
 /***/ }),
@@ -1455,7 +1466,9 @@ class HttpService {
                     "Content-Type": "application/x-www-form-urlencoded",
                 })
             };
-            return this.http.post(this.baseUrl + endPoint, data, httpOptions);
+            const body = new URLSearchParams();
+            body.set('documentImage', data);
+            return this.http.post(this.baseUrl + endPoint, body.toString(), httpOptions);
         }
         else if (isHeader === 1) {
             let httpOptions = {
@@ -1464,7 +1477,9 @@ class HttpService {
                     "Content-Type": "application/x-www-form-urlencoded",
                 })
             };
-            return this.http.post(this.baseUrl + endPoint, data, httpOptions);
+            const body = new URLSearchParams();
+            body.set('documentImage', data);
+            return this.http.post(this.baseUrl + endPoint, body.toString(), httpOptions);
         }
     }
     /*********************************** PUT METHOD *****************************************/

@@ -700,11 +700,40 @@ class HeaderComponent {
                 this.currUrl = event.url.split('/')[1];
                 this.ToggleTabUrl = event.url.split('/')[2];
                 console.log("current url ==>> " + this.url);
-                console.log("current url ==>> " + this.currUrl);
-                console.log("currentNew url ==>> " + this.ToggleTabUrl);
+                // console.log("current url ==>> "+this.currUrl);
+                // console.log("currentNew url ==>> "+this.ToggleTabUrl);
+                if (this.url == '/visitor/home' || this.url == '/visitor/home?token=') {
+                    this.router.navigateByUrl('visitor/home');
+                }
+                else {
+                    this.checkEmailVerification(this.url);
+                }
             }
         });
         this.SharingDataAmongComponents();
+    }
+    checkEmailVerification(url) {
+        console.log('EmailVerify ==>', url.split('/visitor/home?token='));
+        // var token = url.split('?token=').reverse()[0];
+        var token = url.split('/visitor/home?token=').reverse()[0];
+        console.log('finalToken ==>', token);
+        if (token != '' || token != undefined) {
+            this.verifyEmailFunc(token);
+        }
+    }
+    verifyEmailFunc(tok) {
+        this.httpService.get('user/email_verification?key=' + tok, 1).subscribe(res => {
+            console.log('emailVerification_Succ ==>', res);
+            if (res['responseCode'] == 200) {
+                this.commonService.showSuccessToast(res['responseMessage'], false, 'center');
+                this.router.navigateByUrl('visitor/login');
+            }
+            else {
+                this.commonService.showErrorToast(res['responseMessage'], false, 'center');
+            }
+        }, err => {
+            console.log('emailVerification_Err ==>', err);
+        });
     }
     SharingDataAmongComponents() {
         this.commonService.loginObs.subscribe((response) => {
@@ -1237,6 +1266,10 @@ class CommonService {
     /********************************** GET PREVIOUS ROUTE ******************************************/
     getPreviousUrl() {
         return this.previousUrl;
+    }
+    /********************************** GET CURRENT ROUTE ******************************************/
+    getCurrentUrl() {
+        return this.currentUrl;
     }
     /********************************** TOASTER SUCCESS ******************************************/
     showSuccessToast(msg, isToast, position) {

@@ -131,6 +131,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _after_signup_cart_cart_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../after-signup/cart/cart.component */ "./src/app/after-signup/cart/cart.component.ts");
 /* harmony import */ var _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./forgot-password/forgot-password.component */ "./src/app/before-signup/forgot-password/forgot-password.component.ts");
 /* harmony import */ var _verify_otp_verify_otp_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./verify-otp/verify-otp.component */ "./src/app/before-signup/verify-otp/verify-otp.component.ts");
+/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./search/search.component */ "./src/app/before-signup/search/search.component.ts");
+
 
 
 
@@ -166,6 +168,7 @@ const routes = [
     { path: 'blogs', component: _blog_list_blog_list_component__WEBPACK_IMPORTED_MODULE_8__["BlogListComponent"] },
     { path: 'cart', component: _after_signup_cart_cart_component__WEBPACK_IMPORTED_MODULE_18__["CartComponent"] },
     { path: 'careers', component: _career_career_component__WEBPACK_IMPORTED_MODULE_9__["CareerComponent"] },
+    { path: 'search', component: _search_search_component__WEBPACK_IMPORTED_MODULE_21__["SearchComponent"] },
     { path: 'contactUs', component: _contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_15__["ContactUsComponent"] },
     { path: 'termsOfUse', component: _terms_of_use_terms_of_use_component__WEBPACK_IMPORTED_MODULE_16__["TermsOfUseComponent"] },
     { path: 'forgotPassword', component: _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_19__["ForgotPasswordComponent"] },
@@ -227,6 +230,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./forgot-password/forgot-password.component */ "./src/app/before-signup/forgot-password/forgot-password.component.ts");
 /* harmony import */ var _verify_otp_verify_otp_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./verify-otp/verify-otp.component */ "./src/app/before-signup/verify-otp/verify-otp.component.ts");
 /* harmony import */ var angular_mydatepicker__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! angular-mydatepicker */ "./node_modules/angular-mydatepicker/__ivy_ngcc__/fesm2015/angular-mydatepicker.js");
+/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./search/search.component */ "./src/app/before-signup/search/search.component.ts");
+
 
 
 
@@ -262,7 +267,7 @@ BeforeSignupModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
             angular_mydatepicker__WEBPACK_IMPORTED_MODULE_23__["AngularMyDatePickerModule"],
             _before_signup_routing_module__WEBPACK_IMPORTED_MODULE_2__["BeforeSignupRoutingModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](BeforeSignupModule, { declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"], _about_us_about_us_component__WEBPACK_IMPORTED_MODULE_4__["AboutUsComponent"], _faq_faq_component__WEBPACK_IMPORTED_MODULE_5__["FaqComponent"], _packages_packages_component__WEBPACK_IMPORTED_MODULE_6__["PackagesComponent"], _store_store_component__WEBPACK_IMPORTED_MODULE_7__["StoreComponent"], _success_stories_success_stories_component__WEBPACK_IMPORTED_MODULE_8__["SuccessStoriesComponent"], _terms_of_use_terms_of_use_component__WEBPACK_IMPORTED_MODULE_9__["TermsOfUseComponent"], _privacy_policy_privacy_policy_component__WEBPACK_IMPORTED_MODULE_10__["PrivacyPolicyComponent"], _contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_11__["ContactUsComponent"], _career_career_component__WEBPACK_IMPORTED_MODULE_12__["CareerComponent"], _blog_list_blog_list_component__WEBPACK_IMPORTED_MODULE_13__["BlogListComponent"], _blog_details_blog_details_component__WEBPACK_IMPORTED_MODULE_14__["BlogDetailsComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"], _registration_step1_registration_step1_component__WEBPACK_IMPORTED_MODULE_16__["RegistrationStep1Component"], _registration_step2_registration_step2_component__WEBPACK_IMPORTED_MODULE_17__["RegistrationStep2Component"], _registration_step3_registration_step3_component__WEBPACK_IMPORTED_MODULE_18__["RegistrationStep3Component"], _registration_step4_registration_step4_component__WEBPACK_IMPORTED_MODULE_19__["RegistrationStep4Component"], _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_21__["ForgotPasswordComponent"], _verify_otp_verify_otp_component__WEBPACK_IMPORTED_MODULE_22__["VerifyOTPComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](BeforeSignupModule, { declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"], _about_us_about_us_component__WEBPACK_IMPORTED_MODULE_4__["AboutUsComponent"], _faq_faq_component__WEBPACK_IMPORTED_MODULE_5__["FaqComponent"], _packages_packages_component__WEBPACK_IMPORTED_MODULE_6__["PackagesComponent"], _store_store_component__WEBPACK_IMPORTED_MODULE_7__["StoreComponent"], _success_stories_success_stories_component__WEBPACK_IMPORTED_MODULE_8__["SuccessStoriesComponent"], _terms_of_use_terms_of_use_component__WEBPACK_IMPORTED_MODULE_9__["TermsOfUseComponent"], _privacy_policy_privacy_policy_component__WEBPACK_IMPORTED_MODULE_10__["PrivacyPolicyComponent"], _contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_11__["ContactUsComponent"], _career_career_component__WEBPACK_IMPORTED_MODULE_12__["CareerComponent"], _blog_list_blog_list_component__WEBPACK_IMPORTED_MODULE_13__["BlogListComponent"], _blog_details_blog_details_component__WEBPACK_IMPORTED_MODULE_14__["BlogDetailsComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"], _registration_step1_registration_step1_component__WEBPACK_IMPORTED_MODULE_16__["RegistrationStep1Component"], _registration_step2_registration_step2_component__WEBPACK_IMPORTED_MODULE_17__["RegistrationStep2Component"], _registration_step3_registration_step3_component__WEBPACK_IMPORTED_MODULE_18__["RegistrationStep3Component"], _registration_step4_registration_step4_component__WEBPACK_IMPORTED_MODULE_19__["RegistrationStep4Component"], _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_21__["ForgotPasswordComponent"], _verify_otp_verify_otp_component__WEBPACK_IMPORTED_MODULE_22__["VerifyOTPComponent"], _search_search_component__WEBPACK_IMPORTED_MODULE_24__["SearchComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_20__["ReactiveFormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_20__["FormsModule"],
         angular_mydatepicker__WEBPACK_IMPORTED_MODULE_23__["AngularMyDatePickerModule"],
@@ -270,7 +275,7 @@ BeforeSignupModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BeforeSignupModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"], _about_us_about_us_component__WEBPACK_IMPORTED_MODULE_4__["AboutUsComponent"], _faq_faq_component__WEBPACK_IMPORTED_MODULE_5__["FaqComponent"], _packages_packages_component__WEBPACK_IMPORTED_MODULE_6__["PackagesComponent"], _store_store_component__WEBPACK_IMPORTED_MODULE_7__["StoreComponent"], _success_stories_success_stories_component__WEBPACK_IMPORTED_MODULE_8__["SuccessStoriesComponent"], _terms_of_use_terms_of_use_component__WEBPACK_IMPORTED_MODULE_9__["TermsOfUseComponent"], _privacy_policy_privacy_policy_component__WEBPACK_IMPORTED_MODULE_10__["PrivacyPolicyComponent"], _contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_11__["ContactUsComponent"], _career_career_component__WEBPACK_IMPORTED_MODULE_12__["CareerComponent"], _blog_list_blog_list_component__WEBPACK_IMPORTED_MODULE_13__["BlogListComponent"], _blog_details_blog_details_component__WEBPACK_IMPORTED_MODULE_14__["BlogDetailsComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"], _registration_step1_registration_step1_component__WEBPACK_IMPORTED_MODULE_16__["RegistrationStep1Component"], _registration_step2_registration_step2_component__WEBPACK_IMPORTED_MODULE_17__["RegistrationStep2Component"], _registration_step3_registration_step3_component__WEBPACK_IMPORTED_MODULE_18__["RegistrationStep3Component"], _registration_step4_registration_step4_component__WEBPACK_IMPORTED_MODULE_19__["RegistrationStep4Component"], _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_21__["ForgotPasswordComponent"], _verify_otp_verify_otp_component__WEBPACK_IMPORTED_MODULE_22__["VerifyOTPComponent"]],
+                declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"], _about_us_about_us_component__WEBPACK_IMPORTED_MODULE_4__["AboutUsComponent"], _faq_faq_component__WEBPACK_IMPORTED_MODULE_5__["FaqComponent"], _packages_packages_component__WEBPACK_IMPORTED_MODULE_6__["PackagesComponent"], _store_store_component__WEBPACK_IMPORTED_MODULE_7__["StoreComponent"], _success_stories_success_stories_component__WEBPACK_IMPORTED_MODULE_8__["SuccessStoriesComponent"], _terms_of_use_terms_of_use_component__WEBPACK_IMPORTED_MODULE_9__["TermsOfUseComponent"], _privacy_policy_privacy_policy_component__WEBPACK_IMPORTED_MODULE_10__["PrivacyPolicyComponent"], _contact_us_contact_us_component__WEBPACK_IMPORTED_MODULE_11__["ContactUsComponent"], _career_career_component__WEBPACK_IMPORTED_MODULE_12__["CareerComponent"], _blog_list_blog_list_component__WEBPACK_IMPORTED_MODULE_13__["BlogListComponent"], _blog_details_blog_details_component__WEBPACK_IMPORTED_MODULE_14__["BlogDetailsComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"], _registration_step1_registration_step1_component__WEBPACK_IMPORTED_MODULE_16__["RegistrationStep1Component"], _registration_step2_registration_step2_component__WEBPACK_IMPORTED_MODULE_17__["RegistrationStep2Component"], _registration_step3_registration_step3_component__WEBPACK_IMPORTED_MODULE_18__["RegistrationStep3Component"], _registration_step4_registration_step4_component__WEBPACK_IMPORTED_MODULE_19__["RegistrationStep4Component"], _forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_21__["ForgotPasswordComponent"], _verify_otp_verify_otp_component__WEBPACK_IMPORTED_MODULE_22__["VerifyOTPComponent"], _search_search_component__WEBPACK_IMPORTED_MODULE_24__["SearchComponent"]],
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
                     _angular_forms__WEBPACK_IMPORTED_MODULE_20__["ReactiveFormsModule"],
@@ -345,23 +350,175 @@ class BlogListComponent {
     }
 }
 BlogListComponent.ɵfac = function BlogListComponent_Factory(t) { return new (t || BlogListComponent)(); };
-BlogListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BlogListComponent, selectors: [["app-blog-list"]], decls: 14, vars: 0, consts: [[2, "margin-top", "100px"], [1, "page-main--wrapper", "custom__wrap"], [1, "sitewide--title-wrapper"], [1, "page--title", "icon_heading_custom"], [1, "custom-new-container"], [1, "grid-uniform", "large--two-thirds", "push--large--one-sixth"], ["action", "/search", "method", "get", "role", "search", 1, "input-group", "search-bar"], ["type", "search", "name", "q", "value", "", "placeholder", "Search our store", "aria-label", "Search our store", 1, "input-group-field"], [1, "input-group-btn"], ["type", "submit", 1, "btn", "icon-fallback-text", "blk_btn"], [1, "fa", "fa-search"], [1, "fallback-text"]], template: function BlogListComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "h4", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Search for products on our site");
+BlogListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BlogListComponent, selectors: [["app-blog-list"]], decls: 112, vars: 0, consts: [[1, "blog-section"], [1, "container"], [1, "row"], [1, "col-xl-12"], [1, "col-xl-9"], [1, "blog_row"], ["href", "blog-details.html", 1, "blog_column"], [1, "blog_img"], ["src", "assets/img/matching-img-1.png", "alt", "matching image", "title", "matching image"], [1, "blog-column-content"], [1, "far", "fa-clock"], [1, "col-xl-3", "col-lg-3", "col-md-12", "col-sm-12", "col-12"], [1, "signup-page-1"], ["type", "text", "placeholder", "Full Name*", "name", "user-name", "required", ""], ["type", "tel", "placeholder", "Mobile Number*", "name", "user-mob", "required", ""], ["type", "text", "placeholder", "Create Profile for*", "name", "profile-for", "required", ""], ["type", "password", "placeholder", "Create New Password*", "name", "user-pass", "required", "", "id", "creat-pass"], ["id", "show-pass", "title", "view password", "aria-hidden", "true", 1, "far", "fa-eye-slash"], [1, "sr-only"], ["id", "none-pass", "title", "hide password", "aria-hidden", "true", 1, "far", "fa-eye"], ["type", "submit"]], template: function BlogListComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h6");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Wedding App ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Blogs");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "form", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "input", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "i", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Search");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Top 5 Indian Wedding Trends To Behold In 2018");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "2019-02-12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, " What will your future be like? How compatible will you be with your partner? How many \u2018gunas\u2019 will match with your prospective partner? Well, marriage is a vital decision in ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Read more");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Top 5 Indian Wedding Trends To Behold In 2018");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "2019-02-12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, " What will your future be like? How compatible will you be with your partner? How many \u2018gunas\u2019 will match with your prospective partner? Well, marriage is a vital decision in ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "button");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "Read more");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](41, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "Top 5 Indian Wedding Trends To Behold In 2018");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "2019-02-12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, " What will your future be like? How compatible will you be with your partner? How many \u2018gunas\u2019 will match with your prospective partner? Well, marriage is a vital decision in ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "button");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Read more");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "Top 5 Indian Wedding Trends To Behold In 2018");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](61, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "2019-02-12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, " What will your future be like? How compatible will you be with your partner? How many \u2018gunas\u2019 will match with your prospective partner? Well, marriage is a vital decision in ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "button");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "Read more");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](69, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72, "Top 5 Indian Wedding Trends To Behold In 2018");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](75, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, "2019-02-12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78, " What will your future be like? How compatible will you be with your partner? How many \u2018gunas\u2019 will match with your prospective partner? Well, marriage is a vital decision in ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "button");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80, "Read more");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](83, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86, "Top 5 Indian Wedding Trends To Behold In 2018");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](89, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90, "2019-02-12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](92, " What will your future be like? How compatible will you be with your partner? How many \u2018gunas\u2019 will match with your prospective partner? Well, marriage is a vital decision in ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "button");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](94, "Read more");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "h4");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](98, "Sign up");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "form");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](100, "input", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](101, "input", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](102, "input", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](103, "input", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](104, "i", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "span", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](106, "view password");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](107, "i", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "span", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](109, "hide password");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "button", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](111, "REGISTER");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1977,7 +2134,6 @@ class HomeComponent {
         $("#show_register_form").on('click', function (e) {
             $('.register_form').toggleClass('showSignupModal');
         });
-        this.checkEmailVerification();
     }
     registrationFnc() {
         let data = {
@@ -2005,7 +2161,8 @@ class HomeComponent {
     }
     checkEmailVerification() {
         this.routes.params.subscribe(params => {
-            console.log('params=>' + params[`id`]);
+            console.log('params111=>', params);
+            console.log('params222=>' + params[`user`]);
             // this.tab = params[`id`]
         });
     }
@@ -10677,6 +10834,64 @@ RegistrationStep4Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["�
                 styleUrls: ['./registration-step4.component.scss']
             }]
     }], function () { return [{ type: src_app_providers_http_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] }, { type: src_app_providers_common_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/before-signup/search/search.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/before-signup/search/search.component.ts ***!
+  \**********************************************************/
+/*! exports provided: SearchComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+class SearchComponent {
+    constructor(router, routes) {
+        this.router = router;
+        this.routes = routes;
+        //   this.router.events.subscribe( (event: Event) => {        
+        //     if(event instanceof NavigationEnd) { 
+        //         // console.log("events==>> ",event.url);
+        //     this.url = event.url;          
+        //     this.currUrl = event.url.split('/')[1];
+        //     this.ToggleTabUrl = event.url.split('/')[2];   
+        //     console.log("current url ==>> "+this.url)        
+        //     console.log("current url ==>> "+this.currUrl)
+        //     }
+        // })  
+    }
+    ngOnInit() {
+        this.routes.params.subscribe(params => {
+            console.log('params111=>', params);
+            console.log('params222=>' + params[`user`]);
+            // this.tab = params[`id`]
+        });
+        let params = this.routes.snapshot.params;
+        console.log(params.user);
+    }
+}
+SearchComponent.ɵfac = function SearchComponent_Factory(t) { return new (t || SearchComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"])); };
+SearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SearchComponent, selectors: [["app-search"]], decls: 2, vars: 0, template: function SearchComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "search works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2JlZm9yZS1zaWdudXAvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuc2NzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SearchComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-search',
+                templateUrl: './search.component.html',
+                styleUrls: ['./search.component.scss']
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] }]; }, null); })();
 
 
 /***/ }),

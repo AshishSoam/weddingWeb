@@ -255,10 +255,6 @@ router.post('/changePassword', userController.changePassword);
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: user
- *         description: user is required .
- *         in: query
- *         required: true
  *       - name: key
  *         description: key is required .
  *         in: query

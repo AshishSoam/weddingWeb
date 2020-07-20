@@ -97,8 +97,9 @@ module.exports = {
                         req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
 
                         // let link = `${config.base_url}/v1/user/email_verification?user=${req.body.email}&key=${token}`
-                        req.body.link = `${global.gConfig.website_url}?user=${req.body.email}&key=${req.body.forgotToken}`
-                        // console.log("link************>", req.body.link)
+                        // req.body.link = `${global.gConfig.website_url}?user=${req.body.email}&key=${req.body.forgotToken}`
+                        req.body.link = `${global.gConfig.website_url}?token=${req.body.forgotToken}`
+                        console.log("link************>", req.body.link)
                         let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
                         req.body.password = bcryptData
@@ -111,10 +112,10 @@ module.exports = {
                             else {
 
                                 let data = {
-                                    
+
                                     "_id": result1._id,
-                                    "email": result1.email,
-                                    "mobileNumber": result1.mobileNumber,
+                                   // "email": result1.email,
+                                   // "mobileNumber": result1.mobileNumber,
                                     otp: result1.otp,
                                     token: jwt.sign({ email: result1.email, _id: result1._id }, 'WeddingWeb')
 
@@ -470,11 +471,12 @@ module.exports = {
             }
 
             else {
-                var query =
-                {
-                    $and: [{ email: req.query.user }, { $or: [{ token: req.query.key }, { forgotToken: req.query.key }] }, { status: "ACTIVE" }]
-                }
-                userModel.findOne(query, (err, success) => {
+                // var query =
+                // {
+                //    $or: [{ token: req.query.key }, { forgotToken: req.query.key }] }, { status: "ACTIVE" }]
+                // }
+                userModel.findOne({forgotToken: req.query.key
+                    ,status: "ACTIVE"}, (err, success) => {
                     console.log("user verify at forgot Password>>>>", err, success)
                     if (err) {
                         return res.send({ responseCode: 404, responseMessage: "Please provide valid token.", err })
@@ -498,7 +500,7 @@ module.exports = {
 
                         else {
 
-                            userModel.findByIdAndUpdate({ "_id": success._id, status: "ACTIVE" }, { $set: { emailVerified: true, emailVerifiedDate: new Date().getTime(), forgotToken: "" } }, { new: true }, (err1, result2) => {
+                            userModel.findByIdAndUpdate({ "_id": success._id, status: "ACTIVE" }, { $set: { emailVerified: true, emailVerifiedDate: new Date().getTime() } }, { new: true }, (err1, result2) => {
                                 if (err1) {
                                     return res.send({ responseCode: 404, responseMessage: "Please provide valid token.", err1 })
                                 }

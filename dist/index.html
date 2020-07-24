@@ -1,40 +1,76 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>WeddingAdmin</title>
-  <base href="/">
-  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,width=device-width,user-scalable=no">
-  <!-- == -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="">
-  <meta name="author" content="">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/fonts.css" rel="stylesheet">
-    <link href="assets/css/mobile.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://rawgit.com/Stabzs/Angular2-Toaster/master/src/toaster.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <title>ResponsiveAdmin</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="assets/styles/style.min.css">
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="assets/fonts/themify-icons/themify-icons.css">
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+    <!-- Percent Circle -->
+    <link rel="stylesheet" href="assets/plugin/percircle/css/percircle.css">
+    <!-- Chartist Chart -->
+    <link rel="stylesheet" href="assets/plugin/chart/chartist/chartist.min.css">
+    <!-- FullCalendar -->
+    <link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+
+
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
 </head>
 
-<body>
-  <app-root></app-root>
-  <script src="assets/js/jquery-3.3.1.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.nicescroll.min.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
-  <!-- add the shim first -->
-<script type="text/javascript" src="shim.min.js"></script>
-<!-- after the shim is referenced, add the library -->
-<script type="text/javascript" src="xlsx.full.min.js"></script>
 
+<body>
+
+
+	<!-- Waves Effect -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/modernizr.min.js"></script>
+    <script src="assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/plugin/nprogress/nprogress.js"></script>
+    <script src="assets/plugin/sweet-alert/sweetalert.min.js"></script>
+    <script src="assets/plugin/waves/waves.min.js"></script>
+    <!-- Sparkline Chart -->
+    <script src="assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+    <script src="assets/scripts/chart.sparkline.init.min.js"></script>
+    <!-- Percent Circle -->
+    <script src="assets/plugin/percircle/js/percircle.js"></script>
+    <!-- Google Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Chartist Chart -->
+    <script src="assets/plugin/chart/chartist/chartist.min.js"></script>
+    <script src="assets/scripts/jquery.chartist.init.min.js"></script>
+    <!-- FullCalendar -->
+    <script src="assets/plugin/moment/moment.js"></script>
+    <script src="assets/plugin/fullcalendar/fullcalendar.min.js"></script>
+    <script src="assets/scripts/fullcalendar.init.js"></script>
+
+    <script src="assets/scripts/main.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
+
+    <!-- <script src="assets/js/bootstrap.min.js"></script> -->
+
+
+
+
+
+
+
+    <app-root></app-root>
 <script src="runtime.js" defer></script><script src="polyfills.js" defer></script><script src="styles.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
+
 </html>

@@ -178,7 +178,7 @@ module.exports = {
 
                             else {
                                 let token = jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')
-                                return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.LOGIN_SUCCESS, token)
+                                return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.LOGIN_SUCCESS, { token: token, _id: result._id })
                             }
                         }
                     }

@@ -45,62 +45,16 @@ module.exports = {
                         req.body.otpTime = new Date().getTime(),
                             console.log("otp is=======", req.body);
 
-                        // var unique = message.getCode()
-                        // if (req.body.referralCode) {
-                        //     User.findOne({ "referralCode": req.body.referralCode }, (err1, data) => {
-                        //         if (err1) {
-                        //             return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
-                        //         }
-                        //         else if (!data) {
-                        //             console.log("user not use available reffer code>>>>")
-                        //             obj.referralCode = unique;
-                        //         }
-                        //         else {
-                        //             console.log("user  use available reffer code>>>>")
-                        //             obj.referralCode = unique;
-                        //             obj.point = "0.5"
-                        //         }
-                        //     })
-                        // }
-                        // else {
-                        //     console.log("new user reffer code>>>", unique)
-                        //     obj.referralCode = unique;
-                        // }
-                        // commonQuery.sendSnsSms("OTP for verification of HOUSE THAT APP is:- " + otp1, `+91${obj.mobileNumber}`, (err, res1) => {
-                        // console.log("response OTP====>>>>>>>", err, res1);
-                        // if (err) {
-                        //     return Response.sendResponseWithData(res, 501, "Unable to send SMS", err)
-                        // }
-                        // else {
-                        // ${req.headers.origin}
-                        // let link = `${global.gConfig.base_url}/v1/user/email_verification?user=${req.body.email}&key=${token}`
-                        // console.log("i am here to check link url>>>> 115", link)
-                        // email, subject,password, link, name,
-                        // if (req.body.AdminAdd != "1") {
-                        //     // email, subject, text, callback
-                        //     commonQuery.sendMail(req.body.email, "Please Click here to Verify", link, req.body.creatorName, (err2, sentData) => {
-                        //         if (err2) {
-                        //             console.log("error in sent email>>>>>>", err2)
-                        //         }
-                        //         else {
-                        //             console.log("email sent>>>>>>>>>", req.body.email)
-                        //         }
-                        //     })
-                        // }
-                        // else {
-                        // email, subject, text, callback
-
-
                         req.body.forgotToken = jwt.sign({ email: req.body.email, creatorName: req.body.creatorName }, 'WeddingWeb')
                         req.body.message = `Hello ${req.body.creatorName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
-                        let sendSMS = await commonQuery.sendSMS(req, res)
+                        // let sendSMS = await commonQuery.sendSMS(req, res)
                         req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
 
                         // let link = `${config.base_url}/v1/user/email_verification?user=${req.body.email}&key=${token}`
                         // req.body.link = `${global.gConfig.website_url}?user=${req.body.email}&key=${req.body.forgotToken}`
                         req.body.link = `${global.gConfig.website_url}?token=${req.body.forgotToken}`
                         console.log("link************>", req.body.link)
-                        let sendEmail = await commonQuery.adminSendMail(req, res)
+                        // let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
                         req.body.password = bcryptData
                         // return

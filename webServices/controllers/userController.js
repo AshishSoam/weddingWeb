@@ -47,14 +47,14 @@ module.exports = {
 
                         req.body.forgotToken = jwt.sign({ email: req.body.email, creatorName: req.body.creatorName }, 'WeddingWeb')
                         req.body.message = `Hello ${req.body.creatorName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
-                        // let sendSMS = await commonQuery.sendSMS(req, res)
+                        let sendSMS = await commonQuery.sendSMS(req, res)
                         req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
 
                         // let link = `${config.base_url}/v1/user/email_verification?user=${req.body.email}&key=${token}`
                         // req.body.link = `${global.gConfig.website_url}?user=${req.body.email}&key=${req.body.forgotToken}`
                         req.body.link = `${global.gConfig.website_url}?token=${req.body.forgotToken}`
                         console.log("link************>", req.body.link)
-                        // let sendEmail = await commonQuery.adminSendMail(req, res)
+                        let sendEmail = await commonQuery.adminSendMail(req, res)
                         let bcryptData = bcrypt.hashSync(req.body.password, salt)
                         req.body.password = bcryptData
                         // return

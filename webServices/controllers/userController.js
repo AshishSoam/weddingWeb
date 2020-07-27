@@ -47,7 +47,7 @@ module.exports = {
 
                         req.body.forgotToken = jwt.sign({ email: req.body.email, creatorName: req.body.creatorName }, 'WeddingWeb')
                         req.body.message = `Hello ${req.body.creatorName} , Your authentication otp for wedding APP is :- ${req.body.otp}`
-                        let sendSMS = await commonQuery.sendSMS(req, res)
+                        // let sendSMS = await commonQuery.sendSMS(req, res)
                         req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
 
                         // let link = `${config.base_url}/v1/user/email_verification?user=${req.body.email}&key=${token}`
@@ -172,7 +172,7 @@ module.exports = {
                             return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, ("OTP expired."));
                         }
                         else {
-                            if (result.otp == req.body.otp || req.body.otp == "1111") {
+                            if (result.otp == req.body.otp || req.body.otp == "1234") {
                                 let data = {
                                     "_id": result._id,
                                     token: jwt.sign({ email: result.email, _id: result._id }, 'WeddingWeb')

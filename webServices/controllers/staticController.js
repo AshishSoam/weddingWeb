@@ -1,5 +1,9 @@
 const staticModel = require("../../models/staticModel");
-// const contactUsSchema = require("../../models/contactUsModel.js");
+const packageSchema = require("../../models/packageModel");
+const constant = require('../../helpers/constants');
+const Response = require('../../helpers/commonResponseHaldler');
+const responseMessage = require('../../helpers/httpResponseMessage');
+const responseCode = require('../../helpers/httpResponseCode');
 // const message = require('../../commonFile/commonFunction');
 // const User = require('../../models/userModel');
 
@@ -105,7 +109,7 @@ const AddFaq = (req, res) => {
 
 const viewFaq = (req, res) => {
     staticModel.findOne({
-        "FAQ._id": req.body._id,
+        "FAQ._id": req.query.faqId,
         'status': "ACTIVE",
         "Type": "FAQ"
     }, {
@@ -117,17 +121,9 @@ const viewFaq = (req, res) => {
             else if (!success)
                 return res.send({ responseCode: 404, responseMessage: "Data not found" })
             else
-                return res.send({ responseCode: 200, responseMessage: "Data found successfully", result })
+                return res.send({ responseCode: 200, responseMessage: "Data found successfully", result:success })
         })
 }
-
-
-
-
-
-
-
-
 
 
 //================================================================ Update FAQ ==================================================
@@ -136,9 +132,8 @@ const updateFaq = (req, res) => {
         'Type': 'FAQ'
     }).exec((err, succ) => {
         if (err)
-            return global_fn.responseHandler(res, 400, err);
+        return res.send({ responseCode: 500, responseMessage: "Internal server error.", error })
         else {
-            console.log("QQQQQQQQQ>>>>>>>>>>", succ);
             staticModel.findOneAndUpdate({
                 "FAQ._id": req.body._id
             }, {
@@ -146,15 +141,13 @@ const updateFaq = (req, res) => {
                     "FAQ.$": {
                         "_id": req.body._id,
                         "question": req.body.question,
-                        "answer": req.body.answer,
-                        "category": req.body.category
+                        "answer": req.body.answer
                     }
                 }
             }, {
                 new: true
             },
                 (error, result) => {
-                    console.log("@@@@@@@@@", error, result)
                     if (error)
                         return res.send({ responseCode: 500, responseMessage: "Internal server error.", error })
                     else if (!result)
@@ -269,6 +262,38 @@ const addContactUs = (req, res) => {
 
     }
 }
+/**
+     * Function Name :allPackages API
+     * Description : allPackages API
+     * @return  response
+     */
+const allPackages=(req,res)=>{
+    try{
+        let query={status:{$ne:"DELETE"}}
+        if(req.query.status){
+            query.status=req.query.status
+        }
+        if(req.query.packageId){
+            query._id=req.query.packageId
+        }
+        packageSchema.find(query).exec((err, succ) => {
+            if (err)
+            return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+            else if (succ.length ==0)
+            return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND,[])
+            else
+            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_DONE,succ)
+
+                // return res.status(200).send({ responseCode: 200, responseMessage: "Data found successfully.", result: succ })
+    
+        })   
+    }
+    catch(e){
+        return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+    }
+
+}
 
 
 module.exports = {
@@ -278,7 +303,8 @@ module.exports = {
     viewFaq,
     updateFaq,
     deletedFaq,
-    addContactUs
+    addContactUs,
+    allPackages
 
 }
 

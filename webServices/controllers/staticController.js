@@ -16,7 +16,7 @@ const getStaticContent = (req, res) => {
         query._id = req.query.staticId
     }
     if(req.query.mode){
-        query.Type ={$in:["PRIVACY","TERMS","ABOUT_US"]}
+        query.Type ={$in:["PRIVACY","TERMS","ABOUT_US","TERMS_OF_USE","OATH"]}
     }
     if (req.query.Type) {
         query.Type = { $in: req.query.Type }
@@ -294,6 +294,28 @@ const allPackages=(req,res)=>{
     }
 
 }
+/**
+     * Function Name :updatePackage API
+     * Description : updatePackage API
+     * @return  response
+     */
+const updatePackage=(req,res)=>{
+try{
+    packageSchema.findByIdAndUpdate(req.body.packageId,req.body,{new : true},(err,result)=>{
+        if (err)
+      {  return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)}
+        else if (!result)
+       { return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND,[])}
+        else
+        {
+            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_UPDATE,result)
+        }
+    })
+}catch(e){
+    return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+
+}
+}
 
 
 module.exports = {
@@ -304,7 +326,8 @@ module.exports = {
     updateFaq,
     deletedFaq,
     addContactUs,
-    allPackages
+    allPackages,
+    updatePackage,
 
 }
 

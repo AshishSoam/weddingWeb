@@ -12,7 +12,7 @@ const StaticController = require('../webServices/controllers/staticController');
  *       - application/json
  *     parameters:
  *       - name: Type
- *         description: Type is required.(ABOUT_US/PRIVACY/CONTACT_US/FAQ/TERMS)
+ *         description: Type is required.(ABOUT_US/PRIVACY/CONTACT_US/FAQ/TERMS/TERMS_OF_USE/OATH)
  *         in: query
  *         required: false
  *     responses:
@@ -137,6 +137,33 @@ router.post('/addContactUs', StaticController.addContactUs);
  *         description: Internal server error.
  */
 router.get('/allPackages',StaticController.allPackages)
+/**
+ * @swagger
+ * /api/v1/static/updatePackage:
+ *   get:
+ *     tags:
+ *       - Package Management
+ *     description: View Faq
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: packageId
+ *         description: packageId is required.
+ *         in: formData
+ *         required: true
+ *       - name: JSON
+ *         description: status is required.
+ *         in: body
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Data updated successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/updatePackage',StaticController.updatePackage)
 
 module.exports=router;
               

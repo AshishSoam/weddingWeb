@@ -133,7 +133,18 @@ let obj5 = {
     'Type': 'FAQ',
 };
 
+let obj6= {
+    'title': "Oath",
+    'description': "wedding_App is a marriage introduction service. The target audience are men and women living in Saudi Arabia and others looking to marry from these countries. Specific care is taken not to expose the contact information of the members to prevent unwanted communication and maintain privacy.Starting in mid 2019 wedding_App has begun requiring identity confirmation of all members including free members. This is one of the ways wedding_App is working to give its clients a safer and better experience. By preventing free searches by non members, wedding_App is further securing the privacy of its members and insuring that only people interested in marriage contact the members.Payments for membership can be made through our secure payment gateway or by check to the agent closest to you. We accept Visa, Master Card, Discover, American Express and most debit cards. The management of wedding_App is dedicated to continuing investmenents in technology to stay at the cutting edge and provide its members with a safe and productive experience.",
+    'Type': 'OATH',
 
+};
+let obj7= {
+    'title': "Terms of use",
+    'description': "wedding_App is a marriage introduction service. The target audience are men and women living in Saudi Arabia and others looking to marry from these countries. Specific care is taken not to expose the contact information of the members to prevent unwanted communication and maintain privacy.Starting in mid 2019 wedding_App has begun requiring identity confirmation of all members including free members. This is one of the ways wedding_App is working to give its clients a safer and better experience. By preventing free searches by non members, wedding_App is further securing the privacy of its members and insuring that only people interested in marriage contact the members.Payments for membership can be made through our secure payment gateway or by check to the agent closest to you. We accept Visa, Master Card, Discover, American Express and most debit cards. The management of wedding_App is dedicated to continuing investmenents in technology to stay at the cutting edge and provide its members with a safe and productive experience.",
+    'Type': 'TERMS_OF_USE',
+
+};
 
 
 mongoose.model('static_content', static_content).find((error, result) => {

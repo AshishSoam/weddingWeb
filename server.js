@@ -87,7 +87,7 @@ app.use(express.urlencoded({extended: true,limit: '100mb'}));
       app.use('/api/v1/static', require('./routes/staticRouter'));
       app.use(express.static(path.join(__dirname, 'dist')));
     app.get('*', (req, res) => {
-      res.sendFile(__dirname + '/dist/index.html')
+      res.sendFile(__dirname + '/dist1/index.html')
       });
     //* ******************************* function to set first default configuration *************************/
 

@@ -210,7 +210,7 @@ module.exports = {
     getProfile: (req, res) => {
         let userId = req.query.userId ? req.query.userId : req.userDetails.id
         try {
-            User.findOne({ "_id": userId, status: "ACTIVE" }).select("-password").exec((err, result) => {
+            User.findOne({ "_id": userId}).select("-password").exec((err, result) => {
                 if (err) {
                     return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                 }

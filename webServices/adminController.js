@@ -9,15 +9,15 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 module.exports = {
-  /**
-       * Function Name :login API
-       * Description : login user API
-       * @return  response
-       */
-      login: async (req, res) => {
+    /**
+         * Function Name :login API
+         * Description : login user API
+         * @return  response
+         */
+    login: async (req, res) => {
         try {
 
-            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] },userType:'ADMIN' }] }
+            let query = { $and: [{ $or: [{ 'email': req.body.email }, { 'mobileNumber': req.body.email }] }, { status: { $in: ["ACTIVE", "BLOCK"] }, userType: 'ADMIN' }] }
 
             let checkRequest = commonQuery.checkRequest(["email", "password"], req.body);
             console.log("checkRequest>>>>", checkRequest)
@@ -239,30 +239,30 @@ module.exports = {
         */
     editAdminProfile: async (req, res) => {
         try {
-            console.log("API------------>",req.body.email)
+            console.log("API------------>", req.body.email)
 
-            let fixedArray=["email", "phoneNumber", "fullName"]
-            if(req.body.oldPassword){
+            let fixedArray = ["email", "phoneNumber", "fullName"]
+            if (req.body.oldPassword) {
                 fixedArray.push("password")
             }
             let checkRequest = commonQuery.checkRequest(fixedArray, req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
-              return  Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing.`, {})
+                return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing.`, {})
             }
             else {
-console.log("else condititon------------>",req.body.email)
+                console.log("else condititon------------>", req.body.email)
 
                 req.body.mobileNumber = req.body.phoneNumber
                 let userId = req.query.userId ? req.query.userId : req.userDetails._id
                 req.body = req.body.json ? req.body.json : req.body;
-                if (req.body.oldPassword ) {
+                if (req.body.oldPassword) {
                     let check = bcrypt.compareSync(req.body.oldPassword, req.userDetails.password)
                     console.log("old password--->", check)
-                    if (!check || check==false) {
+                    if (!check || check == false) {
                         return res.send({ responseCode: 404, responseMessage: "Password is incorrect." })
                     }
-                    else{
+                    else {
                         req.body.password = bcrypt.hashSync(req.body.password, salt)
                     }
                 }
@@ -278,7 +278,7 @@ console.log("else condititon------------>",req.body.email)
                     }
                 }
 
-               if(!req.body.oldPassword ||req.body.oldPassword ==undefined){ delete req.body.password}
+                if (!req.body.oldPassword || req.body.oldPassword == undefined) { delete req.body.password }
                 console.log("finally------>", req.body)
 
                 userModel.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {

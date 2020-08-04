@@ -478,6 +478,22 @@ module.exports = {
 
         }
     },
+    
+    /**
+    * Function Name :uploadMultipleImage API
+    * Description : uploadMultipleImage user API
+    * @return  response
+    */
+    uploadMultipleImage:async(req, res) => {
+try{
+    // console.log("re============>",req.body.imageArray)
+    let urls=await commonQuery.mutipleImageUploading(req.body.imageArray)
+    return res.send({responseCode:200,responseMessage:"Image uploaded.",result:urls})
+}
+catch (e) {
+    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
+}
+    },
     //*************************************End of exports*********************************************8 */
 }

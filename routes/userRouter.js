@@ -269,4 +269,7 @@ router.post('/changePassword', userController.changePassword);
  */
 router.get('/email_verification', userController.email_verification);
 
+
+
+router.post('/uploadMultipleImage',userController.uploadMultipleImage)
 module.exports = router

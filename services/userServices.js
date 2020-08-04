@@ -6,12 +6,17 @@ const responseMessage = require('../helpers/httpResponseMessage');
 const responseCode = require('../helpers/httpResponseCode');
 const { reject } = require('lodash');
 const cloudinary = require('cloudinary').v2;
-const twilio = require('twilio')
+const twilio = require('twilio');
+const { path } = require('app-root-path');
 cloudinary.config({
     cloud_name: global.gConfig.cloudinary.CLOUD_NAME,
     api_key: global.gConfig.cloudinary.API_KEY,
     api_secret: global.gConfig.cloudinary.API_SECRET
 });
+
+const Q = require('q')
+
+
 
 module.exports = {
     /**
@@ -423,6 +428,33 @@ module.exports = {
         })
 
     },
+
+    /**
+    * Function Name :mutipleImageUploading on cloudinary
+    * Description :mutipleImageUploading on cloudinary
+    * @return  response
+    */
+    mutipleImageUploading: (imageArray) => {
+        let urls = []
+        return new Q.Promise(async (resolve, reject) => {
+            const uploader = async (path) => await cloudinary.uploader.upload(path)
+                .then(function (result) {
+                    // console.log("success--->",result)
+                    return result.secure_url;
+                }).catch(err => {
+                    console.log("err--->", err)
+                    reject(err)
+                });
+            for (let img of imageArray) {
+                const newPath = await uploader(img)
+                console.log("url======>", newPath)
+                urls.push(newPath)
+            }
+
+            resolve(urls)
+        })
+    },
+
 
     /**
 * Function Name :sendSMS using twilio.

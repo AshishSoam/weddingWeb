@@ -210,9 +210,11 @@ module.exports = {
     */
     getProfile: (req, res) => {
         let userId = req.query.userId ? req.query.userId : req.userDetails._id
-        console.log(userId)
         try {
-            User.findOne({ "_id": userId }).select("-password").populate("joinMember",null,{status:"ACTIVE"}).exec((err, result) => {
+            let collectionName=req.query.subUser ? userMember : User
+            console.log(userId,collectionName)
+
+            collectionName.findOne({ "_id": userId }).select("-password").populate("joinMember").exec((err, result) => {
                 if (err) {
                     return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                 }
@@ -298,9 +300,7 @@ module.exports = {
             if(req.body.editMemberId){
                 query._id=req.body.editMemberId
             }
-            console.log("===>",userId)
             userMember.findOneAndUpdate(query, req.body, { new: true, upsert: true }, (err, result) => {
-                console.log("1===>",err,result)
                 if (err)
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                 else if (!result) {
@@ -308,7 +308,6 @@ module.exports = {
                 }
                 else if (result) {
                     User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, { $addToSet: { joinMember: result._id } }, { new: true }, (err1, result1) => {
-                        console.log("2===>",err1)
 
                         if (err1) {
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)

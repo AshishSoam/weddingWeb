@@ -437,3 +437,8 @@ mongoose.model("users", userSchema).find({ userType: "ADMIN" }, (err, result) =>
 });
 
 
+shorts/curation?placement=discover
+/widget/details
+/discover
+/users/popular
+/onboarding

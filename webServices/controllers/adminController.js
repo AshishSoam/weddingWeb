@@ -128,7 +128,7 @@ module.exports = {
             limit: req.body.limit || 5,
             sort: { createdAt: -1 },
             populate: 
-                { path: "joinMember",match:{status:"ACTIVE"} },
+                { path: "joinMember"},
         }
 
         userModel.paginate(query, options, (err, result) => {
@@ -227,7 +227,6 @@ module.exports = {
                 }
                 else {
                     userMember.updateMany({ownerId:req.body.userId},req.body,{new:true,muti:true},(updateErr,updateResult)=>{
-                   console.log("========>",updateErr,updateResult)
                         if (updateErr) {
                             return res.send({ responseCode: 500, responseMessage: "Internal server error", updateErr })
                         }

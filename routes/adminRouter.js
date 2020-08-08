@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const userController = require('../webServices/controllers/userController')
 const auth=require('../middlewares/auth_handler')
-const adminController=require('../webServices/adminController')
+const adminController=require('../webServices/controllers/adminController')
 
 /**
  * @swagger

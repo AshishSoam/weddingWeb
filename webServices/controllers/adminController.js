@@ -1,10 +1,11 @@
 
-const userModel = require('../models/userModel')
-const commonQuery = require('../services/userServices')
-const constant = require('../helpers/constants');
-const Response = require('../helpers/commonResponseHaldler');
-const responseMessage = require('../helpers/httpResponseMessage');
-const responseCode = require('../helpers/httpResponseCode');
+const userModel = require('../../models/userModel')
+const userMember = require('../../models/subMember_User')
+const commonQuery = require('../../services/userServices')
+const constant = require('../../helpers/constants');
+const Response = require('../../helpers/commonResponseHaldler');
+const responseMessage = require('../../helpers/httpResponseMessage');
+const responseCode = require('../../helpers/httpResponseCode');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
@@ -125,7 +126,9 @@ module.exports = {
         options = {
             page: req.body.pageNumber || 1,
             limit: req.body.limit || 5,
-            sort: { createdAt: -1 }
+            sort: { createdAt: -1 },
+            populate: 
+                { path: "joinMember",match:{status:"ACTIVE"} },
         }
 
         userModel.paginate(query, options, (err, result) => {
@@ -223,8 +226,18 @@ module.exports = {
 
                 }
                 else {
-                    req.body.status = req.body.status == "ACTIVE" ? "activat" : req.body.status
-                    return res.send({ responseCode: 200, responseMessage: `User account ${req.body.status.toLowerCase()}ed successfully.`, result })
+                    userMember.updateMany({ownerId:req.body.userId},req.body,{new:true,muti:true},(updateErr,updateResult)=>{
+                   console.log("========>",updateErr,updateResult)
+                        if (updateErr) {
+                            return res.send({ responseCode: 500, responseMessage: "Internal server error", updateErr })
+                        }
+                        else{
+                            req.body.status = req.body.status == "ACTIVE" ? "activat" : req.body.status
+                   
+                            return res.send({ responseCode: 200, responseMessage: `User account ${req.body.status.toLowerCase()}ed successfully.`, result })
+                        }
+                    })
+                   
                 }
             })
         }

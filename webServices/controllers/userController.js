@@ -1,4 +1,5 @@
 const User = require('../../models/userModel')
+const userMember = require('../../models/subMember_User')
 const commonQuery = require('../../services/userServices')
 const constant = require('../../helpers/constants');
 const Response = require('../../helpers/commonResponseHaldler');
@@ -8,7 +9,7 @@ const responseCode = require('../../helpers/httpResponseCode');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
-const userModel = require('../../models/userModel');
+// const userModel = require('../../models/userModel');
 const twilio = require("twilio");
 module.exports = {
     /**
@@ -68,8 +69,8 @@ module.exports = {
                                 let data = {
 
                                     "_id": result1._id,
-                                   // "email": result1.email,
-                                   // "mobileNumber": result1.mobileNumber,
+                                    // "email": result1.email,
+                                    // "mobileNumber": result1.mobileNumber,
                                     otp: result1.otp,
                                     token: jwt.sign({ email: result1.email, _id: result1._id }, 'WeddingWeb')
 
@@ -107,7 +108,7 @@ module.exports = {
             }
             else {
 
-                userModel.findOne(query, (error, result) => {
+                User.findOne(query, (error, result) => {
                     if (error) {
                         return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
                     }
@@ -208,9 +209,10 @@ module.exports = {
     * @return  response
     */
     getProfile: (req, res) => {
-        let userId = req.query.userId ? req.query.userId : req.userDetails.id
+        let userId = req.query.userId ? req.query.userId : req.userDetails._id
+        console.log(userId)
         try {
-            User.findOne({ "_id": userId}).select("-password").exec((err, result) => {
+            User.findOne({ "_id": userId }).select("-password").populate("joinMember",null,{status:"ACTIVE"}).exec((err, result) => {
                 if (err) {
                     return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                 }
@@ -243,7 +245,7 @@ module.exports = {
         try {
 
 
-            userModel.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+            User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
                 console.log("otp1====>", err, result);
 
                 if (err) {
@@ -262,7 +264,7 @@ module.exports = {
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
                     // let bcryptData = bcrypt.hashSync(uniqueString, salt)
                     // req.body.password = bcryptData
-                    userModel.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
+                    User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
                         if (err)
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                         else if (!result) {
@@ -292,16 +294,32 @@ module.exports = {
         try {
             let userId = req.query.userId ? req.query.userId : req.userDetails._id
             req.body = req.body.json ? req.body.json : req.body;
-            userModel.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err, result) => {
+            let query={ "ownerId": userId, status: "ACTIVE" }
+            if(req.body.editMemberId){
+                query._id=req.body.editMemberId
+            }
+            console.log("===>",userId)
+            userMember.findOneAndUpdate(query, req.body, { new: true, upsert: true }, (err, result) => {
+                console.log("1===>",err,result)
                 if (err)
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                 else if (!result) {
                     return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
                 }
                 else if (result) {
-                    return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Profile updated successfully.", result)
+                    User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, { $addToSet: { joinMember: result._id } }, { new: true }, (err1, result1) => {
+                        console.log("2===>",err1)
+
+                        if (err1) {
+                            return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                        }
+                   else {
+                            return res.send({responseCode:responseCode.EVERYTHING_IS_OK, responseMessage:"Profile updated successfully.", result:result,editMemberId:result._id})
+                        }
+                    })
                 }
             })
+
         }
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
@@ -335,7 +353,7 @@ module.exports = {
 
         try {
             console.log(req.body)
-            userModel.findById({ _id: req.body.userId, status: "ACTIVE" }, async (err, result) => {
+            User.findById({ _id: req.body.userId, status: "ACTIVE" }, async (err, result) => {
                 console.log(err, result)
                 if (err) {
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
@@ -353,7 +371,7 @@ module.exports = {
                     req.body.subject = 'Regarding reset otp verification.'
                     let sendSMS = await commonQuery.sendSMS(req, res)
                     let sendEmail = await commonQuery.sendMail(req, res)
-                    userModel.findByIdAndUpdate({ _id: req.body.userId }, req.body, { new: true }, (err, result) => {
+                    User.findByIdAndUpdate({ _id: req.body.userId }, req.body, { new: true }, (err, result) => {
                         console.log("---/***************8->", err, result)
                         if (err) {
                             return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
@@ -384,7 +402,7 @@ module.exports = {
     changePassword: (req, res) => {
         try {
             var password = bcrypt.hashSync(req.body.password, salt)
-            userModel.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, { $set: { password: password } }, { new: true }, (err, success) => {
+            User.findByIdAndUpdate({ "_id": req.body.userId, status: "ACTIVE" }, { $set: { password: password } }, { new: true }, (err, success) => {
                 if (err) {
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
                 }
@@ -429,8 +447,10 @@ module.exports = {
                 // {
                 //    $or: [{ token: req.query.key }, { forgotToken: req.query.key }] }, { status: "ACTIVE" }]
                 // }
-                userModel.findOne({forgotToken: req.query.key
-                    ,status: "ACTIVE"}, (err, success) => {
+                User.findOne({
+                    forgotToken: req.query.key
+                    , status: "ACTIVE"
+                }, (err, success) => {
                     console.log("user verify at forgot Password>>>>", err, success)
                     if (err) {
                         return res.send({ responseCode: 404, responseMessage: "Please provide valid token.", err })
@@ -447,14 +467,14 @@ module.exports = {
 
                         }
                         // 24*60*60*1000
-                        else if (diff >= 24*60*60*1000) {
+                        else if (diff >= 24 * 60 * 60 * 1000) {
                             return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, ("Token expired."));
                         }
 
 
                         else {
 
-                            userModel.findByIdAndUpdate({ "_id": success._id, status: "ACTIVE" }, { $set: { emailVerified: true, emailVerifiedDate: new Date().getTime() } }, { new: true }, (err1, result2) => {
+                            User.findByIdAndUpdate({ "_id": success._id, status: "ACTIVE" }, { $set: { emailVerified: true, emailVerifiedDate: new Date().getTime() } }, { new: true }, (err1, result2) => {
                                 if (err1) {
                                     return res.send({ responseCode: 404, responseMessage: "Please provide valid token.", err1 })
                                 }
@@ -478,22 +498,22 @@ module.exports = {
 
         }
     },
-    
+
     /**
     * Function Name :uploadMultipleImage API
     * Description : uploadMultipleImage user API
     * @return  response
     */
-    uploadMultipleImage:async(req, res) => {
-try{
-    // console.log("re============>",req.body.imageArray)
-    let urls=await commonQuery.mutipleImageUploading(req.body.imageArray)
-    return res.send({responseCode:200,responseMessage:"Image uploaded.",result:urls})
-}
-catch (e) {
-    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+    uploadMultipleImage: async (req, res) => {
+        try {
+            // console.log("re============>",req.body.imageArray)
+            let urls = await commonQuery.mutipleImageUploading(req.body.imageArray)
+            return res.send({ responseCode: 200, responseMessage: "Image uploaded.", result: urls })
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
-}
+        }
     },
     //*************************************End of exports*********************************************8 */
 }

@@ -43,7 +43,9 @@ const userSchema = schema({
         type: String,
         default: Math.floor(10000000 + Math.random() * 90000000)
     },
-
+    address: {
+        type: String
+    },
     accountVerification: {
         type: Boolean,
         default: false
@@ -417,6 +419,7 @@ mongoose.model("users", userSchema).find({ userType: "ADMIN" }, (err, result) =>
             profilePic: "https://res.cloudinary.com/dkoznoze6/image/upload/v1563943105/n7zdoyvpxxqhexqybvkx.jpg",
             verifyOtp: true,
             countryCode: "+91",
+            address:"Okhla phase 1 ,govindpuri, Delhi",
             mobileNumber: "8447510661",
             mergeContact: "+918447510661",
             accountVerification: true,

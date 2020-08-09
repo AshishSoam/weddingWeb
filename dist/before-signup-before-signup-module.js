@@ -5617,7 +5617,7 @@ class RegistrationStep1Component {
             countryCode: this.registratioForm1.value.countryCode,
             mobileNumber: this.registratioForm1.value.mobileNumber,
             email: this.registratioForm1.value.email,
-            userFullName: this.registratioForm1.value.userFullName,
+            createFor: this.registratioForm1.value.userFullName,
             password: this.registratioForm1.value.password
         };
         this.httpService.put('user/signup', data, 1).subscribe(res => {
@@ -5626,6 +5626,7 @@ class RegistrationStep1Component {
                 this.commonService.showSuccessToast('Please check your Mobile and Email for OTP.', false, 'center');
                 localStorage.setItem('userID', res['result']._id);
                 localStorage.setItem('userToken', res['result'].token);
+                localStorage.setItem('createFor', this.registratioForm1.value.userFullName);
                 this.router.navigateByUrl('visitor/verifyOTP');
             }
         }, err => {
@@ -7402,7 +7403,8 @@ class RegistrationStep2Component {
             userGuardianFName: this.registratioForm2.value.userGuardianFName,
             userGuardianLName: this.registratioForm2.value.userGuardianLName,
             userGuardianRelation: this.registratioForm2.value.userGuardianRelation,
-            editMemberId: ''
+            editMemberId: '',
+            createFor: localStorage.getItem('createFor')
         };
         this.httpService.post('user/editProfile', data, 1).subscribe(res => {
             console.log('Registration_Succ =>', res);
@@ -9532,7 +9534,8 @@ class RegistrationStep3Component {
             userLifestyle: this.registrationForm3.value.userLifestyle,
             userDrinkingHabits: this.registrationForm3.value.userDrinkingHabits,
             userMatchingPictures: '',
-            editMemberId: ''
+            editMemberId: '',
+            createFor: localStorage.getItem('createFor')
         };
         this.httpService.post('user/editProfile', data, 1).subscribe(res => {
             console.log('Registration_Succ =>', res);
@@ -11747,7 +11750,8 @@ class RegistrationStep4Component {
             religion_Filter: this.religionFilter,
             mother_Tongue_Filter: this.toungeFilter,
             income_Filter: this.incomeFilter,
-            editMemberId: ''
+            editMemberId: '',
+            createFor: localStorage.getItem('createFor')
         };
         this.httpService.post('user/editProfile', data, 1).subscribe(res => {
             console.log('Registration_Succ =>', res);

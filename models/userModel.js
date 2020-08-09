@@ -5,6 +5,22 @@ const salt = bcrypt.genSaltSync(10);
 const mongoosePaginate = require('mongoose-paginate');
 
 const userSchema = schema({
+    packageId:{
+        type: schema.Types.ObjectId,
+        ref: 'packages'   
+    },
+    packageSuscription: {
+        type: String,
+        enum:["Pending","Approved","Completed","Cancelled","Not Purchase"],
+default:"Not Purchase"
+    },
+    packageEndDate: {
+        type: String
+    },
+    packageExpired: {
+        tye: Boolean,
+        // default: true
+    },
     //default key required
     email: {
         type: String
@@ -26,9 +42,9 @@ const userSchema = schema({
     fullName: {
         type: String
     },
-    createFor: {
-        type: String
-    },
+    // createFor: {
+    //     type: String
+    // },
     otp: {
         type: String
     },

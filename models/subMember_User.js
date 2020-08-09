@@ -20,6 +20,17 @@ const userSchema = schema({
         type: schema.Types.ObjectId,
         ref: 'users'
     },
+    packageEndDate: {
+        type: String
+    },
+    packageExpired: {
+        tye: Boolean,
+        // default: true
+    },
+    documentVerification: {
+        tye: Boolean,
+        default: false
+    },
     role: {
         type: String,
         enum: ["SUBMEMBER"],
@@ -51,24 +62,24 @@ const userSchema = schema({
     // countryCode: {
     //     type: String
     // },
-  
 
-   
+
+
     //step 1
 
-    creatorName: {
-        type: String
-    },
+    // creatorName: {
+    //     type: String
+    // },
 
     userFullName: {
         type: String
     },
 
     //step 2
-    userNickname : {
+    userNickname: {
         type: String
     },
-    userFirstName  : {
+    userFirstName: {
         type: String
     },
 
@@ -141,211 +152,211 @@ const userSchema = schema({
     userPackageType: {
         type: String
     },
-//******************* STEP 3 /  4 
+    //******************* STEP 3 /  4 
 
-userAge: {
-    type: String
-},
+    userAge: {
+        type: String
+    },
 
-partnerAge: {
-    type: String
-},
-userMathab: {
-    type: String
-},
-partnerMathab: {
-    type: String
-},
-userReligion: {
-    type: String
-},
-partnerReligion: {
-    type: String
-},
-userLanguage: {
-    type: String
-},
-partnerLanguage: {
-    type: String
-},
-userTribe : {
-    type: String
-},
-partnerTribe  : {
-    type: String
-},
-userTribeName  : {
-    type: String
-},
-partnerTribeName : {
-    type: String
-},
-userCountry : {
-    type: String
-},
-partnerCountry : {
-    type: String
-},
-userCity : {
-    type: String
-},
-partnerCity : {
-    type: String
-},
+    partnerAge: {
+        type: String
+    },
+    userMathab: {
+        type: String
+    },
+    partnerMathab: {
+        type: String
+    },
+    userReligion: {
+        type: String
+    },
+    partnerReligion: {
+        type: String
+    },
+    userLanguage: {
+        type: String
+    },
+    partnerLanguage: {
+        type: String
+    },
+    userTribe: {
+        type: String
+    },
+    partnerTribe: {
+        type: String
+    },
+    userTribeName: {
+        type: String
+    },
+    partnerTribeName: {
+        type: String
+    },
+    userCountry: {
+        type: String
+    },
+    partnerCountry: {
+        type: String
+    },
+    userCity: {
+        type: String
+    },
+    partnerCity: {
+        type: String
+    },
 
-userMaritalstatus  : {
-    type: String
-},
-partnerMaritalStatus : {
-    type: String
-},
-userEducation : {
-    type: String
-},
-partnerEducation : {
-    type: String
-},
-userEmployedIn : {
-    type: String
-},
-partnerEmployedIn : {
-    type: String
-},
-userOccupation : {
-    type: String
-},
-partnerOccupation : {
-    type: String
-},
-userBodyType : {
-    type: String
-},
-partnerBodyType : {
-    type: String
-},
-userComplexion : {
-    type: String
-},
-partnerComplexion : {
-    type: String
-},
-userPhysicalStatus : {
-    type: String
-},
-partnerPhysicalStatus : {
-    type: String
-},
-userHeight : {
-    type: String
-},
-partnerHeight : {
-    type: String
-},
-userWeight : {
-    type: String
-},
-partnerWeight : {
-    type: String
-},
-userCulture : {
-    type: String
-},
-userCulture : {
-    type: String
-},
-userFamilyGatherings : {
-    type: String
-},
-partnerFamilyGatherings : {
-    type: String
-},
-userHijab : {
-    type: String
-},
-partnerHijab : {
-    type: String
-},
-userAbaya : {
-    type: String
-},
-partnerAbaya : {
-    type: String
-},
-userHairType : {
-    type: String
-},
-partnerHairType : {
-    type: String
-},
-userHairColor : {
-    type: String
-},
-partnerHairColor : {
-    type: String
-},
-userSmokingHabits : {
-    type: String
-},
-partnerSmokingHabits : {
-    type: String
-},
-userHubblyBubbly : {
-    type: String
-},
-partnerHubblyBubbly : {
-    type: String
-},
-userEatingHabits : {
-    type: String
-},
-partnerEatingHabits : {
-    type: String
-},
-userProfilePhoto : {
-    type: String
-},
-partnerProfilePhoto : {
-    type: String
-},
-userIncome : {
-    type: String
-},
-partnerIncome : {
-    type: String
-},
-userFamilyStatus : {
-    type: String
-},
-partnerFamilyStatus : {
-    type: String
-},
-userLifestyle : {
-    type: String
-},
-partnerLifestyle : {
-    type: String
-},
-userDrinkingHabits : {
-    type: String
-},
-partnerDrinkingHabits : {
-    type: String
-},
-userMatchingPictures : {
-    type: String
-},
-partnerMatchingPictures : {
-    type: String
-},
-userBio  : {
-    type: String
-},
-PartnerBio : {
-    type: String
-},
-familyBio : {
-    type: String
-},
+    userMaritalstatus: {
+        type: String
+    },
+    partnerMaritalStatus: {
+        type: String
+    },
+    userEducation: {
+        type: String
+    },
+    partnerEducation: {
+        type: String
+    },
+    userEmployedIn: {
+        type: String
+    },
+    partnerEmployedIn: {
+        type: String
+    },
+    userOccupation: {
+        type: String
+    },
+    partnerOccupation: {
+        type: String
+    },
+    userBodyType: {
+        type: String
+    },
+    partnerBodyType: {
+        type: String
+    },
+    userComplexion: {
+        type: String
+    },
+    partnerComplexion: {
+        type: String
+    },
+    userPhysicalStatus: {
+        type: String
+    },
+    partnerPhysicalStatus: {
+        type: String
+    },
+    userHeight: {
+        type: String
+    },
+    partnerHeight: {
+        type: String
+    },
+    userWeight: {
+        type: String
+    },
+    partnerWeight: {
+        type: String
+    },
+    userCulture: {
+        type: String
+    },
+    userCulture: {
+        type: String
+    },
+    userFamilyGatherings: {
+        type: String
+    },
+    partnerFamilyGatherings: {
+        type: String
+    },
+    userHijab: {
+        type: String
+    },
+    partnerHijab: {
+        type: String
+    },
+    userAbaya: {
+        type: String
+    },
+    partnerAbaya: {
+        type: String
+    },
+    userHairType: {
+        type: String
+    },
+    partnerHairType: {
+        type: String
+    },
+    userHairColor: {
+        type: String
+    },
+    partnerHairColor: {
+        type: String
+    },
+    userSmokingHabits: {
+        type: String
+    },
+    partnerSmokingHabits: {
+        type: String
+    },
+    userHubblyBubbly: {
+        type: String
+    },
+    partnerHubblyBubbly: {
+        type: String
+    },
+    userEatingHabits: {
+        type: String
+    },
+    partnerEatingHabits: {
+        type: String
+    },
+    userProfilePhoto: {
+        type: String
+    },
+    partnerProfilePhoto: {
+        type: String
+    },
+    userIncome: {
+        type: String
+    },
+    partnerIncome: {
+        type: String
+    },
+    userFamilyStatus: {
+        type: String
+    },
+    partnerFamilyStatus: {
+        type: String
+    },
+    userLifestyle: {
+        type: String
+    },
+    partnerLifestyle: {
+        type: String
+    },
+    userDrinkingHabits: {
+        type: String
+    },
+    partnerDrinkingHabits: {
+        type: String
+    },
+    userMatchingPictures: {
+        type: String
+    },
+    partnerMatchingPictures: {
+        type: String
+    },
+    userBio: {
+        type: String
+    },
+    PartnerBio: {
+        type: String
+    },
+    familyBio: {
+        type: String
+    },
     // ******** default filter keys*************
 
     age_Filter: {
@@ -372,13 +383,13 @@ familyBio : {
         type: Boolean,
         default: false
     }
-   
+
 
 
 }, { timestamps: true })
 userSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("joinSubMembers", userSchema,"joinSubMembers")
+module.exports = mongoose.model("joinSubMembers", userSchema, "joinSubMembers")
 
 
 

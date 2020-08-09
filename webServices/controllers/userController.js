@@ -22,7 +22,7 @@ module.exports = {
         try {
             req.body.otp = commonQuery.getOTP();
             // req.body.socialId=commonQuery.get_social_Id()
-            let checkRequest = commonQuery.checkRequest(["email", "countryCode", "password", "creatorName", "userFullName", "mobileNumber"], req.body);
+            let checkRequest = commonQuery.checkRequest(["email", "countryCode", "password", "creatorName", "createFor", "mobileNumber"], req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
                 Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})

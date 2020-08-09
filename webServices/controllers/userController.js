@@ -296,10 +296,41 @@ module.exports = {
         try {
             let userId = req.query.userId ? req.query.userId : req.userDetails._id
             req.body = req.body.json ? req.body.json : req.body;
-            let query={ "ownerId": userId, status: "ACTIVE" }
+            req.body.ownerId=userId
+            let query={}
+            if(req.body.isLoggedIn==true){
+                query={}
+            }
+            if(!req.body.isLoggedIn){
+                query= { "ownerId": userId, status: "ACTIVE" }
+            }
+           
             if(req.body.editMemberId){
                 query._id=req.body.editMemberId
             }
+            console.log("====>",query,
+            '====req--==>',req.body)
+           if(req.body.isLoggedIn && !req.body.editMemberId){
+           new userMember(req.body).save((err, result) => {
+                if (err)
+                    return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                else if (!result) {
+                    return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
+                }
+                else if (result) {
+                    User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, { $addToSet: { joinMember: result._id } }, { new: true }, (err1, result1) => {
+
+                        if (err1) {
+                            return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                        }
+                   else {
+                            return res.send({responseCode:responseCode.EVERYTHING_IS_OK, responseMessage:"Profile updated successfully.", result:result,editMemberId:result._id})
+                        }
+                    })
+                }
+            })
+           }
+           else{
             userMember.findOneAndUpdate(query, req.body, { new: true, upsert: true }, (err, result) => {
                 if (err)
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
@@ -318,7 +349,7 @@ module.exports = {
                     })
                 }
             })
-
+           }
         }
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)

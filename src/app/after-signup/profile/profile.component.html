@@ -1,0 +1,1701 @@
+<section>
+    <div class="common-section">
+        <div class="container">
+            <div class="row registration-step-3">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-3 col-l-3 borderClass">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="user-profile mt-5">
+                                        <div class="image-box">
+                                            <img [src]="userImg || 'assets/img/user.png'" />
+                                            <label class="upload-label">
+                        <input
+                          type="file"
+                          name=""
+                          accept=".png, .jpg, .jpeg"
+                          (change)="onUploadChange($event)"
+                        />
+                        <i class="fa fa-camera"></i>
+                      </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="ml-5">
+                                        <h3>Welcome!</h3>
+                                        <h4>You can edit your profile.</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-l-9">
+                            <div class="accordion">
+                                <div class="card">
+                                    <div class="card-header newCardHeader" (click)="showUserDetails()">
+                                        <h2 class="mb-0">
+                                            User Details
+                                        </h2>
+                                        <span id="span">
+                      <i class="fa fa-edit" ></i>
+                      <i
+                        class="fa fa-chevron-down"
+                        *ngIf="showUser"
+                        aria-hidden="true"
+                      ></i>
+                      <i
+                        class="fa fa-chevron-up"
+                        *ngIf="!showUser"
+                        aria-hidden="true"
+                      ></i>
+                    </span>
+                                    </div>
+                                    <div class="card-body" *ngIf="showUser">
+                                        <div class="accordion">
+                                            <div class="card mt-3 animate__animated animate__zoomIn">
+                                                <div class="card-header" (click)="showUserSubDetails(1)">
+                                                    <h3 class="mb-0">
+                                                        Basic Details
+                                                    </h3>
+                                                    <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="uBasicDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!uBasicDetails"
+                            ></i>
+                          </span>
+                                                </div>
+
+                                                <div>
+                                                    <div class="card-body" *ngIf="uBasicDetails">
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <label for="staticEmail" class="col-4 col-form-label">First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showUserSubDetails(2)"
+                        >
+                          <h3 class="mb-0">Religion & Ethnicity</h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="uReligionDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!uReligionDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="uReligionDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showUserSubDetails(3)"
+                        >
+                          <h3 class="mb-0">
+                            Physical Details
+                          </h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="uPhysicalDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!uPhysicalDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="uPhysicalDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showUserSubDetails(4)"
+                        >
+                          <h3 class="mb-0">
+                            Health & Habits
+                          </h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="uHealthDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!uHealthDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="uHealthDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showUserSubDetails(5)"
+                        >
+                          <h3 class="mb-0">
+                            Gender & Details
+                          </h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="uGenderDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!uGenderDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="uGenderDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mt-3 animate__animated animate__zoomIn">
+                  <div
+                    class="card-header newCardHeader"
+                    (click)="showPartnerDetails()"
+                  >
+                    <h2 class="mb-0">
+                      Partner Details
+                    </h2>
+                    <span id="span">
+                      <i class="fa fa-edit" ></i>
+                      <i
+                        class="fa fa-chevron-down"
+                        *ngIf="showPartner"
+                        aria-hidden="true"
+                      ></i>
+                      <i
+                        class="fa fa-chevron-up"
+                        *ngIf="!showPartner"
+                        aria-hidden="true"
+                      ></i>
+                    </span>
+                  </div>
+                  <div class="card-body" *ngIf="showPartner">
+                    <div class="accordion">
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showPartnerSubDetails(1)"
+                        >
+                          <h3 class="mb-0">
+                            Basic Details
+                          </h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="pBasicDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!pBasicDetails"
+                            ></i>
+                          </span>
+                        </div>
+
+                        <div>
+                          <div class="card-body" *ngIf="pBasicDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showPartnerSubDetails(2)"
+                        >
+                          <h3 class="mb-0">Physical Details</h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="pPhysicalDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!pPhysicalDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="pPhysicalDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showPartnerSubDetails(3)"
+                        >
+                          <h3 class="mb-0">
+                            Religion & Ethnicity
+                          </h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="pReligionDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!pReligionDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="pReligionDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showPartnerSubDetails(4)"
+                        >
+                          <h3 class="mb-0">Education & Work</h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="pEducationDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!pEducationDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="pEducationDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mt-3 animate__animated animate__zoomIn">
+                        <div
+                          class="card-header"
+                          (click)="showPartnerSubDetails(5)"
+                        >
+                          <h3 class="mb-0">Health & Habits</h3>
+                          <span id="span">
+                            <i class="fa fa-edit" ></i>
+                            <i
+                              class="fa fa-chevron-down"
+                              aria-hidden="true"
+                              *ngIf="pHealthDetails"
+                            ></i>
+                            <i
+                              class="fa fa-chevron-up"
+                              aria-hidden="true"
+                              *ngIf="!pHealthDetails"
+                            ></i>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="card-body" *ngIf="pHealthDetails">
+                            <form>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >First Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Email</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="form-group row">
+                                    <label
+                                      for="staticEmail"
+                                      class="col-4 col-form-label"
+                                      >Last Name</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="staticEmail"
+                                        value="email@example.com"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label
+                                      for="inputPassword"
+                                      class="col-4 col-form-label"
+                                      >Description</label
+                                    >
+                                    <div class="col-8">
+                                      <input
+                                        type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

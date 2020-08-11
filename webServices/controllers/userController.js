@@ -331,6 +331,7 @@ module.exports = {
             })
            }
            else{
+               
             userMember.findOneAndUpdate(query, req.body, { new: true, upsert: true }, (err, result) => {
                 if (err)
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)

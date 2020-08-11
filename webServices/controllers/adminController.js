@@ -127,8 +127,6 @@ module.exports = {
             page: req.body.pageNumber || 1,
             limit: req.body.limit || 5,
             sort: { createdAt: -1 },
-            populate: 
-                { path: "joinMember"},
         }
 
         userModel.paginate(query, options, (err, result) => {

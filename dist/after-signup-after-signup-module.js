@@ -13010,63 +13010,123 @@ function ProfileComponent_i_54_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ProfileComponent_i_54_Template_i_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r112); const ctx_r111 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r111.showDocumentDetails(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-const _c0 = function () { return { standalone: true }; };
-function ProfileComponent_div_55_Template(rf, ctx) { if (rf & 1) {
-    const _r114 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 242);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 243);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " ID Card");
+function ProfileComponent_div_55_li_8_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "li", 255);
+} }
+const _c0 = function (a0) { return { "active": a0 }; };
+function ProfileComponent_div_55_ng_container_10_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 256);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 257);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 244);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_Template_input_change_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r114); const ctx_r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r113.onUploadChange($event, 1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const data_r118 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, !data_r118.status));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", data_r118 == null ? null : data_r118.images, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+} }
+const _c1 = function () { return { standalone: true }; };
+function ProfileComponent_div_55_div_19_Template(rf, ctx) { if (rf & 1) {
+    const _r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 258);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 259);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " ID Card");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 260);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_div_19_Template_input_change_6_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r120); const ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r119.onUploadChange($event, 1); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 242);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 243);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " Work Letter ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 258);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span", 259);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, " Work Letter ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 245);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_Template_input_change_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r114); const ctx_r115 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r115.onUploadChange($event, 2); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 242);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "span", 243);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " Document One ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "input", 245);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_Template_input_change_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r114); const ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r116.onUploadChange($event, 3); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "input", 261);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_div_19_Template_input_change_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r120); const ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r121.onUploadChange($event, 2); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 242);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "span", 243);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, " Document Two ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 258);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 259);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Document One ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "input", 245);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_Template_input_change_19_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r114); const ctx_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r117.onUploadChange($event, 4); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "input", 261);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_div_19_Template_input_change_14_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r120); const ctx_r122 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r122.onUploadChange($event, 3); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 258);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "span", 259);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " Document Two ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "input", 261);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_div_55_div_19_Template_input_change_18_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r120); const ctx_r123 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r123.onUploadChange($event, 4); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
+    const ctx_r115 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c1))("ngModel", ctx_r115.attachment1);
+} }
+function ProfileComponent_div_55_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 242);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 243);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 244);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "ol", 245);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, ProfileComponent_div_55_li_8_Template, 1, 0, "li", 246);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 247);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, ProfileComponent_div_55_ng_container_10_Template, 3, 4, "ng-container", 248);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 249);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "span", 250);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "span", 251);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Previous");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 252);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "span", 253);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "span", 251);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Next");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](19, ProfileComponent_div_55_div_19_Template, 19, 3, "div", 254);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
     const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("ngModel", ctx_r14.attachment1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r14.attachmentArr);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r14.attachmentArr);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.showEditDocumentDetails);
 } }
 class ProfileComponent {
     constructor(httpService, commonService) {
         this.httpService = httpService;
         this.commonService = commonService;
+        this.attachmentArr = [];
         this.userImg = '';
         this.flag = false;
         this.editsavePartner = true;
         this.editsaveUser = true;
         this.editsaveDocumnet = true;
+        this.showEditDocumentDetails = false;
         this.showUser = true;
         this.showPartner = false;
         this.showDocument = false;
@@ -13302,15 +13362,37 @@ class ProfileComponent {
         });
     }
     bindDocumentDetails(userDetails) {
-        this.documentForm.patchValue({
-            attachment1: userDetails['attachment1'],
-            attachment2: userDetails['attachment2'],
-            attachment3: userDetails['attachment3'],
-            attachment4: userDetails['attachment4']
-        });
+        this.attachment1 = userDetails['attachement1'];
+        this.attachment2 = userDetails['attachement2'];
+        this.attachment3 = userDetails['attachement3'];
+        this.attachment4 = userDetails['attachement4'];
+        var arr = [];
+        if (userDetails['attachment1']) {
+            arr.push({
+                images: userDetails['attachment1'].replace('pdf', 'png')
+            });
+        }
+        if (userDetails['attachment2']) {
+            arr.push({
+                images: userDetails['attachment2'].replace('pdf', 'png')
+            });
+        }
+        if (userDetails['attachment3']) {
+            arr.push({
+                images: userDetails['attachment3'].replace('pdf', 'png')
+            });
+        }
+        if (userDetails['attachment4']) {
+            arr.push({
+                images: userDetails['attachment4'].replace('pdf', 'png')
+            });
+        }
+        this.attachmentArr = arr.map(element => ({ images: element.images, status: true }));
+        this.attachmentArr[0]['status'] = false;
+        console.log('attachmentArr ==>', this.attachmentArr);
     }
-    onUploadChange(evt) {
-        console.log('uploadFunc_Called...');
+    onUploadChange(evt, type) {
+        this.attachementType = type;
         const file = evt.target.files[0];
         if (file) {
             const reader = new FileReader();
@@ -13319,19 +13401,68 @@ class ProfileComponent {
         }
     }
     handleReaderLoaded(e) {
-        let data = '';
+        let data = "";
         data = 'data:application/pdf;base64,' + btoa(e.target.result);
         console.log(data);
+        if (data) {
+            this.uploadWorkLetter(data);
+        }
+    }
+    uploadWorkLetter(data) {
+        this.httpService.imageUpload('user/uploadImages', data, 1).subscribe(res => {
+            console.log('uploading_Succ ==>', res);
+            if (res['responseCode'] == 200) {
+                switch (this.attachementType) {
+                    case 1:
+                        this.attachment1 = res['result'];
+                        break;
+                    case 2:
+                        this.attachment2 = res['result'];
+                        break;
+                    case 3:
+                        this.attachment3 = res['result'];
+                        break;
+                    case 4:
+                        this.attachment4 = res['result'];
+                        break;
+                    default:
+                        break;
+                }
+                this.commonService.showSuccessToast(res['responseMessage'], true, 'top-end');
+            }
+        }, err => {
+            console.log('uploading_Err ==>', err);
+        });
+    }
+    onUploadChange1(evt) {
+        const file = evt.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = this.handleReaderLoaded1.bind(this);
+            reader.readAsBinaryString(file);
+        }
+    }
+    handleReaderLoaded1(e) {
+        let data = "";
+        data = 'data:application/pdf;base64,' + btoa(e.target.result);
+        // console.log(data);
         if (data) {
             this.uploadImage(data);
         }
     }
     uploadImage(data) {
         this.httpService.imageUpload('user/uploadImages', data, 1).subscribe((res) => {
-            console.log('uploading_Succ ==>', res);
+            console.log('uploading_Succ111 ==>', res);
+            this.userImg = res['result'];
+            console.log('userImageURL ==>', this.userImg);
             if (res['responseCode'] == 200) {
                 this.userImg = res['result'];
+                console.log('userImageURL ==>', this.userImg);
                 this.commonService.showSuccessToast(res['responseMessage'], true, 'top-end');
+                let data = {
+                    userProfilePhoto: this.userImg
+                };
+                this.saveUpdatedProfileDetails(data);
             }
         }, (err) => {
             console.log('uploading_Err ==>', err);
@@ -13429,33 +13560,6 @@ class ProfileComponent {
                 break;
         }
     }
-    editSavePartnerDetails(data) {
-        this.editsavePartner = !this.editsavePartner;
-        switch (data) {
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
-    editSaveUserDetails(data) {
-        this.editsaveUser = !this.editsaveUser;
-        switch (data) {
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
-    editSaveDocumnetDetails(data) {
-        this.editsaveDocumnet = !this.editsaveDocumnet;
-        switch (data) {
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
     selectedCountry(countryCode, flag) {
         console.log(countryCode);
         var statesArr = this.countryArr.filter(y => y.country == countryCode);
@@ -13482,9 +13586,288 @@ class ProfileComponent {
             this.flag = false;
         }
     }
+    editSaveUserDetails(data) {
+        this.editsaveUser = !this.editsaveUser;
+        switch (data) {
+            case 1:
+                this.profileUserForm.controls.userIncome.enable();
+                this.profileUserForm.controls.userNickname.enable();
+                this.profileUserForm.controls.userFirstName.enable();
+                this.profileUserForm.controls.userFamilyName.enable();
+                this.profileUserForm.controls.userMaritalstatus.enable();
+                this.profileUserForm.controls.userNationality.enable();
+                this.profileUserForm.controls.userRegion.enable();
+                //  this.profileUserForm.controls.userMobile.enable();
+                //  this.profileUserForm.controls.userEmail.enable();
+                this.profileUserForm.controls.userBio.enable();
+                this.profileUserForm.controls.userGender.enable();
+                this.profileUserForm.controls.userGuardianFName.enable();
+                this.profileUserForm.controls.userGuardianLName.enable();
+                this.profileUserForm.controls.userGuardianRelation.enable();
+                this.profileUserForm.controls.userAge.enable();
+                this.profileUserForm.controls.userMathab.enable();
+                this.profileUserForm.controls.userReligion.enable();
+                this.profileUserForm.controls.userLanguage.enable();
+                this.profileUserForm.controls.userTribe.enable();
+                this.profileUserForm.controls.userTribeName.enable();
+                this.profileUserForm.controls.userCountry.enable();
+                this.profileUserForm.controls.userCity.enable();
+                this.profileUserForm.controls.userEducation.enable();
+                this.profileUserForm.controls.userEmployedIn.enable();
+                this.profileUserForm.controls.userOccupation.enable();
+                this.profileUserForm.controls.userBodyType.enable();
+                this.profileUserForm.controls.userComplexion.enable();
+                this.profileUserForm.controls.userPhysicalStatus.enable();
+                this.profileUserForm.controls.userHeight.enable();
+                this.profileUserForm.controls.userWeight.enable();
+                this.profileUserForm.controls.userCulture.enable();
+                this.profileUserForm.controls.userFamilyGatherings.enable();
+                this.profileUserForm.controls.userHijab.enable();
+                this.profileUserForm.controls.userAbaya.enable();
+                this.profileUserForm.controls.userHairType.enable();
+                this.profileUserForm.controls.userHairColor.enable();
+                this.profileUserForm.controls.userSmokingHabits.enable();
+                this.profileUserForm.controls.userHubblyBubbly.enable();
+                this.profileUserForm.controls.userEatingHabits.enable();
+                this.profileUserForm.controls.userFamilyStatus.enable();
+                this.profileUserForm.controls.userLifestyle.enable();
+                this.profileUserForm.controls.userDrinkingHabits.enable();
+                this.profileUserForm.controls.familyBio.enable();
+                break;
+            case 2:
+                this.profileUserForm.controls.userIncome.disable();
+                this.profileUserForm.controls.userNickname.disable();
+                this.profileUserForm.controls.userFirstName.disable();
+                this.profileUserForm.controls.userFamilyName.disable();
+                this.profileUserForm.controls.userMaritalstatus.disable();
+                this.profileUserForm.controls.userNationality.disable();
+                this.profileUserForm.controls.userRegion.disable();
+                //  this.profileUserForm.controls.userMobile.disable();
+                //  this.profileUserForm.controls.userEmail.disable();
+                this.profileUserForm.controls.userBio.disable();
+                this.profileUserForm.controls.userGender.disable();
+                this.profileUserForm.controls.userGuardianFName.disable();
+                this.profileUserForm.controls.userGuardianLName.disable();
+                this.profileUserForm.controls.userGuardianRelation.disable();
+                this.profileUserForm.controls.userAge.disable();
+                this.profileUserForm.controls.userMathab.disable();
+                this.profileUserForm.controls.userReligion.disable();
+                this.profileUserForm.controls.userLanguage.disable();
+                this.profileUserForm.controls.userTribe.disable();
+                this.profileUserForm.controls.userTribeName.disable();
+                this.profileUserForm.controls.userCountry.disable();
+                this.profileUserForm.controls.userCity.disable();
+                this.profileUserForm.controls.userEducation.disable();
+                this.profileUserForm.controls.userEmployedIn.disable();
+                this.profileUserForm.controls.userOccupation.disable();
+                this.profileUserForm.controls.userBodyType.disable();
+                this.profileUserForm.controls.userComplexion.disable();
+                this.profileUserForm.controls.userPhysicalStatus.disable();
+                this.profileUserForm.controls.userHeight.disable();
+                this.profileUserForm.controls.userWeight.disable();
+                this.profileUserForm.controls.userCulture.disable();
+                this.profileUserForm.controls.userFamilyGatherings.disable();
+                this.profileUserForm.controls.userHijab.disable();
+                this.profileUserForm.controls.userAbaya.disable();
+                this.profileUserForm.controls.userHairType.disable();
+                this.profileUserForm.controls.userHairColor.disable();
+                this.profileUserForm.controls.userSmokingHabits.disable();
+                this.profileUserForm.controls.userHubblyBubbly.disable();
+                this.profileUserForm.controls.userEatingHabits.disable();
+                this.profileUserForm.controls.userFamilyStatus.disable();
+                this.profileUserForm.controls.userLifestyle.disable();
+                this.profileUserForm.controls.userDrinkingHabits.disable();
+                this.profileUserForm.controls.familyBio.disable();
+                let data = {
+                    userNickname: this.profileUserForm.value.userNickname,
+                    userFirstName: this.profileUserForm.value.userFirstName,
+                    userFamilyName: this.profileUserForm.value.userFamilyName,
+                    userMaritalstatus: this.profileUserForm.value.userMaritalstatus,
+                    userNationality: this.profileUserForm.value.userNationality,
+                    userRegion: this.profileUserForm.value.userRegion,
+                    userMobile: this.profileUserForm.value.userMobile,
+                    userEmail: this.profileUserForm.value.userEmail,
+                    userBio: this.profileUserForm.value.userBio,
+                    userGender: this.profileUserForm.value.userGender,
+                    userGuardianFName: this.profileUserForm.value.userGuardianFName,
+                    userGuardianLName: this.profileUserForm.value.userGuardianLName,
+                    userGuardianRelation: this.profileUserForm.value.userGuardianRelation,
+                    userAge: this.profileUserForm.value.userAge,
+                    userMathab: this.profileUserForm.value.userMathab,
+                    userReligion: this.profileUserForm.value.userReligion,
+                    userLanguage: this.profileUserForm.value.userLanguage,
+                    userTribe: this.profileUserForm.value.userTribe,
+                    userTribeName: this.profileUserForm.value.userTribeName,
+                    userCountry: this.profileUserForm.value.userCountry,
+                    userCity: this.profileUserForm.value.userCity,
+                    userEducation: this.profileUserForm.value.userEducation,
+                    userEmployedIn: this.profileUserForm.value.userEmployedIn,
+                    userOccupation: this.profileUserForm.value.userOccupation,
+                    userBodyType: this.profileUserForm.value.userBodyType,
+                    userComplexion: this.profileUserForm.value.userComplexion,
+                    userPhysicalStatus: this.profileUserForm.value.userPhysicalStatus,
+                    userHeight: this.profileUserForm.value.userHeight,
+                    userWeight: this.profileUserForm.value.userWeight,
+                    userCulture: this.profileUserForm.value.userCulture,
+                    userFamilyGatherings: this.profileUserForm.value.userFamilyGatherings,
+                    userHijab: this.profileUserForm.value.userHijab,
+                    userAbaya: this.profileUserForm.value.userAbaya,
+                    userHairType: this.profileUserForm.value.userHairType,
+                    userHairColor: this.profileUserForm.value.userHairColor,
+                    userSmokingHabits: this.profileUserForm.value.userSmokingHabits,
+                    userHubblyBubbly: this.profileUserForm.value.userHubblyBubbly,
+                    userEatingHabits: this.profileUserForm.value.userEatingHabits,
+                    userIncome: this.profileUserForm.value.userIncome,
+                    userFamilyStatus: this.profileUserForm.value.userFamilyStatus,
+                    userLifestyle: this.profileUserForm.value.userLifestyle,
+                    userDrinkingHabits: this.profileUserForm.value.userDrinkingHabits,
+                    familyBio: this.profileUserForm.value.familyBio,
+                };
+                this.saveUpdatedProfileDetails(data);
+                break;
+        }
+    }
+    editSavePartnerDetails(data) {
+        this.editsavePartner = !this.editsavePartner;
+        switch (data) {
+            case 1:
+                this.profilePartnerForm.controls.partnerAge.enable();
+                this.profilePartnerForm.controls.partnerHeight.enable();
+                this.profilePartnerForm.controls.partnerHeightUnit.enable();
+                this.profilePartnerForm.controls.partnerMaritalStatus.enable();
+                this.profilePartnerForm.controls.partnerCountry.enable();
+                this.profilePartnerForm.controls.partnerCity.enable();
+                this.profilePartnerForm.controls.partnerReligion.enable();
+                this.profilePartnerForm.controls.partnerEducation.enable();
+                this.profilePartnerForm.controls.partnerOccupation.enable();
+                this.profilePartnerForm.controls.partnerIncome.enable();
+                this.profilePartnerForm.controls.partnerDrinkingHabits.enable();
+                this.profilePartnerForm.controls.partnerSmokingHabits.enable();
+                this.profilePartnerForm.controls.partnerComplexion.enable();
+                this.profilePartnerForm.controls.partnerBodyType.enable();
+                this.profilePartnerForm.controls.PartnerBio.enable();
+                this.profilePartnerForm.controls.partnerTribe.enable();
+                this.profilePartnerForm.controls.partnerHairColor.enable();
+                this.profilePartnerForm.controls.partnerMathab.enable();
+                this.profilePartnerForm.controls.partnerLanguage.enable();
+                this.profilePartnerForm.controls.partnerTribeName.enable();
+                this.profilePartnerForm.controls.partnerEmployedIn.enable();
+                this.profilePartnerForm.controls.partnerPhysicalStatus.enable();
+                this.profilePartnerForm.controls.partnerWeight.enable();
+                this.profilePartnerForm.controls.partnerCulture.enable();
+                this.profilePartnerForm.controls.partnerFamilyGatherings.enable();
+                this.profilePartnerForm.controls.partnerHijab.enable();
+                this.profilePartnerForm.controls.partnerAbaya.enable();
+                this.profilePartnerForm.controls.partnerHairType.enable();
+                this.profilePartnerForm.controls.partnerHubblyBubbly.enable();
+                this.profilePartnerForm.controls.partnerEatingHabits.enable();
+                this.profilePartnerForm.controls.partnerFamilyStatus.enable();
+                this.profilePartnerForm.controls.partnerLifestyle.enable();
+                break;
+            case 2:
+                this.profilePartnerForm.controls.partnerAge.disable();
+                this.profilePartnerForm.controls.partnerHeight.disable();
+                this.profilePartnerForm.controls.partnerHeightUnit.disable();
+                this.profilePartnerForm.controls.partnerMaritalStatus.disable();
+                this.profilePartnerForm.controls.partnerCountry.disable();
+                this.profilePartnerForm.controls.partnerCity.disable();
+                this.profilePartnerForm.controls.partnerReligion.disable();
+                this.profilePartnerForm.controls.partnerEducation.disable();
+                this.profilePartnerForm.controls.partnerOccupation.disable();
+                this.profilePartnerForm.controls.partnerIncome.disable();
+                this.profilePartnerForm.controls.partnerDrinkingHabits.disable();
+                this.profilePartnerForm.controls.partnerSmokingHabits.disable();
+                this.profilePartnerForm.controls.partnerComplexion.disable();
+                this.profilePartnerForm.controls.partnerBodyType.disable();
+                this.profilePartnerForm.controls.PartnerBio.disable();
+                this.profilePartnerForm.controls.partnerTribe.disable();
+                this.profilePartnerForm.controls.partnerHairColor.disable();
+                this.profilePartnerForm.controls.partnerMathab.disable();
+                this.profilePartnerForm.controls.partnerLanguage.disable();
+                this.profilePartnerForm.controls.partnerTribeName.disable();
+                this.profilePartnerForm.controls.partnerEmployedIn.disable();
+                this.profilePartnerForm.controls.partnerPhysicalStatus.disable();
+                this.profilePartnerForm.controls.partnerWeight.disable();
+                this.profilePartnerForm.controls.partnerCulture.disable();
+                this.profilePartnerForm.controls.partnerFamilyGatherings.disable();
+                this.profilePartnerForm.controls.partnerHijab.disable();
+                this.profilePartnerForm.controls.partnerAbaya.disable();
+                this.profilePartnerForm.controls.partnerHairType.disable();
+                this.profilePartnerForm.controls.partnerHubblyBubbly.disable();
+                this.profilePartnerForm.controls.partnerEatingHabits.disable();
+                this.profilePartnerForm.controls.partnerFamilyStatus.disable();
+                this.profilePartnerForm.controls.partnerLifestyle.disable();
+                let data = {
+                    partnerAge: this.profilePartnerForm.value.partnerAge,
+                    partnerHeight: this.profilePartnerForm.value.partnerHeight,
+                    partnerHeightUnit: this.profilePartnerForm.value.partnerHeightUnit,
+                    partnerMaritalStatus: this.profilePartnerForm.value.partnerMaritalStatus,
+                    partnerCountry: this.profilePartnerForm.value.partnerCountry,
+                    partnerCity: this.profilePartnerForm.value.partnerCity,
+                    partnerReligion: this.profilePartnerForm.value.partnerReligion,
+                    partnerEducation: this.profilePartnerForm.value.partnerEducation,
+                    partnerOccupation: this.profilePartnerForm.value.partnerOccupation,
+                    partnerIncome: this.profilePartnerForm.value.partnerIncome,
+                    partnerDrinkingHabits: this.profilePartnerForm.value.partnerDrinkingHabits,
+                    partnerSmokingHabits: this.profilePartnerForm.value.partnerSmokingHabits,
+                    partnerComplexion: this.profilePartnerForm.value.partnerComplexion,
+                    partnerBodyType: this.profilePartnerForm.value.partnerBodyType,
+                    PartnerBio: this.profilePartnerForm.value.PartnerBio,
+                    partnerTribe: this.profilePartnerForm.value.partnerTribe,
+                    partnerHairColor: this.profilePartnerForm.value.partnerHairColor,
+                    partnerMathab: this.profilePartnerForm.value.partnerMathab,
+                    partnerLanguage: this.profilePartnerForm.value.partnerLanguage,
+                    partnerTribeName: this.profilePartnerForm.value.partnerTribeName,
+                    partnerEmployedIn: this.profilePartnerForm.value.partnerEmployedIn,
+                    partnerPhysicalStatus: this.profilePartnerForm.value.partnerPhysicalStatus,
+                    partnerWeight: this.profilePartnerForm.value.partnerWeight,
+                    partnerCulture: this.profilePartnerForm.value.partnerCulture,
+                    partnerFamilyGatherings: this.profilePartnerForm.value.partnerFamilyGatherings,
+                    partnerHijab: this.profilePartnerForm.value.partnerHijab,
+                    partnerAbaya: this.profilePartnerForm.value.partnerAbaya,
+                    partnerHairType: this.profilePartnerForm.value.partnerHairType,
+                    partnerHubblyBubbly: this.profilePartnerForm.value.partnerHubblyBubbly,
+                    partnerEatingHabits: this.profilePartnerForm.value.partnerEatingHabits,
+                    // partnerProfilePhoto        : this.profilePartnerForm.value.partnerProfilePhoto,
+                    partnerFamilyStatus: this.profilePartnerForm.value.partnerFamilyStatus,
+                    partnerLifestyle: this.profilePartnerForm.value.partnerLifestyle,
+                };
+                this.saveUpdatedProfileDetails(data);
+                break;
+        }
+    }
+    editSaveDocumnetDetails(data) {
+        this.editsaveDocumnet = !this.editsaveDocumnet;
+        switch (data) {
+            case 1:
+                this.showEditDocumentDetails = true;
+                break;
+            case 2:
+                let item = {
+                    attachment1: this.attachment1,
+                    attachment2: this.attachment2,
+                    attachment3: this.attachment3,
+                    attachment4: this.attachment4,
+                };
+                this.saveUpdatedProfileDetails(item);
+                this.showEditDocumentDetails = false;
+                break;
+        }
+    }
+    saveUpdatedProfileDetails(data) {
+        this.httpService.post('user/editProfile', data, 1).subscribe(res => {
+            console.log('Registration_Succ =>', res);
+            if (res.responseCode == 200) {
+                this.commonService.showSuccessToast(res['responseMessage'], false, 'center');
+                this.getUserProfile();
+            }
+        }, err => {
+            console.log('Registration_Err =>', err);
+        });
+    }
 }
 ProfileComponent.ɵfac = function ProfileComponent_Factory(t) { return new (t || ProfileComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_providers_http_http_service__WEBPACK_IMPORTED_MODULE_3__["HttpService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_providers_common_common_service__WEBPACK_IMPORTED_MODULE_4__["CommonService"])); };
-ProfileComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProfileComponent, selectors: [["app-profile"]], decls: 56, vars: 19, consts: [[1, "common-section"], [1, "container"], [1, "row", "registration-step-3"], [1, "col-xl-12", "col-lg-12", "col-md-12", "col-sm-12", "col-12"], [1, "row"], [1, "col-xl-3", "col-l-3", "borderClass"], [1, "col-12"], [1, "user-profile", "mt-5"], [1, "image-box"], [3, "src"], [1, "upload-label"], ["type", "file", "name", "", "accept", ".png, .jpg, .jpeg", 3, "change"], [1, "fa", "fa-camera"], [1, "ml-5"], [1, "col-xl-9", "col-l-9"], [1, "accordion"], [1, "card"], [3, "formGroup"], [1, "card-header", "newCardHeader"], [1, "mb-0"], ["id", "span"], ["class", "far fa-edit", 3, "click", 4, "ngIf"], ["class", "far fa-save", 3, "click", 4, "ngIf"], ["class", "fa fa-chevron-down", "aria-hidden", "true", 3, "click", 4, "ngIf"], ["class", "fa fa-chevron-up", "aria-hidden", "true", 3, "click", 4, "ngIf"], ["class", "card-body", 4, "ngIf"], [1, "card", "mt-3", "animate__animated", "animate__zoomIn"], [1, "far", "fa-edit", 3, "click"], [1, "far", "fa-save", 3, "click"], ["aria-hidden", "true", 1, "fa", "fa-chevron-down", 3, "click"], ["aria-hidden", "true", 1, "fa", "fa-chevron-up", 3, "click"], [1, "card-body"], [1, "card-header", 3, "click"], ["class", "fa fa-chevron-down", "aria-hidden", "true", 4, "ngIf"], ["class", "fa fa-chevron-up", "aria-hidden", "true", 4, "ngIf"], ["aria-hidden", "true", 1, "fa", "fa-chevron-down"], ["aria-hidden", "true", 1, "fa", "fa-chevron-up"], [1, "col-6"], [1, "form-group", "row"], [1, "col-4", "col-form-label"], [1, "col-8"], ["type", "text", "formControlName", "userNickname", "placeholder", "Nick Name", 1, "form-control"], ["type", "text", "formControlName", "userFamilyName", "placeholder", "Family Name", 1, "form-control"], ["type", "text", "formControlName", "userFirstName", "placeholder", "First Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Country", "formControlName", "userNationality", 1, "form-control", 3, "change"], ["value", "", "selected", "", "disabled", ""], [3, "value", 4, "ngFor", "ngForOf"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Age", "formControlName", "userAge", "placeholder", "Age", 1, "form-control"], ["value", "18"], ["value", "19"], ["value", "20"], ["value", "21"], ["value", "30"], ["value", "40"], ["value", "50"], ["value", "60"], ["value", "70"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Marital Status", "formControlName", "userMaritalstatus", "placeholder", "MaritalStatus*", 1, "form-control"], ["value", "Single"], ["value", "Married"], ["value", "Divorced"], ["value", "Widowed"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Country", "formControlName", "userCountry", 1, "form-control", 3, "change"], ["for", "inputPassword", 1, "col-4", "col-form-label"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userCity", "title", "City", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userOccupation", "title", "Occupation", 1, "form-control"], ["value", "Manager"], ["value", "Software Developer"], ["value", "Engineer"], ["value", "Scholarship"], ["type", "email", "formControlName", "userEmail", "placeholder", "Email", 1, "form-control"], ["type", "text", "formControlName", "userMobile", "placeholder", "Mobile", 1, "form-control"], ["type", "text", "formControlName", "userRegion", "placeholder", "Region", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userIncome", "title", "Income", 1, "form-control"], ["value", "4000-8000"], ["value", "9000-14000"], ["value", "15000-20000"], ["value", "20000-Above"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userEducation", "title", "Education", 1, "form-control"], ["value", "Uneducated"], ["value", "Elementary"], ["value", "Secondary"], ["value", "Higher Secondary"], ["value", "Diploma"], ["value", "BA"], ["value", "Master"], ["value", "PhD"], ["value", "On a MA Scholarship"], ["value", "On a PhD Scholarship"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userEmployedIn", "title", "Employed In", 1, "form-control"], ["value", "Government"], ["value", "Private"], ["value", "Self Employed"], ["value", "Not Working"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userPhysicalStatus", "title", "Physical Status", 1, "form-control"], ["value", "Normal"], ["value", "Physically Challenged"], [3, "value"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Religion", "formControlName", "userReligion", "placeholder", "Religion*", 1, "form-control"], ["value", "Islam"], ["value", "Other"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Language ", "formControlName", "userLanguage", "placeholder", "Language", 1, "form-control"], ["value", "Arabic"], ["value", "English"], ["value", "Spanish"], ["value", "French"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Mathab", "formControlName", "userMathab", "placeholder", "Mathab", 1, "form-control"], ["value", "Sunni"], ["value", "Shia"], ["value", "Sufi"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe", "formControlName", "userTribe", "placeholder", "Tribe", 1, "form-control"], ["value", "\u0642\u0628\u064A\u0644\u064A \u0628\u062F\u0648"], ["value", "\u0642\u0628\u064A\u0644\u064A \u062D\u0636\u0631"], ["value", "\u063A\u064A\u0631 \u0642\u0628\u064A\u0644\u064A"], ["value", "\u0623\u062E\u0631\u0649"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe Name ", "formControlName", "userTribeName", "placeholder", "Tribe Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Culture", "formControlName", "userCulture", "placeholder", "Culture", 1, "form-control"], ["value", "I believe in our cultural rules and stick to them"], ["value", "Moderate follow my cultural Rules "], ["value", "I don't like to follow cultural Rules"], ["value", "I am more westernised"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Hijab", "formControlName", "userHijab", "placeholder", "Hijab", 1, "form-control"], ["value", "Niqab"], ["value", "Hijab"], ["value", "Non-Hijab"], ["value", "Depends"], ["value", "Others"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Status", "formControlName", "userFamilyStatus", "placeholder", "Family Status", 1, "form-control"], ["value", "Middle"], ["value", "Class"], ["value", "Upper Class"], ["value", "Rich"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Abaya", "formControlName", "userAbaya", "placeholder", "Abaya", 1, "form-control"], ["value", "On the head"], ["value", "On the Shoulder"], ["value", "Colored Abaya"], ["value", "No Abaya"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Gatherings", "formControlName", "userFamilyGatherings", "placeholder", "Family Gatherings", 1, "form-control"], ["value", "Segregated"], ["value", "Mixed"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userBodyType", "title", "Type of body", 1, "form-control"], ["value", "Athletic"], ["value", "Slim"], ["value", "Average"], ["value", "Heavy"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userComplexion", "title", "Complexion", 1, "form-control"], ["value", "Very Fair"], ["value", "Fair"], ["value", "Wheatish"], ["value", "Wheatish Brown"], ["value", "Dark"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHeight", "title", "Height", 1, "form-control"], ["value", "140"], ["value", "141"], ["value", "142"], ["value", "143"], ["value", "144"], ["value", "145"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userWeight", "title", "Weight", 1, "form-control"], ["value", "40-50 Kg"], ["value", "50-60 Kg"], ["value", "60-70 Kg"], ["value", "70-80 Kg"], ["value", "80-90 Kg"], ["value", "90-100 Kg"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHairType", "title", "Hair Type", 1, "form-control"], ["value", "Full Head of Hair"], ["value", "half Bald"], ["value", "Bald"], ["value", "Long"], ["value", "Short"], ["value", "BoyCut Short"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHairColor", "title", "Hair Color", 1, "form-control"], ["value", "Black"], ["value", "Brown"], ["value", "Blonde"], ["value", "White"], ["value", "Dyed"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userSmokingHabits", "title", "Smoking Habits", 1, "form-control"], ["value", "Yes"], ["value", "Occasionally"], ["value", "No"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userEatingHabits", "title", "Eating Habits", 1, "form-control"], ["value", "Vegetarian"], ["value", "Non-Vegetarian"], ["value", "Eggetarian"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userDrinkingHabits", "title", "Drinking Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userLifestyle", "title", "Life Style", 1, "form-control"], ["value", "Active"], ["value", "Healthy"], ["value", "Socially"], ["value", "Nomadic"], ["value", "Solo"], ["value", "Rural"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHubblyBubbly", "title", "Hubbly Bubbly", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userGender", 1, "form-control", 3, "change"], ["value", "Male"], ["value", "Female"], ["class", "form-group row", 4, "ngIf"], ["type", "text", "formControlName", "userGuardianFName", "placeholder", "Guardian First Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Guardian Relation", "formControlName", "userGuardianRelation", "placeholder", "Guardian Relation", 1, "form-control"], ["value", "Father"], ["value", "Mother"], ["value", "Brother"], ["value", "Sister"], ["value", "Uncle"], ["value", "Aunt"], ["type", "text", "formControlName", "userGuardianLName", "placeholder", "Guardian Last Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Write Something about yourself..", "formControlName", "userBio", "placeholder", "Write Something about yourself", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Write Something about your Family..", "formControlName", "familyBio", "placeholder", "Write Something about your Family", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Age", "formControlName", "partnerAge", "placeholder", "Age", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Age", "formControlName", "partnerMaritalStatus", "placeholder", "Age*", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Country", "formControlName", "partnerCountry", 1, "form-control", 3, "change"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerCity", "title", "City", 1, "form-control"], ["for", "staticEmail", 1, "col-4", "col-form-label"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerPhysicalStatus", "title", "Physical Status", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerBodyType", "title", "Type of body", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerComplexion", "title", "Complexion", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHeight", "title", "Height", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerWeight", "title", "Weight", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHairType", "title", "Hair Type", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHairColor", "title", "Hair Color", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Religion", "formControlName", "partnerReligion", "placeholder", "Religion*", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Language ", "formControlName", "partnerLanguage", "placeholder", "Language", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Mathab", "formControlName", "partnerMathab", "placeholder", "Mathab", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe", "formControlName", "partnerTribe", "placeholder", "Tribe", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe Name ", "formControlName", "partnerTribeName", "placeholder", "Tribe Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Culture", "formControlName", "partnerCulture", "placeholder", "Culture", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Hijab", "formControlName", "partnerHijab", "placeholder", "Hijab", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Status", "formControlName", "partnerFamilyStatus", "placeholder", "Family Status", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Abaya", "formControlName", "partnerAbaya", "placeholder", "Abaya", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Gatherings", "formControlName", "partnerFamilyGatherings", "placeholder", "Family Gatherings", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerIncome", "title", "Income", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerEducation", "title", "Education", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerEmployedIn", "title", "Employed In", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerOccupation", "title", "Occupation", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerSmokingHabits", "title", "Smoking Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerEatingHabits", "title", "Eating Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerDrinkingHabits", "title", "Drinking Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerLifestyle", "title", "Life Style", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHubblyBubbly", "title", "Hubbly Bubbly", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Write Something about your desired partner..", "formControlName", "PartnerBio", "placeholder", "Write Something about your desired partner", 1, "form-control"], [1, "col-xl-6", "padding_top"], [2, "margin", "10px 0px 0px 0px", "display", "inline-block"], ["id", "file-upload", "type", "file", "name", "attach_work_letter", "accept", ".png, .jpg, .jpeg, .pdf", 2, "cursor", "pointer", 3, "ngModelOptions", "ngModel", "change"], ["id", "file-upload", "type", "file", "name", "attach_work_letter", "accept", ".png, .jpg, .jpeg, .pdf", 2, "cursor", "pointer", 3, "change"]], template: function ProfileComponent_Template(rf, ctx) { if (rf & 1) {
+ProfileComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProfileComponent, selectors: [["app-profile"]], decls: 56, vars: 19, consts: [[1, "common-section"], [1, "container"], [1, "row", "registration-step-3"], [1, "col-xl-12", "col-lg-12", "col-md-12", "col-sm-12", "col-12"], [1, "row"], [1, "col-xl-3", "col-l-3", "borderClass"], [1, "col-12"], [1, "user-profile", "mt-5"], [1, "image-box"], [3, "src"], [1, "upload-label"], ["type", "file", "name", "", "accept", ".png, .jpg, .jpeg", 3, "change"], [1, "fa", "fa-camera"], [1, "ml-5"], [1, "col-xl-9", "col-l-9"], [1, "accordion"], [1, "card"], [3, "formGroup"], [1, "card-header", "newCardHeader"], [1, "mb-0"], ["id", "span"], ["class", "far fa-edit", 3, "click", 4, "ngIf"], ["class", "far fa-save", 3, "click", 4, "ngIf"], ["class", "fa fa-chevron-down", "aria-hidden", "true", 3, "click", 4, "ngIf"], ["class", "fa fa-chevron-up", "aria-hidden", "true", 3, "click", 4, "ngIf"], ["class", "card-body", 4, "ngIf"], [1, "card", "mt-3", "animate__animated", "animate__zoomIn"], [1, "far", "fa-edit", 3, "click"], [1, "far", "fa-save", 3, "click"], ["aria-hidden", "true", 1, "fa", "fa-chevron-down", 3, "click"], ["aria-hidden", "true", 1, "fa", "fa-chevron-up", 3, "click"], [1, "card-body"], [1, "card-header", 3, "click"], ["class", "fa fa-chevron-down", "aria-hidden", "true", 4, "ngIf"], ["class", "fa fa-chevron-up", "aria-hidden", "true", 4, "ngIf"], ["aria-hidden", "true", 1, "fa", "fa-chevron-down"], ["aria-hidden", "true", 1, "fa", "fa-chevron-up"], [1, "col-6"], [1, "form-group", "row"], [1, "col-4", "col-form-label"], [1, "col-8"], ["type", "text", "formControlName", "userNickname", "placeholder", "Nick Name", 1, "form-control"], ["type", "text", "formControlName", "userFamilyName", "placeholder", "Family Name", 1, "form-control"], ["type", "text", "formControlName", "userFirstName", "placeholder", "First Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Country", "formControlName", "userNationality", 1, "form-control", 3, "change"], ["value", "", "selected", "", "disabled", ""], [3, "value", 4, "ngFor", "ngForOf"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Age", "formControlName", "userAge", "placeholder", "Age", 1, "form-control"], ["value", "18"], ["value", "19"], ["value", "20"], ["value", "21"], ["value", "30"], ["value", "40"], ["value", "50"], ["value", "60"], ["value", "70"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Marital Status", "formControlName", "userMaritalstatus", "placeholder", "MaritalStatus*", 1, "form-control"], ["value", "Single"], ["value", "Married"], ["value", "Divorced"], ["value", "Widowed"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Country", "formControlName", "userCountry", 1, "form-control", 3, "change"], ["for", "inputPassword", 1, "col-4", "col-form-label"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userCity", "title", "City", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userOccupation", "title", "Occupation", 1, "form-control"], ["value", "Manager"], ["value", "Software Developer"], ["value", "Engineer"], ["value", "Scholarship"], ["type", "email", "formControlName", "userEmail", "placeholder", "Email", 1, "form-control"], ["type", "text", "formControlName", "userMobile", "placeholder", "Mobile", 1, "form-control"], ["type", "text", "formControlName", "userRegion", "placeholder", "Region", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userIncome", "title", "Income", 1, "form-control"], ["value", "4000-8000"], ["value", "9000-14000"], ["value", "15000-20000"], ["value", "20000-Above"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userEducation", "title", "Education", 1, "form-control"], ["value", "Uneducated"], ["value", "Elementary"], ["value", "Secondary"], ["value", "Higher Secondary"], ["value", "Diploma"], ["value", "BA"], ["value", "Master"], ["value", "PhD"], ["value", "On a MA Scholarship"], ["value", "On a PhD Scholarship"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userEmployedIn", "title", "Employed In", 1, "form-control"], ["value", "Government"], ["value", "Private"], ["value", "Self Employed"], ["value", "Not Working"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userPhysicalStatus", "title", "Physical Status", 1, "form-control"], ["value", "Normal"], ["value", "Physically Challenged"], [3, "value"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Religion", "formControlName", "userReligion", "placeholder", "Religion*", 1, "form-control"], ["value", "Islam"], ["value", "Other"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Language ", "formControlName", "userLanguage", "placeholder", "Language", 1, "form-control"], ["value", "Arabic"], ["value", "English"], ["value", "Spanish"], ["value", "French"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Mathab", "formControlName", "userMathab", "placeholder", "Mathab", 1, "form-control"], ["value", "Sunni"], ["value", "Shia"], ["value", "Sufi"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe", "formControlName", "userTribe", "placeholder", "Tribe", 1, "form-control"], ["value", "\u0642\u0628\u064A\u0644\u064A \u0628\u062F\u0648"], ["value", "\u0642\u0628\u064A\u0644\u064A \u062D\u0636\u0631"], ["value", "\u063A\u064A\u0631 \u0642\u0628\u064A\u0644\u064A"], ["value", "\u0623\u062E\u0631\u0649"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe Name ", "formControlName", "userTribeName", "placeholder", "Tribe Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Culture", "formControlName", "userCulture", "placeholder", "Culture", 1, "form-control"], ["value", "I believe in our cultural rules and stick to them"], ["value", "Moderate follow my cultural Rules "], ["value", "I don't like to follow cultural Rules"], ["value", "I am more westernised"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Hijab", "formControlName", "userHijab", "placeholder", "Hijab", 1, "form-control"], ["value", "Niqab"], ["value", "Hijab"], ["value", "Non-Hijab"], ["value", "Depends"], ["value", "Others"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Status", "formControlName", "userFamilyStatus", "placeholder", "Family Status", 1, "form-control"], ["value", "Middle"], ["value", "Class"], ["value", "Upper Class"], ["value", "Rich"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Abaya", "formControlName", "userAbaya", "placeholder", "Abaya", 1, "form-control"], ["value", "On the head"], ["value", "On the Shoulder"], ["value", "Colored Abaya"], ["value", "No Abaya"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Gatherings", "formControlName", "userFamilyGatherings", "placeholder", "Family Gatherings", 1, "form-control"], ["value", "Segregated"], ["value", "Mixed"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userBodyType", "title", "Type of body", 1, "form-control"], ["value", "Athletic"], ["value", "Slim"], ["value", "Average"], ["value", "Heavy"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userComplexion", "title", "Complexion", 1, "form-control"], ["value", "Very Fair"], ["value", "Fair"], ["value", "Wheatish"], ["value", "Wheatish Brown"], ["value", "Dark"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHeight", "title", "Height", 1, "form-control"], ["value", "140"], ["value", "141"], ["value", "142"], ["value", "143"], ["value", "144"], ["value", "145"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userWeight", "title", "Weight", 1, "form-control"], ["value", "40-50 Kg"], ["value", "50-60 Kg"], ["value", "60-70 Kg"], ["value", "70-80 Kg"], ["value", "80-90 Kg"], ["value", "90-100 Kg"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHairType", "title", "Hair Type", 1, "form-control"], ["value", "Full Head of Hair"], ["value", "half Bald"], ["value", "Bald"], ["value", "Long"], ["value", "Short"], ["value", "BoyCut Short"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHairColor", "title", "Hair Color", 1, "form-control"], ["value", "Black"], ["value", "Brown"], ["value", "Blonde"], ["value", "White"], ["value", "Dyed"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userSmokingHabits", "title", "Smoking Habits", 1, "form-control"], ["value", "Yes"], ["value", "Occasionally"], ["value", "No"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userEatingHabits", "title", "Eating Habits", 1, "form-control"], ["value", "Vegetarian"], ["value", "Non-Vegetarian"], ["value", "Eggetarian"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userDrinkingHabits", "title", "Drinking Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userLifestyle", "title", "Life Style", 1, "form-control"], ["value", "Active"], ["value", "Healthy"], ["value", "Socially"], ["value", "Nomadic"], ["value", "Solo"], ["value", "Rural"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userHubblyBubbly", "title", "Hubbly Bubbly", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "userGender", 1, "form-control", 3, "change"], ["value", "Male"], ["value", "Female"], ["class", "form-group row", 4, "ngIf"], ["type", "text", "formControlName", "userGuardianFName", "placeholder", "Guardian First Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Guardian Relation", "formControlName", "userGuardianRelation", "placeholder", "Guardian Relation", 1, "form-control"], ["value", "Father"], ["value", "Mother"], ["value", "Brother"], ["value", "Sister"], ["value", "Uncle"], ["value", "Aunt"], ["type", "text", "formControlName", "userGuardianLName", "placeholder", "Guardian Last Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Write Something about yourself..", "formControlName", "userBio", "placeholder", "Write Something about yourself", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Write Something about your Family..", "formControlName", "familyBio", "placeholder", "Write Something about your Family", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Age", "formControlName", "partnerAge", "placeholder", "Age", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Age", "formControlName", "partnerMaritalStatus", "placeholder", "Age*", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Country", "formControlName", "partnerCountry", 1, "form-control", 3, "change"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerCity", "title", "City", 1, "form-control"], ["for", "staticEmail", 1, "col-4", "col-form-label"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerPhysicalStatus", "title", "Physical Status", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerBodyType", "title", "Type of body", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerComplexion", "title", "Complexion", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHeight", "title", "Height", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerWeight", "title", "Weight", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHairType", "title", "Hair Type", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHairColor", "title", "Hair Color", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Religion", "formControlName", "partnerReligion", "placeholder", "Religion*", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Language ", "formControlName", "partnerLanguage", "placeholder", "Language", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Mathab", "formControlName", "partnerMathab", "placeholder", "Mathab", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe", "formControlName", "partnerTribe", "placeholder", "Tribe", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Tribe Name ", "formControlName", "partnerTribeName", "placeholder", "Tribe Name", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Culture", "formControlName", "partnerCulture", "placeholder", "Culture", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Hijab", "formControlName", "partnerHijab", "placeholder", "Hijab", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Status", "formControlName", "partnerFamilyStatus", "placeholder", "Family Status", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Abaya", "formControlName", "partnerAbaya", "placeholder", "Abaya", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Family Gatherings", "formControlName", "partnerFamilyGatherings", "placeholder", "Family Gatherings", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerIncome", "title", "Income", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerEducation", "title", "Education", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerEmployedIn", "title", "Employed In", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerOccupation", "title", "Occupation", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerSmokingHabits", "title", "Smoking Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerEatingHabits", "title", "Eating Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerDrinkingHabits", "title", "Drinking Habits", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerLifestyle", "title", "Life Style", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "formControlName", "partnerHubblyBubbly", "title", "Hubbly Bubbly", 1, "form-control"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Write Something about your desired partner..", "formControlName", "PartnerBio", "placeholder", "Write Something about your desired partner", 1, "form-control"], [1, "slider"], [1, "img-gradient"], ["id", "carouselExampleIndicators", "data-ride", "carousel", 1, "carousel", "slide"], [1, "carousel-indicators"], ["data-target", "#carouselExampleIndicators", "data-slide-to", "0", "class", "active", 4, "ngFor", "ngForOf"], [1, "carousel-inner"], [4, "ngFor", "ngForOf"], ["href", "#carouselExampleIndicators", "role", "button", "data-slide", "prev", 1, "carousel-control-prev"], ["aria-hidden", "true", 1, "carousel-control-prev-icon"], [1, "sr-only"], ["href", "#carouselExampleIndicators", "role", "button", "data-slide", "next", 1, "carousel-control-next"], ["aria-hidden", "true", 1, "carousel-control-next-icon"], ["class", "row", 4, "ngIf"], ["data-target", "#carouselExampleIndicators", "data-slide-to", "0", 1, "active"], [1, "carousel-item", 3, "ngClass"], ["alt", "slilder image", "title", "slider", 1, "d-block", "w-100", 3, "src"], [1, "col-xl-6", "padding_top"], [2, "margin", "10px 0px 0px 0px", "display", "inline-block"], ["id", "file-upload", "type", "file", "name", "attach_work_letter", "accept", ".png, .jpg, .jpeg, .pdf", 2, "cursor", "pointer", 3, "ngModelOptions", "ngModel", "change"], ["id", "file-upload", "type", "file", "name", "attach_work_letter", "accept", ".png, .jpg, .jpeg, .pdf", 2, "cursor", "pointer", 3, "change"]], template: function ProfileComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -13499,7 +13882,7 @@ ProfileComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "img", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "input", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_Template_input_change_13_listener($event) { return ctx.onUploadChange($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ProfileComponent_Template_input_change_13_listener($event) { return ctx.onUploadChange1($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -13615,7 +13998,7 @@ ProfileComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.showDocument);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showDocument);
-    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"]], styles: [".container[_ngcontent-%COMP%] {\n  margin-top: 30px;\n  min-height: calc(100vh - 300px);\n}\n\n.borderClass[_ngcontent-%COMP%] {\n  border: 1px solid gainsboro;\n  height: 600px;\n  border-radius: 15px;\n}\n\n.rowBorderClass[_ngcontent-%COMP%] {\n  border: 1px solid gainsboro;\n  height: 33.33%;\n  border-radius: 15px;\n  margin-left: 10px;\n  margin-top: 10px;\n}\n\n.headerClass[_ngcontent-%COMP%] {\n  height: 50px;\n  width: 100%;\n  background-color: #626c71;\n  border-top-left-radius: 15px;\n  border-top-right-radius: 15px;\n  position: relative;\n  justify-content: space-between;\n  display: flex;\n  padding: 15px;\n  color: #fff;\n}\n\n.headerClass[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-size: 1.4rem;\n}\n\n.headerClass[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 1.3rem;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%] {\n  width: 150px;\n  height: 150px;\n  margin: 0 auto 20px;\n  border-radius: 50%;\n  padding: 5px;\n  border: 1px solid #283338;\n  position: relative;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  object-fit: cover;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%]   .upload-label[_ngcontent-%COMP%] {\n  position: absolute;\n  right: -7px;\n  bottom: 10px;\n  width: 30px;\n  height: 30px;\n  background: #fff;\n  text-align: center;\n  margin: 0px;\n  line-height: 28px;\n  font-size: 17px;\n  border-radius: 50%;\n  padding: 2px;\n  box-shadow: 0 0 10px #999;\n  color: #283338;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%]   .upload-label[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  width: 24px;\n  opacity: 0;\n}\n\n#span[_ngcontent-%COMP%] {\n  margin: 0px 10px 0px 0px;\n}\n\n#span[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  padding-left: 20px !important;\n}\n\n.card-header[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n}\n\nh2[_ngcontent-%COMP%] {\n  font-size: 1.4rem;\n}\n\nh3[_ngcontent-%COMP%] {\n  font-size: 1.3rem;\n}\n\n.card[_ngcontent-%COMP%] {\n  border: 1px solid #d8d8d8 !important;\n  border-bottom-right-radius: 5px !important;\n  border-bottom-left-radius: 5px !important;\n  border-radius: 5px !important;\n}\n\n.newCardHeader[_ngcontent-%COMP%] {\n  background-color: #242f36;\n  color: #fff;\n}\n\n#file-upload[_ngcontent-%COMP%] {\n  padding-top: 6px;\n  margin-top: 0;\n  display: flex !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWZ0ZXItc2lnbnVwL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsK0JBQUE7QUFDSjs7QUFFQTtFQUNJLDJCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0FBQ0o7O0FBR0E7RUFDSSwyQkFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7QUFBSjs7QUFHQTtFQUNJLFlBQUE7RUFDQSxXQUFBO0VBQ0EseUJBQUE7RUFDQSw0QkFBQTtFQUNBLDZCQUFBO0VBQ0Esa0JBQUE7RUFDQSw4QkFBQTtFQUNBLGFBQUE7RUFDQSxhQUFBO0VBQ0EsV0FBQTtBQUFKOztBQUdBO0VBQ0ksaUJBQUE7QUFBSjs7QUFHQTtFQUNJLGlCQUFBO0FBQUo7O0FBR0E7RUFDSSxZQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EseUJBQUE7RUFDQSxrQkFBQTtBQUFKOztBQUdBO0VBQ0ksV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FBQUo7O0FBR0E7RUFDSSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLHlCQUFBO0VBQ0EsY0FBQTtBQUFKOztBQUdBO0VBQ0ksa0JBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxVQUFBO0FBQUo7O0FBR0E7RUFDSSx3QkFBQTtBQUFKOztBQUdBO0VBQ0ksNkJBQUE7QUFBSjs7QUFHQTtFQUNJLGFBQUE7RUFDQSw4QkFBQTtBQUFKOztBQUdBO0VBQ0ksaUJBQUE7QUFBSjs7QUFHQTtFQUNJLGlCQUFBO0FBQUo7O0FBR0E7RUFDSSxvQ0FBQTtFQUNBLDBDQUFBO0VBQ0EseUNBQUE7RUFDQSw2QkFBQTtBQUFKOztBQUdBO0VBQ0kseUJBQUE7RUFDQSxXQUFBO0FBQUo7O0FBR0E7RUFDSSxnQkFBQTtFQUNBLGFBQUE7RUFDQSx3QkFBQTtBQUFKIiwiZmlsZSI6InNyYy9hcHAvYWZ0ZXItc2lnbnVwL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICAgIG1hcmdpbi10b3A6IDMwcHg7XG4gICAgbWluLWhlaWdodDogY2FsYygxMDB2aCAtIDMwMHB4KTtcbn1cblxuLmJvcmRlckNsYXNzIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCBnYWluc2Jvcm87XG4gICAgaGVpZ2h0OiA2MDBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICAgIC8vICAgbWFyZ2luLXRvcDogMTBweDtcbn1cblxuLnJvd0JvcmRlckNsYXNzIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCBnYWluc2Jvcm87XG4gICAgaGVpZ2h0OiAzMy4zMyU7XG4gICAgYm9yZGVyLXJhZGl1czogMTVweDtcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuXG4uaGVhZGVyQ2xhc3Mge1xuICAgIGhlaWdodDogNTBweDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjI2YzcxO1xuICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDE1cHg7XG4gICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDE1cHg7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIHBhZGRpbmc6IDE1cHg7XG4gICAgY29sb3I6ICNmZmY7XG59XG5cbi5oZWFkZXJDbGFzcyBoMiB7XG4gICAgZm9udC1zaXplOiAxLjRyZW07XG59XG5cbi5oZWFkZXJDbGFzcyBpIHtcbiAgICBmb250LXNpemU6IDEuM3JlbTtcbn1cblxuLnVzZXItcHJvZmlsZSAuaW1hZ2UtYm94IHtcbiAgICB3aWR0aDogMTUwcHg7XG4gICAgaGVpZ2h0OiAxNTBweDtcbiAgICBtYXJnaW46IDAgYXV0byAyMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICBwYWRkaW5nOiA1cHg7XG4gICAgYm9yZGVyOiAxcHggc29saWQgIzI4MzMzODtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbi51c2VyLXByb2ZpbGUgLmltYWdlLWJveCBpbWcge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgb2JqZWN0LWZpdDogY292ZXI7XG59XG5cbi51c2VyLXByb2ZpbGUgLmltYWdlLWJveCAudXBsb2FkLWxhYmVsIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgcmlnaHQ6IC03cHg7XG4gICAgYm90dG9tOiAxMHB4O1xuICAgIHdpZHRoOiAzMHB4O1xuICAgIGhlaWdodDogMzBweDtcbiAgICBiYWNrZ3JvdW5kOiAjZmZmO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW46IDBweDtcbiAgICBsaW5lLWhlaWdodDogMjhweDtcbiAgICBmb250LXNpemU6IDE3cHg7XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgIHBhZGRpbmc6IDJweDtcbiAgICBib3gtc2hhZG93OiAwIDAgMTBweCAjOTk5O1xuICAgIGNvbG9yOiAjMjgzMzM4O1xufVxuXG4udXNlci1wcm9maWxlIC5pbWFnZS1ib3ggLnVwbG9hZC1sYWJlbCBpbnB1dCB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMHB4O1xuICAgIGxlZnQ6IDBweDtcbiAgICB3aWR0aDogMjRweDtcbiAgICBvcGFjaXR5OiAwO1xufVxuXG4jc3BhbiB7XG4gICAgbWFyZ2luOiAwcHggMTBweCAwcHggMHB4O1xufVxuXG4jc3BhbiBpIHtcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHggIWltcG9ydGFudDtcbn1cblxuLmNhcmQtaGVhZGVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxuaDIge1xuICAgIGZvbnQtc2l6ZTogMS40cmVtO1xufVxuXG5oMyB7XG4gICAgZm9udC1zaXplOiAxLjNyZW07XG59XG5cbi5jYXJkIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjZDhkOGQ4ICFpbXBvcnRhbnQ7XG4gICAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDVweCAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDVweCAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweCAhaW1wb3J0YW50O1xufVxuXG4ubmV3Q2FyZEhlYWRlciB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzI0MmYzNjtcbiAgICBjb2xvcjogI2ZmZjtcbn1cblxuI2ZpbGUtdXBsb2FkIHtcbiAgICBwYWRkaW5nLXRvcDogNnB4O1xuICAgIG1hcmdpbi10b3A6IDA7XG4gICAgZGlzcGxheTogZmxleCFpbXBvcnRhbnQ7XG59Il19 */"] });
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"]], styles: [".container[_ngcontent-%COMP%] {\n  margin-top: 30px;\n  min-height: calc(100vh - 300px);\n}\n\n.borderClass[_ngcontent-%COMP%] {\n  border: 1px solid gainsboro;\n  height: 600px;\n  border-radius: 15px;\n}\n\n.rowBorderClass[_ngcontent-%COMP%] {\n  border: 1px solid gainsboro;\n  height: 33.33%;\n  border-radius: 15px;\n  margin-left: 10px;\n  margin-top: 10px;\n}\n\n.headerClass[_ngcontent-%COMP%] {\n  height: 50px;\n  width: 100%;\n  background-color: #626c71;\n  border-top-left-radius: 15px;\n  border-top-right-radius: 15px;\n  position: relative;\n  justify-content: space-between;\n  display: flex;\n  padding: 15px;\n  color: #fff;\n}\n\n.headerClass[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-size: 1.4rem;\n}\n\n.headerClass[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 1.3rem;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%] {\n  width: 150px;\n  height: 150px;\n  margin: 0 auto 20px;\n  border-radius: 50%;\n  padding: 5px;\n  border: 1px solid #283338;\n  position: relative;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  object-fit: cover;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%]   .upload-label[_ngcontent-%COMP%] {\n  position: absolute;\n  right: -7px;\n  bottom: 10px;\n  width: 30px;\n  height: 30px;\n  background: #fff;\n  text-align: center;\n  margin: 0px;\n  line-height: 28px;\n  font-size: 17px;\n  border-radius: 50%;\n  padding: 2px;\n  box-shadow: 0 0 10px #999;\n  color: #283338;\n}\n\n.user-profile[_ngcontent-%COMP%]   .image-box[_ngcontent-%COMP%]   .upload-label[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  width: 24px;\n  opacity: 0;\n}\n\n#span[_ngcontent-%COMP%] {\n  margin: 0px 10px 0px 0px;\n}\n\n#span[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  padding-left: 20px !important;\n}\n\n.card-header[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n}\n\nh2[_ngcontent-%COMP%] {\n  font-size: 1.4rem;\n}\n\nh3[_ngcontent-%COMP%] {\n  font-size: 1.3rem;\n}\n\n.card[_ngcontent-%COMP%] {\n  border: 1px solid #d8d8d8 !important;\n  border-bottom-right-radius: 5px !important;\n  border-bottom-left-radius: 5px !important;\n  border-radius: 5px !important;\n}\n\n.newCardHeader[_ngcontent-%COMP%] {\n  background-color: #242f36;\n  color: #fff;\n}\n\n#file-upload[_ngcontent-%COMP%] {\n  padding-top: 6px;\n  margin-top: 0;\n  display: flex !important;\n}\n\n.slider[_ngcontent-%COMP%] {\n  margin-top: 0px !important;\n}\n\n.slider[_ngcontent-%COMP%]   .img-gradient[_ngcontent-%COMP%]   .slide[_ngcontent-%COMP%]   .carousel-inner[_ngcontent-%COMP%]   .carousel-item[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 295px;\n}\n\n.slider[_ngcontent-%COMP%]   .img-gradient[_ngcontent-%COMP%]   .slide[_ngcontent-%COMP%]   .carousel-inner[_ngcontent-%COMP%]   .carousel-item[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  height: 100% !important;\n  width: 100% !important;\n}\n\n.slider[_ngcontent-%COMP%]   .slider-content[_ngcontent-%COMP%] {\n  top: 40%;\n  left: 5%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWZ0ZXItc2lnbnVwL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsK0JBQUE7QUFDSjs7QUFFQTtFQUNJLDJCQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0FBQ0o7O0FBR0E7RUFDSSwyQkFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7QUFBSjs7QUFHQTtFQUNJLFlBQUE7RUFDQSxXQUFBO0VBQ0EseUJBQUE7RUFDQSw0QkFBQTtFQUNBLDZCQUFBO0VBQ0Esa0JBQUE7RUFDQSw4QkFBQTtFQUNBLGFBQUE7RUFDQSxhQUFBO0VBQ0EsV0FBQTtBQUFKOztBQUdBO0VBQ0ksaUJBQUE7QUFBSjs7QUFHQTtFQUNJLGlCQUFBO0FBQUo7O0FBR0E7RUFDSSxZQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EseUJBQUE7RUFDQSxrQkFBQTtBQUFKOztBQUdBO0VBQ0ksV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FBQUo7O0FBR0E7RUFDSSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLHlCQUFBO0VBQ0EsY0FBQTtBQUFKOztBQUdBO0VBQ0ksa0JBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxVQUFBO0FBQUo7O0FBR0E7RUFDSSx3QkFBQTtBQUFKOztBQUdBO0VBQ0ksNkJBQUE7QUFBSjs7QUFHQTtFQUNJLGFBQUE7RUFDQSw4QkFBQTtBQUFKOztBQUdBO0VBQ0ksaUJBQUE7QUFBSjs7QUFHQTtFQUNJLGlCQUFBO0FBQUo7O0FBR0E7RUFDSSxvQ0FBQTtFQUNBLDBDQUFBO0VBQ0EseUNBQUE7RUFDQSw2QkFBQTtBQUFKOztBQUdBO0VBQ0kseUJBQUE7RUFDQSxXQUFBO0FBQUo7O0FBR0E7RUFDSSxnQkFBQTtFQUNBLGFBQUE7RUFDQSx3QkFBQTtBQUFKOztBQUdBO0VBQ0ksMEJBQUE7QUFBSjs7QUFHQTtFQUNJLFdBQUE7RUFDQSxhQUFBO0FBQUo7O0FBR0E7RUFDSSx1QkFBQTtFQUNBLHNCQUFBO0FBQUo7O0FBR0E7RUFDSSxRQUFBO0VBQ0EsUUFBQTtBQUFKIiwiZmlsZSI6InNyYy9hcHAvYWZ0ZXItc2lnbnVwL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICAgIG1hcmdpbi10b3A6IDMwcHg7XG4gICAgbWluLWhlaWdodDogY2FsYygxMDB2aCAtIDMwMHB4KTtcbn1cblxuLmJvcmRlckNsYXNzIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCBnYWluc2Jvcm87XG4gICAgaGVpZ2h0OiA2MDBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICAgIC8vICAgbWFyZ2luLXRvcDogMTBweDtcbn1cblxuLnJvd0JvcmRlckNsYXNzIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCBnYWluc2Jvcm87XG4gICAgaGVpZ2h0OiAzMy4zMyU7XG4gICAgYm9yZGVyLXJhZGl1czogMTVweDtcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuXG4uaGVhZGVyQ2xhc3Mge1xuICAgIGhlaWdodDogNTBweDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjI2YzcxO1xuICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDE1cHg7XG4gICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDE1cHg7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIHBhZGRpbmc6IDE1cHg7XG4gICAgY29sb3I6ICNmZmY7XG59XG5cbi5oZWFkZXJDbGFzcyBoMiB7XG4gICAgZm9udC1zaXplOiAxLjRyZW07XG59XG5cbi5oZWFkZXJDbGFzcyBpIHtcbiAgICBmb250LXNpemU6IDEuM3JlbTtcbn1cblxuLnVzZXItcHJvZmlsZSAuaW1hZ2UtYm94IHtcbiAgICB3aWR0aDogMTUwcHg7XG4gICAgaGVpZ2h0OiAxNTBweDtcbiAgICBtYXJnaW46IDAgYXV0byAyMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICBwYWRkaW5nOiA1cHg7XG4gICAgYm9yZGVyOiAxcHggc29saWQgIzI4MzMzODtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbi51c2VyLXByb2ZpbGUgLmltYWdlLWJveCBpbWcge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgb2JqZWN0LWZpdDogY292ZXI7XG59XG5cbi51c2VyLXByb2ZpbGUgLmltYWdlLWJveCAudXBsb2FkLWxhYmVsIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgcmlnaHQ6IC03cHg7XG4gICAgYm90dG9tOiAxMHB4O1xuICAgIHdpZHRoOiAzMHB4O1xuICAgIGhlaWdodDogMzBweDtcbiAgICBiYWNrZ3JvdW5kOiAjZmZmO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW46IDBweDtcbiAgICBsaW5lLWhlaWdodDogMjhweDtcbiAgICBmb250LXNpemU6IDE3cHg7XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgIHBhZGRpbmc6IDJweDtcbiAgICBib3gtc2hhZG93OiAwIDAgMTBweCAjOTk5O1xuICAgIGNvbG9yOiAjMjgzMzM4O1xufVxuXG4udXNlci1wcm9maWxlIC5pbWFnZS1ib3ggLnVwbG9hZC1sYWJlbCBpbnB1dCB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMHB4O1xuICAgIGxlZnQ6IDBweDtcbiAgICB3aWR0aDogMjRweDtcbiAgICBvcGFjaXR5OiAwO1xufVxuXG4jc3BhbiB7XG4gICAgbWFyZ2luOiAwcHggMTBweCAwcHggMHB4O1xufVxuXG4jc3BhbiBpIHtcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHggIWltcG9ydGFudDtcbn1cblxuLmNhcmQtaGVhZGVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxuaDIge1xuICAgIGZvbnQtc2l6ZTogMS40cmVtO1xufVxuXG5oMyB7XG4gICAgZm9udC1zaXplOiAxLjNyZW07XG59XG5cbi5jYXJkIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjZDhkOGQ4ICFpbXBvcnRhbnQ7XG4gICAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDVweCAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDVweCAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweCAhaW1wb3J0YW50O1xufVxuXG4ubmV3Q2FyZEhlYWRlciB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzI0MmYzNjtcbiAgICBjb2xvcjogI2ZmZjtcbn1cblxuI2ZpbGUtdXBsb2FkIHtcbiAgICBwYWRkaW5nLXRvcDogNnB4O1xuICAgIG1hcmdpbi10b3A6IDA7XG4gICAgZGlzcGxheTogZmxleCFpbXBvcnRhbnQ7XG59XG5cbi5zbGlkZXIge1xuICAgIG1hcmdpbi10b3A6IDBweCAhaW1wb3J0YW50O1xufVxuXG4uc2xpZGVyIC5pbWctZ3JhZGllbnQgLnNsaWRlIC5jYXJvdXNlbC1pbm5lciAuY2Fyb3VzZWwtaXRlbSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAyOTVweDtcbn1cblxuLnNsaWRlciAuaW1nLWdyYWRpZW50IC5zbGlkZSAuY2Fyb3VzZWwtaW5uZXIgLmNhcm91c2VsLWl0ZW0gaW1nIHtcbiAgICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcbiAgICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xufVxuXG4uc2xpZGVyIC5zbGlkZXItY29udGVudCB7XG4gICAgdG9wOiA0MCU7XG4gICAgbGVmdDogNSU7XG59Il19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ProfileComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{

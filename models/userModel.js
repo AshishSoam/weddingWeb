@@ -359,7 +359,8 @@ const userSchema = schema({
         type: String
     },
     userProfilePhoto: {
-        type: String
+        type: String,
+        default:"https://res.cloudinary.com/smsit/image/upload/v1597335652/fmcvdi2g6ogd5vwzvzfa.jpg"
     },
     partnerProfilePhoto: {
         type: String
@@ -368,6 +369,9 @@ const userSchema = schema({
         type: String
     },
     partnerIncome: {
+        type: String
+    },
+    partnerCulture: {
         type: String
     },
     userFamilyStatus: {

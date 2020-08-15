@@ -64,8 +64,11 @@ module.exports = {
 
         }
     },
-    //.................................UserList..............// 
-    "userList": async (req, res) => {
+ /**
+         * Function Name :All user API
+         * Description : All user  API
+         * @return  response
+         */    "userList": async (req, res) => {
         var query = { status: { $ne: "DELETE" }, "userType": { $ne: "ADMIN" } }, options
 
         if (req.body.userType) {
@@ -94,10 +97,11 @@ module.exports = {
 
         if (req.body.search) {
             query.$or = [
-                { email: new RegExp('^' + req.body.search, "i") },
-                { creatorName: new RegExp('^' + req.body.search, "i") },
-                { mobileNumber: new RegExp('^' + req.body.search, "i") }]
-
+                { email:  { $regex: req.body.search, $options: 'i' }},
+                { creatorName:  { $regex: req.body.search, $options: 'i' }},
+                { mobileNumber:  { $regex: req.body.search, $options: 'i' }},
+                { packageSuscription:  { $regex: req.body.search, $options: 'i' }}
+                ]
 
         }
 
@@ -224,17 +228,17 @@ module.exports = {
 
                 }
                 else {
-                    userMember.updateMany({ownerId:req.body.userId},req.body,{new:true,muti:true},(updateErr,updateResult)=>{
+                    userMember.updateMany({ ownerId: req.body.userId }, req.body, { new: true, muti: true }, (updateErr, updateResult) => {
                         if (updateErr) {
                             return res.send({ responseCode: 500, responseMessage: "Internal server error", updateErr })
                         }
-                        else{
+                        else {
                             req.body.status = req.body.status == "ACTIVE" ? "activat" : req.body.status
-                   
+
                             return res.send({ responseCode: 200, responseMessage: `User account ${req.body.status.toLowerCase()}ed successfully.`, result })
                         }
                     })
-                   
+
                 }
             })
         }

@@ -349,9 +349,9 @@ class MainServicesService {
     constructor(http) {
         this.http = http;
         this.isLogin = false;
-        // baseUrl =  'http://15.206.231.81:5000/api/v1/' //staging
-        this.baseUrl = 'http://192.168.56.1:5000/api/v1/'; //local
+        this.baseUrl = 'http://15.206.231.81:5000/api/v1/'; //staging
     }
+    // baseUrl =  'http://192.168.56.1:5000/api/v1/'//local
     //************************get API ************************ */
     getApi(url, isHeader) {
         this.token = localStorage.getItem("token");

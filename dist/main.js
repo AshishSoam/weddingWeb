@@ -735,7 +735,9 @@ class HeaderComponent {
             }
         });
         this.SharingDataAmongComponents();
-        this.getUserProfile();
+        if ((localStorage.getItem('isLoggedIn') == 'true')) {
+            this.getUserProfile();
+        }
     }
     checkEmailVerification(url) {
         const word = '?token=';

@@ -12,6 +12,10 @@ const paymentController = require("../webServices/controllers/paymentController"
  *     produces:
  *       - application/json
  *     parameters:
+ *       - name: token
+ *         description: token is required.
+ *         in: header
+ *         required: true
  *       - name: userId
  *         description: userId is required.
  *         in: formData
@@ -48,7 +52,7 @@ const paymentController = require("../webServices/controllers/paymentController"
  *       500:
  *         description: Internal server error.
  */
-router.post('/payment',paymentController.payment)
+router.post('/payment',auth.verifyToken,paymentController.payment)
 /**
  * @swagger
  * /api/v1/payment/paymentList:

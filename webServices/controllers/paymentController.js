@@ -17,68 +17,94 @@ module.exports = {
          */
     'payment': async (req, res) => {
         try {
+            let { partnerTribe,
+                partnerTribeName,
+                partnerAge,
+                partnerCountry,
+                partnerCity,
+                partnerMaritalStatus,
+                partnerOccupation,
+                partnerEducation,
+                partnerBodyType,
+                partnerHeight,
+                partnerComplexion,
+                partnerWeight,
+                partnerHairType,
+                partnerHairColor,
+                partnerReligion,
+                partnerCulture,
+                partnerHijab,
+                partnerSmokingHabits } = req.userDetails
             let checkRequest = commonQuery.checkRequest(["userId", "packageId", "packagePrice", "packageTime", "cardNumber", "cvv", "expiryDate"], req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
                 return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
             }
             else {
-                req.body.purchase_packageDetails = await packageModel.find({ "_id": req.body.packageId })
-                console.log("pramod===>", req.body)
-
-                const { packageId, userId, packagePrice, packageTime, purchase_packageDetails } = req.body
-                let trandactionObj = {
-                    packageId, userId, packagePrice, purchase_packageDetails
+                let checkKeyAvailable = commonQuery.checkRequest(["partnerTribe", "partnerTribeName", "partnerAge", "partnerCountry", "partnerCity", "partnerMaritalStatus", "partnerOccupation", "partnerEducation", "partnerBodyType", "partnerHeight", "partnerComplexion", "partnerWeight", "partnerHairType", "partnerHairColor", "partnerReligion", "partnerCulture", "partnerHijab", "partnerSmokingHabits"], req.userDetails);
+                console.log("checkKeyAvailable------>", checkKeyAvailable)
+                if (checkKeyAvailable !== true) {
+                    return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkKeyAvailable} key is missing on your desire partner profile.Please update your desire partner profile first.`, {})
                 }
-                new paymentModel(trandactionObj).save((err, result) => {
-                    if (err) {
-                        return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                else {
+                    req.body.purchase_packageDetails = await packageModel.find({ "_id": req.body.packageId })
+                    console.log("pramod===>", req.body)
+
+                    const { packageId, userId, packagePrice, packageTime, purchase_packageDetails } = req.body
+                    let trandactionObj = {
+                        packageId, userId, packagePrice, purchase_packageDetails
                     }
-                    else {
-                        let userObj = {
-                            packageId,
-                            packageSuscription: "Pending",
-                            packageStartDate: new Date().toISOString(),
-                            packageExpired: false,
-                            transactionId: result._id,
-                            userType: req.body.userType || "PENDING_MEMBER",
-                            purchase_packageDetails: purchase_packageDetails
+                    new paymentModel(trandactionObj).save((err, result) => {
+                        if (err) {
+                            return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                         }
-                        userModel.findByIdAndUpdate(userId, userObj, { new: true }, (userErr, userResult) => {
-                            if (userErr) {
-                                return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                        else {
+                            let userObj = {
+                                packageId,
+                                packageSuscription: "Pending",
+                                packageStartDate: new Date().toISOString(),
+                                packageExpired: false,
+                                transactionId: result._id,
+                                userType: req.body.userType || "PENDING_MEMBER",
+                                purchase_packageDetails: purchase_packageDetails
                             }
-                            else if (!userResult) {
-                                return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
-                            }
-                            else {
-                                let notifyObj = {
-                                    packageId,
-                                    adminInvolved: true,
-                                    notifyFrom: userId,
-                                    transactionId: result._id,
-                                    type: "packageSubscription",
-                                    title: "`Package payment confirmation.",
-                                    content: `${userResult.creatorName} have successfully purchases ${packageTime} package with transaction id :- ${result.transactionBarId}`,
-
+                            userModel.findByIdAndUpdate(userId, userObj, { new: true }, (userErr, userResult) => {
+                                if (userErr) {
+                                    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
                                 }
+                                else if (!userResult) {
+                                    return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                                }
+                                else {
+                                    let notifyObj = {
+                                        packageId,
+                                        adminInvolved: true,
+                                        notifyFrom: userId,
+                                        transactionId: result._id,
+                                        type: "packageSubscription",
+                                        title: "`Package payment confirmation.",
+                                        content: `${userResult.creatorName} have successfully purchases ${packageTime} package with transaction id :- ${result.transactionBarId}.`,
+                                    }
+                                    new notificationModel(notifyObj).save((notifyErr, notifyResult) => {
+                                        if (notifyErr) {
+                                            return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                                        }
+                                        else {
+                                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Payment done successfully.", userResult)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
 
-                                new notificationModel(notifyObj).save((notifyErr, notifyResult) => {
-                                    if (notifyErr) {
-                                        return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
-                                    }
-                                    else {
-                                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Payment done successfully.", userResult)
-                                    }
-                                })
-                            }
-                        })
-                    }
-                })
+
 
             }
         } catch (error) {
-            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+            console.log("err---->",error)
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error || error.TypeError)
 
         }
     },
@@ -156,9 +182,9 @@ module.exports = {
          */
     updateSubscriptionPlan: (req, res) => {
         try {
-            req.body.documentVerification=true;
-            req.body.userType="MEMBER";
-            req.body.packageSuscription="Approved";
+            req.body.documentVerification = true;
+            req.body.userType = "MEMBER";
+            req.body.packageSuscription = "Approved";
 
             userModel.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
                 if (err) {
@@ -169,7 +195,7 @@ module.exports = {
 
                 }
                 else {
-                    return res.send({ responseCode: 200, responseMessage: `Subscription plan updated successfully.`,result})
+                    return res.send({ responseCode: 200, responseMessage: `Subscription plan updated successfully.`, result })
                 }
 
             })

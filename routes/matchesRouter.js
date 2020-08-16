@@ -17,10 +17,6 @@ const matchingController=require('../webServices/controllers/myMachesController'
  *         description: token is required.
  *         in: header
  *         required: true
- *       - name: status
- *         description: status is required.
- *         in: formData
- *         required: true
  *     responses:
  *       200:
  *         description: Data found successfully.

@@ -56,7 +56,7 @@ module.exports = {
 
                     const { packageId, userId, packagePrice, packageTime, purchase_packageDetails } = req.body
                     let trandactionObj = {
-                        packageId, userId, packagePrice, purchase_packageDetails
+                        packageId, userId, packagePrice, purchase_packageDetails,transactionBarId: "T_" + Math.floor(100000000000 + Math.random() * 900000000000),chargeId:"Charge_" + Math.floor(100000 + Math.random() * 900000)
                     }
                     new paymentModel(trandactionObj).save((err, result) => {
                         if (err) {

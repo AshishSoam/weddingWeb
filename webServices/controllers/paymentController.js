@@ -41,6 +41,10 @@ module.exports = {
                 return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
             }
             else {
+
+                if(req.userDetails.emailVerified==false){
+                    return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `You have not verify your email.Please verify you email.`, {})
+                }
                 let checkKeyAvailable = commonQuery.checkRequest(["partnerTribe", "partnerTribeName", "partnerAge", "partnerCountry", "partnerCity", "partnerMaritalStatus", "partnerOccupation", "partnerEducation", "partnerBodyType", "partnerHeight", "partnerComplexion", "partnerWeight", "partnerHairType", "partnerHairColor", "partnerReligion", "partnerCulture", "partnerHijab", "partnerSmokingHabits"], req.userDetails);
                 console.log("checkKeyAvailable------>", checkKeyAvailable)
                 if (checkKeyAvailable !== true) {

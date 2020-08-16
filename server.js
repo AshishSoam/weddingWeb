@@ -87,6 +87,7 @@ app.use(express.urlencoded({extended: true,limit: '100mb'}));
       app.use('/api/v1/static', require('./routes/staticRouter'));
       app.use('/api/v1/payment', require('./routes/paymentRouter'));
       app.use('/api/v1/notification', require('./routes/notificationRouter'));
+      app.use('/api/v1/matches', require('./routes/matchesRouter'));
 
       app.use(express.static(path.join(__dirname, 'dist1')));
     app.get('*', (req, res) => {

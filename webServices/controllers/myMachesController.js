@@ -78,6 +78,7 @@ query.partnerSmokingHabits=(req.body.partnerSmokingHabits && req.body.partnerSmo
          else{
             result=result.map(e=>{
                 e.matchingProfilePercentage=100
+                console.log("e.matchingProfilePercentage===>",e.matchingProfilePercentage)
                 return e
             })
             result=result.filter(Boolean)

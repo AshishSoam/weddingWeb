@@ -76,12 +76,15 @@ query.partnerSmokingHabits=(req.body.partnerSmokingHabits && req.body.partnerSmo
 
          }
          else{
-            result=result.map(e=>{
-                e.matchingProfilePercentage=100
-                console.log("e.matchingProfilePercentage===>",e.matchingProfilePercentage)
-                return e
+            result=result.map((e,i)=>{
+                e["matchingProfilePercentage"]=100
+                result[i].demo="dem,o"
+                console.log("e.matchingProfilePercentage===>",e.matchingProfilePercentage,result[i].demo,e.demo)
+                return e;
             })
-            result=result.filter(Boolean)
+            console.log("e.result===>",result[0].matchingProfilePercentage,result[0].demo)
+
+            // result=result.filter(Boolean)
            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_DONE, result,query)
 
          }

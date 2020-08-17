@@ -56,7 +56,7 @@ module.exports = {
 
                     const { packageId, userId, packagePrice, packageTime, purchase_packageDetails } = req.body
                     let trandactionObj = {
-                        packageId, userId, packagePrice, purchase_packageDetails,transactionBarId: "T_" + Math.floor(100000000000 + Math.random() * 900000000000),chargeId:"Charge_" + Math.floor(100000 + Math.random() * 900000)
+                        packageId, userId, packagePrice, purchase_packageDetails,transactionBarId: "T_" + Math.floor(100000000000 + Math.random() * 900000000000),chargeId:"Charge_" + Math.floor(100000 + Math.random() * 900000),transactionDate:new Date().toISOString()
                     }
                     new paymentModel(trandactionObj).save((err, result) => {
                         if (err) {
@@ -126,6 +126,10 @@ module.exports = {
                 populate: [{ path: "userId" }, { path: "packageId" }],
                 sort: { createdAt: -1 },
             }
+            if (req.body.userd) {
+                query.userId = req.body.userd
+            }
+
             paymentModel.paginate(query, option, (err, result) => {
                 console.log("pramod-->", err, result)
                 if (err) {

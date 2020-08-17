@@ -28,7 +28,7 @@ const transactionSchema = mongoose.Schema({
     },
     transactionBarId: {
         type: String,
-        default: "T_" + Math.floor(100000000000 + Math.random() * 900000000000)
+        // default: "T_" + Math.floor(100000000000 + Math.random() * 900000000000)
     },
     userStripeAccount: {
         type: String
@@ -39,7 +39,7 @@ const transactionSchema = mongoose.Schema({
 
     transactionDate: {
         type: String,
-        default: new Date().toISOString()
+        // default: new Date().toISOString()
     },
     transactionTime: {
         type: String,
@@ -49,7 +49,7 @@ const transactionSchema = mongoose.Schema({
 
     chargeId: {
         type: String,
-        default: "Charge_" + Math.floor(100000 + Math.random() * 900000)
+        // default: "Charge_" + Math.floor(100000 + Math.random() * 900000)
     },
 
     transactionTimeStamp: {

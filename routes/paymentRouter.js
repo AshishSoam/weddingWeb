@@ -71,6 +71,10 @@ router.post('/payment',auth.verifyToken,paymentController.payment)
  *         description: limit is required.
  *         in: formData
  *         required: false
+ *       - name: userId
+ *         description: userId is optional.
+ *         in: formData
+ *         required: false
  *     responses:
  *       200:
  *         description: Data found successfully.

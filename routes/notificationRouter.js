@@ -12,11 +12,15 @@ const notificationController = require("../webServices/controllers/notificationC
  *       - application/json
  *     parameters:
  *       - name: pageNumber
- *         description: pageNumber is required.
+ *         description: pageNumber is optional.
  *         in: formData
  *         required: false
  *       - name: limit
- *         description: limit is required.
+ *         description: limit is optional.
+ *         in: formData
+ *         required: false
+ *       - name: userId
+ *         description: userId is optional.
  *         in: formData
  *         required: false
  *     responses:

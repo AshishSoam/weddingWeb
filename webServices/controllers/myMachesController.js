@@ -72,11 +72,16 @@ query.partnerSmokingHabits=(req.body.partnerSmokingHabits && req.body.partnerSmo
 
          }
          else if (result.length ==0){
-            Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [],query)
+          return  Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [],query)
 
          }
          else{
-            Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_DONE, result,query)
+            result=result.map(e=>{
+                e.matchingProfilePercentage=100
+                return e
+            })
+            result=result.filter(Boolean)
+           return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_DONE, result,query)
 
          }
      })

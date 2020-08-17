@@ -120,8 +120,9 @@ module.exports = {
     'paymentList': async (req, res) => {
         try {
             let query = { status: 'ACTIVE' };
-            if (req.body.userd) {
-                query.userId = req.body.userd
+
+            if (req.body.userId) {
+                query.userId = req.body.userId
             };
             let option = {
                 page: req.body.pageNumber ? Number(req.body.pageNumber) : 1,

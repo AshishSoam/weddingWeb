@@ -18,8 +18,9 @@ module.exports = {
     'notificationList': async (req, res) => {
         try {
             let query = { status: 'ACTIVE', adminInvolved: true };
-            if (req.body.userd) {
-                query.notifyFrom = req.body.userd
+
+            if (req.body.userId) {
+                query.notifyFrom = req.body.userId
             };
             let option = {
                 page: req.body.pageNumber ? Number(req.body.pageNumber) : 1,
@@ -28,6 +29,7 @@ module.exports = {
                 sort: { createdAt: -1 },
             }
            
+            console.log("query====>",query,req.body)
 
 
             notificationModel.paginate(query, option, (err, result) => {

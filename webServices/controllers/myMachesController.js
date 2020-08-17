@@ -76,7 +76,7 @@ query.partnerSmokingHabits=(req.body.partnerSmokingHabits && req.body.partnerSmo
 
          }
          else{
-            result=result.map((e,i)=>{
+           let temp=result.map((e,i)=>{
                 e["matchingProfilePercentage"]=100
                 result[i].demo="dem,o"
                 console.log("e.matchingProfilePercentage===>",e.matchingProfilePercentage,result[i].demo,e.demo)
@@ -85,7 +85,7 @@ query.partnerSmokingHabits=(req.body.partnerSmokingHabits && req.body.partnerSmo
             console.log("e.result===>",result[0].matchingProfilePercentage,result[0].demo)
 
             // result=result.filter(Boolean)
-           return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_DONE, result,query)
+           return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, responseMessage.SUCCESSFULLY_DONE, temp,{obj:result[0].matchingProfilePercentage,d:result[0].demo})
 
          }
      })

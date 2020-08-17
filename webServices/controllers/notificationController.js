@@ -18,15 +18,16 @@ module.exports = {
     'notificationList': async (req, res) => {
         try {
             let query = { status: 'ACTIVE', adminInvolved: true };
+            if (req.body.userd) {
+                query.notifyFrom = req.body.userd
+            };
             let option = {
                 page: req.body.pageNumber ? Number(req.body.pageNumber) : 1,
                 limit: req.body.limit ? Number(req.body.limit) : 10,
                 populate: [{ path: "notifyFrom" }, { path: "packageId" }, { path: 'notifyTo' }, { path: 'transactionId' }],
                 sort: { createdAt: -1 },
             }
-            if (req.body.userd) {
-                query.notifyFrom = req.body.userd
-            }
+           
 
 
             notificationModel.paginate(query, option, (err, result) => {

@@ -120,15 +120,16 @@ module.exports = {
     'paymentList': async (req, res) => {
         try {
             let query = { status: 'ACTIVE' };
+            if (req.body.userd) {
+                query.userId = req.body.userd
+            };
             let option = {
                 page: req.body.pageNumber ? Number(req.body.pageNumber) : 1,
                 limit: req.body.limit ? Number(req.body.limit) : 10,
                 populate: [{ path: "userId" }, { path: "packageId" }],
                 sort: { createdAt: -1 },
             }
-            if (req.body.userd) {
-                query.userId = req.body.userd
-            }
+          
 
             paymentModel.paginate(query, option, (err, result) => {
                 console.log("pramod-->", err, result)

@@ -250,7 +250,7 @@ module.exports = {
 
 
             User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
-                console.log("otp1====>", err, result._id);
+                console.log("otp1====>", err);
 
                 if (err) {
                     return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
@@ -268,6 +268,7 @@ module.exports = {
                     // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
                     // let bcryptData = bcrypt.hashSync(uniqueString, salt)
                     // req.body.password = bcryptData
+
 
 
                     req.body.message = `Hello ${result.creatorName} , Your authentication otp for wedding APP is :- ${otp1}`

@@ -287,7 +287,7 @@ module.exports = {
         }
     },
 
-    'demo': (req, res) => {
+    'demo': async(req, res) => {
         req.body.message = `Dear Sandeep,
         Your reset otp for Wedding App is : ${6565}`;
         req.body.subject = "Regarding forgot password"

@@ -24,20 +24,30 @@ module.exports = {
 
             // if(req.body.userTribe){
             //*partnerTribe
-            query.partnerTribe = (req.body.partnerTribe && req.body.partnerTribe.length > 0) ? { $in: req.body.partnerTribe } : userDetails.partnerTribe
+            // query.partnerTribe = (req.body.partnerTribe && req.body.partnerTribe.length > 0) ? { $in: req.body.partnerTribe } : userDetails.partnerTribe
             // }
             //*partnerTribeName
-            query.partnerTribeName = (req.body.partnerTribeName && req.body.partnerTribeName.length > 0) ? { $in: req.body.partnerTribeName } : userDetails.partnerTribeName
+            // query.partnerTribeName = (req.body.partnerTribeName && req.body.partnerTribeName.length > 0) ? { $in: req.body.partnerTribeName } : userDetails.partnerTribeName
+            query.$and = (req.body.partnerTribeName && req.body.partnerTribeName.length > 0) ? [{partnerTribeName:{$in: userDetails.userTribeName}},{userTribeName:{$in: req.body.partnerTribeName}}] :  [{partnerTribeName: userDetails.userTribeName},{userTribeName: req.body.partnerTribeName}]
             //*age
-            query.partnerAge = (req.body.partnerAge && req.body.partnerAge.length > 0) ? { $in: req.body.partnerAge } : userDetails.partnerAge
+            // query.partnerAge = (req.body.partnerAge && req.body.partnerAge.length > 0) ? { $in: req.body.partnerAge } : userDetails.partnerAge
+            query.$and = (req.body.partnerAge && req.body.partnerAge.length > 0) ? [{partnerAge:{$in: userDetails.userAge}},{userAge:{$in: req.body.partnerAge}}] :  [{partnerAge: userDetails.userAge},{userAge: req.body.partnerAge}]
             //*partnerCountry
-            query.partnerCountry = (req.body.partnerCountry && req.body.partnerCountry.length > 0) ? { $in: req.body.partnerCountry } : userDetails.partnerCountry
+            // query.partnerCountry = (req.body.partnerCountry && req.body.partnerCountry.length > 0) ? { $in: req.body.partnerCountry } : userDetails.partnerCountry
+
+            query.$and = (req.body.partnerCountry && req.body.partnerCountry.length > 0) ? [{partnerCountry:{$in: userDetails.userCountry}},{userCountry:{$in: req.body.partnerCountry}}] :  [{partnerCountry: req.body.userCountry},{userCountry: req.body.partnerCountry}]
+
             //*partnerCity
-            query.partnerCity = (req.body.partnerCity && req.body.partnerCity.length > 0) ? { $in: req.body.partnerCity } : userDetails.partnerCity
+            // query.partnerCity = (req.body.partnerCity && req.body.partnerCity.length > 0) ? { $in: req.body.partnerCity } : userDetails.partnerCity
+            query.$and = (req.body.partnerCity && req.body.partnerCity.length > 0) ? [{partnerCity:{$in: req.body.userCity}},{userCity:{$in: req.body.partnerCity}}] :  [{partnerCity: req.body.userCity},{userCity: req.body.partnerCity}]
             //*partnerMaritalStatus
-            query.partnerMaritalStatus = (req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0) ? { $in: req.body.partnerMaritalStatus } : userDetails.partnerMaritalStatus
+            // query.partnerMaritalStatus = (req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0) ? { $in: req.body.partnerMaritalStatus } : userDetails.partnerMaritalStatus
+
+            query.$and = (req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0) ? [{partnerMaritalStatus:{$in: req.body.userMaritalstatus}},{userMaritalstatus:{$in: req.body.partnerMaritalStatus}}] :  [{partnerMaritalStatus: req.body.userMaritalstatus},{userMaritalstatus: req.body.partnerMaritalStatus}]
+
             //*partnerOccupation
-            query.partnerOccupation = (req.body.partnerOccupation && req.body.partnerOccupation.length > 0) ? { $in: req.body.partnerOccupation } : userDetails.partnerOccupation
+            // query.partnerOccupation = (req.body.partnerOccupation && req.body.partnerOccupation.length > 0) ? { $in: req.body.partnerOccupation } : userDetails.partnerOccupation
+            query.$and = (req.body.partnerOccupation && req.body.partnerOccupation.length > 0) ? [{partnerOccupation:{$in: req.body.userOccupation}},{userOccupation:{$in: req.body.partnerOccupation}}] :  [{partnerOccupation: req.body.userOccupation},{userOccupation: req.body.partnerOccupation}]
             //*partnerEducation
             query.partnerEducation = (req.body.partnerEducation && req.body.partnerEducation.length > 0) ? { $in: req.body.partnerEducation } : userDetails.partnerEducation
             //*partnerBodyType

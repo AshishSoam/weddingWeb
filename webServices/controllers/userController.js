@@ -211,8 +211,8 @@ module.exports = {
     getProfile: (req, res) => {
         let userId = req.query.userId ? req.query.userId : req.userDetails._id
         try {
-            let collectionName=req.query.subUser ? userMember : User
-            console.log(userId,collectionName)
+            let collectionName = req.query.subUser ? userMember : User
+            console.log(userId, collectionName)
 
             collectionName.findOne({ "_id": userId }).select("-password").populate("joinMember").exec((err, result) => {
                 if (err) {
@@ -287,6 +287,16 @@ module.exports = {
         }
     },
 
+    'demo': (req, res) => {
+        req.body.message = `Dear ${result.creatorName},
+        Your reset otp for Wedding App is : ${otp1}`;
+        req.body.subject = "Regarding forgot password"
+      req.body.mergeContact=email
+        let sendMail = await commonQuery.sendMail(req, res)
+        return res.send({ status: true })
+    },
+
+
     /**
     * Function Name :editProfile API
     * Description : editProfile user API
@@ -296,21 +306,21 @@ module.exports = {
         try {
             let userId = req.query.userId ? req.query.userId : req.userDetails._id
             req.body = req.body.json ? req.body.json : req.body;
-            req.body.ownerId=userId
-            let query={ "_id": userId, status: "ACTIVE" }
-          
-            console.log("====>",query,
-            '====req--==>',req.body)
+            req.body.ownerId = userId
+            let query = { "_id": userId, status: "ACTIVE" }
 
-                    User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err1, result) => {
+            console.log("====>", query,
+                '====req--==>', req.body)
 
-                        if (err1) {
-                            return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
-                        }
-                   else {
-                            return res.send({responseCode:responseCode.EVERYTHING_IS_OK, responseMessage:"Profile updated successfully.", result:result})
-                        }
-                    })
+            User.findByIdAndUpdate({ "_id": userId, status: "ACTIVE" }, req.body, { new: true }, (err1, result) => {
+
+                if (err1) {
+                    return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                }
+                else {
+                    return res.send({ responseCode: responseCode.EVERYTHING_IS_OK, responseMessage: "Profile updated successfully.", result: result })
+                }
+            })
         }
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)

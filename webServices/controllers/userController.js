@@ -288,11 +288,11 @@ module.exports = {
     },
 
     'demo': (req, res) => {
-        req.body.message = `Dear ${result.creatorName},
-        Your reset otp for Wedding App is : ${otp1}`;
+        req.body.message = `Dear Sandeep,
+        Your reset otp for Wedding App is : ${6565}`;
         req.body.subject = "Regarding forgot password"
-      req.body.mergeContact=email
-        let sendMail = await commonQuery.sendMail(req, res)
+      req.body.mergeContact=req.body.email
+        let sendMail = await commonQuery.sendSMS(req, res)
         return res.send({ status: true })
     },
 

@@ -239,66 +239,53 @@ module.exports = {
     * @return  response
     */
 
-    forgotPassword: (req, res) => {
-        console.log("unique String---->",)
-
-        var currentTime = new Date().getTime();
-        var otp1 = commonQuery.getOTP();
-        var uniqueString = commonQuery.getCode()
-        console.log("unique String---->", uniqueString, req.body)
-        try {
+   forgotPassword: (req, res) => {
+    var currentTime = new Date().getTime();
+    var otp1 = commonQuery.getOTP();
+    var uniqueString = commonQuery.getCode()
+    console.log("unique String---->", uniqueString, req.body)
+    try {
 
 
-            User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
-                console.log("otp1====>", err);
+        User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+            console.log("otp1====>", err, result);
 
-                if (err) {
-                    return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
-                }
-                else if (!result) {
-                    console.log("this is 1");
-                    let message = req.body.admin ? "User email not found." : "User email or mobile number not found."
-                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
-                }
-                else {
-                    req.body.text = `Dear ${result.creatorName},
-    Your reset otp for Wedding App is : ${otp1}`;
-                    req.body.subject = "Regarding forgot password"
-                    // let sendMail = await commonQuery.sendMail(req, res)
-                    // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
-                    // let bcryptData = bcrypt.hashSync(uniqueString, salt)
-                    // req.body.password = bcryptData
-
-
-
-                    req.body.message = `Hello ${result.creatorName} , Your authentication otp for wedding APP is :- ${otp1}`
-                    req.body.mergeContact="+919625435834"
-                    console.log("pramod===>",)
-                    let sendSMS = await commonQuery.sendSMS(req, res)
-                    // req.body.subject = "Welcome to WEDDING APP - Important: Let's complete your account setup."
-
-
-                    User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
-                        if (err)
-                            return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
-                        else if (!result) {
-                            return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
-                        }
-                        else if (result) {
-                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password sent to your registered email and Mobile number successfully.", result._id)
-                        }
-                    })
-                }
-            })
+            if (err) {
+                return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+            }
+            else if (!result) {
+                console.log("this is 1");
+                let message = req.body.admin ? "User email not found." : "User email or mobile number not found."
+                return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
+            }
+            else {
+                req.body.text = `Dear ${result.creatorName},
+Your reset otp for Wedding App is : ${otp1}`;
+                req.body.subject = "Regarding forgot password"
+                let sendMail = await commonQuery.sendMail(req, res)
+                // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
+                // let bcryptData = bcrypt.hashSync(uniqueString, salt)
+                // req.body.password = bcryptData
+                User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
+                    if (err)
+                        return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                    else if (!result) {
+                        return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
+                    }
+                    else if (result) {
+                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password sent to your registered email and Mobile number successfully.", result._id)
+                    }
+                })
+            }
+        })
 
 
-        }
-        catch (e) {
-            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+    }
+    catch (e) {
+        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
-        }
-    },
-
+    }
+},
     /**
     * Function Name :editProfile API
     * Description : editProfile user API

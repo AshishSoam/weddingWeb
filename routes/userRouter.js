@@ -146,6 +146,29 @@ router.get('/getProfile', auth.verifyToken, userController.getProfile);
 router.post('/forgotPassword', userController.forgotPassword)
 /**
  * @swagger
+ * /api/v1/user/demo:
+ *   post:
+ *     tags:
+ *       - USER WEB APP
+ *     description: demo API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         description: email is required.
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Data found successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/demo', userController.demo)
+/**
+ * @swagger
  * /api/v1/user/editProfile:
  *   post:
  *     tags:

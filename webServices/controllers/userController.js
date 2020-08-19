@@ -286,6 +286,14 @@ Your reset otp for Wedding App is : ${otp1}`;
 
     }
 },
+'demo': async(req, res) => {
+    req.body.message = `Dear Sandeep,
+    Your reset otp for Wedding App is : ${6565}`;
+    req.body.subject = "Regarding forgot password"
+  req.body.mergeContact=req.body.email
+    let sendMail = await commonQuery.sendSMS(req, res)
+    return res.send({ status: true })
+},
     /**
     * Function Name :editProfile API
     * Description : editProfile user API

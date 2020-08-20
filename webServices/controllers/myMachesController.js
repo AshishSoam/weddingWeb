@@ -187,7 +187,7 @@ module.exports = {
                         if (e._doc.partnerDrinkingHabits && e._doc.partnerDrinkingHabits == userDetails.partnerDrinkingHabits) {
                             e._doc["secondaryMatching"] += 9
                         }
-                        console.log("e.primaryMatching===>", e._doc._id, e._doc.primaryMatching,"secondaryMatching====>",secondaryMatching)
+                        console.log("e.primaryMatching===>", e._doc._id, e._doc.primaryMatching,"secondaryMatching====>", e._doc.secondaryMatching)
                         return e;
                     })
 

@@ -95,6 +95,7 @@ module.exports = {
             }
             console.log("genderToBeSearch====>", andOperation)
             userModel.find(query).select("-purchase_packageDetails -packageId -packageStartDate -transactionId -packageEndDate -forgotToken -emailVerificationTime -accountVerification -password -otp -otpTime ").exec((err, result) => {
+                console.log("matching=====>",err)
                 if (err) {
                     return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
 
@@ -107,8 +108,8 @@ module.exports = {
 
                     let temp = result.map((e, i) => {
                         console.log(`loop ${i}`, e._doc._id)
-                        e._doc["primaryMatching"] = 0
-                        e._doc["secondaryMatching"] = 0
+                        e._doc["primaryMatching"] = 0;
+                        e._doc["secondaryMatching"] = 0;
 
                         if (e._doc.partnerAge && e._doc.partnerAge == userDetails.partnerAge) {
 

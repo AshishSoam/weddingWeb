@@ -36,5 +36,8 @@ module.exports = {
     VERIFIED_OTP: "OTP verified successfully.",
     INVALID_OTP:"OTP does not matched.",
     RESENT_OTP:"OTP send successfully.",
-    EMAIL_ALREADY_VERIFIED : "You have already verified your email."
+    EMAIL_ALREADY_VERIFIED : "You have already verified your email.",
+    FAVORITE_MARK:"You have add favorite user successfully.",
+    FAVORITE_UNMARK:"You have removed user from your favourite User.",
+
  };

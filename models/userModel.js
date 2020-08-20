@@ -17,7 +17,7 @@ const userSchema = schema({
     },
     purchase_packageDetails: {
         type: Object,
-        default:[]
+        default: []
     },
     packageEndDate: {
         type: String
@@ -29,7 +29,7 @@ const userSchema = schema({
         tye: Boolean,
         // default: true
     },
-    transactionId:{
+    transactionId: {
         type: schema.Types.ObjectId,
         ref: 'transaction'
     },
@@ -44,12 +44,12 @@ const userSchema = schema({
     },
     userType: {
         type: String,
-        enum: ["GUEST", "VISITOR", "MEMBER", "ADMIN","PENDING_MEMBER"],
+        enum: ["GUEST", "VISITOR", "MEMBER", "ADMIN", "PENDING_MEMBER"],
         default: "VISITOR"
     },
     profilePic: {
         type: String,
-        default:"https://res.cloudinary.com/smsit/image/upload/v1597335652/fmcvdi2g6ogd5vwzvzfa.jpg"
+        default: "https://res.cloudinary.com/smsit/image/upload/v1597335652/fmcvdi2g6ogd5vwzvzfa.jpg"
     },
     fullName: {
         type: String
@@ -105,7 +105,7 @@ const userSchema = schema({
     //     type: String,
     //     ref: "joinSubMembers"
     // }],
-    
+
     //default key
     forgotToken: {
         type: String,
@@ -360,7 +360,7 @@ const userSchema = schema({
     },
     userProfilePhoto: {
         type: String,
-        default:"https://res.cloudinary.com/smsit/image/upload/v1597335652/fmcvdi2g6ogd5vwzvzfa.jpg"
+        default: "https://res.cloudinary.com/smsit/image/upload/v1597335652/fmcvdi2g6ogd5vwzvzfa.jpg"
     },
     partnerProfilePhoto: {
         type: String
@@ -432,9 +432,16 @@ const userSchema = schema({
     incomeFilter: {
         type: Boolean,
         default: false
-    }
+    },
 
-
+    markFavorite: [{
+        type: schema.Types.ObjectId,
+        ref: 'users'
+    }],
+    showIntrest: [{
+        type: schema.Types.ObjectId,
+        ref: 'users'
+    }],
 
 }, { timestamps: true })
 userSchema.plugin(mongoosePaginate);

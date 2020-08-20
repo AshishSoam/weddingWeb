@@ -214,7 +214,7 @@ module.exports = {
             let collectionName = req.query.subUser ? userMember : User
             console.log(userId, collectionName)
 
-            collectionName.findOne({ "_id": userId }).select("-password").populate("joinMember").exec((err, result) => {
+            collectionName.findOne({ "_id": userId }).select("-password").populate("markFavorite").populate('showIntrest').exec((err, result) => {
                 if (err) {
                     return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                 }
@@ -416,14 +416,10 @@ Your reset otp for Wedding App is : ${otp1}`;
 
             })
         }
-
         catch (e) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
-
         }
-
     },
-
     /**
     * Function Name :email_verification API
     * Description : email_verification user API
@@ -513,5 +509,63 @@ Your reset otp for Wedding App is : ${otp1}`;
 
         }
     },
+     /**
+    * Function Name :markFavorite API
+    * Description : markFavorite user API
+    * @return  response
+    */
+    markFavorite:(req,res)=>{
+        try {
+            let userDetails=req.userDetails;
+           let updateData={};
+           let {status,favoriteUserId}=req.body
+           updateData =status? {$addToSet:{markFavorite:favoriteUserId}}:{$pop:{markFavorite:favoriteUserId}}
+           console.log("----markFavorite----",status,favoriteUserId,updateData)
+
+           User.findByIdAndUpdate(userDetails._id,updateData,{new:true},(err,result)=>{
+               if(err){
+                return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+            }
+            else if(!result){
+                return Response.sendResponseWithData(res.responseCode.NOT_FOUND,responseMessage.NOT_FOUND,[])
+            }
+            else{
+                return Response.sendResponseWithData(res.responseCode.EVERYTHING_IS_OK,status ? responseMessage.FAVORITE_MARK: responseMessage.FAVORITE_UNMARK,result.markFavorite)
+
+            }
+           })
+        } catch (error) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+        }
+    },
+       /**
+    * Function Name :showIntrest API
+    * Description : showIntrest user API
+    * @return  response
+    */
+   showIntrest:(req,res)=>{
+    try {
+        let userDetails=req.userDetails;
+       let updateData={};
+       let {status,showIntrestUserId}=req.body
+       updateData =status? {$addToSet:{showIntrest:showIntrestUserId}}:{$pop:{showIntrest:showIntrestUserId}}
+       console.log("----showIntrest----",status,showIntrestUserId,updateData)
+
+       User.findByIdAndUpdate(userDetails._id,updateData,{new:true},(err,result)=>{
+           if(err){
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+        }
+        else if(!result){
+            return Response.sendResponseWithData(res.responseCode.NOT_FOUND,responseMessage.NOT_FOUND,[])
+        }
+        else{
+            return Response.sendResponseWithData(res.responseCode.EVERYTHING_IS_OK,status ? responseMessage.FAVORITE_MARK: responseMessage.FAVORITE_UNMARK,result.showIntrest)
+
+        }
+       })
+    } catch (error) {
+        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+    }
+},
     //*************************************End of exports*********************************************8 */
 }

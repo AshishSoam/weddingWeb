@@ -107,73 +107,86 @@ module.exports = {
 
                     let temp = result.map((e, i) => {
                         console.log(`loop ${i}`, e._doc._id)
-                        e._doc["matchingProfilePercentage"] = 0
+                        e._doc["primaryMatching"] = 0
+                        e._doc["secondaryMatching"] = 0
 
                         if (e._doc.partnerAge && e._doc.partnerAge == userDetails.partnerAge) {
 
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 6
+                        }
+                        if (e._doc.partnerMathab && e._doc.partnerMathab == userDetails.partnerMathab) {
+
+                            e._doc["primaryMatching"] += 6
+                        }
+                        if (e._doc.partnerReligiosity && e._doc.partnerReligiosity == userDetails.partnerReligiosity) {
+
+                            e._doc["primaryMatching"] += 5
                         }
 
                         if (e._doc.partnerLanguage && e._doc.partnerLanguage == userDetails.partnerLanguage) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 5
                         }
 
                         if (e._doc.partnerTribe && e._doc.partnerTribe == userDetails.partnerTribe) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 7
                         }
                         if (e._doc.partnerTribeName && e._doc.partnerTribeName == userDetails.partnerTribeName) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 7
                         }
                         if (e._doc.partnerCountry && e._doc.partnerCountry == userDetails.partnerCountry) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 6
                         }
                         if (e._doc.partnerCity && e._doc.partnerCity == userDetails.partnerCity) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 6
                         }
 
-                        if (e._doc.partnerCity && e._doc.partnerCity == userDetails.partnerCity) {
-                            e._doc["matchingProfilePercentage"] += 5
-                        }
+                        // if (e._doc.partnerCity && e._doc.partnerCity == userDetails.partnerCity) {
+                        //     e._doc["primaryMatching"] += 5
+                        // }
                         if (e._doc.partnerMaritalStatus && e._doc.partnerMaritalStatus == userDetails.partnerMaritalStatus) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 6
                         }
                         if (e._doc.partnerEducation && e._doc.partnerEducation == userDetails.partnerEducation) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 6
+                        }
+
+                        if (e._doc.partnerEducation && e._doc.partnerEducation == userDetails.partnerEducation) {
+                            e._doc["primaryMatching"] += 6
                         }
                         if (e._doc.partnerOccupation && e._doc.partnerOccupation == userDetails.partnerOccupation) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 5
                         }
                         if (e._doc.partnerBodyType && e._doc.partnerBodyType == userDetails.partnerBodyType) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 5
                         }
                         if (e._doc.partnerComplexion && e._doc.partnerComplexion == userDetails.partnerComplexion) {
-                            e._doc["matchingProfilePercentage"] += 6
+                            e._doc["primaryMatching"] += 6
                         }
                         if (e._doc.partnerPhysicalStatus && e._doc.partnerPhysicalStatus == userDetails.partnerPhysicalStatus) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 5
                         }
                         if (e._doc.partnerHeight && e._doc.partnerHeight == userDetails.partnerHeight) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 5
                         }
                         if (e._doc.userWeight && e._doc.userWeight == userDetails.userWeight) {
-                            e._doc["matchingProfilePercentage"] += 5
+                            e._doc["primaryMatching"] += 5
                         }
                         if (e._doc.partnerEatingHabits && e._doc.partnerEatingHabits == userDetails.partnerEatingHabits) {
-                            e._doc["matchingProfilePercentage"] += 9
+                            e._doc["primaryMatching"] += 9
                         }
                         if (e._doc.partnerIncome && e._doc.partnerIncome == userDetails.partnerIncome) {
-                            e._doc["matchingProfilePercentage"] += 8
+                            e._doc["primaryMatching"] += 8
                         }
                         if (e._doc.partnerFamilyStatus && e._doc.partnerFamilyStatus == userDetails.partnerFamilyStatus) {
-                            e._doc["matchingProfilePercentage"] += 8
+                            e._doc["primaryMatching"] += 8
                         }
                         if (e._doc.partnerLifestyle && e._doc.partnerLifestyle == userDetails.partnerLifestyle) {
-                            e._doc["matchingProfilePercentage"] += 8
+                            e._doc["secondaryMatching"] += 8
                         }
                         if (e._doc.partnerDrinkingHabits && e._doc.partnerDrinkingHabits == userDetails.partnerDrinkingHabits) {
-                            e._doc["matchingProfilePercentage"] += 9
+                            e._doc["secondaryMatching"] += 9
                         }
-                        console.log("e.matchingProfilePercentage===>", e._doc._id, e._doc.matchingProfilePercentage,)
+                        console.log("e.primaryMatching===>", e._doc._id, e._doc.primaryMatching,"secondaryMatching====>",secondaryMatching)
                         return e;
                     })
 

@@ -292,6 +292,68 @@ router.post('/changePassword', userController.changePassword);
  */
 router.get('/email_verification', userController.email_verification);
 
+/**
+ * @swagger
+ * /api/v1/user/markFavorite:
+ *   post:
+ *     tags:
+ *       - USER WEB APP
+ *     description: markFavorite API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         description: token is required .
+ *         in: header
+ *         required: true
+ *       - name: favoriteUserId
+ *         description: favoriteUserId is required .
+ *         in: query
+ *         required: true
+ *       - name: status
+ *         description: status is required .
+ *         in: query
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Favorite user marked successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/markFavorite',auth.verifyToken, userController.markFavorite);
+/**
+ * @swagger
+ * /api/v1/user/showIntrest:
+ *   post:
+ *     tags:
+ *       - USER WEB APP
+ *     description: showIntrest API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         description: token is required .
+ *         in: header
+ *         required: true
+ *       - name: showIntrestUserId
+ *         description: showIntrestUserId is required .
+ *         in: query
+ *         required: true
+ *       - name: status
+ *         description: status is required .
+ *         in: query
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Intrest user marked successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/showIntrest', auth.verifyToken,userController.showIntrest);
 
 
 router.post('/uploadMultipleImage',userController.uploadMultipleImage)

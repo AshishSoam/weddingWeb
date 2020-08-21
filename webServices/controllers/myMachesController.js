@@ -69,9 +69,7 @@ module.exports = {
             //*partnerBodyType
             // query.partnerBodyType = (req.body.partnerBodyType && req.body.partnerBodyType.length > 0) ? { $in: req.body.partnerBodyType } : userDetails.partnerBodyType
             req.body.partnerBodyType && req.body.partnerBodyType.length > 0 ? andOperation.push({ partnerBodyType: { $in: userDetails.userHeight } }, { userBodyType: { $in: req.body.partnerBodyType } }) : andOperation.push({ partnerBodyType: userDetails.userBodyType }, { userBodyType: userDetails.partnerBodyType })
-            //*partnerHeight
-            // query.partnerHeight = (req.body.partnerHeight && req.body.partnerHeight.length > 0) ? { $in: req.body.partnerHeight } : userDetails.partnerHeight
-            req.body.partnerHeight && req.body.partnerHeight.length > 0 ? andOperation.push({ partnerHeight: { $in: userDetails.userHeight } }, { userHeight: { $in: req.body.partnerHeight } }) : andOperation.push({ partnerHeight: userDetails.userHeight }, { userHeight: userDetails.partnerHeight })
+           
             //*partnerComplexion
             // query.partnerComplexion = (req.body.partnerComplexion && req.body.partnerComplexion.length > 0) ? { $in: req.body.partnerComplexion } : userDetails.partnerComplexion
             req.body.partnerComplexion && req.body.partnerComplexion.length > 0 ? andOperation.push({ partnerComplexion: { $in: userDetails.userComplexion } }, { userComplexion: { $in: req.body.partnerComplexion } }) : andOperation.push({ partnerComplexion: userDetails.userComplexion }, { userComplexion: userDetails.partnerComplexion })
@@ -84,27 +82,27 @@ module.exports = {
             //*partnerWeight
             // query.partnerWeight = (req.body.partnerWeight && req.body.partnerWeight.length > 0) ? { $in: req.body.partnerWeight } : userDetails.partnerWeight
             req.body.partnerWeight && req.body.partnerWeight.length > 0 ? andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) : andOperation.push({ partnerWeight: userDetails.userWeight }, { userWeight: userDetails.partnerWeight })
-
-            //*partnerHairType
-            // query.partnerHairType = (req.body.partnerHairType && req.body.partnerHairType.length > 0) ? { $in: req.body.partnerHairType } : userDetails.partnerHairType
-            req.body.partnerHairType && req.body.partnerHairType.length > 0 ? andOperation.push({ partnerHairType: { $in: userDetails.userHairType } }, { userHairType: { $in: req.body.partnerHairType } }) : andOperation.push({ partnerHairType: userDetails.userHairType }, { userHairType: userDetails.partnerHairType })
-            //*partnerHairColor
-            // query.partnerHairColor = (req.body.partnerHairColor && req.body.partnerHairColor.length > 0) ? { $in: req.body.partnerHairColor } : userDetails.partnerHairColor
-            req.body.partnerHairColor && req.body.partnerHairColor.length > 0 ? andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } }) : andOperation.push({ partnerHairColor: userDetails.userHairColor }, { userHairColor: userDetails.partnerHairColor })
-            //*  partnerReligion 
-            // query.partnerReligion = (req.body.partnerReligion && req.body.partnerReligion.length > 0) ? { $in: req.body.partnerReligion } : userDetails.partnerReligion
-            req.body.partnerReligion && req.body.partnerReligion.length > 0 ? andOperation.push({ partnerReligion: { $in: userDetails.userReligion } }, { userReligion: { $in: req.body.partnerReligion } }) : andOperation.push({ partnerReligion: userDetails.userReligion }, { userReligion: userDetails.partnerReligion })
-            //*  partnerCulture/ 
-            // query.partnerCulture = (req.body.partnerCulture && req.body.partnerCulture.length > 0) ? { $in: req.body.partnerCulture } : userDetails.partnerCulture
-            req.body.partnerCulture && req.body.partnerCulture.length > 0 ? andOperation.push({ partnerCulture: { $in: userDetails.userCulture } }, { userCulture: { $in: req.body.partnerCulture } }) : andOperation.push({ partnerCulture: userDetails.userCulture }, { userCulture: userDetails.partnerCulture })
-            //*  partnerHijab 
-            // query.partnerHijab = (req.body.partnerHijab && req.body.partnerHijab.length > 0) ? { $in: req.body.partnerHijab } : userDetails.partnerHijab
-            req.body.partnerHijab && req.body.partnerHijab.length > 0 ? andOperation.push({ partnerHijab: { $in: userDetails.userHijab } }, { userHijab: { $in: req.body.partnerHijab } }) : andOperation.push({ partnerHijab: userDetails.userHijab }, { userHijab: userDetails.partnerHijab })
-            //*  partnerSmokingHabits 
-            // query.partnerSmokingHabits = (req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0) ? { $in: req.body.partnerSmokingHabits } : userDetails.partnerSmokingHabits
-            req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0 ? andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } }) : andOperation.push({ partnerSmokingHabits: userDetails.userSmokingHabits }, { userSmokingHabits: userDetails.partnerSmokingHabits })
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
+            // //*partnerHairType
+            // // query.partnerHairType = (req.body.partnerHairType && req.body.partnerHairType.length > 0) ? { $in: req.body.partnerHairType } : userDetails.partnerHairType
+            // req.body.partnerHairType && req.body.partnerHairType.length > 0 ? andOperation.push({ partnerHairType: { $in: userDetails.userHairType } }, { userHairType: { $in: req.body.partnerHairType } }) : andOperation.push({ partnerHairType: userDetails.userHairType }, { userHairType: userDetails.partnerHairType })
+            // //*partnerHairColor
+            // // query.partnerHairColor = (req.body.partnerHairColor && req.body.partnerHairColor.length > 0) ? { $in: req.body.partnerHairColor } : userDetails.partnerHairColor
+            // req.body.partnerHairColor && req.body.partnerHairColor.length > 0 ? andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } }) : andOperation.push({ partnerHairColor: userDetails.userHairColor }, { userHairColor: userDetails.partnerHairColor })
+            // //*  partnerReligion 
+            // // query.partnerReligion = (req.body.partnerReligion && req.body.partnerReligion.length > 0) ? { $in: req.body.partnerReligion } : userDetails.partnerReligion
+            // req.body.partnerReligion && req.body.partnerReligion.length > 0 ? andOperation.push({ partnerReligion: { $in: userDetails.userReligion } }, { userReligion: { $in: req.body.partnerReligion } }) : andOperation.push({ partnerReligion: userDetails.userReligion }, { userReligion: userDetails.partnerReligion })
+            // //*  partnerCulture/ 
+            // // query.partnerCulture = (req.body.partnerCulture && req.body.partnerCulture.length > 0) ? { $in: req.body.partnerCulture } : userDetails.partnerCulture
+            // req.body.partnerCulture && req.body.partnerCulture.length > 0 ? andOperation.push({ partnerCulture: { $in: userDetails.userCulture } }, { userCulture: { $in: req.body.partnerCulture } }) : andOperation.push({ partnerCulture: userDetails.userCulture }, { userCulture: userDetails.partnerCulture })
+            // //*  partnerHijab 
+            // // query.partnerHijab = (req.body.partnerHijab && req.body.partnerHijab.length > 0) ? { $in: req.body.partnerHijab } : userDetails.partnerHijab
+            // req.body.partnerHijab && req.body.partnerHijab.length > 0 ? andOperation.push({ partnerHijab: { $in: userDetails.userHijab } }, { userHijab: { $in: req.body.partnerHijab } }) : andOperation.push({ partnerHijab: userDetails.userHijab }, { userHijab: userDetails.partnerHijab })
             // //*  partnerSmokingHabits 
-            // query.partnerSmokingHabits=req.body.partnerSmokingHabits.length > 0? {$in:req.body.partnerSmokingHabits} :userDetails.partnerSmokingHabits  
+            // // query.partnerSmokingHabits = (req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0) ? { $in: req.body.partnerSmokingHabits } : userDetails.partnerSmokingHabits
+            // req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0 ? andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } }) : andOperation.push({ partnerSmokingHabits: userDetails.userSmokingHabits }, { userSmokingHabits: userDetails.partnerSmokingHabits })
+            // // //*  partnerSmokingHabits 
+            // // query.partnerSmokingHabits=req.body.partnerSmokingHabits.length > 0? {$in:req.body.partnerSmokingHabits} :userDetails.partnerSmokingHabits  
             if (andOperation.length > 0) {
                 query.$and = andOperation
             }

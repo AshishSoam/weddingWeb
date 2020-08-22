@@ -70,7 +70,7 @@ module.exports = {
                                 packageExpired: false,
                                 transactionId: result._id,
                                 userType: req.body.userType || "PENDING_MEMBER",
-                                purchase_packageDetails: purchase_packageDetails
+                                purchase_packageDetails: req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
                             }
                             userModel.findByIdAndUpdate(userId, userObj, { new: true }, (userErr, userResult) => {
                                 if (userErr) {

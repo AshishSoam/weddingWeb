@@ -125,46 +125,61 @@ module.exports = {
                         e._doc["secondaryMatching"] = 0;
                         //primary weitage
                         //*age
-                        if (e._doc.partnerAge && e._doc.userAge && e._doc.userAge == userDetails.partnerAge && e._doc.userAge == userDetails.userAge) {
-
+                        if (e._doc.partnerAge && e._doc.userAge && e._doc.userAge == userDetails.partnerAge && e._doc.partnerAge == userDetails.userAge) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerAge==>",e._doc["primaryMatching"])
+
                         }
                         //*mathab            
                         if (e._doc.partnerMathab && e._doc.userMathab && e._doc.userMathab == userDetails.partnerMathab && e._doc.partnerMathab == userDetails.userMathab) {
 
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerMathab==>",e._doc["primaryMatching"])
+
                         }
                         //*Religiosity
 
                         if (e._doc.partnerReligion && e._doc.userReligion && e._doc.userReligion == userDetails.partnerReligion && e._doc.partnerReligion == userDetails.userReligion) {
 
                             e._doc["primaryMatching"] += 5
+                            console.log("partnerReligion==>",e._doc["primaryMatching"])
+
                         }
 
 
                         //*language
                         if (e._doc.partnerLanguage && e._doc.userLanguage && e._doc.userLanguage == userDetails.partnerLanguage && e._doc.partnerLanguage == userDetails.userLanguage) {
                             e._doc["primaryMatching"] += 5
+                            console.log("partnerLanguage==>",e._doc["primaryMatching"])
+
                         }
                         //tribe
 
                         if (e._doc.partnerTribe && e._doc.userTribe && e._doc.userTribe == userDetails.partnerTribe && e._doc.partnerTribe == userDetails.userTribe) {
                             e._doc["primaryMatching"] += 7
+                            console.log("partnerTribe==>",e._doc["primaryMatching"])
+
                         }
 
                         //*tribeName
 
                         if (e._doc.partnerTribeName && e._doc.userTribeName && e._doc.userTribeName == userDetails.partnerTribeName && e._doc.partnerTribeName == userDetails.userTribeName) {
                             e._doc["primaryMatching"] += 7
+                            console.log("partnerTribeName==>",e._doc["primaryMatching"])
+
                         }
                         //country
 
                         if (e._doc.partnerCountry && e._doc.userCountry && e._doc.userCountry == userDetails.partnerCountry && e._doc.partnerCountry == userDetails.userCountry) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerCountry==>",e._doc["primaryMatching"])
+
                         }
                         //city
                         if (e._doc.partnerCity && e._doc.userCity && e._doc.userCity == userDetails.partnerCity && e._doc.partnerCity == userDetails.userCity) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerCity==>",e._doc["primaryMatching"])
+
                         }
                         //maritialStatus
                         // if (e._doc.partnerCity && e._doc.partnerCity == userDetails.partnerCity) {
@@ -172,38 +187,56 @@ module.exports = {
                         // }
                         if (e._doc.partnerMaritalStatus && e._doc.userMaritalstatus && e._doc.userMaritalstatus == userDetails.partnerMaritalStatus && e._doc.partnerMaritalStatus == userDetails.userMaritalstatus) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerMaritalStatus==>",e._doc["primaryMatching"])
+
                         }
                         //*education
                         if (e._doc.partnerEducation && e._doc.userEducation && e._doc.userEducation == userDetails.partnerEducation && e._doc.partnerEducation == userDetails.userEducation) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerEducation==>",e._doc["primaryMatching"])
+
                         }
                         //*employed In
                         if (e._doc.partnerEmployedIn && e._doc.userEmployedIn && e._doc.userEmployedIn == userDetails.partnerEmployedIn && e._doc.partnerEmployedIn == userDetails.userEmployedIn) {
                             e._doc["primaryMatching"] += 5
+                            console.log("partnerEmployedIn==>",e._doc["primaryMatching"])
+
                         }
                         //*occupation
                         if (e._doc.partnerOccupation && e._doc.userOccupation && e._doc.userOccupation == userDetails.partnerOccupation && e._doc.partnerOccupation == userDetails.userOccupation) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerOccupation==>",e._doc["primaryMatching"])
+
                         }
                         //*bodyType
                         if (e._doc.partnerBodyType && e._doc.userBodyType && e._doc.userBodyType == userDetails.partnerBodyType && e._doc.partnerBodyType == userDetails.userBodyType) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerBodyType==>",e._doc["primaryMatching"])
+
                         }
                         //complextion
                         if (e._doc.partnerComplexion && e._doc.userComplexion && e._doc.userComplexion == userDetails.partnerComplexion && e._doc.partnerComplexion == userDetails.userComplexion) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerComplexion==>",e._doc["primaryMatching"])
+
                         }
                         //*physical status
                         if (e._doc.partnerPhysicalStatus && e._doc.userPhysicalStatus && e._doc.userPhysicalStatus == userDetails.partnerPhysicalStatus && e._doc.partnerPhysicalStatus == userDetails.userPhysicalStatus) {
                             e._doc["primaryMatching"] += 6
+                            console.log("partnerPhysicalStatus==>",e._doc["primaryMatching"])
+
                         }
                         //*height
                         if (e._doc.partnerHeight && e._doc.userHeight && e._doc.userHeight == userDetails.partnerHeight && e._doc.partnerHeight == userDetails.userHeight) {
-                            e._doc["primaryMatching"] += 5
+                            e._doc["primaryMatching"] += 6
+                            console.log("partnerHeight==>",e._doc["primaryMatching"])
+
                         }
                         //*weight
                         if (e._doc.partnerWeight && e._doc.userWeight && e._doc.userWeight == userDetails.partnerWeight && e._doc.partnerWeight == userDetails.userWeight) {
                             e._doc["primaryMatching"] += 5
+                            console.log("partnerWeight==>",e._doc["primaryMatching"])
+
                         }
 
                         //**finish primary weigtage count */
@@ -216,64 +249,64 @@ module.exports = {
 
                         //*culture
                         if (e._doc.partnerCulture && e._doc.userCulture && e._doc.userCulture == userDetails.partnerCulture && e._doc.partnerCulture == userDetails.userCulture) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*familyGathering
                         if (e._doc.partnerFamilyGatherings && e._doc.userFamilyGatherings && e._doc.userFamilyGatherings == userDetails.partnerFamilyGatherings && e._doc.partnerFamilyGatherings == userDetails.userFamilyGatherings) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 7
                         }
                         //*hijab
                         if (e._doc.partnerHijab && e._doc.userHijab && e._doc.userHijab == userDetails.partnerHijab && e._doc.partnerHijab == userDetails.userHijab) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 7
                         }
                         //*abaya
                         if (e._doc.partnerAbaya && e._doc.userAbaya && e._doc.userAbaya == userDetails.partnerAbaya && e._doc.partnerAbaya == userDetails.userAbaya) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 7
                         }
                         //*bodyType
                         if (e._doc.partnerBodyType && e._doc.userBodyType && e._doc.userBodyType == userDetails.partnerBodyType && e._doc.partnerBodyType == userDetails.userBodyType) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
 
                         //*hairType
                         if (e._doc.partnerHairType && e._doc.userHairType && e._doc.userHairType == userDetails.partnerHairType && e._doc.partnerHairType == userDetails.userHairType) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*hairColor
                         if (e._doc.partnerHairColor && e._doc.userHairColor && e._doc.userHairColor == userDetails.partnerHairColor && e._doc.partnerHairColor == userDetails.userHairColor) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*smoking
                         if (e._doc.partnerSmokingHabits && e._doc.userSmokingHabits && e._doc.userSmokingHabits == userDetails.partnerSmokingHabits && e._doc.partnerSmokingHabits == userDetails.userSmokingHabits) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*hubblyBubbly
                         if (e._doc.partnerHubblyBubbly && e._doc.userHubblyBubbly && e._doc.userHubblyBubbly == userDetails.partnerHubblyBubbly && e._doc.partnerHubblyBubbly == userDetails.userHubblyBubbly) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*eatingHabits
                         if (e._doc.partnerEatingHabits && e._doc.userEatingHabits && e._doc.userEatingHabits == userDetails.partnerEatingHabits && e._doc.partnerEatingHabits == userDetails.userEatingHabits) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 7
                         }
                         //*Income
                         if (e._doc.partnerIncome && e._doc.userIncome && e._doc.userIncome == userDetails.partnerIncome && e._doc.partnerIncome == userDetails.userIncome) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*familyStatus
                         if (e._doc.partnerFamilyStatus && e._doc.userFamilyStatus && e._doc.userFamilyStatus == userDetails.partnerFamilyStatus && e._doc.partnerFamilyStatus == userDetails.userFamilyStatus) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*lifeStyle
                         if (e._doc.partnerLifestyle && e._doc.userLifestyle && e._doc.userLifestyle == userDetails.partnerLifestyle && e._doc.partnerLifestyle == userDetails.userLifestyle) {
-                            e._doc["primaryMatching"] += 5
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*Hobbies & Interest
                         if (e._doc.PartnerHobbies_Interest && e._doc.UserHobbies_Interest && e._doc.UserHobbies_Interest == userDetails.PartnerHobbies_Interest && e._doc.PartnerHobbies_Interest == userDetails.UserHobbies_Interest) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         //*DrinkingStatus
                         if (e._doc.partnerDrinkingHabits && e._doc.userDrinkingHabits && e._doc.userDrinkingHabits == userDetails.partnerDrinkingHabits && e._doc.partnerDrinkingHabits == userDetails.userDrinkingHabits) {
-                            e._doc["primaryMatching"] += 6
+                            e._doc["secondaryMatching"] += 6
                         }
                         console.log("e.primaryMatching===>", e._doc._id, e._doc.primaryMatching, "secondaryMatching====>", e._doc.secondaryMatching)
                         return e;

@@ -214,7 +214,7 @@ module.exports = {
 
                     
                     let notifyObj = {
-                        packageId:resultpackageId,
+                        packageId:result.packageId,
                         adminInvolved: true,
                         notifyFrom: req.body.userId,
                         // transactionId: result._id,

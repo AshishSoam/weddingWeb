@@ -63,6 +63,7 @@ module.exports = {
                             return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                         }
                         else {
+                            req.userDetails.purchase_packageDetails=req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
                             let userObj = {
                                 packageId,
                                 packageSuscription: "Pending",
@@ -70,7 +71,7 @@ module.exports = {
                                 packageExpired: false,
                                 transactionId: result._id,
                                 userType: req.body.userType || "PENDING_MEMBER",
-                                purchase_packageDetails: req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
+                                purchase_packageDetails: req.userDetails.purchase_packageDetails
                             }
                             userModel.findByIdAndUpdate(userId, userObj, { new: true }, (userErr, userResult) => {
                                 if (userErr) {

@@ -212,12 +212,12 @@ module.exports = {
                 else {
                     if(req.body.packageSuscription=="Rejected"){
 
-                    }
+                    
                     let notifyObj = {
-                        packageId,
+                        packageId:resultpackageId,
                         adminInvolved: true,
                         notifyFrom: req.body.userId,
-                        transactionId: result._id,
+                        // transactionId: result._id,
                         type: "packageSubscription",
                         title: "`Package payment rejected.",
                         content: `${userResult.creatorName} package subscription has been rejected by admin  and refund proceeded to user account.`,
@@ -231,6 +231,7 @@ module.exports = {
                         //     return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Payment done successfully.", userResult)
                         // }
                     })
+                }
                     return res.send({ responseCode: 200, responseMessage: `Subscription plan updated successfully.`, result })
                 }
 

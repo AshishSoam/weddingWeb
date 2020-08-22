@@ -12,7 +12,7 @@ const userSchema = schema({
     },
     packageSuscription: {
         type: String,
-        enum: ["Pending", "Approved", "Completed", "Cancelled", "Not Purchase"],
+        enum: ["Pending", "Approved", "Completed", "Cancelled", "Not Purchase","Rejected"],
         default: "Not Purchase"
     },
     purchase_packageDetails: {

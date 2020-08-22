@@ -16,10 +16,6 @@ const paymentController = require("../webServices/controllers/paymentController"
  *         description: token is required.
  *         in: header
  *         required: true
- *       - name: userId
- *         description: userId is required.
- *         in: formData
- *         required: true
  *       - name: packageId
  *         description: packageId is required.
  *         in: formData

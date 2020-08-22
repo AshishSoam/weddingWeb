@@ -35,14 +35,14 @@ module.exports = {
                 partnerCulture,
                 partnerHijab,
                 partnerSmokingHabits } = req.userDetails
-            let checkRequest = commonQuery.checkRequest(["userId", "packageId", "packagePrice", "packageTime", "cardNumber", "cvv", "expiryDate"], req.body);
+            let checkRequest = commonQuery.checkRequest([ "packageId", "packagePrice", "packageTime", "cardNumber", "cvv", "expiryDate"], req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
                 return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
             }
             else {
 
-                if(req.userDetails.emailVerified==false){
+                if (req.userDetails.emailVerified == false) {
                     return Response.sendResponseWithData(res, responseCode.NOT_FOUND, `You have not verify your email.Please verify you email.`, {})
                 }
                 let checkKeyAvailable = commonQuery.checkRequest(["partnerTribe", "partnerTribeName", "partnerAge", "partnerCountry", "partnerCity", "partnerMaritalStatus", "partnerOccupation", "partnerEducation", "partnerBodyType", "partnerHeight", "partnerComplexion", "partnerWeight", "partnerHairType", "partnerHairColor", "partnerReligion", "partnerCulture", "partnerHijab", "partnerSmokingHabits"], req.userDetails);
@@ -53,18 +53,21 @@ module.exports = {
                 else {
                     req.body.purchase_packageDetails = await packageModel.find({ "_id": req.body.packageId })
                     console.log("pramod===>", req.body)
+                    if (["Cancelled","Rejected","Completed"].includes(req.userDetails.packageSuscription)==false && req.userDetails.purchase_packageDetails.length > 0) {
+                        req.body.purchase_packageDetails[0].packageTime=Number(req.userDetails.purchase_packageDetails[0].packageTime)+Number( req.body.purchase_packageDetails[0].packageTime)
+                    }
 
                     const { packageId, userId, packagePrice, packageTime, purchase_packageDetails } = req.body
                     let trandactionObj = {
-                        packageId, userId, packagePrice, purchase_packageDetails,transactionBarId: "T_" + Math.floor(100000000000 + Math.random() * 900000000000),chargeId:"Charge_" + Math.floor(100000 + Math.random() * 900000),transactionDate:new Date().toISOString()
+                        packageId, userId, packagePrice, purchase_packageDetails, transactionBarId: "T_" + Math.floor(100000000000 + Math.random() * 900000000000), chargeId: "Charge_" + Math.floor(100000 + Math.random() * 900000), transactionDate: new Date().toISOString()
                     }
+                    console.log("user details===>",req.userDetails.packageSuscription,req.userDetails.purchase_packageDetails[0].packageTime, req.body.purchase_packageDetails[0].packageTime)
                     new paymentModel(trandactionObj).save((err, result) => {
                         if (err) {
                             return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                         }
                         else {
-                        //   req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
-                            console.log
+                            //   req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
                             let userObj = {
                                 packageId,
                                 packageSuscription: "Pending",
@@ -72,7 +75,7 @@ module.exports = {
                                 packageExpired: false,
                                 transactionId: result._id,
                                 userType: req.body.userType || "PENDING_MEMBER",
-                                purchase_packageDetails:purchase_packageDetails
+                                purchase_packageDetails: purchase_packageDetails
                             }
                             userModel.findByIdAndUpdate(userId, userObj, { new: true }, (userErr, userResult) => {
                                 if (userErr) {
@@ -109,7 +112,7 @@ module.exports = {
 
             }
         } catch (error) {
-            console.log("err---->",error)
+            console.log("err---->", error)
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error || error.TypeError)
 
         }
@@ -132,7 +135,7 @@ module.exports = {
                 populate: [{ path: "userId" }, { path: "packageId" }],
                 sort: { createdAt: -1 },
             }
-          
+
 
             paymentModel.paginate(query, option, (err, result) => {
                 console.log("pramod-->", err, result)
@@ -195,8 +198,8 @@ module.exports = {
     updateSubscriptionPlan: (req, res) => {
         try {
             req.body.documentVerification = true;
-            req.body.userType = "MEMBER";
-            req.body.packageSuscription = "Approved";
+            req.body.userType = req.body.userType || "MEMBER";
+            req.body.packageSuscription = req.body.packageSuscription || "Approved";
 
             userModel.findByIdAndUpdate(req.body.userId, req.body, { new: true }, (err, result) => {
                 if (err) {
@@ -207,6 +210,27 @@ module.exports = {
 
                 }
                 else {
+                    if(req.body.packageSuscription=="Rejected"){
+
+                    }
+                    let notifyObj = {
+                        packageId,
+                        adminInvolved: true,
+                        notifyFrom: req.body.userId,
+                        transactionId: result._id,
+                        type: "packageSubscription",
+                        title: "`Package payment rejected.",
+                        content: `${userResult.creatorName} package subscription has been rejected by admin  and refund proceeded to user account.`,
+                    }
+                    new notificationModel(notifyObj).save((notifyErr, notifyResult) => {
+                        console.log("reject package by admin===>",notifyErr,notifyResult)
+                        // if (notifyErr) {
+                        //     return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+                        // }
+                        // else {
+                        //     return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Payment done successfully.", userResult)
+                        // }
+                    })
                     return res.send({ responseCode: 200, responseMessage: `Subscription plan updated successfully.`, result })
                 }
 

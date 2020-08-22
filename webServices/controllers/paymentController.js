@@ -63,7 +63,8 @@ module.exports = {
                             return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                         }
                         else {
-                            req.userDetails.purchase_packageDetails=req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
+                          req.userDetails.purchase_packageDetails.push(purchase_packageDetails)
+                            console.log
                             let userObj = {
                                 packageId,
                                 packageSuscription: "Pending",

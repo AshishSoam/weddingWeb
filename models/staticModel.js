@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate');
+
 let static_content = new schema(
     {
         title:
@@ -58,6 +60,8 @@ let static_content = new schema(
     },
     { timestamps: true }
 );
+static_content.plugin(mongoosePaginate);
+
 module.exports = mongoose.model('static_content', static_content);
 
 

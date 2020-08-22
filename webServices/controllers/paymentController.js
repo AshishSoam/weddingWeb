@@ -221,7 +221,7 @@ module.exports = {
                         // transactionId: result._id,
                         type: "packageSubscription",
                         title: "`Package payment rejected.",
-                        content: `${result.creatorName} package subscription has been rejected by admin  and refund proceeded to user account.`,
+                        content: `${result.creatorName}'s package subscription has been rejected by admin and refund proceeded to user account.`,
                     }
                     new notificationModel(notifyObj).save((notifyErr, notifyResult) => {
                         console.log("reject package by admin===>",notifyErr,notifyResult)

@@ -3018,16 +3018,18 @@ function LoginComponent_form_23_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.countryArr);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.mobileLoginForm.get("mobile").hasError("pattern") && ctx_r0.mobileLoginForm.get("mobile").dirty);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("type", ctx_r0.showEye ? "text" : "password");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r0.showEye);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.showEye);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r0.mobileLoginForm.invalid)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](9, _c0, ctx_r0.mobileLoginForm.invalid));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r0.mobileLoginForm.invalid)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](10, _c0, ctx_r0.mobileLoginForm.invalid));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](11, _c1));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](12, _c1));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](12, _c2));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](13, _c2));
 } }
 function LoginComponent_form_24_h1_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h1", 40);
@@ -3059,7 +3061,7 @@ function LoginComponent_form_24_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, LoginComponent_form_24_h1_4_Template, 2, 1, "h1", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, LoginComponent_form_24_i_8_Template, 1, 0, "i", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, LoginComponent_form_24_i_9_Template, 1, 0, "i", 34);
@@ -3087,16 +3089,18 @@ function LoginComponent_form_24_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx_r1.emailLoginForm);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.emailLoginForm.get("emailId").hasError("pattern") && ctx_r1.emailLoginForm.get("emailId").dirty);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("type", ctx_r1.showEye1 ? "text" : "password");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r1.showEye1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.showEye1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r1.emailLoginForm.invalid)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](8, _c0, ctx_r1.emailLoginForm.invalid));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", ctx_r1.emailLoginForm.invalid)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](9, _c0, ctx_r1.emailLoginForm.invalid));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](10, _c1));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](11, _c1));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](11, _c2));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](12, _c2));
 } }
 const _c3 = function (a0) { return { "cardToggle": a0 }; };
 class LoginComponent {
@@ -4102,7 +4106,7 @@ class LoginComponent {
     }
 }
 LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_providers_http_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_providers_common_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"])); };
-LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 62, vars: 8, consts: [[1, "forgot-password"], [1, "container"], [1, "row"], [1, "col-xl-6", "col-lg-6", "col-md-6", "col-sm-12", "xol-12"], [1, "forgot-password-form", "login-form", "signup-page-1"], [1, "column", 3, "click"], [1, "card", 3, "ngClass"], ["aria-hidden", "true", 1, "fa", "fa-mobile"], ["aria-hidden", "true", 1, "fa", "fa-envelope"], [3, "formGroup", 4, "ngIf"], [1, "find-special-someone"], [1, "find-someone"], [1, "find-icon"], [1, "icon-1"], [1, "icon-2"], ["href", "#"], ["aria-hidden", "true", 1, "fas", "fa-edit"], [1, "find-content"], [1, "icon-3"], [1, "icon-4"], ["aria-hidden", "true", 1, "fas", "fa-users"], [1, "icon-5"], [1, "icon-6"], ["aria-hidden", "true", 1, "fas", "fa-comments"], [3, "formGroup"], [1, "mt-5"], [1, "form-group", "d-flex"], ["formControlName", "countryCode", 1, "form-control", "select-custome", "max-WT-180", "select-border"], [3, "value", 4, "ngFor", "ngForOf"], ["type", "tel", "data-toggle", "tooltip", "data-placement", "top", "title", "Phone Number", "formControlName", "mobile", "placeholder", "Mobile number*", 1, "form-control"], ["style", "color:red;font-size: 13px !important;margin-top: 5px;", 3, "hidden", 4, "ngIf"], [1, "form-group", "d-flex", 2, "margin-top", "20px!important"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Password", "formControlName", "password", "placeholder", "Password*", 1, "form-control"], ["style", "color:#818181", "id", "show-pass", "class", "far fa-eye-slash", 3, "click", 4, "ngIf"], ["style", "color:#818181", "id", "show-pass", "class", "far fa-eye", 3, "click", 4, "ngIf"], ["type", "submit", 3, "disabled", "ngClass", "click"], ["href", "javascript:;", 3, "routerLink"], ["href", "javascript:;"], ["href", "javascript:;", "id", "register", 3, "routerLink"], [3, "value"], [2, "color", "red", "font-size", "13px !important", "margin-top", "5px", 3, "hidden"], ["id", "show-pass", 1, "far", "fa-eye-slash", 2, "color", "#818181", 3, "click"], ["id", "show-pass", 1, "far", "fa-eye", 2, "color", "#818181", 3, "click"], ["type", "text", "maxlength", "255", "data-toggle", "tooltip", "data-placement", "top", "title", "Email ID", "formControlName", "emailId", "placeholder", "Email*", 1, "form-control"], ["type", "password", "data-toggle", "tooltip", "data-placement", "top", "title", "Password", "formControlName", "password", "placeholder", "Password*", 1, "form-control"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
+LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 62, vars: 8, consts: [[1, "forgot-password"], [1, "container"], [1, "row"], [1, "col-xl-6", "col-lg-6", "col-md-6", "col-sm-12", "xol-12"], [1, "forgot-password-form", "login-form", "signup-page-1"], [1, "column", 3, "click"], [1, "card", 3, "ngClass"], ["aria-hidden", "true", 1, "fa", "fa-mobile"], ["aria-hidden", "true", 1, "fa", "fa-envelope"], [3, "formGroup", 4, "ngIf"], [1, "find-special-someone"], [1, "find-someone"], [1, "find-icon"], [1, "icon-1"], [1, "icon-2"], ["href", "#"], ["aria-hidden", "true", 1, "fas", "fa-edit"], [1, "find-content"], [1, "icon-3"], [1, "icon-4"], ["aria-hidden", "true", 1, "fas", "fa-users"], [1, "icon-5"], [1, "icon-6"], ["aria-hidden", "true", 1, "fas", "fa-comments"], [3, "formGroup"], [1, "mt-5"], [1, "form-group", "d-flex"], ["formControlName", "countryCode", 1, "form-control", "select-custome", "max-WT-180", "select-border"], [3, "value", 4, "ngFor", "ngForOf"], ["type", "tel", "data-toggle", "tooltip", "data-placement", "top", "title", "Phone Number", "formControlName", "mobile", "placeholder", "Mobile number*", 1, "form-control"], ["style", "color:red;font-size: 13px !important;margin-top: 5px;", 3, "hidden", 4, "ngIf"], [1, "form-group", "d-flex", 2, "margin-top", "20px!important"], ["data-toggle", "tooltip", "data-placement", "top", "title", "Password", "formControlName", "password", "placeholder", "Password*", 1, "form-control", 3, "type"], ["style", "color:#818181", "id", "show-pass", "class", "far fa-eye-slash", 3, "click", 4, "ngIf"], ["style", "color:#818181", "id", "show-pass", "class", "far fa-eye", 3, "click", 4, "ngIf"], ["type", "submit", 3, "disabled", "ngClass", "click"], ["href", "javascript:;", 3, "routerLink"], ["href", "javascript:;"], ["href", "javascript:;", "id", "register", 3, "routerLink"], [3, "value"], [2, "color", "red", "font-size", "13px !important", "margin-top", "5px", 3, "hidden"], ["id", "show-pass", 1, "far", "fa-eye-slash", 2, "color", "#818181", 3, "click"], ["id", "show-pass", 1, "far", "fa-eye", 2, "color", "#818181", 3, "click"], ["type", "text", "maxlength", "255", "data-toggle", "tooltip", "data-placement", "top", "title", "Email ID", "formControlName", "emailId", "placeholder", "Email*", 1, "form-control"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -4139,8 +4143,8 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](23, LoginComponent_form_23_Template, 22, 13, "form", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](24, LoginComponent_form_24_Template, 20, 12, "form", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](23, LoginComponent_form_23_Template, 22, 14, "form", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](24, LoginComponent_form_24_Template, 20, 13, "form", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 3);

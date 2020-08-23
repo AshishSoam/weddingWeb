@@ -61,7 +61,6 @@ module.exports = {
                     let trandactionObj = {
                         packageId, userId, packagePrice, purchase_packageDetails, transactionBarId: "T_" + Math.floor(100000000000 + Math.random() * 900000000000), chargeId: "Charge_" + Math.floor(100000 + Math.random() * 900000), transactionDate: new Date().toISOString()
                     }
-                    console.log("user details===>",req.userDetails.packageSuscription,req.userDetails.purchase_packageDetails[0].packageTime, req.body.purchase_packageDetails[0].packageTime)
                     new paymentModel(trandactionObj).save((err, result) => {
                         if (err) {
                             return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)

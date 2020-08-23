@@ -530,7 +530,7 @@ Your reset otp for Wedding App is : ${otp1}`;
                 return Response.sendResponseWithData(res.responseCode.NOT_FOUND,responseMessage.NOT_FOUND,[])
             }
             else{
-                return Response.sendResponseWithData(res.responseCode.EVERYTHING_IS_OK,status ? responseMessage.FAVORITE_MARK: responseMessage.FAVORITE_UNMARK,result.markFavorite)
+                return Response.sendResponseWithData(res,responseCode.EVERYTHING_IS_OK,status ? responseMessage.FAVORITE_MARK: responseMessage.FAVORITE_UNMARK,result.markFavorite)
 
             }
            })

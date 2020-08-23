@@ -1990,7 +1990,7 @@ button#show-filter {
 }
 
 .matching-filter .filter-column-2 {
-    height: 250px;
+    height: 270px;
     overflow: auto;
 }
 
@@ -3551,15 +3551,17 @@ a.fas.fa-shopping-cart {
 /* Track */
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
+    /* box-shadow: inset 0 0 5px grey; */
     border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to top, #f6f3ec 50%, #fbdbc4 100%);
+    background: linear-gradient(to top, #283338 50%, #283338 100%);
     border-radius: 10px;
 }
 

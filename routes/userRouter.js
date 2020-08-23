@@ -308,11 +308,11 @@ router.get('/email_verification', userController.email_verification);
  *         required: true
  *       - name: favoriteUserId
  *         description: favoriteUserId is required .
- *         in: query
+ *         in: formData
  *         required: true
  *       - name: status
  *         description: status is required .
- *         in: query
+ *         in: formData
  *         required: true
  *     responses:
  *       200:

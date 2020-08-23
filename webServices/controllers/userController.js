@@ -520,7 +520,7 @@ Your reset otp for Wedding App is : ${otp1}`;
            let updateData={};
            let {status,favoriteUserId}=req.body
            updateData =status? {$addToSet:{markFavorite:favoriteUserId}}:{$pop:{markFavorite:favoriteUserId}}
-           console.log("----markFavorite----",status,favoriteUserId,updateData)
+           console.log("----markFavorite----",req.body,status,favoriteUserId,updateData)
 
            User.findByIdAndUpdate(userDetails._id,updateData,{new:true},(err,result)=>{
                if(err){

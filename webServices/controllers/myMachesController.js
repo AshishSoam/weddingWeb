@@ -129,7 +129,7 @@ module.exports = {
                                                
                         if (e._doc.partnerAge && e._doc.userAge && e._doc.userAge == userDetails.partnerAge && e._doc.partnerAge == userDetails.userAge) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerAge==>",e._doc["primaryMatching"])
+                            console.log("partnerAge==>",userDetails.markFavorite,e._doc._id,e._doc["primaryMatching"])
 
                         }
                         //*mathab            

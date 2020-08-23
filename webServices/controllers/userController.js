@@ -535,7 +535,7 @@ Your reset otp for Wedding App is : ${otp1}`;
             }
            })
         } catch (error) {
-            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
         }
     },
        /**

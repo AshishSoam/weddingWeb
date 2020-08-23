@@ -123,8 +123,10 @@ module.exports = {
                         console.log(`loop ${i}`, e._doc._id)
                         e._doc["primaryMatching"] = 0;
                         e._doc["secondaryMatching"] = 0;
+                        e._doc['isFavorite']=    userDetails.markFavorite.includes(e._doc._id)?true:false
                         //primary weitage
                         //*age
+                                               
                         if (e._doc.partnerAge && e._doc.userAge && e._doc.userAge == userDetails.partnerAge && e._doc.partnerAge == userDetails.userAge) {
                             e._doc["primaryMatching"] += 6
                             console.log("partnerAge==>",e._doc["primaryMatching"])

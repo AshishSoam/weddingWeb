@@ -524,7 +524,7 @@ Your reset otp for Wedding App is : ${otp1}`;
 
            User.findByIdAndUpdate(userDetails._id,updateData,{new:true},(err,result)=>{
                if(err){
-                return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+                return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
             }
             else if(!result){
                 return Response.sendResponseWithData(res.responseCode.NOT_FOUND,responseMessage.NOT_FOUND,[])

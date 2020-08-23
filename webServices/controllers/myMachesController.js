@@ -83,26 +83,52 @@ module.exports = {
             // query.partnerWeight = (req.body.partnerWeight && req.body.partnerWeight.length > 0) ? { $in: req.body.partnerWeight } : userDetails.partnerWeight
             req.body.partnerWeight && req.body.partnerWeight.length > 0 ? andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) : andOperation.push({ partnerWeight: userDetails.userWeight }, { userWeight: userDetails.partnerWeight })
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
+
+//Secondary filter
+
             // //*partnerHairType
-            // // query.partnerHairType = (req.body.partnerHairType && req.body.partnerHairType.length > 0) ? { $in: req.body.partnerHairType } : userDetails.partnerHairType
+            // query.partnerHairType = (req.body.partnerHairType && req.body.partnerHairType.length > 0) ? { $in: req.body.partnerHairType } : userDetails.partnerHairType
             // req.body.partnerHairType && req.body.partnerHairType.length > 0 ? andOperation.push({ partnerHairType: { $in: userDetails.userHairType } }, { userHairType: { $in: req.body.partnerHairType } }) : andOperation.push({ partnerHairType: userDetails.userHairType }, { userHairType: userDetails.partnerHairType })
+            if( req.body.partnerHairType && req.body.partnerHairType.length > 0){
+                andOperation.push({ partnerHairType: { $in: userDetails.userHairType } }, { userHairType: { $in: req.body.partnerHairType } })
+            }
             // //*partnerHairColor
             // // query.partnerHairColor = (req.body.partnerHairColor && req.body.partnerHairColor.length > 0) ? { $in: req.body.partnerHairColor } : userDetails.partnerHairColor
             // req.body.partnerHairColor && req.body.partnerHairColor.length > 0 ? andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } }) : andOperation.push({ partnerHairColor: userDetails.userHairColor }, { userHairColor: userDetails.partnerHairColor })
+            if(  req.body.partnerHairColor && req.body.partnerHairColor.length > 0){
+                andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } }) 
+            }
             // //*  partnerReligion 
             // // query.partnerReligion = (req.body.partnerReligion && req.body.partnerReligion.length > 0) ? { $in: req.body.partnerReligion } : userDetails.partnerReligion
             // req.body.partnerReligion && req.body.partnerReligion.length > 0 ? andOperation.push({ partnerReligion: { $in: userDetails.userReligion } }, { userReligion: { $in: req.body.partnerReligion } }) : andOperation.push({ partnerReligion: userDetails.userReligion }, { userReligion: userDetails.partnerReligion })
             // //*  partnerCulture/ 
             // // query.partnerCulture = (req.body.partnerCulture && req.body.partnerCulture.length > 0) ? { $in: req.body.partnerCulture } : userDetails.partnerCulture
             // req.body.partnerCulture && req.body.partnerCulture.length > 0 ? andOperation.push({ partnerCulture: { $in: userDetails.userCulture } }, { userCulture: { $in: req.body.partnerCulture } }) : andOperation.push({ partnerCulture: userDetails.userCulture }, { userCulture: userDetails.partnerCulture })
+            if( req.body.partnerCulture && req.body.partnerCulture.length > 0 ){
+                andOperation.push({ partnerCulture: { $in: userDetails.userCulture } }, { userCulture: { $in: req.body.partnerCulture } })
+            }
             // //*  partnerHijab 
             // // query.partnerHijab = (req.body.partnerHijab && req.body.partnerHijab.length > 0) ? { $in: req.body.partnerHijab } : userDetails.partnerHijab
             // req.body.partnerHijab && req.body.partnerHijab.length > 0 ? andOperation.push({ partnerHijab: { $in: userDetails.userHijab } }, { userHijab: { $in: req.body.partnerHijab } }) : andOperation.push({ partnerHijab: userDetails.userHijab }, { userHijab: userDetails.partnerHijab })
+            if( req.body.partnerHijab && req.body.partnerHijab.length > 0){
+                andOperation.push({ partnerHijab: { $in: userDetails.userHijab } }, { userHijab: { $in: req.body.partnerHijab } })
+            }
             // //*  partnerSmokingHabits 
             // // query.partnerSmokingHabits = (req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0) ? { $in: req.body.partnerSmokingHabits } : userDetails.partnerSmokingHabits
             // req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0 ? andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } }) : andOperation.push({ partnerSmokingHabits: userDetails.userSmokingHabits }, { userSmokingHabits: userDetails.partnerSmokingHabits })
-            // // //*  partnerSmokingHabits 
+            if( req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0){
+                andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } }) 
+            }
+                        // // //*  partnerSmokingHabits 
             // // query.partnerSmokingHabits=req.body.partnerSmokingHabits.length > 0? {$in:req.body.partnerSmokingHabits} :userDetails.partnerSmokingHabits  
+            //partnerDrinkingHabits
+            if( req.body.partnerDrinkingHabits && req.body.partnerDrinkingHabits.length > 0){
+                andOperation.push({ partnerDrinkingHabits: { $in: userDetails.userDrinkingHabits } }, { userDrinkingHabits: { $in: req.body.partnerDrinkingHabits } }) 
+            }
+              //partnerEatingHabits
+              if( req.body.partnerEatingHabits && req.body.partnerEatingHabits.length > 0){
+                andOperation.push({ partnerEatingHabits: { $in: userDetails.userEatingHabits } }, { userEatingHabits: { $in: req.body.partnerEatingHabits } }) 
+            }
             if (andOperation.length > 0) {
                 query.$and = andOperation
             }

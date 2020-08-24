@@ -77,16 +77,16 @@ andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { us
 
             //*partnerComplexion
             // query.partnerComplexion = (req.body.partnerComplexion && req.body.partnerComplexion.length > 0) ? { $in: req.body.partnerComplexion } : userDetails.partnerComplexion
-            req.body.partnerComplexion && req.body.partnerComplexion.length > 0 ? andOperation.push({ partnerComplexion: { $in: userDetails.userComplexion } }, { userComplexion: { $in: req.body.partnerComplexion } }) : andOperation.push({ partnerComplexion: userDetails.userComplexion }, { userComplexion: userDetails.partnerComplexion })
+            if(req.body.partnerComplexion && req.body.partnerComplexion.length > 0){ andOperation.push({ partnerComplexion: { $in: userDetails.userComplexion } }, { userComplexion: { $in: req.body.partnerComplexion } })}
             //*partnerPhysicalStatus
             // query.partnerPhysicalStatus = (req.body.partnerPhysicalStatus && req.body.partnerPhysicalStatus.length > 0) ? { $in: req.body.partnerPhysicalStatus } : userDetails.partnerPhysicalStatus
             req.body.partnerPhysicalStatus && req.body.partnerPhysicalStatus.length > 0 ? andOperation.push({ partnerPhysicalStatus: { $in: userDetails.userPhysicalStatus } }, { userPhysicalStatus: { $in: req.body.partnerPhysicalStatus } }) : andOperation.push({ partnerPhysicalStatus: userDetails.userPhysicalStatus }, { userPhysicalStatus: userDetails.partnerPhysicalStatus })
             //*partnerHeight
             // query.partnerHeight = (req.body.partnerHeight && req.body.partnerHeight.length > 0) ? { $in: req.body.partnerHeight } : userDetails.partnerHeight
-            req.body.partnerHeight && req.body.partnerHeight.length > 0 ? andOperation.push({ partnerHeight: { $in: userDetails.userHeight } }, { userHeight: { $in: req.body.partnerHeight } }) : andOperation.push({ partnerHeight: userDetails.userHeight }, { userHeight: userDetails.partnerHeight })
+            if(req.body.partnerHeight && req.body.partnerHeight.length > 0){ andOperation.push({ partnerHeight: { $in: userDetails.userHeight } }, { userHeight: { $in: req.body.partnerHeight } }) }
             //*partnerWeight
             // query.partnerWeight = (req.body.partnerWeight && req.body.partnerWeight.length > 0) ? { $in: req.body.partnerWeight } : userDetails.partnerWeight
-            req.body.partnerWeight && req.body.partnerWeight.length > 0 ? andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) : andOperation.push({ partnerWeight: userDetails.userWeight }, { userWeight: userDetails.partnerWeight })
+          if  (req.body.partnerWeight && req.body.partnerWeight.length > 0 ){ andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) }
             //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
 
             //Secondary filter

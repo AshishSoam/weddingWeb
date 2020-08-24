@@ -38,7 +38,7 @@ module.exports = {
             //*mathab
             req.body.partnerMathab && req.body.partnerMathab.length > 0 ? andOperation.push({ partnerMathab: { $in: userDetails.userMathab } }, { userMathab: { $in: req.body.partnerMathab } }) : andOperation.push({ partnerMathab: userDetails.userMathab }, { userMathab: userDetails.partnerMathab })
             //*religiosity
-            req.body.partnerReligion && req.body.partnerReligion.length > 0 ? andOperation.push({ partnerReligion: { $in: userDetails.userReligion } }, { userReligion: { $in: req.body.partnerReligion } }) : andOperation.push({ partnerReligion: userDetails.userReligion }, { userReligion: userDetails.partnerReligion })
+            if (req.body.partnerReligion && req.body.partnerReligion.length > 0) { andOperation.push({ partnerReligion: { $in: userDetails.userReligion } }, { userReligion: { $in: req.body.partnerReligion } }) }
             //*language
             req.body.partnerLanguage && req.body.partnerLanguage.length > 0 ? andOperation.push({ partnerLanguage: { $in: userDetails.userLanguage } }, { userLanguage: { $in: req.body.partnerLanguage } }) : andOperation.push({ partnerLanguage: userDetails.userLanguage }, { userLanguage: userDetails.partnerLanguage })
             //*partnerCountry
@@ -56,20 +56,25 @@ module.exports = {
 
             //*partnerOccupation
             // query.partnerOccupation = (req.body.partnerOccupation && req.body.partnerOccupation.length > 0) ? { $in: req.body.partnerOccupation } : userDetails.partnerOccupation
-            req.body.partnerOccupation && req.body.partnerOccupation.length > 0 ? andOperation.push({ partnerOccupation: { $in: userDetails.userOccupation } }, { userOccupation: { $in: req.body.partnerOccupation } }) : andOperation.push({ partnerOccupation: userDetails.userOccupation }, { userOccupation: userDetails.partnerOccupation })
+            if (req.body.partnerOccupation && req.body.partnerOccupation.length > 0) {
+
+                andOperation.push({ partnerOccupation: { $in: userDetails.userOccupation } }, { userOccupation: { $in: req.body.partnerOccupation } })
+            }
             //*partnerEducation
             // query.partnerEducation = (req.body.partnerEducation && req.body.partnerEducation.length > 0) ? { $in: req.body.partnerEducation } : userDetails.partnerEducation
 
-            req.body.partnerEducation && req.body.partnerEducation.length > 0 ? andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { userEducation: { $in: req.body.partnerEducation } }) : andOperation.push({ partnerEducation: userDetails.userEducation }, { userEducation: userDetails.partnerEducation })
+            if( req.body.partnerEducation && req.body.partnerEducation.length > 0){
+andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { userEducation: { $in: req.body.partnerEducation } }) }
             //*partnerEmployedIn
             // query.partnerEmployedIn = (req.body.partnerEmployedIn && req.body.partnerEmployedIn.length > 0) ? { $in: req.body.partnerEmployedIn } : userDetails.partnerEmployedIn
 
-            req.body.partnerEmployedIn && req.body.partnerEmployedIn.length > 0 ? andOperation.push({ partnerEmployedIn: { $in: userDetails.userEmployedIn } }, { userEmployedIn: { $in: req.body.partnerEmployedIn } }) : andOperation.push({ partnerEmployedIn: userDetails.userEmployedIn }, { userEmployedIn: userDetails.partnerEmployedIn })
+            if(req.body.partnerEmployedIn && req.body.partnerEmployedIn.length > 0){
 
+             andOperation.push({ partnerEmployedIn: { $in: userDetails.userEmployedIn } }, { userEmployedIn: { $in: req.body.partnerEmployedIn } }) }
             //*partnerBodyType
             // query.partnerBodyType = (req.body.partnerBodyType && req.body.partnerBodyType.length > 0) ? { $in: req.body.partnerBodyType } : userDetails.partnerBodyType
-            req.body.partnerBodyType && req.body.partnerBodyType.length > 0 ? andOperation.push({ partnerBodyType: { $in: userDetails.userHeight } }, { userBodyType: { $in: req.body.partnerBodyType } }) : andOperation.push({ partnerBodyType: userDetails.userBodyType }, { userBodyType: userDetails.partnerBodyType })
-           
+            if(req.body.partnerBodyType && req.body.partnerBodyType.length > 0){ andOperation.push({ partnerBodyType: { $in: userDetails.userHeight } }, { userBodyType: { $in: req.body.partnerBodyType } })}
+
             //*partnerComplexion
             // query.partnerComplexion = (req.body.partnerComplexion && req.body.partnerComplexion.length > 0) ? { $in: req.body.partnerComplexion } : userDetails.partnerComplexion
             req.body.partnerComplexion && req.body.partnerComplexion.length > 0 ? andOperation.push({ partnerComplexion: { $in: userDetails.userComplexion } }, { userComplexion: { $in: req.body.partnerComplexion } }) : andOperation.push({ partnerComplexion: userDetails.userComplexion }, { userComplexion: userDetails.partnerComplexion })
@@ -82,21 +87,21 @@ module.exports = {
             //*partnerWeight
             // query.partnerWeight = (req.body.partnerWeight && req.body.partnerWeight.length > 0) ? { $in: req.body.partnerWeight } : userDetails.partnerWeight
             req.body.partnerWeight && req.body.partnerWeight.length > 0 ? andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) : andOperation.push({ partnerWeight: userDetails.userWeight }, { userWeight: userDetails.partnerWeight })
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
+            //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
 
-//Secondary filter
+            //Secondary filter
 
             // //*partnerHairType
             // query.partnerHairType = (req.body.partnerHairType && req.body.partnerHairType.length > 0) ? { $in: req.body.partnerHairType } : userDetails.partnerHairType
             // req.body.partnerHairType && req.body.partnerHairType.length > 0 ? andOperation.push({ partnerHairType: { $in: userDetails.userHairType } }, { userHairType: { $in: req.body.partnerHairType } }) : andOperation.push({ partnerHairType: userDetails.userHairType }, { userHairType: userDetails.partnerHairType })
-            if( req.body.partnerHairType && req.body.partnerHairType.length > 0){
+            if (req.body.partnerHairType && req.body.partnerHairType.length > 0) {
                 andOperation.push({ partnerHairType: { $in: userDetails.userHairType } }, { userHairType: { $in: req.body.partnerHairType } })
             }
             // //*partnerHairColor
             // // query.partnerHairColor = (req.body.partnerHairColor && req.body.partnerHairColor.length > 0) ? { $in: req.body.partnerHairColor } : userDetails.partnerHairColor
             // req.body.partnerHairColor && req.body.partnerHairColor.length > 0 ? andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } }) : andOperation.push({ partnerHairColor: userDetails.userHairColor }, { userHairColor: userDetails.partnerHairColor })
-            if(  req.body.partnerHairColor && req.body.partnerHairColor.length > 0){
-                andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } }) 
+            if (req.body.partnerHairColor && req.body.partnerHairColor.length > 0) {
+                andOperation.push({ partnerHairColor: { $in: userDetails.userHairColor } }, { userHairColor: { $in: req.body.partnerHairColor } })
             }
             // //*  partnerReligion 
             // // query.partnerReligion = (req.body.partnerReligion && req.body.partnerReligion.length > 0) ? { $in: req.body.partnerReligion } : userDetails.partnerReligion
@@ -104,30 +109,30 @@ module.exports = {
             // //*  partnerCulture/ 
             // // query.partnerCulture = (req.body.partnerCulture && req.body.partnerCulture.length > 0) ? { $in: req.body.partnerCulture } : userDetails.partnerCulture
             // req.body.partnerCulture && req.body.partnerCulture.length > 0 ? andOperation.push({ partnerCulture: { $in: userDetails.userCulture } }, { userCulture: { $in: req.body.partnerCulture } }) : andOperation.push({ partnerCulture: userDetails.userCulture }, { userCulture: userDetails.partnerCulture })
-            if( req.body.partnerCulture && req.body.partnerCulture.length > 0 ){
+            if (req.body.partnerCulture && req.body.partnerCulture.length > 0) {
                 andOperation.push({ partnerCulture: { $in: userDetails.userCulture } }, { userCulture: { $in: req.body.partnerCulture } })
             }
             // //*  partnerHijab 
             // // query.partnerHijab = (req.body.partnerHijab && req.body.partnerHijab.length > 0) ? { $in: req.body.partnerHijab } : userDetails.partnerHijab
             // req.body.partnerHijab && req.body.partnerHijab.length > 0 ? andOperation.push({ partnerHijab: { $in: userDetails.userHijab } }, { userHijab: { $in: req.body.partnerHijab } }) : andOperation.push({ partnerHijab: userDetails.userHijab }, { userHijab: userDetails.partnerHijab })
-            if( req.body.partnerHijab && req.body.partnerHijab.length > 0){
+            if (req.body.partnerHijab && req.body.partnerHijab.length > 0) {
                 andOperation.push({ partnerHijab: { $in: userDetails.userHijab } }, { userHijab: { $in: req.body.partnerHijab } })
             }
             // //*  partnerSmokingHabits 
             // // query.partnerSmokingHabits = (req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0) ? { $in: req.body.partnerSmokingHabits } : userDetails.partnerSmokingHabits
             // req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0 ? andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } }) : andOperation.push({ partnerSmokingHabits: userDetails.userSmokingHabits }, { userSmokingHabits: userDetails.partnerSmokingHabits })
-            if( req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0){
-                andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } }) 
+            if (req.body.partnerSmokingHabits && req.body.partnerSmokingHabits.length > 0) {
+                andOperation.push({ partnerSmokingHabits: { $in: userDetails.userSmokingHabits } }, { userSmokingHabits: { $in: req.body.partnerSmokingHabits } })
             }
-                        // // //*  partnerSmokingHabits 
+            // // //*  partnerSmokingHabits 
             // // query.partnerSmokingHabits=req.body.partnerSmokingHabits.length > 0? {$in:req.body.partnerSmokingHabits} :userDetails.partnerSmokingHabits  
             //partnerDrinkingHabits
-            if( req.body.partnerDrinkingHabits && req.body.partnerDrinkingHabits.length > 0){
-                andOperation.push({ partnerDrinkingHabits: { $in: userDetails.userDrinkingHabits } }, { userDrinkingHabits: { $in: req.body.partnerDrinkingHabits } }) 
+            if (req.body.partnerDrinkingHabits && req.body.partnerDrinkingHabits.length > 0) {
+                andOperation.push({ partnerDrinkingHabits: { $in: userDetails.userDrinkingHabits } }, { userDrinkingHabits: { $in: req.body.partnerDrinkingHabits } })
             }
-              //partnerEatingHabits
-              if( req.body.partnerEatingHabits && req.body.partnerEatingHabits.length > 0){
-                andOperation.push({ partnerEatingHabits: { $in: userDetails.userEatingHabits } }, { userEatingHabits: { $in: req.body.partnerEatingHabits } }) 
+            //partnerEatingHabits
+            if (req.body.partnerEatingHabits && req.body.partnerEatingHabits.length > 0) {
+                andOperation.push({ partnerEatingHabits: { $in: userDetails.userEatingHabits } }, { userEatingHabits: { $in: req.body.partnerEatingHabits } })
             }
             if (andOperation.length > 0) {
                 query.$and = andOperation
@@ -149,20 +154,20 @@ module.exports = {
                         console.log(`loop ${i}`, e._doc._id)
                         e._doc["primaryMatching"] = 0;
                         e._doc["secondaryMatching"] = 0;
-                        e._doc['isFavorite']=    userDetails.markFavorite.includes(e._doc._id)?true:false
+                        e._doc['isFavorite'] = userDetails.markFavorite.includes(e._doc._id) ? true : false
                         //primary weitage
                         //*age
-                                               
+
                         if (e._doc.partnerAge && e._doc.userAge && e._doc.userAge == userDetails.partnerAge && e._doc.partnerAge == userDetails.userAge) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerAge==>",userDetails.markFavorite,e._doc._id,e._doc["primaryMatching"])
+                            console.log("partnerAge==>", userDetails.markFavorite, e._doc._id, e._doc["primaryMatching"])
 
                         }
                         //*mathab            
                         if (e._doc.partnerMathab && e._doc.userMathab && e._doc.userMathab == userDetails.partnerMathab && e._doc.partnerMathab == userDetails.userMathab) {
 
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerMathab==>",e._doc["primaryMatching"])
+                            console.log("partnerMathab==>", e._doc["primaryMatching"])
 
                         }
                         //*Religiosity
@@ -170,7 +175,7 @@ module.exports = {
                         if (e._doc.partnerReligion && e._doc.userReligion && e._doc.userReligion == userDetails.partnerReligion && e._doc.partnerReligion == userDetails.userReligion) {
 
                             e._doc["primaryMatching"] += 5
-                            console.log("partnerReligion==>",e._doc["primaryMatching"])
+                            console.log("partnerReligion==>", e._doc["primaryMatching"])
 
                         }
 
@@ -178,14 +183,14 @@ module.exports = {
                         //*language
                         if (e._doc.partnerLanguage && e._doc.userLanguage && e._doc.userLanguage == userDetails.partnerLanguage && e._doc.partnerLanguage == userDetails.userLanguage) {
                             e._doc["primaryMatching"] += 5
-                            console.log("partnerLanguage==>",e._doc["primaryMatching"])
+                            console.log("partnerLanguage==>", e._doc["primaryMatching"])
 
                         }
                         //tribe
 
                         if (e._doc.partnerTribe && e._doc.userTribe && e._doc.userTribe == userDetails.partnerTribe && e._doc.partnerTribe == userDetails.userTribe) {
                             e._doc["primaryMatching"] += 7
-                            console.log("partnerTribe==>",e._doc["primaryMatching"])
+                            console.log("partnerTribe==>", e._doc["primaryMatching"])
 
                         }
 
@@ -193,20 +198,20 @@ module.exports = {
 
                         if (e._doc.partnerTribeName && e._doc.userTribeName && e._doc.userTribeName == userDetails.partnerTribeName && e._doc.partnerTribeName == userDetails.userTribeName) {
                             e._doc["primaryMatching"] += 7
-                            console.log("partnerTribeName==>",e._doc["primaryMatching"])
+                            console.log("partnerTribeName==>", e._doc["primaryMatching"])
 
                         }
                         //country
 
                         if (e._doc.partnerCountry && e._doc.userCountry && e._doc.userCountry == userDetails.partnerCountry && e._doc.partnerCountry == userDetails.userCountry) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerCountry==>",e._doc["primaryMatching"])
+                            console.log("partnerCountry==>", e._doc["primaryMatching"])
 
                         }
                         //city
                         if (e._doc.partnerCity && e._doc.userCity && e._doc.userCity == userDetails.partnerCity && e._doc.partnerCity == userDetails.userCity) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerCity==>",e._doc["primaryMatching"])
+                            console.log("partnerCity==>", e._doc["primaryMatching"])
 
                         }
                         //maritialStatus
@@ -215,55 +220,55 @@ module.exports = {
                         // }
                         if (e._doc.partnerMaritalStatus && e._doc.userMaritalstatus && e._doc.userMaritalstatus == userDetails.partnerMaritalStatus && e._doc.partnerMaritalStatus == userDetails.userMaritalstatus) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerMaritalStatus==>",e._doc["primaryMatching"])
+                            console.log("partnerMaritalStatus==>", e._doc["primaryMatching"])
 
                         }
                         //*education
                         if (e._doc.partnerEducation && e._doc.userEducation && e._doc.userEducation == userDetails.partnerEducation && e._doc.partnerEducation == userDetails.userEducation) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerEducation==>",e._doc["primaryMatching"])
+                            console.log("partnerEducation==>", e._doc["primaryMatching"])
 
                         }
                         //*employed In
                         if (e._doc.partnerEmployedIn && e._doc.userEmployedIn && e._doc.userEmployedIn == userDetails.partnerEmployedIn && e._doc.partnerEmployedIn == userDetails.userEmployedIn) {
                             e._doc["primaryMatching"] += 5
-                            console.log("partnerEmployedIn==>",e._doc["primaryMatching"])
+                            console.log("partnerEmployedIn==>", e._doc["primaryMatching"])
 
                         }
                         //*occupation
                         if (e._doc.partnerOccupation && e._doc.userOccupation && e._doc.userOccupation == userDetails.partnerOccupation && e._doc.partnerOccupation == userDetails.userOccupation) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerOccupation==>",e._doc["primaryMatching"])
+                            console.log("partnerOccupation==>", e._doc["primaryMatching"])
 
                         }
                         //*bodyType
                         if (e._doc.partnerBodyType && e._doc.userBodyType && e._doc.userBodyType == userDetails.partnerBodyType && e._doc.partnerBodyType == userDetails.userBodyType) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerBodyType==>",e._doc["primaryMatching"])
+                            console.log("partnerBodyType==>", e._doc["primaryMatching"])
 
                         }
                         //complextion
                         if (e._doc.partnerComplexion && e._doc.userComplexion && e._doc.userComplexion == userDetails.partnerComplexion && e._doc.partnerComplexion == userDetails.userComplexion) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerComplexion==>",e._doc["primaryMatching"])
+                            console.log("partnerComplexion==>", e._doc["primaryMatching"])
 
                         }
                         //*physical status
                         if (e._doc.partnerPhysicalStatus && e._doc.userPhysicalStatus && e._doc.userPhysicalStatus == userDetails.partnerPhysicalStatus && e._doc.partnerPhysicalStatus == userDetails.userPhysicalStatus) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerPhysicalStatus==>",e._doc["primaryMatching"])
+                            console.log("partnerPhysicalStatus==>", e._doc["primaryMatching"])
 
                         }
                         //*height
                         if (e._doc.partnerHeight && e._doc.userHeight && e._doc.userHeight == userDetails.partnerHeight && e._doc.partnerHeight == userDetails.userHeight) {
                             e._doc["primaryMatching"] += 6
-                            console.log("partnerHeight==>",e._doc["primaryMatching"])
+                            console.log("partnerHeight==>", e._doc["primaryMatching"])
 
                         }
                         //*weight
                         if (e._doc.partnerWeight && e._doc.userWeight && e._doc.userWeight == userDetails.partnerWeight && e._doc.partnerWeight == userDetails.userWeight) {
                             e._doc["primaryMatching"] += 5
-                            console.log("partnerWeight==>",e._doc["primaryMatching"])
+                            console.log("partnerWeight==>", e._doc["primaryMatching"])
 
                         }
 

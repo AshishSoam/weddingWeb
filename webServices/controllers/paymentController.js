@@ -86,6 +86,8 @@ module.exports = {
                                 else {
                                     let notifyObj = {
                                         packageId,
+                                        notificationDate:new Date().toISOString(),
+
                                         adminInvolved: true,
                                         notifyFrom: userId,
                                         transactionId: result._id,

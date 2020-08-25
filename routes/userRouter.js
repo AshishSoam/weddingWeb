@@ -325,11 +325,11 @@ router.get('/email_verification', userController.email_verification);
 router.post('/markFavorite',auth.verifyToken, userController.markFavorite);
 /**
  * @swagger
- * /api/v1/user/showIntrest:
+ * /api/v1/user/markIntrest:
  *   post:
  *     tags:
  *       - USER WEB APP
- *     description: showIntrest API
+ *     description: markIntrest API
  *     produces:
  *       - application/json
  *     parameters:
@@ -337,13 +337,13 @@ router.post('/markFavorite',auth.verifyToken, userController.markFavorite);
  *         description: token is required .
  *         in: header
  *         required: true
- *       - name: showIntrestUserId
- *         description: showIntrestUserId is required .
- *         in: query
+ *       - name: showInterestUserId
+ *         description: showInterestUserId is required .
+ *         in: formData
  *         required: true
  *       - name: status
  *         description: status is required .
- *         in: query
+ *         in: formData
  *         required: true
  *     responses:
  *       200:
@@ -353,8 +353,38 @@ router.post('/markFavorite',auth.verifyToken, userController.markFavorite);
  *       500:
  *         description: Internal server error.
  */
-router.post('/showIntrest', auth.verifyToken,userController.showIntrest);
+router.post('/markInterest', auth.verifyToken,userController.markInterest);
 
-
+/**
+ * @swagger
+ * /api/v1/user/approval_Intrested:
+ *   post:
+ *     tags:
+ *       - USER WEB APP
+ *     description: approval_Intrested API
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         description: token is required .
+ *         in: header
+ *         required: true
+ *       - name: showInterestUserId
+ *         description: showInterestUserId is required .
+ *         in: formData
+ *         required: true
+ *       - name: status
+ *         description: status is required .
+ *         in: formData
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Intrest user data updated successfully.
+ *       404:
+ *         description: Data not found.
+ *       500:
+ *         description: Internal server error.
+ */
+router.post('/approval_Intrested', auth.verifyToken,userController.approval_Intrested);
 router.post('/uploadMultipleImage',userController.uploadMultipleImage)
 module.exports = router

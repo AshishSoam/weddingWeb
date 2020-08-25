@@ -11,6 +11,7 @@ var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 // const userModel = require('../../models/userModel');
 const twilio = require("twilio");
+const notificationModel = require('../../models/notificationModel');
 module.exports = {
     /**
      * Function Name :signUp API
@@ -213,8 +214,11 @@ module.exports = {
         try {
             let collectionName = req.query.subUser ? userMember : User
             console.log(userId, collectionName)
-
-            collectionName.findOne({ "_id": userId }).select("-password").populate("markFavorite").populate('showIntrest').exec((err, result) => {
+      // I_am_Intrested
+            //   my_partner_Intrested
+            // Rejected_Interest_in_me
+            // Interested_in_each_other
+            collectionName.findOne({ "_id": userId }).select("-password").populate("markFavorite").populate('I_am_Intrested').populate('my_partner_Intrested').populate('Rejected_Interest_in_me').populate("Interested_in_each_other").exec((err, result) => {
                 if (err) {
                     return Response.sendResponseWithData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                 }
@@ -239,61 +243,61 @@ module.exports = {
     * @return  response
     */
 
-   forgotPassword: (req, res) => {
-    var currentTime = new Date().getTime();
-    var otp1 = commonQuery.getOTP();
-    var uniqueString = commonQuery.getCode()
-    console.log("unique String---->", uniqueString, req.body)
-    try {
+    forgotPassword: (req, res) => {
+        var currentTime = new Date().getTime();
+        var otp1 = commonQuery.getOTP();
+        var uniqueString = commonQuery.getCode()
+        console.log("unique String---->", uniqueString, req.body)
+        try {
 
 
-        User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
-            console.log("otp1====>", err, result);
+            User.findOne({ $and: [{ status: "ACTIVE" }, { $or: [{ email: req.body.email }, { mobileNumber: req.body.email }] }] }, async (err, result) => {
+                console.log("otp1====>", err, result);
 
-            if (err) {
-                return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
-            }
-            else if (!result) {
-                console.log("this is 1");
-                let message = req.body.admin ? "User email not found." : "User email or mobile number not found."
-                return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
-            }
-            else {
-                req.body.text = `Dear ${result.creatorName},
+                if (err) {
+                    return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                }
+                else if (!result) {
+                    console.log("this is 1");
+                    let message = req.body.admin ? "User email not found." : "User email or mobile number not found."
+                    return Response.sendResponseWithoutData(res, responseCode.NOT_FOUND, message)
+                }
+                else {
+                    req.body.text = `Dear ${result.creatorName},
 Your reset otp for Wedding App is : ${otp1}`;
-                req.body.subject = "Regarding forgot password"
-                let sendMail = await commonQuery.sendMail(req, res)
-                // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
-                // let bcryptData = bcrypt.hashSync(uniqueString, salt)
-                // req.body.password = bcryptData
-                User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
-                    if (err)
-                        return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
-                    else if (!result) {
-                        return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
-                    }
-                    else if (result) {
-                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password sent to your registered email and Mobile number successfully.", result._id)
-                    }
-                })
-            }
-        })
+                    req.body.subject = "Regarding forgot password"
+                    let sendMail = await commonQuery.sendMail(req, res)
+                    // let sendSMS = await commonQuery.sendMail(result.email, "Regarding forgot password", `${html}`)
+                    // let bcryptData = bcrypt.hashSync(uniqueString, salt)
+                    // req.body.password = bcryptData
+                    User.findByIdAndUpdate({ "_id": result._id, status: "ACTIVE" }, { $set: { otp: otp1, otpTime: currentTime } }, { new: true }, (err, result) => {
+                        if (err)
+                            return Response.sendResponseWithoutData(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR)
+                        else if (!result) {
+                            return Response.sendResponsewithError(res, responseCode.NOT_FOUND, "Unable to updated.", [])
+                        }
+                        else if (result) {
+                            return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, "Reset password sent to your registered email and Mobile number successfully.", result._id)
+                        }
+                    })
+                }
+            })
 
 
-    }
-    catch (e) {
-        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
+        }
+        catch (e) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
 
-    }
-},
-'demo': async(req, res) => {
-    req.body.message = `Dear Sandeep,
+        }
+    },
+    'demo': async (req, res) => {
+        req.body.message = `Dear Sandeep,
     Your reset otp for Wedding App is : ${6565}`;
-    req.body.subject = "Regarding forgot password"
-  req.body.mergeContact=req.body.email
-    let sendMail = await commonQuery.sendSMS(req, res)
-    return res.send({ status: true })
-},
+        req.body.subject = "Regarding forgot password"
+        req.body.mergeContact = req.body.email
+        let sendMail = await commonQuery.sendSMS(req, res)
+        return res.send({ status: true })
+    },
     /**
     * Function Name :editProfile API
     * Description : editProfile user API
@@ -509,63 +513,151 @@ Your reset otp for Wedding App is : ${otp1}`;
 
         }
     },
-     /**
-    * Function Name :markFavorite API
-    * Description : markFavorite user API
-    * @return  response
-    */
-    markFavorite:(req,res)=>{
+    /**
+   * Function Name :markFavorite API
+   * Description : markFavorite user API
+   * @return  response
+   */
+    markFavorite: (req, res) => {
         try {
-            let userDetails=req.userDetails;
-           let updateData={};
-           let {status,favoriteUserId}=req.body
-           updateData =status? {$addToSet:{markFavorite:favoriteUserId}}:{$pull:{markFavorite:favoriteUserId}}
-           console.log("----markFavorite----",req.body,status,favoriteUserId,updateData)
+            let userDetails = req.userDetails;
+            let updateData = {};
+            let { status, favoriteUserId } = req.body
+            updateData = status ? { $addToSet: { markFavorite: favoriteUserId } } : { $pull: { markFavorite: favoriteUserId } }
+            console.log("----markFavorite----", req.body, status, favoriteUserId, updateData)
 
-           User.findByIdAndUpdate(userDetails._id,updateData,{new:true},(err,result)=>{
-               if(err){
-                return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
-            }
-            else if(!result){
-                return Response.sendResponseWithData(res.responseCode.NOT_FOUND,responseMessage.NOT_FOUND,[])
-            }
-            else{
-                return Response.sendResponseWithData(res,responseCode.EVERYTHING_IS_OK,status ? responseMessage.FAVORITE_MARK: responseMessage.FAVORITE_UNMARK,result.markFavorite)
+            User.findByIdAndUpdate(userDetails._id, updateData, { new: true }, (err, result) => {
+                if (err) {
+                    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                }
+                else if (!result) {
+                    return Response.sendResponseWithData(res.responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                }
+                else {
+                    return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ? responseMessage.FAVORITE_MARK : responseMessage.FAVORITE_UNMARK, result.markFavorite)
 
-            }
-           })
+                }
+            })
         } catch (error) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
         }
     },
-       /**
-    * Function Name :showIntrest API
-    * Description : showIntrest user API
-    * @return  response
-    */
-   showIntrest:(req,res)=>{
-    try {
-        let userDetails=req.userDetails;
-       let updateData={};
-       let {status,showIntrestUserId}=req.body
-       updateData =status? {$addToSet:{showIntrest:showIntrestUserId}}:{$pop:{showIntrest:showIntrestUserId}}
-       console.log("----showIntrest----",status,showIntrestUserId,updateData)
+    /**
+ * Function Name :markInterest API
+ * Description : markInterest user API
+ * @return  response
+ */
+    markInterest: async (req, res) => {
+        try {
+            let userDetails = req.userDetails;
+            let intrested_in = {}, my_partner_Intrested = {};
+            let { status, showInterestUserId } = req.body
+            intrested_in = status ? { $addToSet: { I_am_Intrested: showInterestUserId } } : { $pull: { I_am_Intrested: showInterestUserId } }
+            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id } } : { $pull: { my_partner_Intrested: userDetails._id } }
 
-       User.findByIdAndUpdate(userDetails._id,updateData,{new:true},(err,result)=>{
-           if(err){
-            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
-        }
-        else if(!result){
-            return Response.sendResponseWithData(res.responseCode.NOT_FOUND,responseMessage.NOT_FOUND,[])
-        }
-        else{
-            return Response.sendResponseWithData(res.responseCode.EVERYTHING_IS_OK,status ? responseMessage.FAVORITE_MARK: responseMessage.FAVORITE_UNMARK,result.showIntrest)
+            let todayStartDate = new Date().toISOString().split("T")[0] + 'T00:00:00.000Z'
+            let todayEdndDate = new Date().toISOString().split("T")[0] + 'T59:59:59.999Z'
 
+            let notificationCount = await notificationModel.count({ $and: [{ notifyFrom: userDetails._id }, { notificationDate: { $gte: todayStartDate } }, { notificationDate: { $lte: todayEdndDate } },{title: "`Mark intrested."}] })
+            console.log("===notification Count====>", "ik===>", notificationCount)
+            if (notificationCount == 15) {
+                return res.send({ responseCode: 404, responseMessage: 'You can only show interest in 15 profiles per day.', result: [] })
+            }
+            let notifyObj = {
+                adminInvolved: false,
+                notifyFrom: userDetails._id,
+                notifyTo: showInterestUserId,
+                type: "intrested_in",
+                title: "`Mark intrested.",
+                content: status ? `${userDetails.creatorName} showing interest in your profile.` : `${userDetails.creatorName} removed interest in your profile.`
+
+            }
+
+
+            console.log("===logic====>", "ik===>", intrested_in, my_partner_Intrested)
+            User.findByIdAndUpdate(userDetails._id, intrested_in, { new: true }, (err, result) => {
+                if (err) {
+                    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                }
+                else if (!result) {
+                    return Response.sendResponseWithData(res.responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                }
+                else {
+                    User.findByIdAndUpdate(showInterestUserId, my_partner_Intrested, { new: true }, async (err1, result1) => {
+                        if (err1) {
+                            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err1)
+                        }
+                        else if (!result1) {
+                            return Response.sendResponseWithData(res.responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                        }
+                        let notificationSave = await notificationModel(notifyObj).save()
+                        console.log("===notifyObj", notificationSave)
+                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ? responseMessage.INTRESTED_IN : responseMessage.INTRESTED_OUT, result.I_am_Intrested,)
+
+                    })
+                }
+            })
+        } catch (error) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
         }
-       })
-    } catch (error) {
-        return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, e)
-    }
-},
+    },
+    /**
+  * Function Name :approval_Intrested API
+  * Description : approval_Intrested user API
+  * @return  response
+  */
+    approval_Intrested: async (req, res) => {
+        try {
+            let userDetails = req.userDetails
+            let { status, showInterestUserId } = req.body
+            let selfUpdate = {}, otherUserUpdate = {}
+            if (status == true) {
+                selfUpdate = { I_am_Intrested: { $pull: showInterestUserId }, my_partner_Intrested: { $pull: showInterestUserId }, Interested_in_each_other: { $addToSet: showInterestUserId } };
+
+                otherUserUpdate = { I_am_Intrested: { $pull: userDetails._id }, my_partner_Intrested: { $pull: userDetails._id }, Interested_in_each_other: { $addToSet: userDetails._id } }
+            }
+            else {
+                selfUpdate = { I_am_Intrested: { $pull: showInterestUserId }, my_partner_Intrested: { $pull: showInterestUserId }, Rejected_Interest_in_me: { $addToSet: showInterestUserId } };
+
+                otherUserUpdate = { I_am_Intrested: { $pull: userDetails._id }, my_partner_Intrested: { $pull: userDetails._id }, Rejected_Interest_in_me: { $addToSet: userDetails._id } }
+            }
+
+            User.findByIdAndUpdate(userDetails._id, selfUpdate, { new: true }, (err, result) => {
+                if (err) {
+                    return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
+                }
+                else if (!result) {
+                    return Response.sendResponseWithData(res.responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                }
+                else {
+                    User.findByIdAndUpdate(showInterestUserId, otherUserUpdate, { new: true }, async (err1, result1) => {
+                        if (err1) {
+                            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err1)
+                        }
+                        else if (!result1) {
+                            return Response.sendResponseWithData(res.responseCode.NOT_FOUND, responseMessage.NOT_FOUND, [])
+                        }
+                        let notifyObj = {
+                            adminInvolved: false,
+                            notifyFrom: userDetails._id,
+                            notifyTo: showInterestUserId,
+                            type: "intrested_in",
+                            title: "`Reject intrested.",
+                            content: status ? `${userDetails.creatorName} accepted your showing interest profile.` : `${userDetails.creatorName} rejected your interested profile.`
+            
+                        }
+                        let notificationSave = await notificationModel(notifyObj).save()
+                        console.log("===notifyObj", notificationSave)
+                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ?"Interested user approved successfully."  : "Interested user rejected successfully.", result.I_am_Intrested,)
+
+                    })
+                }
+            })      
+
+        } catch (error) {
+            return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)
+        }
+    },
+
     //*************************************End of exports*********************************************8 */
 }

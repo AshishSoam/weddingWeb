@@ -438,7 +438,20 @@ const userSchema = schema({
         type: schema.Types.ObjectId,
         ref: 'users'
     }],
-    showIntrest: [{
+    I_am_Intrested: [{
+        type: schema.Types.ObjectId,
+        ref: 'users'
+    }],
+
+      my_partner_Intrested: [{
+        type: schema.Types.ObjectId,
+        ref: 'users'
+    }],
+    Rejected_Interest_in_me: [{
+        type: schema.Types.ObjectId,
+        ref: 'users'
+    }],
+    Interested_in_each_other: [{
         type: schema.Types.ObjectId,
         ref: 'users'
     }],

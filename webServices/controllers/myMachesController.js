@@ -155,6 +155,7 @@ andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { us
                         e._doc["primaryMatching"] = 0;
                         e._doc["secondaryMatching"] = 0;
                         e._doc['isFavorite'] = userDetails.markFavorite.includes(e._doc._id) ? true : false
+                        e._doc['I_am_Intrested'] = userDetails.I_am_Intrested.includes(e._doc._id) ? true : false
                         //primary weitage
                         //*age
 

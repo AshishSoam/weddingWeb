@@ -26,7 +26,7 @@ const notificationSchema = new Schema({
     },
     type:{
         type:String,
-        enum:['chat', 'packageSubscription', 'feedback',""]
+        enum:['chat', 'packageSubscription', 'feedback',"intrested_in"]
     },
     packageId:{type:Schema.Types.ObjectId,ref:'packages'},
     notifyFrom:{type:Schema.Types.ObjectId,ref:'users'},
@@ -35,7 +35,7 @@ const notificationSchema = new Schema({
 
     eventStatus:{
         type:String,
-        enum:['PENDING', 'CANCELLED', 'CONFIRMED', 'COMPLETED']
+        enum:['PENDING', 'CANCELLED', 'CONFIRMED', 'APPROVED',"REJECTED",'COMPLETED']
     },
     status:{
         type:String,
@@ -43,9 +43,16 @@ const notificationSchema = new Schema({
         enum:['ACTIVE','DELETE']
     },
     adminInvolved:{type:Boolean, default:false},
-    isRead:{type:Boolean, default:false}
+    isRead:{type:Boolean, default:false},
+    notificationDate:{
+        type:String,
+default:new Date().toISOString()
+    }
 
-},{
+},
+
+
+{
     timestamps:true
 });
 

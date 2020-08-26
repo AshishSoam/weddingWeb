@@ -612,17 +612,19 @@ Your reset otp for Wedding App is : ${otp1}`;
             let { status, showInterestUserId } = req.body
             let selfUpdate = {}, otherUserUpdate = {}
             if (status == true) {
-                selfUpdate = { I_am_Intrested: { $pull: showInterestUserId }, my_partner_Intrested: { $pull: showInterestUserId }, Interested_in_each_other: { $addToSet: showInterestUserId } };
+                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId }, $pull: { my_partner_Intrested: showInterestUserId }, $addToSet: { Interested_in_each_other: showInterestUserId } };
 
-                otherUserUpdate = { I_am_Intrested: { $pull: userDetails._id }, my_partner_Intrested: { $pull: userDetails._id }, Interested_in_each_other: { $addToSet: userDetails._id } }
+                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id }, $pull: { my_partner_Intrested: userDetails._id }, $addToSet: { Interested_in_each_other: userDetails._id } }
             }
             else {
-                selfUpdate = { I_am_Intrested: { $pull: showInterestUserId }, my_partner_Intrested: { $pull: showInterestUserId }, Rejected_Interest_in_me: { $addToSet: showInterestUserId } };
+                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId }, $pull: { my_partner_Intrested: showInterestUserId }, $addToSet: { Rejected_Interest_in_me: showInterestUserId } };
 
-                otherUserUpdate = { I_am_Intrested: { $pull: userDetails._id }, my_partner_Intrested: { $pull: userDetails._id }, Rejected_Interest_in_me: { $addToSet: userDetails._id } }
+                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id }, $pull: { my_partner_Intrested: userDetails._id }, $addToSet: { Rejected_Interest_in_me: userDetails._id } }
             }
-
+console.log("====>",selfUpdate,otherUserUpdate)
             User.findByIdAndUpdate(userDetails._id, selfUpdate, { new: true }, (err, result) => {
+                console.log("e1====>",err,result)
+
                 if (err) {
                     return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
                 }
@@ -648,7 +650,7 @@ Your reset otp for Wedding App is : ${otp1}`;
                         }
                         let notificationSave = await notificationModel(notifyObj).save()
                         console.log("===notifyObj", notificationSave)
-                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ?"Interested user approved successfully."  : "Interested user rejected successfully.", result.I_am_Intrested,)
+                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ?"Interested user approved successfully."  : "Interested user rejected successfully.", result)
 
                     })
                 }

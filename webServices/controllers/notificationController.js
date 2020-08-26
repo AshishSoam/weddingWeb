@@ -17,10 +17,10 @@ module.exports = {
         */
     'notificationList': async (req, res) => {
         try {
-            let query = { status: 'ACTIVE', adminInvolved: true };
+            let query = { status: 'ACTIVE', adminInvolved: Object.keys(req.body).includes("adminInvolved")?req.body.adminInvolved : true };
 
             if (req.body.userId) {
-                query.notifyFrom = req.body.userId
+                query.notifyTo = req.body.userId
             };
             let option = {
                 page: req.body.pageNumber ? Number(req.body.pageNumber) : 1,

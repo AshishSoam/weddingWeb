@@ -26,7 +26,7 @@ const notificationSchema = new Schema({
     },
     type:{
         type:String,
-        enum:['chat', 'packageSubscription', 'feedback',"intrested_in"]
+        // enum:['chat', 'packageSubscription', 'feedback',"intrested_in"]
     },
     packageId:{type:Schema.Types.ObjectId,ref:'packages'},
     notifyFrom:{type:Schema.Types.ObjectId,ref:'users'},

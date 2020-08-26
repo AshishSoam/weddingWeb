@@ -644,7 +644,7 @@ console.log("====>",selfUpdate,otherUserUpdate)
                             notifyFrom: userDetails._id,
                             notifyTo: showInterestUserId,
                             type: "intrested_in",
-                            title: "`Reject intrested.",
+                            title:  status ? "Accept intrested.":'Reject intrested',
                             content: status ? `${userDetails.creatorName} accepted your showing interest profile.` : `${userDetails.creatorName} rejected your interested profile.`
             
                         }

@@ -325,11 +325,11 @@ router.get('/email_verification', userController.email_verification);
 router.post('/markFavorite',auth.verifyToken, userController.markFavorite);
 /**
  * @swagger
- * /api/v1/user/markIntrest:
+ * /api/v1/user/markInterest:
  *   post:
  *     tags:
  *       - USER WEB APP
- *     description: markIntrest API
+ *     description: markInterest API
  *     produces:
  *       - application/json
  *     parameters:

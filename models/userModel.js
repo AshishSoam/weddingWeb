@@ -216,7 +216,14 @@ const userSchema = schema({
     userReligion: {
         type: String
     },
+   
     partnerReligion: {
+        type: String
+    },
+    partnerReligiosity: {
+        type: String
+    },
+    userReligiosity: {
         type: String
     },
     userLanguage: {

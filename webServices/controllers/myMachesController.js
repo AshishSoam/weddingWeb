@@ -38,7 +38,8 @@ module.exports = {
             //*mathab
             req.body.partnerMathab && req.body.partnerMathab.length > 0 ? andOperation.push({ partnerMathab: { $in: userDetails.userMathab } }, { userMathab: { $in: req.body.partnerMathab } }) : andOperation.push({ partnerMathab: userDetails.userMathab }, { userMathab: userDetails.partnerMathab })
             //*religiosity
-            if (req.body.partnerReligion && req.body.partnerReligion.length > 0) { andOperation.push({ partnerReligion: { $in: userDetails.userReligion } }, { userReligion: { $in: req.body.partnerReligion } }) }
+
+            if (req.body.partnerReligiosity && req.body.partnerReligiosity.length > 0) { andOperation.push({ partnerReligiosity: { $in: userDetails.userReligiosity } }, { userReligiosity: { $in: req.body.partnerReligiosity } }) }
             //*language
             req.body.partnerLanguage && req.body.partnerLanguage.length > 0 ? andOperation.push({ partnerLanguage: { $in: userDetails.userLanguage } }, { userLanguage: { $in: req.body.partnerLanguage } }) : andOperation.push({ partnerLanguage: userDetails.userLanguage }, { userLanguage: userDetails.partnerLanguage })
             //*partnerCountry

@@ -552,8 +552,10 @@ Your reset otp for Wedding App is : ${otp1}`;
             let userDetails = req.userDetails;
             let intrested_in = {}, my_partner_Intrested = {};
             let { status, showInterestUserId } = req.body
-            intrested_in = status ? { $addToSet: { I_am_Intrested: showInterestUserId } } : { $pull: { I_am_Intrested: showInterestUserId } }
-            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id } } : { $pull: { my_partner_Intrested: userDetails._id } }
+            intrested_in = status ? { 
+                $addToSet: { I_am_Intrested: showInterestUserId } ,
+            $pull:{Interested_in_each_other:showInterestUserId}} : { $pull: { I_am_Intrested: showInterestUserId } ,$pull:{Interested_in_each_other:showInterestUserId}}
+            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id },$pull:{Interested_in_each_other:userDetails._id}  } : { $pull: { my_partner_Intrested: userDetails._id }, $pull: { Interested_in_each_other: userDetails._id } }
 
             let todayStartDate = new Date().toISOString().split("T")[0] + 'T00:00:00.000Z'
             let todayEdndDate = new Date().toISOString().split("T")[0] + 'T59:59:59.999Z'

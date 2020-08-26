@@ -157,6 +157,9 @@ andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { us
                         e._doc["secondaryMatching"] = 0;
                         e._doc['isFavorite'] = userDetails.markFavorite.includes(e._doc._id) ? true : false
                         e._doc['I_am_Intrested_key'] = false
+                        console.log("check my id in my intrested===>",userDetails.I_am_Intrested,"====>",e._doc._id)
+                        console.log("check my id in my Interested_in_each_other===>",userDetails.I_am_Intrested,"====>",e._doc._id)
+
                         if(userDetails.I_am_Intrested.includes(e._doc._id) || userDetails.Interested_in_each_other.includes(e._doc._id)){
                             e._doc['I_am_Intrested_key']   =true
                         }

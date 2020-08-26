@@ -39,6 +39,6 @@ module.exports = {
     EMAIL_ALREADY_VERIFIED : "You have already verified your email.",
     FAVORITE_MARK:"You have add favorite user successfully.",
     FAVORITE_UNMARK:"You have removed user from your favourite User.",
-    INTRESTED_IN:"You have add intrested user successfully.",
-    INTRESTED_OUT:"You have removed intrested user successfully.",
+    INTRESTED_IN:"You have add interested user successfully.",
+    INTRESTED_OUT:"You have removed interested user successfully.",
  };

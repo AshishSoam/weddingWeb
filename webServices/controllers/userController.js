@@ -226,6 +226,21 @@ module.exports = {
                     return Response.sendResponseWithData(res, responseCode.NOT_FOUND, responseMessage.NOT_FOUND)
                 }
                 else {
+
+console.log("result markFavorite===>",result.markFavorite)
+console.log("result I_am_Intrested===>",result.I_am_Intrested)
+console.log("result Interested_in_each_other===>",result.Interested_in_each_other)
+
+// e._doc['isFavorite'] = userDetails.markFavorite.includes(e._doc._id) ? true : false
+// e._doc['I_am_Intrested_key'] = false
+// console.log("check my id in my intrested===>",userDetails.I_am_Intrested,"====>",e._doc._id)
+// console.log("check my id in my Interested_in_each_other===>",userDetails.I_am_Intrested,"====>",e._doc._id)
+
+// if(userDetails.I_am_Intrested.includes(e._doc._id) || userDetails.Interested_in_each_other.includes(e._doc._id)){
+//     e._doc['I_am_Intrested_key']   =true
+// }
+
+
                     return res.send({ responseCode: 200, responseMessage: "Data found successfully.", result })
 
                 }
@@ -554,8 +569,9 @@ Your reset otp for Wedding App is : ${otp1}`;
             let { status, showInterestUserId } = req.body
             intrested_in = status ? { 
                 $addToSet: { I_am_Intrested: showInterestUserId } ,
-            $pull:{Interested_in_each_other:showInterestUserId}} : { $pull: { I_am_Intrested: showInterestUserId } ,$pull:{Interested_in_each_other:showInterestUserId}}
-            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id },$pull:{Interested_in_each_other:userDetails._id}  } : { $pull: { my_partner_Intrested: userDetails._id }, $pull: { Interested_in_each_other: userDetails._id } }
+            $pull:{Interested_in_each_other:showInterestUserId}} : { $pull: { I_am_Intrested: showInterestUserId ,Interested_in_each_other:showInterestUserId}}
+
+            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id },$pull:{Interested_in_each_other:userDetails._id}  } : { $pull: { my_partner_Intrested: userDetails._id , Interested_in_each_other: userDetails._id }}
 
             let todayStartDate = new Date().toISOString().split("T")[0] + 'T00:00:00.000Z'
             let todayEdndDate = new Date().toISOString().split("T")[0] + 'T59:59:59.999Z'
@@ -576,7 +592,8 @@ Your reset otp for Wedding App is : ${otp1}`;
             }
 
 
-            console.log("===logic====>", "ik===>", intrested_in, my_partner_Intrested)
+            console.log("===logic====>", "ik===>", intrested_in)
+
             User.findByIdAndUpdate(userDetails._id, intrested_in, { new: true }, (err, result) => {
                 if (err) {
                     return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
@@ -614,14 +631,14 @@ Your reset otp for Wedding App is : ${otp1}`;
             let { status, showInterestUserId } = req.body
             let selfUpdate = {}, otherUserUpdate = {}
             if (status == true) {
-                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId }, $pull: { my_partner_Intrested: showInterestUserId }, $addToSet: { Interested_in_each_other: showInterestUserId } };
+                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId , my_partner_Intrested: showInterestUserId }, $addToSet: { Interested_in_each_other: showInterestUserId } };
 
-                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id }, $pull: { my_partner_Intrested: userDetails._id }, $addToSet: { Interested_in_each_other: userDetails._id } }
+                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id , my_partner_Intrested: userDetails._id }, $addToSet: { Interested_in_each_other: userDetails._id } }
             }
             else {
-                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId }, $pull: { my_partner_Intrested: showInterestUserId }, $addToSet: { Rejected_Interest_in_me: showInterestUserId } };
+                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId , my_partner_Intrested: showInterestUserId }, $addToSet: { Rejected_Interest_in_me: showInterestUserId } };
 
-                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id }, $pull: { my_partner_Intrested: userDetails._id }, $addToSet: { Rejected_Interest_in_me: userDetails._id } }
+                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id , my_partner_Intrested: userDetails._id }, $addToSet: { Rejected_Interest_in_me: userDetails._id } }
             }
 console.log("====>",selfUpdate,otherUserUpdate)
             User.findByIdAndUpdate(userDetails._id, selfUpdate, { new: true }, (err, result) => {

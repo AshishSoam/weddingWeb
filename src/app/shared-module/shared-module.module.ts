@@ -4,13 +4,19 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {  httpModifierInterceptor } from '../providers/http/http.service';
-import { PackagePricePipe } from '../pipes/package-price.pipe';
-import { SafePipe } from '../pipes/safe.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedSignupComponent } from './shared-signup/shared-signup.component';
+import { SharedSideNavComponent } from './shared-side-nav/shared-side-nav.component';
+import { MatchDetailsComponent } from "../modals/match-details/match-details.component";
+import { MatchedModalComponent } from './matched-modal/matched-modal.component';
 
 @NgModule({
   declarations: [
-  ],
+  SharedSignupComponent,
+  SharedSideNavComponent,
+  MatchDetailsComponent,
+  MatchedModalComponent
+],
   imports: [
     CommonModule,
     ReactiveFormsModule
@@ -18,7 +24,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports : [
     NgxSpinnerModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedSignupComponent,
+    SharedSideNavComponent,
+    MatchDetailsComponent
   ],
   providers : [    
     { 
@@ -26,6 +35,9 @@ import { ReactiveFormsModule } from '@angular/forms';
       useClass: httpModifierInterceptor,
       multi: true 
     }
+  ],
+  entryComponents: [
+    MatchDetailsComponent
   ]
 })
 export class SharedModuleModule { }

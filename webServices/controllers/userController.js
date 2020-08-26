@@ -214,7 +214,7 @@ module.exports = {
         try {
             let collectionName = req.query.subUser ? userMember : User
             console.log(userId, collectionName)
-      // I_am_Intrested
+            // I_am_Intrested
             //   my_partner_Intrested
             // Rejected_Interest_in_me
             // Interested_in_each_other
@@ -227,18 +227,48 @@ module.exports = {
                 }
                 else {
 
-console.log("result markFavorite===>",result.markFavorite)
-console.log("result I_am_Intrested===>",result.I_am_Intrested)
-console.log("result Interested_in_each_other===>",result.Interested_in_each_other)
+                    console.log("result markFavorite===>", result.markFavorite)
+                    console.log("result I_am_Intrested===>", result.I_am_Intrested)
+                    console.log("result Interested_in_each_other===>", result.Interested_in_each_other)
 
-// e._doc['isFavorite'] = userDetails.markFavorite.includes(e._doc._id) ? true : false
-// e._doc['I_am_Intrested_key'] = false
-// console.log("check my id in my intrested===>",userDetails.I_am_Intrested,"====>",e._doc._id)
-// console.log("check my id in my Interested_in_each_other===>",userDetails.I_am_Intrested,"====>",e._doc._id)
+                    if(req.userDetails!=undefined){
+                        result.myTotalFavoriteUser=req.userDetails.markFavorite
+                        result.myTotalInterestUser=req.userDetails.I_am_Intrested.concat(req.userDetails.Interested_in_each_other)
+                        console.log("result  total markFavorite===>", result.myTotalFavoriteUser)
+                        console.log("result total I_am_Intrested===>",result.myTotalInterestUser)
+                    }
+                  
 
-// if(userDetails.I_am_Intrested.includes(e._doc._id) || userDetails.Interested_in_each_other.includes(e._doc._id)){
-//     e._doc['I_am_Intrested_key']   =true
-// }
+                    if ( req.userDetails && req.userDetails.markFavorite.length > 0 ) {
+                                                result.markFavorite = result.markFavorite.map(e => {
+                            e.isFavorite =result.myTotalFavoriteUser.includes(e._id)?true:false;
+                            e.I_am_Intrested_key=result.myTotalInterestUser.includes(e._id)?true:false;
+                            console.log("mark favorite===>", e.isFavorite,e.I_am_Intrested_key)
+                            return e;
+                        })
+
+                    }
+                    if (  req.userDetails && (req.userDetails.I_am_Intrested.length > 0 ||req.userDetails.Interested_in_each_other.length > 0) ) {
+                        result.I_am_Intrested = result.I_am_Intrested.map(e => {
+                            e.isFavorite =result.myTotalFavoriteUser.includes(e._id)?true:false;
+                            e.I_am_Intrested_key=result.myTotalInterestUser.includes(e._id)?true:false;
+                            console.log("mark I_am_Intrested===>", e.isFavorite,e.I_am_Intrested_key)
+
+                            return e;
+                        })
+                        result.Interested_in_each_other = result.Interested_in_each_other.map(el => {
+                            el.isFavorite =result.myTotalFavoriteUser.includes(el._id)?true:false;
+                            el.I_am_Intrested_key=result.myTotalInterestUser.includes(el._id)?true:false;
+                            console.log("mark Interested_in_each_other===>", el.isFavorite,el.I_am_Intrested_key)
+
+                            return el;
+                        })
+
+                    }
+
+                    // if (userDetails.I_am_Intrested.includes(e._doc._id) || userDetails.Interested_in_each_other.includes(e._doc._id)) {
+                    //     e._doc['I_am_Intrested_key'] = true
+                    // }
 
 
                     return res.send({ responseCode: 200, responseMessage: "Data found successfully.", result })
@@ -567,16 +597,17 @@ Your reset otp for Wedding App is : ${otp1}`;
             let userDetails = req.userDetails;
             let intrested_in = {}, my_partner_Intrested = {};
             let { status, showInterestUserId } = req.body
-            intrested_in = status ? { 
-                $addToSet: { I_am_Intrested: showInterestUserId } ,
-            $pull:{Interested_in_each_other:showInterestUserId}} : { $pull: { I_am_Intrested: showInterestUserId ,Interested_in_each_other:showInterestUserId}}
+            intrested_in = status ? {
+                $addToSet: { I_am_Intrested: showInterestUserId },
+                $pull: { Interested_in_each_other: showInterestUserId }
+            } : { $pull: { I_am_Intrested: showInterestUserId, Interested_in_each_other: showInterestUserId } }
 
-            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id },$pull:{Interested_in_each_other:userDetails._id}  } : { $pull: { my_partner_Intrested: userDetails._id , Interested_in_each_other: userDetails._id }}
+            my_partner_Intrested = status ? { $addToSet: { my_partner_Intrested: userDetails._id }, $pull: { Interested_in_each_other: userDetails._id } } : { $pull: { my_partner_Intrested: userDetails._id, Interested_in_each_other: userDetails._id } }
 
             let todayStartDate = new Date().toISOString().split("T")[0] + 'T00:00:00.000Z'
             let todayEdndDate = new Date().toISOString().split("T")[0] + 'T59:59:59.999Z'
 
-            let notificationCount = await notificationModel.count({ $and: [{ notifyFrom: userDetails._id }, { notificationDate: { $gte: todayStartDate } }, { notificationDate: { $lte: todayEdndDate } },{title: "`Mark intrested."}] })
+            let notificationCount = await notificationModel.count({ $and: [{ notifyFrom: userDetails._id }, { notificationDate: { $gte: todayStartDate } }, { notificationDate: { $lte: todayEdndDate } }, { title: "`Mark intrested." }] })
             console.log("===notification Count====>", "ik===>", notificationCount)
             if (notificationCount == 15) {
                 return res.send({ responseCode: 404, responseMessage: 'You can only show interest in 15 profiles per day.', result: [] })
@@ -631,18 +662,18 @@ Your reset otp for Wedding App is : ${otp1}`;
             let { status, showInterestUserId } = req.body
             let selfUpdate = {}, otherUserUpdate = {}
             if (status == true) {
-                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId , my_partner_Intrested: showInterestUserId }, $addToSet: { Interested_in_each_other: showInterestUserId } };
+                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId, my_partner_Intrested: showInterestUserId }, $addToSet: { Interested_in_each_other: showInterestUserId } };
 
-                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id , my_partner_Intrested: userDetails._id }, $addToSet: { Interested_in_each_other: userDetails._id } }
+                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id, my_partner_Intrested: userDetails._id }, $addToSet: { Interested_in_each_other: userDetails._id } }
             }
             else {
-                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId , my_partner_Intrested: showInterestUserId }, $addToSet: { Rejected_Interest_in_me: showInterestUserId } };
+                selfUpdate = { $pull: { I_am_Intrested: showInterestUserId, my_partner_Intrested: showInterestUserId }, $addToSet: { Rejected_Interest_in_me: showInterestUserId } };
 
-                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id , my_partner_Intrested: userDetails._id }, $addToSet: { Rejected_Interest_in_me: userDetails._id } }
+                otherUserUpdate = { $pull: { I_am_Intrested: userDetails._id, my_partner_Intrested: userDetails._id }, $addToSet: { Rejected_Interest_in_me: userDetails._id } }
             }
-console.log("====>",selfUpdate,otherUserUpdate)
+            console.log("====>", selfUpdate, otherUserUpdate)
             User.findByIdAndUpdate(userDetails._id, selfUpdate, { new: true }, (err, result) => {
-                console.log("e1====>",err,result)
+                console.log("e1====>", err, result)
 
                 if (err) {
                     return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, err)
@@ -663,17 +694,17 @@ console.log("====>",selfUpdate,otherUserUpdate)
                             notifyFrom: userDetails._id,
                             notifyTo: showInterestUserId,
                             type: "intrested_in",
-                            title:  status ? "Accept intrested.":'Reject intrested',
+                            title: status ? "Accept intrested." : 'Reject intrested',
                             content: status ? `${userDetails.creatorName} accepted your showing interest profile.` : `${userDetails.creatorName} rejected your interested profile.`
-            
+
                         }
                         let notificationSave = await notificationModel(notifyObj).save()
                         console.log("===notifyObj", notificationSave)
-                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ?"Interested user approved successfully."  : "Interested user rejected successfully.", result)
+                        return Response.sendResponseWithData(res, responseCode.EVERYTHING_IS_OK, status ? "Interested user approved successfully." : "Interested user rejected successfully.", result)
 
                     })
                 }
-            })      
+            })
 
         } catch (error) {
             return Response.sendResponsewithError(res, responseCode.WENT_WRONG, responseMessage.INTERNAL_SERVER_ERROR, error)

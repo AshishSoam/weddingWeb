@@ -353,6 +353,7 @@ router.post('/markFavorite',auth.verifyToken, userController.markFavorite);
  *       500:
  *         description: Internal server error.
  */
+
 router.post('/markInterest', auth.verifyToken,userController.markInterest);
 
 /**

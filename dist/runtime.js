@@ -64,7 +64,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"default~after-signup-after-signup-module~before-signup-before-signup-module":"default~after-signup-after-signup-module~before-signup-before-signup-module","after-signup-after-signup-module":"after-signup-after-signup-module","before-signup-before-signup-module":"before-signup-before-signup-module"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"canvg":"canvg","default~after-signup-after-signup-module~before-signup-before-signup-module":"default~after-signup-after-signup-module~before-signup-before-signup-module","after-signup-after-signup-module":"after-signup-after-signup-module","before-signup-before-signup-module":"before-signup-before-signup-module","pdfmake":"pdfmake","xlsx":"xlsx"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

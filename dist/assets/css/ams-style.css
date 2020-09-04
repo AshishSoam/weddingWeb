@@ -1868,6 +1868,8 @@ hr {
     transition: 1s;
     max-width: 100%;
     display: block;
+    height: 100px;
+    width: 150px;
     margin: auto;
 }
 
@@ -1917,7 +1919,7 @@ a#view-icon {
 
 .matching-filter .filter-column-1 {
     border: 1px solid rgb(199, 199, 199);
-    padding: 10px;
+    padding: 9px 14px 2px 14px;
     position: relative;
     background: #fff;
     margin-top: 10px;
@@ -1959,7 +1961,7 @@ button#show-filter {
 
 .filter-refine {
     display: flex;
-    border-bottom: 1px solid rgb(230, 228, 228);
+    /* border-bottom: 1px solid rgb(230, 228, 228); */
 }
 
 .filter-refine h3 {

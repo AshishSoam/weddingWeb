@@ -20,40 +20,48 @@ module.exports = {
             let userDetails = req.userDetails
             let genderToBeSearch = (userDetails.userGender == 'Male') ? 'Female' : 'Male'
             // ,packageEndDate:{$gte:new Date().toISOString().split("T")[0]+'T00:00:00.000Z'},
-            let query = { userGender: genderToBeSearch, status: "ACTIVE", accountVerification: true, mobileVerified: true, emailVerified: true, documentVerification: true, purchase_packageDetails: { $ne: [] }, packageSuscription: "Approved", _id: { $ne: userDetails._id } }
+            let query = { userGender: genderToBeSearch, status: "ACTIVE", accountVerification: true, mobileVerified: true, emailVerified: true, documentVerification: true, purchase_packageDetails: { $ne: [] }, "userProfileType": "Public", packageSuscription: "Approved", _id: { $ne: userDetails._id } }
             let andOperation = new Array()
             // if(req.body.userTribe){
             //*partnerTribe
             // query.partnerTribe = (req.body.partnerTribe && req.body.partnerTribe.length > 0) ? { $in: req.body.partnerTribe } : userDetails.partnerTribe
-            req.body.partnerTribe && req.body.partnerTribe.length > 0 ? andOperation.push({ partnerTribe: { $in: userDetails.userTribe } }, { userTribe: { $in: req.body.partnerTribe } }) : andOperation.push({ partnerTribe: userDetails.userTribe }, { userTribe: userDetails.partnerTribe })
-            // }
-            //*partnerTribeName
-            // query.partnerTribeName = (req.body.partnerTribeName && req.body.partnerTribeName.length > 0) ? { $in: req.body.partnerTribeName } : userDetails.partnerTribeName
 
-            req.body.partnerTribeName && req.body.partnerTribeName.length > 0 ? andOperation.push({ partnerTribeName: { $in: userDetails.userTribeName } }, { userTribeName: { $in: req.body.partnerTribeName } }) : andOperation.push({ partnerTribeName: userDetails.userTribeName }, { userTribeName: userDetails.partnerTribeName })
+            if (req.body.userId) {
+                query._id = req.body.userId
+            }
 
-            //*age
-            // query.partnerAge = (req.body.partnerAge && req.body.partnerAge.length > 0) ? { $in: req.body.partnerAge } : userDetails.partnerAge
-            req.body.partnerAge && req.body.partnerAge.length > 0 ? andOperation.push({ partnerAge: { $in: userDetails.userAge } }, { userAge: { $in: req.body.partnerAge } }) : andOperation.push({ partnerAge: userDetails.userAge }, { userAge: userDetails.partnerAge })
-            //*mathab
-            req.body.partnerMathab && req.body.partnerMathab.length > 0 ? andOperation.push({ partnerMathab: { $in: userDetails.userMathab } }, { userMathab: { $in: req.body.partnerMathab } }) : andOperation.push({ partnerMathab: userDetails.userMathab }, { userMathab: userDetails.partnerMathab })
-            //*religiosity
+            if (req.body.allProfile == false) {
+                req.body.partnerTribe && req.body.partnerTribe.length > 0 ? andOperation.push({ partnerTribe: { $in: userDetails.userTribe } }, { userTribe: { $in: req.body.partnerTribe } }) : andOperation.push({ partnerTribe: userDetails.userTribe }, { userTribe: userDetails.partnerTribe })
+                // }
+                //*partnerTribeName
+                // query.partnerTribeName = (req.body.partnerTribeName && req.body.partnerTribeName.length > 0) ? { $in: req.body.partnerTribeName } : userDetails.partnerTribeName
 
-            if (req.body.partnerReligiosity && req.body.partnerReligiosity.length > 0) { andOperation.push({ partnerReligiosity: { $in: userDetails.userReligiosity } }, { userReligiosity: { $in: req.body.partnerReligiosity } }) }
-            //*language
-            req.body.partnerLanguage && req.body.partnerLanguage.length > 0 ? andOperation.push({ partnerLanguage: { $in: userDetails.userLanguage } }, { userLanguage: { $in: req.body.partnerLanguage } }) : andOperation.push({ partnerLanguage: userDetails.userLanguage }, { userLanguage: userDetails.partnerLanguage })
-            //*partnerCountry
-            // query.partnerCountry = (req.body.partnerCountry && req.body.partnerCountry.length > 0) ? { $in: req.body.partnerCountry } : userDetails.partnerCountry
+                req.body.partnerTribeName && req.body.partnerTribeName.length > 0 ? andOperation.push({ partnerTribeName: { $in: userDetails.userTribeName } }, { userTribeName: { $in: req.body.partnerTribeName } }) : andOperation.push({ partnerTribeName: userDetails.userTribeName }, { userTribeName: userDetails.partnerTribeName })
 
-            req.body.partnerCountry && req.body.partnerCountry.length > 0 ? andOperation.push({ partnerCountry: { $in: userDetails.userCountry } }, { userCountry: { $in: req.body.partnerCountry } }) : andOperation.push({ partnerCountry: userDetails.userCountry }, { userCountry: userDetails.partnerCountry })
+                //*age
+                // query.partnerAge = (req.body.partnerAge && req.body.partnerAge.length > 0) ? { $in: req.body.partnerAge } : userDetails.partnerAge
+                req.body.partnerAge && req.body.partnerAge.length > 0 ? andOperation.push({ partnerAge: { $in: userDetails.userAge } }, { userAge: { $in: req.body.partnerAge } }) : andOperation.push({ partnerAge: userDetails.userAge }, { userAge: userDetails.partnerAge })
+                //*mathab
+                req.body.partnerMathab && req.body.partnerMathab.length > 0 ? andOperation.push({ partnerMathab: { $in: userDetails.userMathab } }, { userMathab: { $in: req.body.partnerMathab } }) : andOperation.push({ partnerMathab: userDetails.userMathab }, { userMathab: userDetails.partnerMathab })
+                //*religiosity
 
-            //*partnerCity
-            // query.partnerCity = (req.body.partnerCity && req.body.partnerCity.length > 0) ? { $in: req.body.partnerCity } : userDetails.partnerCity
-            req.body.partnerCity && req.body.partnerCity.length > 0 ? andOperation.push({ partnerCity: { $in: userDetails.userCity } }, { userCity: { $in: req.body.partnerCity } }) : andOperation.push({ partnerCity: userDetails.userCity }, { userCity: userDetails.partnerCity })
-            //*partnerMaritalStatus
-            // query.partnerMaritalStatus = (req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0) ? { $in: req.body.partnerMaritalStatus } : userDetails.partnerMaritalStatus
+                if (req.body.partnerReligiosity && req.body.partnerReligiosity.length > 0) { andOperation.push({ partnerReligiosity: { $in: userDetails.userReligiosity } }, { userReligiosity: { $in: req.body.partnerReligiosity } }) }
+                //*language
+                req.body.partnerLanguage && req.body.partnerLanguage.length > 0 ? andOperation.push({ partnerLanguage: { $in: userDetails.userLanguage } }, { userLanguage: { $in: req.body.partnerLanguage } }) : andOperation.push({ partnerLanguage: userDetails.userLanguage }, { userLanguage: userDetails.partnerLanguage })
+                //*partnerCountry
+                // query.partnerCountry = (req.body.partnerCountry && req.body.partnerCountry.length > 0) ? { $in: req.body.partnerCountry } : userDetails.partnerCountry
 
-            req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0 ? andOperation.push({ partnerMaritalStatus: { $in: userDetails.userMaritalstatus } }, { userMaritalstatus: { $in: req.body.partnerMaritalStatus } }) : andOperation.push({ partnerMaritalStatus: userDetails.userMaritalstatus }, { userMaritalstatus: userDetails.partnerMaritalStatus })
+                req.body.partnerCountry && req.body.partnerCountry.length > 0 ? andOperation.push({ partnerCountry: { $in: userDetails.userCountry } }, { userCountry: { $in: req.body.partnerCountry } }) : andOperation.push({ partnerCountry: userDetails.userCountry }, { userCountry: userDetails.partnerCountry })
+
+                //*partnerCity
+                // query.partnerCity = (req.body.partnerCity && req.body.partnerCity.length > 0) ? { $in: req.body.partnerCity } : userDetails.partnerCity
+                req.body.partnerCity && req.body.partnerCity.length > 0 ? andOperation.push({ partnerCity: { $in: userDetails.userCity } }, { userCity: { $in: req.body.partnerCity } }) : andOperation.push({ partnerCity: userDetails.userCity }, { userCity: userDetails.partnerCity })
+                //*partnerMaritalStatus
+                // query.partnerMaritalStatus = (req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0) ? { $in: req.body.partnerMaritalStatus } : userDetails.partnerMaritalStatus
+
+                req.body.partnerMaritalStatus && req.body.partnerMaritalStatus.length > 0 ? andOperation.push({ partnerMaritalStatus: { $in: userDetails.userMaritalstatus } }, { userMaritalstatus: { $in: req.body.partnerMaritalStatus } }) : andOperation.push({ partnerMaritalStatus: userDetails.userMaritalstatus }, { userMaritalstatus: userDetails.partnerMaritalStatus })
+            }
+
 
             //*partnerOccupation
             // query.partnerOccupation = (req.body.partnerOccupation && req.body.partnerOccupation.length > 0) ? { $in: req.body.partnerOccupation } : userDetails.partnerOccupation
@@ -64,30 +72,32 @@ module.exports = {
             //*partnerEducation
             // query.partnerEducation = (req.body.partnerEducation && req.body.partnerEducation.length > 0) ? { $in: req.body.partnerEducation } : userDetails.partnerEducation
 
-            if( req.body.partnerEducation && req.body.partnerEducation.length > 0){
-andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { userEducation: { $in: req.body.partnerEducation } }) }
+            if (req.body.partnerEducation && req.body.partnerEducation.length > 0) {
+                andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { userEducation: { $in: req.body.partnerEducation } })
+            }
             //*partnerEmployedIn
             // query.partnerEmployedIn = (req.body.partnerEmployedIn && req.body.partnerEmployedIn.length > 0) ? { $in: req.body.partnerEmployedIn } : userDetails.partnerEmployedIn
 
-            if(req.body.partnerEmployedIn && req.body.partnerEmployedIn.length > 0){
+            if (req.body.partnerEmployedIn && req.body.partnerEmployedIn.length > 0) {
 
-             andOperation.push({ partnerEmployedIn: { $in: userDetails.userEmployedIn } }, { userEmployedIn: { $in: req.body.partnerEmployedIn } }) }
+                andOperation.push({ partnerEmployedIn: { $in: userDetails.userEmployedIn } }, { userEmployedIn: { $in: req.body.partnerEmployedIn } })
+            }
             //*partnerBodyType
             // query.partnerBodyType = (req.body.partnerBodyType && req.body.partnerBodyType.length > 0) ? { $in: req.body.partnerBodyType } : userDetails.partnerBodyType
-            if(req.body.partnerBodyType && req.body.partnerBodyType.length > 0){ andOperation.push({ partnerBodyType: { $in: userDetails.userHeight } }, { userBodyType: { $in: req.body.partnerBodyType } })}
+            if (req.body.partnerBodyType && req.body.partnerBodyType.length > 0) { andOperation.push({ partnerBodyType: { $in: userDetails.userHeight } }, { userBodyType: { $in: req.body.partnerBodyType } }) }
 
             //*partnerComplexion
             // query.partnerComplexion = (req.body.partnerComplexion && req.body.partnerComplexion.length > 0) ? { $in: req.body.partnerComplexion } : userDetails.partnerComplexion
-            if(req.body.partnerComplexion && req.body.partnerComplexion.length > 0){ andOperation.push({ partnerComplexion: { $in: userDetails.userComplexion } }, { userComplexion: { $in: req.body.partnerComplexion } })}
+            if (req.body.partnerComplexion && req.body.partnerComplexion.length > 0) { andOperation.push({ partnerComplexion: { $in: userDetails.userComplexion } }, { userComplexion: { $in: req.body.partnerComplexion } }) }
             //*partnerPhysicalStatus
             // query.partnerPhysicalStatus = (req.body.partnerPhysicalStatus && req.body.partnerPhysicalStatus.length > 0) ? { $in: req.body.partnerPhysicalStatus } : userDetails.partnerPhysicalStatus
             req.body.partnerPhysicalStatus && req.body.partnerPhysicalStatus.length > 0 ? andOperation.push({ partnerPhysicalStatus: { $in: userDetails.userPhysicalStatus } }, { userPhysicalStatus: { $in: req.body.partnerPhysicalStatus } }) : andOperation.push({ partnerPhysicalStatus: userDetails.userPhysicalStatus }, { userPhysicalStatus: userDetails.partnerPhysicalStatus })
             //*partnerHeight
             // query.partnerHeight = (req.body.partnerHeight && req.body.partnerHeight.length > 0) ? { $in: req.body.partnerHeight } : userDetails.partnerHeight
-            if(req.body.partnerHeight && req.body.partnerHeight.length > 0){ andOperation.push({ partnerHeight: { $in: userDetails.userHeight } }, { userHeight: { $in: req.body.partnerHeight } }) }
+            if (req.body.partnerHeight && req.body.partnerHeight.length > 0) { andOperation.push({ partnerHeight: { $in: userDetails.userHeight } }, { userHeight: { $in: req.body.partnerHeight } }) }
             //*partnerWeight
             // query.partnerWeight = (req.body.partnerWeight && req.body.partnerWeight.length > 0) ? { $in: req.body.partnerWeight } : userDetails.partnerWeight
-          if  (req.body.partnerWeight && req.body.partnerWeight.length > 0 ){ andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) }
+            if (req.body.partnerWeight && req.body.partnerWeight.length > 0) { andOperation.push({ partnerWeight: { $in: userDetails.userWeight } }, { userWeight: { $in: req.body.partnerWeight } }) }
             //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
 
             //Secondary filter
@@ -157,11 +167,11 @@ andOperation.push({ partnerEducation: { $in: userDetails.userEducation } }, { us
                         e._doc["secondaryMatching"] = 0;
                         e._doc['isFavorite'] = userDetails.markFavorite.includes(e._doc._id) ? true : false
                         e._doc['I_am_Intrested_key'] = false
-                        console.log("check my id in my intrested===>",userDetails.I_am_Intrested,"====>",e._doc._id)
-                        console.log("check my id in my Interested_in_each_other===>",userDetails.I_am_Intrested,"====>",e._doc._id)
+                        console.log("check my id in my intrested===>", userDetails.I_am_Intrested, "====>", e._doc._id)
+                        console.log("check my id in my Interested_in_each_other===>", userDetails.I_am_Intrested, "====>", e._doc._id)
 
-                        if(userDetails.I_am_Intrested.includes(e._doc._id) || userDetails.Interested_in_each_other.includes(e._doc._id)){
-                            e._doc['I_am_Intrested_key']   =true
+                        if (userDetails.I_am_Intrested.includes(e._doc._id) || userDetails.Interested_in_each_other.includes(e._doc._id)) {
+                            e._doc['I_am_Intrested_key'] = true
                         }
                         //primary weitage
                         //*age

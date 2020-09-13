@@ -105,7 +105,7 @@ module.exports = {
             let checkRequest = commonQuery.checkRequest(["email", "password"], req.body);
             console.log("checkRequest>>>>", checkRequest)
             if (checkRequest !== true) {
-                Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
+              return  Response.sendResponseWithData(res, responseCode.NOT_FOUND, `${checkRequest} key is missing`, {})
             }
             else {
 
